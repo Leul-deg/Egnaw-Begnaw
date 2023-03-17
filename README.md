@@ -10,3 +10,7 @@
 | 3 | Leul Degarege | 4 | UGR/6806/13 |
 | 4 | Samuel Godad | 4 | UGR/4642/13 |
 | 5 | Mihretab Nigussie | 3 | UGR/5065/13 |
+
+## Technologies Used
+- Flutter
+- NestJs
