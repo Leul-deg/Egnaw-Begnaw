@@ -4,7 +4,7 @@
 ## Group members
 
 | No. | Name | Section | ID |
-| -------- | -------- | -------- |
+| -------- | -------- | -------- | -------- |
 | 1 | Tiruzer Tsedeke | 2 | UGR/6836/13 |
 | 2 | Yosef Ayele | 4 | UGR/2067/13 |
 | 3 | Leul Degarege | 4 | UGR/6806/13 |
