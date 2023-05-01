@@ -18,6 +18,8 @@ export class AuthService {
   ) {}
 
   async signup(dto: AuthDto) {
+    console.log("got called");
+    console.log(dto , "the dto");
     // generate the password hash
     const hash = await argon.hash(dto.password);
     dto.password = hash
@@ -25,7 +27,7 @@ export class AuthService {
     try{
     const new_user = new this.userModel(dto)
     const result = await new_user.save()
-    return result
+    return {result}
     }
     catch(error){
       if(error.code === 11000){
