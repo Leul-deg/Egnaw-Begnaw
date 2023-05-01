@@ -31,7 +31,7 @@ export class EventController {
     }
 
     @Delete('delete/:id')
-    async deleteEvent(@Param('id') id: string, @Body() event: UpdateEventDTO): Promise<EventI> {
+    async deleteEvent(@Param('id') id: string): Promise<EventI> {
         return this.eventService.deleteEvent(id);
     }
 
