@@ -12,4 +12,10 @@ export class AuthDto {
   @IsString()
   @IsNotEmpty()
   password: string;
+  
+  @IsNotEmpty()
+  username: string;
+
+  @IsNotEmpty()
+  fullname: string;
 }

@@ -1,11 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
+import { InjectModel, MongooseModule } from '@nestjs/mongoose';
+// import { ConfigService } from '@nestjs/config';
+import { Model } from 'mongoose';
 import { PassportStrategy } from '@nestjs/passport';
 import {
   ExtractJwt,
   Strategy,
 } from 'passport-jwt';
-import { PrismaService } from '../../prisma/prisma.service';
+import { AuthDto } from '../dto';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(
@@ -13,13 +15,13 @@ export class JwtStrategy extends PassportStrategy(
   'jwt',
 ) {
   constructor(
-    config: ConfigService,
-    private prisma: PrismaService,
+    @InjectModel('User') private userModel: Model<AuthDto>,
+
   ) {
     super({
       jwtFromRequest:
         ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: config.get('JWT_SECRET'),
+      secretOrKey: 'JWT_SECRET',
     });
   }
 
@@ -27,13 +29,17 @@ export class JwtStrategy extends PassportStrategy(
     sub: number;
     email: string;
   }) {
-    const user =
-      await this.prisma.user.findUnique({
-        where: {
-          id: payload.sub,
-        },
-      });
-    delete user.hash;
+
+    // const user =
+    //   await this.prisma.user.findUnique({
+    //     where: {
+    //       id: payload.sub,
+    //     },
+    //   });
+
+    const user = await this.userModel.findOne({ _id: payload.sub });
+
+
     return user;
   }
 }
