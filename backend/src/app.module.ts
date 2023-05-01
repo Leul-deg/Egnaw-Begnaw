@@ -5,6 +5,7 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { EventModule } from './event/event.module';
 import { RouterModule } from '@nestjs/core';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -12,11 +13,8 @@ import { RouterModule } from '@nestjs/core';
       'mongodb+srv://tiruzertsedeke26:WIG3KLEJER5H2Iy5@eventticketing.zqofp74.mongodb.net/EventTicketing?retryWrites=true&w=majority'
     ),
     EventModule,
-    RouterModule.register([
-      {path: 'event', module: EventModule}
-    ])
+   AuthModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  
 })
 export class AppModule {}
