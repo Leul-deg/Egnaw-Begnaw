@@ -4,7 +4,7 @@ import { UpdateEventDTO } from 'src/event/dto/updateEvent.interface';
 import { EventI } from 'src/event/interfaces/event.interface';
 import { EventService } from 'src/event/services/event.service';
 
-@Controller('')
+@Controller('event')
 export class EventController {
 
     constructor(private eventService: EventService) {}
@@ -31,7 +31,7 @@ export class EventController {
     }
 
     @Delete('delete/:id')
-    async deleteEvent(@Param('id') id: string, @Body() event: UpdateEventDTO): Promise<EventI> {
+    async deleteEvent(@Param('id') id: string): Promise<EventI> {
         return this.eventService.deleteEvent(id);
     }
 
