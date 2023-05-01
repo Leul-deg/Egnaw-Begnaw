@@ -9,11 +9,15 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { User } from '../interfaces/auth.interface';
+import { CreateOrganizerDTO } from 'src/organizer/dto/createOrganizer.dto';
+import { OrganizerI } from 'src/Organizer/interfaces/organizer.interface';
+
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel('User') private userModel: Model<User>,
+    @InjectModel('Organizer') private organizerModel: Model<CreateOrganizerDTO>,
     private jwt: JwtService,
   ) {}
 
@@ -95,5 +99,44 @@ async signToken(
     access_token: token,
   };
 }
+
+// function for organizer signup
+async organizerSignup(dto: CreateOrganizerDTO) {
+  // generate the password hash
+  const hash = await argon.hash(dto.password);
+  dto.password = hash
+
+  // save the new user in the db
+  const new_organizer = await this.organizerModel.create(dto)
+  const result = await new_organizer.save()
+  return new_organizer
 }
 
+// function for organizer signin
+async organizerSignin(dto: CreateOrganizerDTO) {
+  const filter = {email: dto.email}
+  // find new orgainzer by email
+  console.log(dto , "the dto upon organizer signin fucked")
+  const cur_organizer = await this.organizerModel.findOne(filter);
+ 
+  if (!cur_organizer){
+    throw new ForbiddenException(
+              'Credentials incorrect',
+            );
+  }
+
+   // compare password
+  const pwMatches = await argon.verify(
+
+    cur_organizer.password,
+    dto.password,
+  );
+  // if password incorrect throw exception
+  if (!pwMatches)
+    throw new ForbiddenException(
+      'Credentials incorrect upon signin',
+    );
+  return this.signToken(dto.email);
+}
+
+}

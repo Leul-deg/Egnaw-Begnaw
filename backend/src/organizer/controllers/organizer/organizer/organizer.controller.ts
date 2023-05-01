@@ -2,7 +2,7 @@ import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
 import { CreateOrganizerDTO } from 'src/organizer/dto/createOrganizer.dto';
 import { UpdateOrganizerDTO } from 'src/organizer/dto/updateOrganizer.dto'; 
 import { OrganizerI } from 'src/Organizer/interfaces/organizer.interface';
-import { OrganizerService } from 'src/organizer/services/organizer/organizer/organizer.service';
+import { OrganizerService } from 'src/organizer/services/organizer/organizer.service';
 
 @Controller()
 export class OrganizerController {
@@ -19,7 +19,7 @@ export class OrganizerController {
         return this.organizerService.getOrganizerById(id);
     }
 
-    @Get('update/:id')
+    @Post('update/:id')
     async updateOrganizer(@Param('id') id: string, @Body() Organizer: UpdateOrganizerDTO): Promise<OrganizerI> {
         return this.organizerService.updateOrganizer(id, Organizer);
     }
