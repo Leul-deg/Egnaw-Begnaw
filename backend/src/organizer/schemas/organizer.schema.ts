@@ -4,7 +4,6 @@ export const OrganizerSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
-        match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     },
     password: {
         type: String,
@@ -14,6 +13,7 @@ export const OrganizerSchema = new mongoose.Schema({
         type: String,
         required: true,
         unique: true,
+        match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
     }
 });
 

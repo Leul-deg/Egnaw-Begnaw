@@ -12,6 +12,7 @@ export class EventService {
     async createEvent(event: CreateEventDTO): Promise<EventI> {
         try {
             const newEvent = await this.eventModel.create(event);
+            const result = newEvent.save();
             return newEvent;
         } catch (error) {
             throw error;

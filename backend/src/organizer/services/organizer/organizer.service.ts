@@ -9,14 +9,11 @@ import { OrganizerI } from 'src/organizer/interfaces/organizer.interface';
 export class OrganizerService {
     constructor(@InjectModel('Organizer') private organizerModel: Model<CreateOrganizerDTO>){}
 
-
     async getAllOrganizers(): Promise<OrganizerI[]> {
         try {
-            const newOrganizer = await this.organizerModel.find()
-                .sort({ updatedAt: -1 })
-                .exec();
-
+            const newOrganizer = await this.organizerModel.find();
             return newOrganizer;
+            
         } catch (error) {
             throw error;
         }
@@ -31,9 +28,9 @@ export class OrganizerService {
         }
     }
 
-    async updateOrganizer(id: String, Organizer: UpdateOrganizerDTO): Promise<OrganizerI> {
+    async updateOrganizer(id: String, organizer: UpdateOrganizerDTO): Promise<OrganizerI> {
         try {
-            const newOrganizer = await this.organizerModel.findOneAndUpdate({ _id: id }, Organizer);
+            const newOrganizer = await this.organizerModel.findOneAndUpdate({ _id: id }, organizer).exec();
             return newOrganizer;
         } catch (error) {
             throw error;
