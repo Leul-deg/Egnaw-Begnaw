@@ -25,11 +25,15 @@ export class AuthService {
     dto.password = hash
     // save the new user in the db
     try{
-    const new_user = new this.userModel(dto)
+      // const newEvent = await this.eventModel.create(event);
+      // return newEvent;
+
+    const new_user = await this.userModel.create(dto)
     const result = await new_user.save()
-    return {result}
+    return new_user
     }
     catch(error){
+      console.log(error , "the error")
       if(error.code === 11000){
 
         throw new ForbiddenException(
@@ -43,11 +47,13 @@ export class AuthService {
 
     //find user by username
 
-    const filter = {username: dto.username}
-    
+    const filter = {userName: dto.userName}
+    console.log(dto , "the dto upon signin fucked")
     const cur_user = await this.userModel.findOne(filter)
-
+    console.log(cur_user,"curr user here")
     //username not found
+    // const newEvent = await this.eventModel.findOne({ _id: id });
+    //         return newEvent;
     if (!cur_user){
       throw new ForbiddenException(
                 'Credentials incorrect',
@@ -56,15 +62,16 @@ export class AuthService {
 
      // compare password
     const pwMatches = await argon.verify(
+
       cur_user.password,
       dto.password,
     );
     // if password incorrect throw exception
     if (!pwMatches)
       throw new ForbiddenException(
-        'Credentials incorrect',
+        'Credentials incorrect upon signin',
       );
-    return this.signToken(dto.username);
+    return this.signToken(dto.userName);
 
 }
 
@@ -89,3 +96,4 @@ async signToken(
   };
 }
 }
+

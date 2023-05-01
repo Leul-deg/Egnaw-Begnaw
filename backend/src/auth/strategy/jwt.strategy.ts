@@ -1,13 +1,13 @@
 import { Injectable } from '@nestjs/common';
-import { InjectModel, MongooseModule } from '@nestjs/mongoose';
-// import { ConfigService } from '@nestjs/config';
-import { Model } from 'mongoose';
+import { UnauthorizedException } from '@nestjs/common/exceptions';
+import { InjectModel } from '@nestjs/mongoose';
 import { PassportStrategy } from '@nestjs/passport';
+import { Model } from 'mongoose';
 import {
   ExtractJwt,
   Strategy,
 } from 'passport-jwt';
-import { AuthDto } from '../dto';
+import { User } from '../interfaces/auth.interface';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(
@@ -15,8 +15,7 @@ export class JwtStrategy extends PassportStrategy(
   'jwt',
 ) {
   constructor(
-    @InjectModel('User') private userModel: Model<AuthDto>,
-
+      @InjectModel('User') private readonly userModel: Model<User>,
   ) {
     super({
       jwtFromRequest:
@@ -26,18 +25,17 @@ export class JwtStrategy extends PassportStrategy(
   }
 
   async validate(payload: {
-    sub: number;
-    email: string;
+    username: string;
   }) {
+    
+    const filter = {userName:payload.username}
+    console.log(filter , "filter oooojh");
+    const user =  this.userModel.findOne(filter)
+    if(!user){
+      console.log("user not found");
+      throw new UnauthorizedException()
+    }
 
-    // const user =
-    //   await this.prisma.user.findUnique({
-    //     where: {
-    //       id: payload.sub,
-    //     },
-    //   });
-
-    const user = await this.userModel.findOne({ _id: payload.sub });
 
 
     return user;

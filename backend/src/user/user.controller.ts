@@ -9,20 +9,24 @@ import { GetUser } from '../auth/decorator';
 import { JwtGuard } from '../auth/guard';
 import { EditUserDto } from './dto';
 import { UserService } from './user.service';
+import { User } from 'src/auth/interfaces/auth.interface';
 
 @UseGuards(JwtGuard)
-@Controller('users')
+@Controller()
 export class UserController {
   constructor(private userService: UserService) {}
   @Get('me')
-  getMe(@GetUser() user) {
+  getMe(@GetUser() user:User) {
+    console.log(user , "user please me");
     return user;
   }
 
-  @Patch()
+  @Patch('edit')
   editUser(
-    @GetUser('id') userId: number,
+    @GetUser('id') userId : string,
     @Body() dto: EditUserDto,
+    // get Id from database
+    
   ) {
     return this.userService.editUser(userId, dto);
   }

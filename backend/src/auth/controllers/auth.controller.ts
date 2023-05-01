@@ -9,7 +9,7 @@ import {
 import { AuthService } from '../services/auth.service';
 import { AuthDto } from '../dto';
 
-@Controller('auth')
+@Controller()
 export class AuthController {
   constructor(private authService: AuthService) {}
 
@@ -21,6 +21,9 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('signin')
   signin(@Body() dto: AuthDto) {
+    console.log(dto , "the dto upon signin inininin ")
     return this.authService.signin(dto);
   }
 }
+
+

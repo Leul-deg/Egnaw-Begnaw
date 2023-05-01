@@ -9,9 +9,9 @@ export const UserSchema = new mongoose.Schema({
         },
 
 
-    hash:{
+    password:{
         type: String,
-        required: true,
+        required: true, 
     },
 
     firstName: {
@@ -23,6 +23,10 @@ export const UserSchema = new mongoose.Schema({
         required: true,
     },
     email: {
+        type: String,
+        required: true,
+    },
+    userName:{
         type: String,
         required: true,
     },
