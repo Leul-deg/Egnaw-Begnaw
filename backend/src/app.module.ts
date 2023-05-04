@@ -9,6 +9,7 @@ import { RouterModule } from '@nestjs/core';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { OrganizerModule } from './organizer/organizer.module';
+import { ReviewModule } from './review/review.module';
 
 
 @Module({
@@ -26,7 +27,9 @@ import { OrganizerModule } from './organizer/organizer.module';
       {path: 'users', module: UserModule},
       {path: 'auth', module: AuthModule},
       {path: 'organizer', module: OrganizerModule},
-    ])
+      {path: 'review', module: ReviewModule},
+    ]),
+    ReviewModule
 
   ],
   controllers: [AppController],
