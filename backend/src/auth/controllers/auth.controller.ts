@@ -24,7 +24,7 @@ export class AuthController {
   @HttpCode(HttpStatus.OK)
   @Post('user/signin')
   signin(@Body() dto: AuthDto) {
-    console.log(dto , "the dto upon organizer signin inininin ")
+    console.log(dto , "the dto upon user signin inininin ")
     return this.authService.signin(dto);
   }
 

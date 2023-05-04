@@ -9,6 +9,7 @@ import { RouterModule } from '@nestjs/core';
 import { AuthModule } from './auth/auth.module';
 import { UserModule } from './user/user.module';
 import { OrganizerModule } from './organizer/organizer.module';
+import { TicketModule } from './ticket/ticket.module';
 
 
 @Module({
@@ -17,7 +18,7 @@ import { OrganizerModule } from './organizer/organizer.module';
       'mongodb+srv://tiruzertsedeke26:WIG3KLEJER5H2Iy5@eventticketing.zqofp74.mongodb.net/EventTicketing?retryWrites=true&w=majority'
     ),
     EventModule,
-
+    TicketModule,
     AuthModule,
     UserModule,
     OrganizerModule,
@@ -26,7 +27,8 @@ import { OrganizerModule } from './organizer/organizer.module';
       {path: 'users', module: UserModule},
       {path: 'auth', module: AuthModule},
       {path: 'organizer', module: OrganizerModule},
-    ])
+      {path: 'ticket', module: TicketModule}
+    ]),
 
   ],
   controllers: [AppController],
