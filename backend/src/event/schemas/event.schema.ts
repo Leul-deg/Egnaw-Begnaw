@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 export const EventSchema = new mongoose.Schema({
     organizerId: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Organizer',
         required: true
     },
