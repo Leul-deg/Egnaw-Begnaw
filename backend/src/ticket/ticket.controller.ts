@@ -4,7 +4,7 @@ import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { TicketI } from './ticket_interface/ticket.interface';
 
-@Controller()
+@Controller('ticket')
 export class TicketController {
 
   constructor(private  ticketService: TicketService) {}
