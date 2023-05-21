@@ -14,6 +14,7 @@ _$_EventUpdateModel _$$_EventUpdateModelFromJson(Map<String, dynamic> json) =>
       startTime: json['startTime'] as String,
       endTime: json['endTime'] as String,
       availableSeats: json['availableSeats'] as int,
+      id: json['id'] as String,
     );
 
 Map<String, dynamic> _$$_EventUpdateModelToJson(_$_EventUpdateModel instance) =>
@@ -24,4 +25,5 @@ Map<String, dynamic> _$$_EventUpdateModelToJson(_$_EventUpdateModel instance) =>
       'startTime': instance.startTime,
       'endTime': instance.endTime,
       'availableSeats': instance.availableSeats,
+      'id': instance.id,
     };
