@@ -12,7 +12,7 @@ import { UserService } from './user.service';
 import { User } from 'src/auth/interfaces/auth.interface';
 
 @UseGuards(JwtGuard)
-@Controller()
+@Controller('user')
 export class UserController {
   constructor(private userService: UserService) {}
   @Get('me')
