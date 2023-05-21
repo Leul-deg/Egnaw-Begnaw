@@ -12,6 +12,7 @@ class EventUpdateModel with _$EventUpdateModel {
     required String startTime,
     required String endTime,
     required int availableSeats,
+    required String id,
   }) = _EventUpdateModel;
 
   factory EventUpdateModel.fromJson(Map<String, dynamic> json) =>

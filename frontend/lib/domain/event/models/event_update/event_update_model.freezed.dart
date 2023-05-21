@@ -26,6 +26,7 @@ mixin _$EventUpdateModel {
   String get startTime => throw _privateConstructorUsedError;
   String get endTime => throw _privateConstructorUsedError;
   int get availableSeats => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +46,8 @@ abstract class $EventUpdateModelCopyWith<$Res> {
       String place,
       String startTime,
       String endTime,
-      int availableSeats});
+      int availableSeats,
+      String id});
 }
 
 /// @nodoc
@@ -67,6 +69,7 @@ class _$EventUpdateModelCopyWithImpl<$Res, $Val extends EventUpdateModel>
     Object? startTime = null,
     Object? endTime = null,
     Object? availableSeats = null,
+    Object? id = null,
   }) {
     return _then(_value.copyWith(
       name: null == name
@@ -93,6 +96,10 @@ class _$EventUpdateModelCopyWithImpl<$Res, $Val extends EventUpdateModel>
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
               as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -111,7 +118,8 @@ abstract class _$$_EventUpdateModelCopyWith<$Res>
       String place,
       String startTime,
       String endTime,
-      int availableSeats});
+      int availableSeats,
+      String id});
 }
 
 /// @nodoc
@@ -131,6 +139,7 @@ class __$$_EventUpdateModelCopyWithImpl<$Res>
     Object? startTime = null,
     Object? endTime = null,
     Object? availableSeats = null,
+    Object? id = null,
   }) {
     return _then(_$_EventUpdateModel(
       name: null == name
@@ -157,6 +166,10 @@ class __$$_EventUpdateModelCopyWithImpl<$Res>
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
               as int,
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -170,7 +183,8 @@ class _$_EventUpdateModel implements _EventUpdateModel {
       required this.place,
       required this.startTime,
       required this.endTime,
-      required this.availableSeats});
+      required this.availableSeats,
+      required this.id});
 
   factory _$_EventUpdateModel.fromJson(Map<String, dynamic> json) =>
       _$$_EventUpdateModelFromJson(json);
@@ -187,10 +201,12 @@ class _$_EventUpdateModel implements _EventUpdateModel {
   final String endTime;
   @override
   final int availableSeats;
+  @override
+  final String id;
 
   @override
   String toString() {
-    return 'EventUpdateModel(name: $name, description: $description, place: $place, startTime: $startTime, endTime: $endTime, availableSeats: $availableSeats)';
+    return 'EventUpdateModel(name: $name, description: $description, place: $place, startTime: $startTime, endTime: $endTime, availableSeats: $availableSeats, id: $id)';
   }
 
   @override
@@ -206,13 +222,14 @@ class _$_EventUpdateModel implements _EventUpdateModel {
                 other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime) &&
             (identical(other.availableSeats, availableSeats) ||
-                other.availableSeats == availableSeats));
+                other.availableSeats == availableSeats) &&
+            (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(runtimeType, name, description, place,
-      startTime, endTime, availableSeats);
+      startTime, endTime, availableSeats, id);
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +252,8 @@ abstract class _EventUpdateModel implements EventUpdateModel {
       required final String place,
       required final String startTime,
       required final String endTime,
-      required final int availableSeats}) = _$_EventUpdateModel;
+      required final int availableSeats,
+      required final String id}) = _$_EventUpdateModel;
 
   factory _EventUpdateModel.fromJson(Map<String, dynamic> json) =
       _$_EventUpdateModel.fromJson;
@@ -252,6 +270,8 @@ abstract class _EventUpdateModel implements EventUpdateModel {
   String get endTime;
   @override
   int get availableSeats;
+  @override
+  String get id;
   @override
   @JsonKey(ignore: true)
   _$$_EventUpdateModelCopyWith<_$_EventUpdateModel> get copyWith =>

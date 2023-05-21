@@ -22,6 +22,9 @@ mixin _$EventFailure {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidEvent,
+    required TResult Function() serverError,
+    required TResult Function() unableToGet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +33,9 @@ mixin _$EventFailure {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? serverError,
+    TResult? Function()? unableToGet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +44,9 @@ mixin _$EventFailure {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidEvent,
+    TResult Function()? serverError,
+    TResult Function()? unableToGet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +57,9 @@ mixin _$EventFailure {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_UnableToGet value) unableToGet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +68,9 @@ mixin _$EventFailure {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_UnableToGet value)? unableToGet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +79,9 @@ mixin _$EventFailure {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_UnableToGet value)? unableToGet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +147,9 @@ class _$_UnexpectedError implements _UnexpectedError {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidEvent,
+    required TResult Function() serverError,
+    required TResult Function() unableToGet,
   }) {
     return unexpectedError();
   }
@@ -140,6 +161,9 @@ class _$_UnexpectedError implements _UnexpectedError {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? serverError,
+    TResult? Function()? unableToGet,
   }) {
     return unexpectedError?.call();
   }
@@ -151,6 +175,9 @@ class _$_UnexpectedError implements _UnexpectedError {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidEvent,
+    TResult Function()? serverError,
+    TResult Function()? unableToGet,
     required TResult orElse(),
   }) {
     if (unexpectedError != null) {
@@ -167,6 +194,9 @@ class _$_UnexpectedError implements _UnexpectedError {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_UnableToGet value) unableToGet,
   }) {
     return unexpectedError(this);
   }
@@ -178,6 +208,9 @@ class _$_UnexpectedError implements _UnexpectedError {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_UnableToGet value)? unableToGet,
   }) {
     return unexpectedError?.call(this);
   }
@@ -189,6 +222,9 @@ class _$_UnexpectedError implements _UnexpectedError {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_UnableToGet value)? unableToGet,
     required TResult orElse(),
   }) {
     if (unexpectedError != null) {
@@ -245,6 +281,9 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidEvent,
+    required TResult Function() serverError,
+    required TResult Function() unableToGet,
   }) {
     return insufficientPermission();
   }
@@ -256,6 +295,9 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? serverError,
+    TResult? Function()? unableToGet,
   }) {
     return insufficientPermission?.call();
   }
@@ -267,6 +309,9 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidEvent,
+    TResult Function()? serverError,
+    TResult Function()? unableToGet,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -283,6 +328,9 @@ class _$_InsufficientPermission implements _InsufficientPermission {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_UnableToGet value) unableToGet,
   }) {
     return insufficientPermission(this);
   }
@@ -294,6 +342,9 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_UnableToGet value)? unableToGet,
   }) {
     return insufficientPermission?.call(this);
   }
@@ -305,6 +356,9 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_UnableToGet value)? unableToGet,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -360,6 +414,9 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidEvent,
+    required TResult Function() serverError,
+    required TResult Function() unableToGet,
   }) {
     return unableToUpdate();
   }
@@ -371,6 +428,9 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? serverError,
+    TResult? Function()? unableToGet,
   }) {
     return unableToUpdate?.call();
   }
@@ -382,6 +442,9 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidEvent,
+    TResult Function()? serverError,
+    TResult Function()? unableToGet,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -398,6 +461,9 @@ class _$_UnableToUpdate implements _UnableToUpdate {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_UnableToGet value) unableToGet,
   }) {
     return unableToUpdate(this);
   }
@@ -409,6 +475,9 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_UnableToGet value)? unableToGet,
   }) {
     return unableToUpdate?.call(this);
   }
@@ -420,6 +489,9 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_UnableToGet value)? unableToGet,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -475,6 +547,9 @@ class _$_UnableToDelete implements _UnableToDelete {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidEvent,
+    required TResult Function() serverError,
+    required TResult Function() unableToGet,
   }) {
     return unableToDelete();
   }
@@ -486,6 +561,9 @@ class _$_UnableToDelete implements _UnableToDelete {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? serverError,
+    TResult? Function()? unableToGet,
   }) {
     return unableToDelete?.call();
   }
@@ -497,6 +575,9 @@ class _$_UnableToDelete implements _UnableToDelete {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidEvent,
+    TResult Function()? serverError,
+    TResult Function()? unableToGet,
     required TResult orElse(),
   }) {
     if (unableToDelete != null) {
@@ -513,6 +594,9 @@ class _$_UnableToDelete implements _UnableToDelete {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_UnableToGet value) unableToGet,
   }) {
     return unableToDelete(this);
   }
@@ -524,6 +608,9 @@ class _$_UnableToDelete implements _UnableToDelete {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_UnableToGet value)? unableToGet,
   }) {
     return unableToDelete?.call(this);
   }
@@ -535,6 +622,9 @@ class _$_UnableToDelete implements _UnableToDelete {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_UnableToGet value)? unableToGet,
     required TResult orElse(),
   }) {
     if (unableToDelete != null) {
@@ -546,4 +636,403 @@ class _$_UnableToDelete implements _UnableToDelete {
 
 abstract class _UnableToDelete implements EventFailure {
   const factory _UnableToDelete() = _$_UnableToDelete;
+}
+
+/// @nodoc
+abstract class _$$_InvalidEventCopyWith<$Res> {
+  factory _$$_InvalidEventCopyWith(
+          _$_InvalidEvent value, $Res Function(_$_InvalidEvent) then) =
+      __$$_InvalidEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InvalidEventCopyWithImpl<$Res>
+    extends _$EventFailureCopyWithImpl<$Res, _$_InvalidEvent>
+    implements _$$_InvalidEventCopyWith<$Res> {
+  __$$_InvalidEventCopyWithImpl(
+      _$_InvalidEvent _value, $Res Function(_$_InvalidEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_InvalidEvent implements _InvalidEvent {
+  const _$_InvalidEvent();
+
+  @override
+  String toString() {
+    return 'EventFailure.invalidEvent()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_InvalidEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpectedError,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() unableToDelete,
+    required TResult Function() invalidEvent,
+    required TResult Function() serverError,
+    required TResult Function() unableToGet,
+  }) {
+    return invalidEvent();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpectedError,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToDelete,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? serverError,
+    TResult? Function()? unableToGet,
+  }) {
+    return invalidEvent?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpectedError,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    TResult Function()? unableToDelete,
+    TResult Function()? invalidEvent,
+    TResult Function()? serverError,
+    TResult Function()? unableToGet,
+    required TResult orElse(),
+  }) {
+    if (invalidEvent != null) {
+      return invalidEvent();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UnexpectedError value) unexpectedError,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_UnableToGet value) unableToGet,
+  }) {
+    return invalidEvent(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UnexpectedError value)? unexpectedError,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_UnableToGet value)? unableToGet,
+  }) {
+    return invalidEvent?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UnexpectedError value)? unexpectedError,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_UnableToGet value)? unableToGet,
+    required TResult orElse(),
+  }) {
+    if (invalidEvent != null) {
+      return invalidEvent(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidEvent implements EventFailure {
+  const factory _InvalidEvent() = _$_InvalidEvent;
+}
+
+/// @nodoc
+abstract class _$$_ServerErrorCopyWith<$Res> {
+  factory _$$_ServerErrorCopyWith(
+          _$_ServerError value, $Res Function(_$_ServerError) then) =
+      __$$_ServerErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ServerErrorCopyWithImpl<$Res>
+    extends _$EventFailureCopyWithImpl<$Res, _$_ServerError>
+    implements _$$_ServerErrorCopyWith<$Res> {
+  __$$_ServerErrorCopyWithImpl(
+      _$_ServerError _value, $Res Function(_$_ServerError) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ServerError implements _ServerError {
+  const _$_ServerError();
+
+  @override
+  String toString() {
+    return 'EventFailure.serverError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ServerError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpectedError,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() unableToDelete,
+    required TResult Function() invalidEvent,
+    required TResult Function() serverError,
+    required TResult Function() unableToGet,
+  }) {
+    return serverError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpectedError,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToDelete,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? serverError,
+    TResult? Function()? unableToGet,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpectedError,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    TResult Function()? unableToDelete,
+    TResult Function()? invalidEvent,
+    TResult Function()? serverError,
+    TResult Function()? unableToGet,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UnexpectedError value) unexpectedError,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_UnableToGet value) unableToGet,
+  }) {
+    return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UnexpectedError value)? unexpectedError,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_UnableToGet value)? unableToGet,
+  }) {
+    return serverError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UnexpectedError value)? unexpectedError,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_UnableToGet value)? unableToGet,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ServerError implements EventFailure {
+  const factory _ServerError() = _$_ServerError;
+}
+
+/// @nodoc
+abstract class _$$_UnableToGetCopyWith<$Res> {
+  factory _$$_UnableToGetCopyWith(
+          _$_UnableToGet value, $Res Function(_$_UnableToGet) then) =
+      __$$_UnableToGetCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_UnableToGetCopyWithImpl<$Res>
+    extends _$EventFailureCopyWithImpl<$Res, _$_UnableToGet>
+    implements _$$_UnableToGetCopyWith<$Res> {
+  __$$_UnableToGetCopyWithImpl(
+      _$_UnableToGet _value, $Res Function(_$_UnableToGet) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_UnableToGet implements _UnableToGet {
+  const _$_UnableToGet();
+
+  @override
+  String toString() {
+    return 'EventFailure.unableToGet()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_UnableToGet);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpectedError,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() unableToDelete,
+    required TResult Function() invalidEvent,
+    required TResult Function() serverError,
+    required TResult Function() unableToGet,
+  }) {
+    return unableToGet();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpectedError,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToDelete,
+    TResult? Function()? invalidEvent,
+    TResult? Function()? serverError,
+    TResult? Function()? unableToGet,
+  }) {
+    return unableToGet?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpectedError,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    TResult Function()? unableToDelete,
+    TResult Function()? invalidEvent,
+    TResult Function()? serverError,
+    TResult Function()? unableToGet,
+    required TResult orElse(),
+  }) {
+    if (unableToGet != null) {
+      return unableToGet();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UnexpectedError value) unexpectedError,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidEvent value) invalidEvent,
+    required TResult Function(_ServerError value) serverError,
+    required TResult Function(_UnableToGet value) unableToGet,
+  }) {
+    return unableToGet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UnexpectedError value)? unexpectedError,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidEvent value)? invalidEvent,
+    TResult? Function(_ServerError value)? serverError,
+    TResult? Function(_UnableToGet value)? unableToGet,
+  }) {
+    return unableToGet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UnexpectedError value)? unexpectedError,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidEvent value)? invalidEvent,
+    TResult Function(_ServerError value)? serverError,
+    TResult Function(_UnableToGet value)? unableToGet,
+    required TResult orElse(),
+  }) {
+    if (unableToGet != null) {
+      return unableToGet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UnableToGet implements EventFailure {
+  const factory _UnableToGet() = _$_UnableToGet;
 }
