@@ -20,6 +20,7 @@ TicketUpdateModel _$TicketUpdateModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TicketUpdateModel {
+  String get id => throw _privateConstructorUsedError;
   String get eventId => throw _privateConstructorUsedError;
   String get userId => throw _privateConstructorUsedError;
 
@@ -35,7 +36,7 @@ abstract class $TicketUpdateModelCopyWith<$Res> {
           TicketUpdateModel value, $Res Function(TicketUpdateModel) then) =
       _$TicketUpdateModelCopyWithImpl<$Res, TicketUpdateModel>;
   @useResult
-  $Res call({String eventId, String userId});
+  $Res call({String id, String eventId, String userId});
 }
 
 /// @nodoc
@@ -51,10 +52,15 @@ class _$TicketUpdateModelCopyWithImpl<$Res, $Val extends TicketUpdateModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? eventId = null,
     Object? userId = null,
   }) {
     return _then(_value.copyWith(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -75,7 +81,7 @@ abstract class _$$_TicketUpdateModelCopyWith<$Res>
       __$$_TicketUpdateModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String eventId, String userId});
+  $Res call({String id, String eventId, String userId});
 }
 
 /// @nodoc
@@ -89,10 +95,15 @@ class __$$_TicketUpdateModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? id = null,
     Object? eventId = null,
     Object? userId = null,
   }) {
     return _then(_$_TicketUpdateModel(
+      id: null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
       eventId: null == eventId
           ? _value.eventId
           : eventId // ignore: cast_nullable_to_non_nullable
@@ -108,11 +119,14 @@ class __$$_TicketUpdateModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_TicketUpdateModel implements _TicketUpdateModel {
-  const _$_TicketUpdateModel({required this.eventId, required this.userId});
+  const _$_TicketUpdateModel(
+      {required this.id, required this.eventId, required this.userId});
 
   factory _$_TicketUpdateModel.fromJson(Map<String, dynamic> json) =>
       _$$_TicketUpdateModelFromJson(json);
 
+  @override
+  final String id;
   @override
   final String eventId;
   @override
@@ -120,7 +134,7 @@ class _$_TicketUpdateModel implements _TicketUpdateModel {
 
   @override
   String toString() {
-    return 'TicketUpdateModel(eventId: $eventId, userId: $userId)';
+    return 'TicketUpdateModel(id: $id, eventId: $eventId, userId: $userId)';
   }
 
   @override
@@ -128,13 +142,14 @@ class _$_TicketUpdateModel implements _TicketUpdateModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_TicketUpdateModel &&
+            (identical(other.id, id) || other.id == id) &&
             (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.userId, userId) || other.userId == userId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, eventId, userId);
+  int get hashCode => Object.hash(runtimeType, id, eventId, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -153,12 +168,15 @@ class _$_TicketUpdateModel implements _TicketUpdateModel {
 
 abstract class _TicketUpdateModel implements TicketUpdateModel {
   const factory _TicketUpdateModel(
-      {required final String eventId,
+      {required final String id,
+      required final String eventId,
       required final String userId}) = _$_TicketUpdateModel;
 
   factory _TicketUpdateModel.fromJson(Map<String, dynamic> json) =
       _$_TicketUpdateModel.fromJson;
 
+  @override
+  String get id;
   @override
   String get eventId;
   @override

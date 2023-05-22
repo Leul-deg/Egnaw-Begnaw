@@ -8,4 +8,7 @@ class TicketFailure with _$TicketFailure {
   const factory TicketFailure.insufficientPermission() = _InsufficientPermission;
   const factory TicketFailure.unableToUpdate() = _UnableToUpdate;
   const factory TicketFailure.unableToDelete() = _UnableToDelete;
+  const factory TicketFailure.invalidTicket() = _InvalidTicket;
+  const factory TicketFailure.serverError() = _ServerError;
+  
 }

@@ -23,7 +23,7 @@ class EventDataSource implements EventRepository {
   Future<Either<EventFailure, EventModel>> createEvent(
       EventCreateModel eventCreateModel) async {
     final response = await client.post(
-      Uri.parse('$API_URL/events'),
+      Uri.parse('$API_URL/event'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -43,7 +43,7 @@ class EventDataSource implements EventRepository {
   Future<Either<EventFailure, EventModel>> updateEvent(
       EventUpdateModel eventUpdateModel) async {
     final response = await client.put(
-      Uri.parse('$API_URL/events/${eventUpdateModel.id}'),
+      Uri.parse('$API_URL/event/${eventUpdateModel.id}'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -62,7 +62,7 @@ class EventDataSource implements EventRepository {
   @override
   Future<Either<EventFailure, Unit>> deleteEvent(String id) async {
     final response = await client.delete(
-      Uri.parse('$API_URL/events/$id'),
+      Uri.parse('$API_URL/event/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -77,28 +77,28 @@ class EventDataSource implements EventRepository {
     }
   }
 
-  Future<Either<EventFailure, List<EventModel>>> getEvents() async {
+  // Future<Either<EventFailure, List<EventModel>>> getEvents() async {
 
-    final response = await client.get(
-      Uri.parse('$API_URL/events'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8'},
-    );
+  //   final response = await client.get(
+  //     Uri.parse('$API_URL/event'),
+  //     headers: <String, String>{
+  //       'Content-Type': 'application/json; charset=UTF-8'},
+  //   );
     
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body) as List;
-      final events = data.map((e) => EventModel.fromJson(e)).toList();
-      return Right(events);
-    } else {
-      return Left(EventFailure.serverError());
-    }
-  }
+  //   if (response.statusCode == 200) {
+  //     final data = json.decode(response.body) as List;
+  //     final events = data.map((e) => EventModel.fromJson(e)).toList();
+  //     return Right(events);
+  //   } else {
+  //     return Left(EventFailure.serverError());
+  //   }
+  // }
   
   @override
   Future<Either<EventFailure, List<EventModel>>> getAllEvents() async {
     try{
       final response = await client.get(
-        Uri.parse('$API_URL/events'),
+        Uri.parse('$API_URL/event'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8'},
       );
@@ -124,7 +124,7 @@ class EventDataSource implements EventRepository {
     try {
       // Get the event data from the API
       final eventData = await client.get(
-        Uri.parse('$API_URL/events/$id'),
+        Uri.parse('$API_URL/event/$id'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8'},
       );
