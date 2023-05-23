@@ -9,6 +9,7 @@ class OrganizerUpdateModel with _$OrganizerUpdateModel {
     required String name,
     required String email,
     required String password,
+    required String id,
   }) = _OrganizerUpdateModel;
 
   factory OrganizerUpdateModel.fromJson(Map<String, dynamic> json) =>

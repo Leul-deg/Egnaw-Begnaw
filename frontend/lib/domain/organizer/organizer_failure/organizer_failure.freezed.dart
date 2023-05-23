@@ -22,6 +22,8 @@ mixin _$OrganizerFailure {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidOrganizer,
+    required TResult Function() serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -30,6 +32,8 @@ mixin _$OrganizerFailure {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidOrganizer,
+    TResult? Function()? serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -38,6 +42,8 @@ mixin _$OrganizerFailure {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidOrganizer,
+    TResult Function()? serverError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,6 +54,8 @@ mixin _$OrganizerFailure {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidOrganizer value) invalidOrganizer,
+    required TResult Function(_ServerError value) serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -56,6 +64,8 @@ mixin _$OrganizerFailure {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult? Function(_ServerError value)? serverError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -64,6 +74,8 @@ mixin _$OrganizerFailure {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult Function(_ServerError value)? serverError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -129,6 +141,8 @@ class _$_UnexpectedError implements _UnexpectedError {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidOrganizer,
+    required TResult Function() serverError,
   }) {
     return unexpectedError();
   }
@@ -140,6 +154,8 @@ class _$_UnexpectedError implements _UnexpectedError {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidOrganizer,
+    TResult? Function()? serverError,
   }) {
     return unexpectedError?.call();
   }
@@ -151,6 +167,8 @@ class _$_UnexpectedError implements _UnexpectedError {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidOrganizer,
+    TResult Function()? serverError,
     required TResult orElse(),
   }) {
     if (unexpectedError != null) {
@@ -167,6 +185,8 @@ class _$_UnexpectedError implements _UnexpectedError {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidOrganizer value) invalidOrganizer,
+    required TResult Function(_ServerError value) serverError,
   }) {
     return unexpectedError(this);
   }
@@ -178,6 +198,8 @@ class _$_UnexpectedError implements _UnexpectedError {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult? Function(_ServerError value)? serverError,
   }) {
     return unexpectedError?.call(this);
   }
@@ -189,6 +211,8 @@ class _$_UnexpectedError implements _UnexpectedError {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult Function(_ServerError value)? serverError,
     required TResult orElse(),
   }) {
     if (unexpectedError != null) {
@@ -245,6 +269,8 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidOrganizer,
+    required TResult Function() serverError,
   }) {
     return insufficientPermission();
   }
@@ -256,6 +282,8 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidOrganizer,
+    TResult? Function()? serverError,
   }) {
     return insufficientPermission?.call();
   }
@@ -267,6 +295,8 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidOrganizer,
+    TResult Function()? serverError,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -283,6 +313,8 @@ class _$_InsufficientPermission implements _InsufficientPermission {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidOrganizer value) invalidOrganizer,
+    required TResult Function(_ServerError value) serverError,
   }) {
     return insufficientPermission(this);
   }
@@ -294,6 +326,8 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult? Function(_ServerError value)? serverError,
   }) {
     return insufficientPermission?.call(this);
   }
@@ -305,6 +339,8 @@ class _$_InsufficientPermission implements _InsufficientPermission {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult Function(_ServerError value)? serverError,
     required TResult orElse(),
   }) {
     if (insufficientPermission != null) {
@@ -360,6 +396,8 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidOrganizer,
+    required TResult Function() serverError,
   }) {
     return unableToUpdate();
   }
@@ -371,6 +409,8 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidOrganizer,
+    TResult? Function()? serverError,
   }) {
     return unableToUpdate?.call();
   }
@@ -382,6 +422,8 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidOrganizer,
+    TResult Function()? serverError,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -398,6 +440,8 @@ class _$_UnableToUpdate implements _UnableToUpdate {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidOrganizer value) invalidOrganizer,
+    required TResult Function(_ServerError value) serverError,
   }) {
     return unableToUpdate(this);
   }
@@ -409,6 +453,8 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult? Function(_ServerError value)? serverError,
   }) {
     return unableToUpdate?.call(this);
   }
@@ -420,6 +466,8 @@ class _$_UnableToUpdate implements _UnableToUpdate {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult Function(_ServerError value)? serverError,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -475,6 +523,8 @@ class _$_UnableToDelete implements _UnableToDelete {
     required TResult Function() insufficientPermission,
     required TResult Function() unableToUpdate,
     required TResult Function() unableToDelete,
+    required TResult Function() invalidOrganizer,
+    required TResult Function() serverError,
   }) {
     return unableToDelete();
   }
@@ -486,6 +536,8 @@ class _$_UnableToDelete implements _UnableToDelete {
     TResult? Function()? insufficientPermission,
     TResult? Function()? unableToUpdate,
     TResult? Function()? unableToDelete,
+    TResult? Function()? invalidOrganizer,
+    TResult? Function()? serverError,
   }) {
     return unableToDelete?.call();
   }
@@ -497,6 +549,8 @@ class _$_UnableToDelete implements _UnableToDelete {
     TResult Function()? insufficientPermission,
     TResult Function()? unableToUpdate,
     TResult Function()? unableToDelete,
+    TResult Function()? invalidOrganizer,
+    TResult Function()? serverError,
     required TResult orElse(),
   }) {
     if (unableToDelete != null) {
@@ -513,6 +567,8 @@ class _$_UnableToDelete implements _UnableToDelete {
         insufficientPermission,
     required TResult Function(_UnableToUpdate value) unableToUpdate,
     required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidOrganizer value) invalidOrganizer,
+    required TResult Function(_ServerError value) serverError,
   }) {
     return unableToDelete(this);
   }
@@ -524,6 +580,8 @@ class _$_UnableToDelete implements _UnableToDelete {
     TResult? Function(_InsufficientPermission value)? insufficientPermission,
     TResult? Function(_UnableToUpdate value)? unableToUpdate,
     TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult? Function(_ServerError value)? serverError,
   }) {
     return unableToDelete?.call(this);
   }
@@ -535,6 +593,8 @@ class _$_UnableToDelete implements _UnableToDelete {
     TResult Function(_InsufficientPermission value)? insufficientPermission,
     TResult Function(_UnableToUpdate value)? unableToUpdate,
     TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult Function(_ServerError value)? serverError,
     required TResult orElse(),
   }) {
     if (unableToDelete != null) {
@@ -546,4 +606,258 @@ class _$_UnableToDelete implements _UnableToDelete {
 
 abstract class _UnableToDelete implements OrganizerFailure {
   const factory _UnableToDelete() = _$_UnableToDelete;
+}
+
+/// @nodoc
+abstract class _$$_InvalidOrganizerCopyWith<$Res> {
+  factory _$$_InvalidOrganizerCopyWith(
+          _$_InvalidOrganizer value, $Res Function(_$_InvalidOrganizer) then) =
+      __$$_InvalidOrganizerCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InvalidOrganizerCopyWithImpl<$Res>
+    extends _$OrganizerFailureCopyWithImpl<$Res, _$_InvalidOrganizer>
+    implements _$$_InvalidOrganizerCopyWith<$Res> {
+  __$$_InvalidOrganizerCopyWithImpl(
+      _$_InvalidOrganizer _value, $Res Function(_$_InvalidOrganizer) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_InvalidOrganizer implements _InvalidOrganizer {
+  const _$_InvalidOrganizer();
+
+  @override
+  String toString() {
+    return 'OrganizerFailure.invalidOrganizer()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_InvalidOrganizer);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpectedError,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() unableToDelete,
+    required TResult Function() invalidOrganizer,
+    required TResult Function() serverError,
+  }) {
+    return invalidOrganizer();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpectedError,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToDelete,
+    TResult? Function()? invalidOrganizer,
+    TResult? Function()? serverError,
+  }) {
+    return invalidOrganizer?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpectedError,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    TResult Function()? unableToDelete,
+    TResult Function()? invalidOrganizer,
+    TResult Function()? serverError,
+    required TResult orElse(),
+  }) {
+    if (invalidOrganizer != null) {
+      return invalidOrganizer();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UnexpectedError value) unexpectedError,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidOrganizer value) invalidOrganizer,
+    required TResult Function(_ServerError value) serverError,
+  }) {
+    return invalidOrganizer(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UnexpectedError value)? unexpectedError,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult? Function(_ServerError value)? serverError,
+  }) {
+    return invalidOrganizer?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UnexpectedError value)? unexpectedError,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult Function(_ServerError value)? serverError,
+    required TResult orElse(),
+  }) {
+    if (invalidOrganizer != null) {
+      return invalidOrganizer(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidOrganizer implements OrganizerFailure {
+  const factory _InvalidOrganizer() = _$_InvalidOrganizer;
+}
+
+/// @nodoc
+abstract class _$$_ServerErrorCopyWith<$Res> {
+  factory _$$_ServerErrorCopyWith(
+          _$_ServerError value, $Res Function(_$_ServerError) then) =
+      __$$_ServerErrorCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ServerErrorCopyWithImpl<$Res>
+    extends _$OrganizerFailureCopyWithImpl<$Res, _$_ServerError>
+    implements _$$_ServerErrorCopyWith<$Res> {
+  __$$_ServerErrorCopyWithImpl(
+      _$_ServerError _value, $Res Function(_$_ServerError) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ServerError implements _ServerError {
+  const _$_ServerError();
+
+  @override
+  String toString() {
+    return 'OrganizerFailure.serverError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ServerError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpectedError,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() unableToDelete,
+    required TResult Function() invalidOrganizer,
+    required TResult Function() serverError,
+  }) {
+    return serverError();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? unexpectedError,
+    TResult? Function()? insufficientPermission,
+    TResult? Function()? unableToUpdate,
+    TResult? Function()? unableToDelete,
+    TResult? Function()? invalidOrganizer,
+    TResult? Function()? serverError,
+  }) {
+    return serverError?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpectedError,
+    TResult Function()? insufficientPermission,
+    TResult Function()? unableToUpdate,
+    TResult Function()? unableToDelete,
+    TResult Function()? invalidOrganizer,
+    TResult Function()? serverError,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_UnexpectedError value) unexpectedError,
+    required TResult Function(_InsufficientPermission value)
+        insufficientPermission,
+    required TResult Function(_UnableToUpdate value) unableToUpdate,
+    required TResult Function(_UnableToDelete value) unableToDelete,
+    required TResult Function(_InvalidOrganizer value) invalidOrganizer,
+    required TResult Function(_ServerError value) serverError,
+  }) {
+    return serverError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_UnexpectedError value)? unexpectedError,
+    TResult? Function(_InsufficientPermission value)? insufficientPermission,
+    TResult? Function(_UnableToUpdate value)? unableToUpdate,
+    TResult? Function(_UnableToDelete value)? unableToDelete,
+    TResult? Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult? Function(_ServerError value)? serverError,
+  }) {
+    return serverError?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_UnexpectedError value)? unexpectedError,
+    TResult Function(_InsufficientPermission value)? insufficientPermission,
+    TResult Function(_UnableToUpdate value)? unableToUpdate,
+    TResult Function(_UnableToDelete value)? unableToDelete,
+    TResult Function(_InvalidOrganizer value)? invalidOrganizer,
+    TResult Function(_ServerError value)? serverError,
+    required TResult orElse(),
+  }) {
+    if (serverError != null) {
+      return serverError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ServerError implements OrganizerFailure {
+  const factory _ServerError() = _$_ServerError;
 }
