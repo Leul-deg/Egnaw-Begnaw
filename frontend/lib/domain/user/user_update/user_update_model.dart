@@ -11,6 +11,7 @@ class UserUpdateModel with _$UserUpdateModel {
     required String email,
     required String password,
     required String phoneNumber,
+    required String id,
   }) = _UserUpdateModel;
 
   factory UserUpdateModel.fromJson(Map<String, dynamic> json) =>
