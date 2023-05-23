@@ -13,6 +13,7 @@ _$_UserUpdateModel _$$_UserUpdateModelFromJson(Map<String, dynamic> json) =>
       email: json['email'] as String,
       password: json['password'] as String,
       phoneNumber: json['phoneNumber'] as String,
+      id: json['id'] as String,
     );
 
 Map<String, dynamic> _$$_UserUpdateModelToJson(_$_UserUpdateModel instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$_UserUpdateModelToJson(_$_UserUpdateModel instance) =>
       'email': instance.email,
       'password': instance.password,
       'phoneNumber': instance.phoneNumber,
+      'id': instance.id,
     };

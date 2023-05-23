@@ -7,4 +7,6 @@ class UserFailure with _$UserFailure {
   const factory UserFailure.insufficientPermission() = _InsufficientPermission;
   const factory UserFailure.unableToUpdate() = _UnableToUpdate;
   const factory UserFailure.unableToDelete() = _UnableToDelete;
+  const factory UserFailure.invalidUser() = _InvalidUser;
+  const factory UserFailure.serverError() = _ServerError;
 }
