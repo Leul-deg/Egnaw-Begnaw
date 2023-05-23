@@ -7,4 +7,8 @@ class OrganizerFailure with _$OrganizerFailure {
   const factory OrganizerFailure.insufficientPermission() = _InsufficientPermission;
   const factory OrganizerFailure.unableToUpdate() = _UnableToUpdate;
   const factory OrganizerFailure.unableToDelete() = _UnableToDelete;
+  const factory OrganizerFailure.invalidOrganizer() = _InvalidOrganizer;
+  const factory OrganizerFailure.serverError() = _ServerError;
+
+
 }
