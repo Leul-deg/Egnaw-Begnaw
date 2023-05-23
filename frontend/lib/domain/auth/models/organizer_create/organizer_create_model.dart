@@ -1,4 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:frontend/domain/auth/auth.dart';
+import 'package:frontend/domain/auth/value_objects/password_value_object.dart';
 
 part 'organizer_create_model.freezed.dart';
 part 'organizer_create_model.g.dart';
@@ -6,8 +8,8 @@ part 'organizer_create_model.g.dart';
 @freezed
 class OrganizerCreateModel with _$OrganizerCreateModel {
   const factory OrganizerCreateModel({
-    required String email,
-    required String password,
+    required EmailAddress email,
+    required Password password,
     required String firstName,
     required String lastName,
     required String organizationName,
