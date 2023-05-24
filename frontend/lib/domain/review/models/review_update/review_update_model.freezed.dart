@@ -21,7 +21,6 @@ ReviewUpdateModel _$ReviewUpdateModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ReviewUpdateModel {
   String get id => throw _privateConstructorUsedError;
-  String get reviewerId => throw _privateConstructorUsedError;
   String get reviewText => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +35,7 @@ abstract class $ReviewUpdateModelCopyWith<$Res> {
           ReviewUpdateModel value, $Res Function(ReviewUpdateModel) then) =
       _$ReviewUpdateModelCopyWithImpl<$Res, ReviewUpdateModel>;
   @useResult
-  $Res call({String id, String reviewerId, String reviewText});
+  $Res call({String id, String reviewText});
 }
 
 /// @nodoc
@@ -53,17 +52,12 @@ class _$ReviewUpdateModelCopyWithImpl<$Res, $Val extends ReviewUpdateModel>
   @override
   $Res call({
     Object? id = null,
-    Object? reviewerId = null,
     Object? reviewText = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewerId: null == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
               as String,
       reviewText: null == reviewText
           ? _value.reviewText
@@ -81,7 +75,7 @@ abstract class _$$_ReviewUpdateModelCopyWith<$Res>
       __$$_ReviewUpdateModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String id, String reviewerId, String reviewText});
+  $Res call({String id, String reviewText});
 }
 
 /// @nodoc
@@ -96,17 +90,12 @@ class __$$_ReviewUpdateModelCopyWithImpl<$Res>
   @override
   $Res call({
     Object? id = null,
-    Object? reviewerId = null,
     Object? reviewText = null,
   }) {
     return _then(_$_ReviewUpdateModel(
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as String,
-      reviewerId: null == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
               as String,
       reviewText: null == reviewText
           ? _value.reviewText
@@ -119,8 +108,7 @@ class __$$_ReviewUpdateModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_ReviewUpdateModel implements _ReviewUpdateModel {
-  const _$_ReviewUpdateModel(
-      {required this.id, required this.reviewerId, required this.reviewText});
+  const _$_ReviewUpdateModel({required this.id, required this.reviewText});
 
   factory _$_ReviewUpdateModel.fromJson(Map<String, dynamic> json) =>
       _$$_ReviewUpdateModelFromJson(json);
@@ -128,13 +116,11 @@ class _$_ReviewUpdateModel implements _ReviewUpdateModel {
   @override
   final String id;
   @override
-  final String reviewerId;
-  @override
   final String reviewText;
 
   @override
   String toString() {
-    return 'ReviewUpdateModel(id: $id, reviewerId: $reviewerId, reviewText: $reviewText)';
+    return 'ReviewUpdateModel(id: $id, reviewText: $reviewText)';
   }
 
   @override
@@ -143,15 +129,13 @@ class _$_ReviewUpdateModel implements _ReviewUpdateModel {
         (other.runtimeType == runtimeType &&
             other is _$_ReviewUpdateModel &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.reviewerId, reviewerId) ||
-                other.reviewerId == reviewerId) &&
             (identical(other.reviewText, reviewText) ||
                 other.reviewText == reviewText));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, reviewerId, reviewText);
+  int get hashCode => Object.hash(runtimeType, id, reviewText);
 
   @JsonKey(ignore: true)
   @override
@@ -171,7 +155,6 @@ class _$_ReviewUpdateModel implements _ReviewUpdateModel {
 abstract class _ReviewUpdateModel implements ReviewUpdateModel {
   const factory _ReviewUpdateModel(
       {required final String id,
-      required final String reviewerId,
       required final String reviewText}) = _$_ReviewUpdateModel;
 
   factory _ReviewUpdateModel.fromJson(Map<String, dynamic> json) =
@@ -179,8 +162,6 @@ abstract class _ReviewUpdateModel implements ReviewUpdateModel {
 
   @override
   String get id;
-  @override
-  String get reviewerId;
   @override
   String get reviewText;
   @override
