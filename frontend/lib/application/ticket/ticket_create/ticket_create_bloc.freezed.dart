@@ -19,38 +19,38 @@ mixin _$TicketCreateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function() ticketCreated,
+    required TResult Function(String eventId) ticketCreatePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function()? ticketCreated,
+    TResult? Function(String eventId)? ticketCreatePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function()? ticketCreated,
+    TResult Function(String eventId)? ticketCreatePressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_TicketCreated value) ticketCreated,
+    required TResult Function(_TicketCreatePressed value) ticketCreatePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_TicketCreated value)? ticketCreated,
+    TResult? Function(_TicketCreatePressed value)? ticketCreatePressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_TicketCreated value)? ticketCreated,
+    TResult Function(_TicketCreatePressed value)? ticketCreatePressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function() ticketCreated,
+    required TResult Function(String eventId) ticketCreatePressed,
   }) {
     return initialized();
   }
@@ -122,7 +122,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function()? ticketCreated,
+    TResult? Function(String eventId)? ticketCreatePressed,
   }) {
     return initialized?.call();
   }
@@ -131,7 +131,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function()? ticketCreated,
+    TResult Function(String eventId)? ticketCreatePressed,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -144,7 +144,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_TicketCreated value) ticketCreated,
+    required TResult Function(_TicketCreatePressed value) ticketCreatePressed,
   }) {
     return initialized(this);
   }
@@ -153,7 +153,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_TicketCreated value)? ticketCreated,
+    TResult? Function(_TicketCreatePressed value)? ticketCreatePressed,
   }) {
     return initialized?.call(this);
   }
@@ -162,7 +162,7 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_TicketCreated value)? ticketCreated,
+    TResult Function(_TicketCreatePressed value)? ticketCreatePressed,
     required TResult orElse(),
   }) {
     if (initialized != null) {
@@ -177,67 +177,94 @@ abstract class _Initialized implements TicketCreateEvent {
 }
 
 /// @nodoc
-abstract class _$$_TicketCreatedCopyWith<$Res> {
-  factory _$$_TicketCreatedCopyWith(
-          _$_TicketCreated value, $Res Function(_$_TicketCreated) then) =
-      __$$_TicketCreatedCopyWithImpl<$Res>;
+abstract class _$$_TicketCreatePressedCopyWith<$Res> {
+  factory _$$_TicketCreatePressedCopyWith(_$_TicketCreatePressed value,
+          $Res Function(_$_TicketCreatePressed) then) =
+      __$$_TicketCreatePressedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String eventId});
 }
 
 /// @nodoc
-class __$$_TicketCreatedCopyWithImpl<$Res>
-    extends _$TicketCreateEventCopyWithImpl<$Res, _$_TicketCreated>
-    implements _$$_TicketCreatedCopyWith<$Res> {
-  __$$_TicketCreatedCopyWithImpl(
-      _$_TicketCreated _value, $Res Function(_$_TicketCreated) _then)
+class __$$_TicketCreatePressedCopyWithImpl<$Res>
+    extends _$TicketCreateEventCopyWithImpl<$Res, _$_TicketCreatePressed>
+    implements _$$_TicketCreatePressedCopyWith<$Res> {
+  __$$_TicketCreatePressedCopyWithImpl(_$_TicketCreatePressed _value,
+      $Res Function(_$_TicketCreatePressed) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? eventId = null,
+  }) {
+    return _then(_$_TicketCreatePressed(
+      null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_TicketCreated implements _TicketCreated {
-  const _$_TicketCreated();
+class _$_TicketCreatePressed implements _TicketCreatePressed {
+  const _$_TicketCreatePressed(this.eventId);
+
+  @override
+  final String eventId;
 
   @override
   String toString() {
-    return 'TicketCreateEvent.ticketCreated()';
+    return 'TicketCreateEvent.ticketCreatePressed(eventId: $eventId)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_TicketCreated);
+        (other.runtimeType == runtimeType &&
+            other is _$_TicketCreatePressed &&
+            (identical(other.eventId, eventId) || other.eventId == eventId));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, eventId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_TicketCreatePressedCopyWith<_$_TicketCreatePressed> get copyWith =>
+      __$$_TicketCreatePressedCopyWithImpl<_$_TicketCreatePressed>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function() ticketCreated,
+    required TResult Function(String eventId) ticketCreatePressed,
   }) {
-    return ticketCreated();
+    return ticketCreatePressed(eventId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function()? ticketCreated,
+    TResult? Function(String eventId)? ticketCreatePressed,
   }) {
-    return ticketCreated?.call();
+    return ticketCreatePressed?.call(eventId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function()? ticketCreated,
+    TResult Function(String eventId)? ticketCreatePressed,
     required TResult orElse(),
   }) {
-    if (ticketCreated != null) {
-      return ticketCreated();
+    if (ticketCreatePressed != null) {
+      return ticketCreatePressed(eventId);
     }
     return orElse();
   }
@@ -246,36 +273,42 @@ class _$_TicketCreated implements _TicketCreated {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initialized value) initialized,
-    required TResult Function(_TicketCreated value) ticketCreated,
+    required TResult Function(_TicketCreatePressed value) ticketCreatePressed,
   }) {
-    return ticketCreated(this);
+    return ticketCreatePressed(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initialized value)? initialized,
-    TResult? Function(_TicketCreated value)? ticketCreated,
+    TResult? Function(_TicketCreatePressed value)? ticketCreatePressed,
   }) {
-    return ticketCreated?.call(this);
+    return ticketCreatePressed?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initialized value)? initialized,
-    TResult Function(_TicketCreated value)? ticketCreated,
+    TResult Function(_TicketCreatePressed value)? ticketCreatePressed,
     required TResult orElse(),
   }) {
-    if (ticketCreated != null) {
-      return ticketCreated(this);
+    if (ticketCreatePressed != null) {
+      return ticketCreatePressed(this);
     }
     return orElse();
   }
 }
 
-abstract class _TicketCreated implements TicketCreateEvent {
-  const factory _TicketCreated() = _$_TicketCreated;
+abstract class _TicketCreatePressed implements TicketCreateEvent {
+  const factory _TicketCreatePressed(final String eventId) =
+      _$_TicketCreatePressed;
+
+  String get eventId;
+  @JsonKey(ignore: true)
+  _$$_TicketCreatePressedCopyWith<_$_TicketCreatePressed> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
