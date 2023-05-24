@@ -16,7 +16,7 @@ class TicketDataSource implements TicketRepository {
   });
 
   @override
-  Future<Either<TicketFailure, TicketModel>> createTicket(
+  Future<Either<TicketFailure, Unit>> createTicket(
       TicketCreateModel ticketCreateModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/ticket'),
@@ -27,7 +27,7 @@ class TicketDataSource implements TicketRepository {
     );
 
     if (response.statusCode == 200) {
-      return Right(TicketModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(TicketFailure.invalidTicket());
     } else {
@@ -36,7 +36,7 @@ class TicketDataSource implements TicketRepository {
   }
 
   @override
-  Future<Either<TicketFailure, TicketModel>> updateTicket(
+  Future<Either<TicketFailure, Unit>> updateTicket(
       TicketUpdateModel ticketUpdateModel) async {
     final response = await client.put(
       Uri.parse('$API_URL/ticket/${ticketUpdateModel.id}'),
@@ -47,7 +47,7 @@ class TicketDataSource implements TicketRepository {
     );
 
     if (response.statusCode == 200) {
-      return Right(TicketModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(TicketFailure.invalidTicket());
     } else {
@@ -74,7 +74,7 @@ class TicketDataSource implements TicketRepository {
   }
 
   @override
-  Future<Either<TicketFailure, List<TicketModel>>> getAllTickets() async {
+  Future<Either<TicketFailure, List<Unit>>> getAllTickets() async {
     final response = await client.get(
       Uri.parse('$API_URL/ticket'),
       headers: <String, String>{
@@ -83,11 +83,9 @@ class TicketDataSource implements TicketRepository {
     );
 
     if (response.statusCode == 200) {
-      final tickets = json.decode(response.body) as List;
-      final ticketsList = tickets.map((ticket) {
-        return TicketModel.fromJson(ticket);
-      }).toList();
-      return Right(ticketsList);
+      final tickets = json.decode(response.body);
+
+      return Right(tickets);
     } else if (response.statusCode == 400) {
       return const Left(TicketFailure.invalidTicket());
     } else {
@@ -96,7 +94,7 @@ class TicketDataSource implements TicketRepository {
   }
 
   @override
-  Future<Either<TicketFailure, TicketModel>> getTicket(String id) async {
+  Future<Either<TicketFailure, Unit>> getTicket(String id) async {
     final response = await client.get(
       Uri.parse('$API_URL/ticket/$id'),
       headers: <String, String>{
@@ -105,13 +103,11 @@ class TicketDataSource implements TicketRepository {
     );
 
     if (response.statusCode == 200) {
-      return Right(TicketModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(TicketFailure.invalidTicket());
     } else {
       return const Left(TicketFailure.serverError());
     }
   }
-  
-
 }

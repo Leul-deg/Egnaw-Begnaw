@@ -11,14 +11,14 @@ class TicketRepositoryImp implements TicketRepository {
 
   // create ticket
   @override
-  Future<Either<TicketFailure, TicketModel>> createTicket(
+  Future<Either<TicketFailure, Unit>> createTicket(
       TicketCreateModel ticketCreateModel) async {
         return await ticketDataSource.createTicket(ticketCreateModel);
   }
 
   // update ticket
   @override
-  Future<Either<TicketFailure, TicketModel>> updateTicket(
+  Future<Either<TicketFailure, Unit>> updateTicket(
       TicketUpdateModel ticketUpdateModel) async {
         return await ticketDataSource.updateTicket(ticketUpdateModel);
   }
@@ -29,12 +29,12 @@ class TicketRepositoryImp implements TicketRepository {
   }
   
   @override
-  Future<Either<TicketFailure, List<TicketModel>>> getAllTickets() async {
+  Future<Either<TicketFailure, List<Unit>>> getAllTickets() async {
     return await ticketDataSource.getAllTickets();
   }
   
   @override
-  Future<Either<TicketFailure, TicketModel>> getTicket(String id) async {
+  Future<Either<TicketFailure, Unit>> getTicket(String id) async {
     return await ticketDataSource.getTicket(id);
   }
 }

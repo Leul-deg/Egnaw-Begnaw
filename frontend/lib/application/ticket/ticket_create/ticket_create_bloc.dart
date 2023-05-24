@@ -10,9 +10,6 @@ import 'package:frontend/domain/ticket/ticket.dart';
 import 'package:dartz/dartz.dart';
 
 import 'package:frontend/data/local/local_database/local_storage.dart';
-import 'package:frontend/data/local/shared_pref/shared_pref.dart';
-
-import 'package:frontend/domain/ticket/ticket_repository/ticket_repository.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,8 +34,16 @@ class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
           createFailureOrSuccessOption: none(),
         );
 
-        final String userId = await getUserId();
-        final String eventId = e.eventId;
+        final String? userId = await getUserId();
+        final String? eventId = e.eventId;
+
+        if (userId == null || eventId == null) {
+          yield state.copyWith(
+            isLoading: false,
+            createFailureOrSuccessOption: some(left(const TicketFailure.invalidTicket())),
+          );
+          return;
+        }
 
         final TicketCreateModel ticket = TicketCreateModel(
           userId: userId,
