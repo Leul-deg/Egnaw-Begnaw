@@ -33,13 +33,20 @@ Future<void> insertUser(Map<String, dynamic> user) async {
   );
 }
 
-// get user there will only be one user
+// get user. there will only be one user
 Future<Map<String, dynamic>> getUser() async {
   final Database db = await openDB();
   final List<Map<String, dynamic>> maps = await db.query('user');
 
   // we return only one since there will only be one user (the current logged in user)
   return maps.first;
+}
+
+// get user id
+Future<String> getUserId() async {
+  final Database db = await openDB();
+  final List<Map<String, dynamic>> maps = await db.query('user');
+  return maps.first['id'];
 }
 
 // delete user
