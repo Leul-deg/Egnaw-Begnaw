@@ -10,6 +10,7 @@ _$_ReviewCreateModel _$$_ReviewCreateModelFromJson(Map<String, dynamic> json) =>
     _$_ReviewCreateModel(
       reviewerId: json['reviewerId'] as String,
       reviewText: json['reviewText'] as String,
+      eventId: json['eventId'] as String,
     );
 
 Map<String, dynamic> _$$_ReviewCreateModelToJson(
@@ -17,4 +18,5 @@ Map<String, dynamic> _$$_ReviewCreateModelToJson(
     <String, dynamic>{
       'reviewerId': instance.reviewerId,
       'reviewText': instance.reviewText,
+      'eventId': instance.eventId,
     };

@@ -22,6 +22,7 @@ ReviewCreateModel _$ReviewCreateModelFromJson(Map<String, dynamic> json) {
 mixin _$ReviewCreateModel {
   String get reviewerId => throw _privateConstructorUsedError;
   String get reviewText => throw _privateConstructorUsedError;
+  String get eventId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +36,7 @@ abstract class $ReviewCreateModelCopyWith<$Res> {
           ReviewCreateModel value, $Res Function(ReviewCreateModel) then) =
       _$ReviewCreateModelCopyWithImpl<$Res, ReviewCreateModel>;
   @useResult
-  $Res call({String reviewerId, String reviewText});
+  $Res call({String reviewerId, String reviewText, String eventId});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$ReviewCreateModelCopyWithImpl<$Res, $Val extends ReviewCreateModel>
   $Res call({
     Object? reviewerId = null,
     Object? reviewText = null,
+    Object? eventId = null,
   }) {
     return _then(_value.copyWith(
       reviewerId: null == reviewerId
@@ -62,6 +64,10 @@ class _$ReviewCreateModelCopyWithImpl<$Res, $Val extends ReviewCreateModel>
       reviewText: null == reviewText
           ? _value.reviewText
           : reviewText // ignore: cast_nullable_to_non_nullable
+              as String,
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -75,7 +81,7 @@ abstract class _$$_ReviewCreateModelCopyWith<$Res>
       __$$_ReviewCreateModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String reviewerId, String reviewText});
+  $Res call({String reviewerId, String reviewText, String eventId});
 }
 
 /// @nodoc
@@ -91,6 +97,7 @@ class __$$_ReviewCreateModelCopyWithImpl<$Res>
   $Res call({
     Object? reviewerId = null,
     Object? reviewText = null,
+    Object? eventId = null,
   }) {
     return _then(_$_ReviewCreateModel(
       reviewerId: null == reviewerId
@@ -101,6 +108,10 @@ class __$$_ReviewCreateModelCopyWithImpl<$Res>
           ? _value.reviewText
           : reviewText // ignore: cast_nullable_to_non_nullable
               as String,
+      eventId: null == eventId
+          ? _value.eventId
+          : eventId // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -109,7 +120,9 @@ class __$$_ReviewCreateModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ReviewCreateModel implements _ReviewCreateModel {
   const _$_ReviewCreateModel(
-      {required this.reviewerId, required this.reviewText});
+      {required this.reviewerId,
+      required this.reviewText,
+      required this.eventId});
 
   factory _$_ReviewCreateModel.fromJson(Map<String, dynamic> json) =>
       _$$_ReviewCreateModelFromJson(json);
@@ -118,10 +131,12 @@ class _$_ReviewCreateModel implements _ReviewCreateModel {
   final String reviewerId;
   @override
   final String reviewText;
+  @override
+  final String eventId;
 
   @override
   String toString() {
-    return 'ReviewCreateModel(reviewerId: $reviewerId, reviewText: $reviewText)';
+    return 'ReviewCreateModel(reviewerId: $reviewerId, reviewText: $reviewText, eventId: $eventId)';
   }
 
   @override
@@ -132,12 +147,13 @@ class _$_ReviewCreateModel implements _ReviewCreateModel {
             (identical(other.reviewerId, reviewerId) ||
                 other.reviewerId == reviewerId) &&
             (identical(other.reviewText, reviewText) ||
-                other.reviewText == reviewText));
+                other.reviewText == reviewText) &&
+            (identical(other.eventId, eventId) || other.eventId == eventId));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, reviewerId, reviewText);
+  int get hashCode => Object.hash(runtimeType, reviewerId, reviewText, eventId);
 
   @JsonKey(ignore: true)
   @override
@@ -157,7 +173,8 @@ class _$_ReviewCreateModel implements _ReviewCreateModel {
 abstract class _ReviewCreateModel implements ReviewCreateModel {
   const factory _ReviewCreateModel(
       {required final String reviewerId,
-      required final String reviewText}) = _$_ReviewCreateModel;
+      required final String reviewText,
+      required final String eventId}) = _$_ReviewCreateModel;
 
   factory _ReviewCreateModel.fromJson(Map<String, dynamic> json) =
       _$_ReviewCreateModel.fromJson;
@@ -166,6 +183,8 @@ abstract class _ReviewCreateModel implements ReviewCreateModel {
   String get reviewerId;
   @override
   String get reviewText;
+  @override
+  String get eventId;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewCreateModelCopyWith<_$_ReviewCreateModel> get copyWith =>

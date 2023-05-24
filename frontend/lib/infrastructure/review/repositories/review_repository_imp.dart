@@ -14,14 +14,14 @@ class ReviewRepositoryImp implements ReviewRepository{
 
   // create review
   @override
-  Future<Either<ReviewFailure, ReviewModel>> createReview(
+  Future<Either<ReviewFailure, Unit>> createReview(
       ReviewCreateModel reviewCreateModel) async {
         return await reviewDataSource.createReview(reviewCreateModel);
   }
 
   // update review
   @override
-  Future<Either<ReviewFailure, ReviewModel>> updateReview(
+  Future<Either<ReviewFailure, Unit>> updateReview(
       ReviewUpdateModel reviewUpdateModel) async {
         return await reviewDataSource.updateReview(reviewUpdateModel);
   }
@@ -32,12 +32,12 @@ class ReviewRepositoryImp implements ReviewRepository{
   }
   
   @override
-  Future<Either<ReviewFailure, List<ReviewModel>>> getAllReviews() async {
+  Future<Either<ReviewFailure, List<Unit>>> getAllReviews() async {
     return await reviewDataSource.getAllReviews();
   }
   
   @override
-  Future<Either<ReviewFailure, ReviewModel>> getReview(String id) async {
+  Future<Either<ReviewFailure, Unit>> getReview(String id) async {
     return await reviewDataSource.getReview(id);
   }
   

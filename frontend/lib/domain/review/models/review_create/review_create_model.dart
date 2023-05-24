@@ -8,6 +8,7 @@ class ReviewCreateModel with _$ReviewCreateModel {
   const factory ReviewCreateModel({
     required String reviewerId,
     required String reviewText,
+    required String eventId,
   }) = _ReviewCreateModel;
 
   factory ReviewCreateModel.fromJson(Map<String, dynamic> json) =>

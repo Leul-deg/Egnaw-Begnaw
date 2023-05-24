@@ -19,7 +19,7 @@ class ReviewDataSource implements ReviewRepository{
   });
 
   @override
-  Future<Either<ReviewFailure, ReviewModel>> createReview(
+  Future<Either<ReviewFailure, Unit>> createReview(
       ReviewCreateModel reviewCreateModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/review'),
@@ -30,7 +30,7 @@ class ReviewDataSource implements ReviewRepository{
     );
 
     if (response.statusCode == 200) {
-      return Right(ReviewModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(ReviewFailure.invalidReview());
     } else {
@@ -39,7 +39,7 @@ class ReviewDataSource implements ReviewRepository{
   }
 
   @override
-  Future<Either<ReviewFailure, ReviewModel>> updateReview(
+  Future<Either<ReviewFailure, Unit>> updateReview(
       ReviewUpdateModel reviewUpdateModel) async {
     final response = await client.put(
       Uri.parse('$API_URL/review/${reviewUpdateModel.id}'),
@@ -50,7 +50,7 @@ class ReviewDataSource implements ReviewRepository{
     );
 
     if (response.statusCode == 200) {
-      return Right(ReviewModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(ReviewFailure.invalidReview());
     } else {
@@ -77,7 +77,7 @@ class ReviewDataSource implements ReviewRepository{
   }
   
   @override
-  Future<Either<ReviewFailure, List<ReviewModel>>> getAllReviews() async {
+  Future<Either<ReviewFailure, List<Unit>>> getAllReviews() async {
     try{
       final response = await client.get(
         Uri.parse('$API_URL/review'),
@@ -87,7 +87,7 @@ class ReviewDataSource implements ReviewRepository{
       );
 
       if (response.statusCode == 200) {
-        return Right(ReviewModel.fromJson(json.decode(response.body)) as List<ReviewModel>);
+        return Right(json.decode(response.body) as List<Unit>);
       } else if (response.statusCode == 400) {
         return const Left(ReviewFailure.invalidReview());
       } else {
@@ -99,7 +99,7 @@ class ReviewDataSource implements ReviewRepository{
   }
   
   @override
-  Future<Either<ReviewFailure, ReviewModel>> getReview(String id) async {
+  Future<Either<ReviewFailure, Unit>> getReview(String id) async {
     try{
       final response = await client.get(
         Uri.parse('$API_URL/review/$id'),
@@ -109,7 +109,7 @@ class ReviewDataSource implements ReviewRepository{
       );
 
       if (response.statusCode == 200) {
-        return Right(ReviewModel.fromJson(json.decode(response.body)));
+        return Right((json.decode(response.body)));
       } else if (response.statusCode == 400) {
         return const Left(ReviewFailure.invalidReview());
       } else {
