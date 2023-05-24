@@ -15,5 +15,8 @@ abstract class AuthFailure with _$AuthFailure {
       InvalidEmailAndPasswordCombination;
   // when session has expired
   const factory AuthFailure.sessionExpired() = SessionExpired;
-  // follwing are the failures for organizer model
+  // when the email is invalid
+  const factory AuthFailure.invalidEmail() = InvalidEmail;
+  // when the password is invalid
+  const factory AuthFailure.invalidPassword() = InvalidPassword;
 }

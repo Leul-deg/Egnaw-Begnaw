@@ -4,13 +4,13 @@ import 'package:frontend/domain/user/user.dart';
 import 'package:frontend/domain/organizer/organizer.dart';
 
 abstract class AuthRepository {
-  Future<Either<AuthFailure, UserModel>> createUser(UserCreateModel user);
-  Future<Either<AuthFailure, UserModel>> loginUser(UserLoginModel data);
+  Future<Either<AuthFailure, Unit>> createUser(UserCreateModel user);
+  Future<Either<AuthFailure, Unit>> loginUser(UserLoginModel data);
   Future<void> logoutUser();
   // Following are methods for organizer model
-  Future<Either<AuthFailure, OrganizerModel>> createOrganizer(
+  Future<Either<AuthFailure, Unit>> createOrganizer(
       OrganizerCreateModel organizer);
-  Future<Either<AuthFailure, OrganizerModel>> loginOrganizer(
+  Future<Either<AuthFailure, Unit>> loginOrganizer(
       OrganizerLoginModel data);
   Future<void> logoutOrganizer();
 }

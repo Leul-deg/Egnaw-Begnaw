@@ -1,32 +1,36 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 
-part 'email_value_object.freezed.dart';
-part 'email_value_object.g.dart';
-
-@freezed
-class EmailAddress with _$EmailAddress {
-  const factory EmailAddress(String value) = _EmailAddress;
-
-  factory EmailAddress.fromJson(Map<String, dynamic> json) =>
-      _$EmailAddressFromJson(json);
-
-  // does the validatio check
-  factory EmailAddress.validate(String email) {
-    if (isValid(email)) {
-      return EmailAddress(email);
-    } else {
-      throw Exception('Invalid email');
+class EmailAddress extends Equatable {
+  final email;
+  final RegExp emailRegex = RegExp(
+      r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""");
+  EmailAddress(this.email) {
+    if (email.isEmpty) {
+      throw Exception('Name can not be empty');
+    }
+    if (!emailRegex.hasMatch(email)) {
+      throw Exception('Name must contain only alphabets');
+    }
+    if (email.isEmpty) {
+      throw Exception('Name can not be empty');
     }
   }
 
-  static bool isValid(String email) {
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+  isValid() {
     return emailRegex.hasMatch(email);
   }
 
-}
+  factory EmailAddress.fromJson(Map<String, dynamic> json) {
+    return EmailAddress(json['email']);
+  }
 
-// void main() {
-//   final email = EmailAddress.validate('value@gmail.com');
-//   print(email.value);
-// }
+  Map<String, dynamic> toJson() {
+    return {
+      'email': email,
+    };
+  }
+
+  @override
+  List<Object> get props => [email];
+}

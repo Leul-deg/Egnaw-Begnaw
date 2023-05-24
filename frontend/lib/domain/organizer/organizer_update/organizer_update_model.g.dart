@@ -10,7 +10,7 @@ _$_OrganizerUpdateModel _$$_OrganizerUpdateModelFromJson(
         Map<String, dynamic> json) =>
     _$_OrganizerUpdateModel(
       name: json['name'] as String,
-      email: json['email'] as String,
+      email: EmailAddress.fromJson(json['email'] as Map<String, dynamic>),
       password: json['password'] as String,
       id: json['id'] as String,
     );

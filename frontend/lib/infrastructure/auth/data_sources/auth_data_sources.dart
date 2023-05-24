@@ -21,7 +21,7 @@ class AuthDataSource implements AuthRepository {
   });
 
   @override
-  Future<Either<AuthFailure, UserModel>> loginUser(
+  Future<Either<AuthFailure, Unit>> loginUser(
       UserLoginModel userLoginModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/auth/login'),
@@ -35,7 +35,7 @@ class AuthDataSource implements AuthRepository {
       // Save the JWT token to shared preferences
       await sharedPreferences.setString('jwtToken', response.body);
 
-      return Right(UserModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 401) {
       return const Left(AuthFailure.invalidEmailAndPasswordCombination());
     } else {
@@ -44,7 +44,7 @@ class AuthDataSource implements AuthRepository {
   }
 
   @override
-  Future<Either<AuthFailure, UserModel>> createUser(
+  Future<Either<AuthFailure, Unit>> createUser(
       UserCreateModel userCreateModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/auth/register'),
@@ -55,7 +55,7 @@ class AuthDataSource implements AuthRepository {
     );
 
     if (response.statusCode == 200) {
-      return Right(UserModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(AuthFailure.emailAlreadyInUse());
     } else {
@@ -64,7 +64,7 @@ class AuthDataSource implements AuthRepository {
   }
 
   @override
-  Future<Either<AuthFailure, OrganizerModel>> loginOrganizer(
+  Future<Either<AuthFailure, Unit>> loginOrganizer(
       OrganizerLoginModel organizerLoginModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/auth/login/organizer'),
@@ -78,7 +78,7 @@ class AuthDataSource implements AuthRepository {
       // Save the JWT token to shared preferences
       await sharedPreferences.setString('jwtToken', response.body);
 
-      return Right(OrganizerModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 401) {
       return const Left(AuthFailure.invalidEmailAndPasswordCombination());
     } else {
@@ -101,7 +101,7 @@ class AuthDataSource implements AuthRepository {
 
   // organizer register
   @override
-  Future<Either<AuthFailure, OrganizerModel>> createOrganizer(
+  Future<Either<AuthFailure, Unit>> createOrganizer(
       OrganizerCreateModel organizerCreateModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/auth/register/organizer'),
@@ -112,7 +112,7 @@ class AuthDataSource implements AuthRepository {
     );
 
     if (response.statusCode == 200) {
-      return Right(OrganizerModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(AuthFailure.emailAlreadyInUse());
     } else {

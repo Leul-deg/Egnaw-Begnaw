@@ -22,8 +22,8 @@ UserCreateModel _$UserCreateModelFromJson(Map<String, dynamic> json) {
 mixin _$UserCreateModel {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  EmailAddress get email => throw _privateConstructorUsedError;
+  Password get password => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -41,8 +41,8 @@ abstract class $UserCreateModelCopyWith<$Res> {
   $Res call(
       {String firstName,
       String lastName,
-      String email,
-      String password,
+      EmailAddress email,
+      Password password,
       String phoneNumber});
 }
 
@@ -77,11 +77,11 @@ class _$UserCreateModelCopyWithImpl<$Res, $Val extends UserCreateModel>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EmailAddress,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Password,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -101,8 +101,8 @@ abstract class _$$_UserCreateModelCopyWith<$Res>
   $Res call(
       {String firstName,
       String lastName,
-      String email,
-      String password,
+      EmailAddress email,
+      Password password,
       String phoneNumber});
 }
 
@@ -135,11 +135,11 @@ class __$$_UserCreateModelCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EmailAddress,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Password,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -166,9 +166,9 @@ class _$_UserCreateModel implements _UserCreateModel {
   @override
   final String lastName;
   @override
-  final String email;
+  final EmailAddress email;
   @override
-  final String password;
+  final Password password;
   @override
   final String phoneNumber;
 
@@ -216,8 +216,8 @@ abstract class _UserCreateModel implements UserCreateModel {
   const factory _UserCreateModel(
       {required final String firstName,
       required final String lastName,
-      required final String email,
-      required final String password,
+      required final EmailAddress email,
+      required final Password password,
       required final String phoneNumber}) = _$_UserCreateModel;
 
   factory _UserCreateModel.fromJson(Map<String, dynamic> json) =
@@ -228,9 +228,9 @@ abstract class _UserCreateModel implements UserCreateModel {
   @override
   String get lastName;
   @override
-  String get email;
+  EmailAddress get email;
   @override
-  String get password;
+  Password get password;
   @override
   String get phoneNumber;
   @override

@@ -10,8 +10,8 @@ _$_UserCreateModel _$$_UserCreateModelFromJson(Map<String, dynamic> json) =>
     _$_UserCreateModel(
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
-      email: json['email'] as String,
-      password: json['password'] as String,
+      email: EmailAddress.fromJson(json['email'] as Map<String, dynamic>),
+      password: Password.fromJson(json['password'] as Map<String, dynamic>),
       phoneNumber: json['phoneNumber'] as String,
     );
 
