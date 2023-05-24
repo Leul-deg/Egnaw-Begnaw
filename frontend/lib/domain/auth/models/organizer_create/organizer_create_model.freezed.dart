@@ -22,8 +22,6 @@ OrganizerCreateModel _$OrganizerCreateModelFromJson(Map<String, dynamic> json) {
 mixin _$OrganizerCreateModel {
   EmailAddress get email => throw _privateConstructorUsedError;
   Password get password => throw _privateConstructorUsedError;
-  String get firstName => throw _privateConstructorUsedError;
-  String get lastName => throw _privateConstructorUsedError;
   String get organizationName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,15 +36,7 @@ abstract class $OrganizerCreateModelCopyWith<$Res> {
           $Res Function(OrganizerCreateModel) then) =
       _$OrganizerCreateModelCopyWithImpl<$Res, OrganizerCreateModel>;
   @useResult
-  $Res call(
-      {EmailAddress email,
-      Password password,
-      String firstName,
-      String lastName,
-      String organizationName});
-
-  $EmailAddressCopyWith<$Res> get email;
-  $PasswordCopyWith<$Res> get password;
+  $Res call({EmailAddress email, Password password, String organizationName});
 }
 
 /// @nodoc
@@ -65,8 +55,6 @@ class _$OrganizerCreateModelCopyWithImpl<$Res,
   $Res call({
     Object? email = null,
     Object? password = null,
-    Object? firstName = null,
-    Object? lastName = null,
     Object? organizationName = null,
   }) {
     return _then(_value.copyWith(
@@ -78,35 +66,11 @@ class _$OrganizerCreateModelCopyWithImpl<$Res,
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Password,
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
       organizationName: null == organizationName
           ? _value.organizationName
           : organizationName // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EmailAddressCopyWith<$Res> get email {
-    return $EmailAddressCopyWith<$Res>(_value.email, (value) {
-      return _then(_value.copyWith(email: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PasswordCopyWith<$Res> get password {
-    return $PasswordCopyWith<$Res>(_value.password, (value) {
-      return _then(_value.copyWith(password: value) as $Val);
-    });
   }
 }
 
@@ -118,17 +82,7 @@ abstract class _$$_OrganizerCreateModelCopyWith<$Res>
       __$$_OrganizerCreateModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {EmailAddress email,
-      Password password,
-      String firstName,
-      String lastName,
-      String organizationName});
-
-  @override
-  $EmailAddressCopyWith<$Res> get email;
-  @override
-  $PasswordCopyWith<$Res> get password;
+  $Res call({EmailAddress email, Password password, String organizationName});
 }
 
 /// @nodoc
@@ -144,8 +98,6 @@ class __$$_OrganizerCreateModelCopyWithImpl<$Res>
   $Res call({
     Object? email = null,
     Object? password = null,
-    Object? firstName = null,
-    Object? lastName = null,
     Object? organizationName = null,
   }) {
     return _then(_$_OrganizerCreateModel(
@@ -157,14 +109,6 @@ class __$$_OrganizerCreateModelCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as Password,
-      firstName: null == firstName
-          ? _value.firstName
-          : firstName // ignore: cast_nullable_to_non_nullable
-              as String,
-      lastName: null == lastName
-          ? _value.lastName
-          : lastName // ignore: cast_nullable_to_non_nullable
-              as String,
       organizationName: null == organizationName
           ? _value.organizationName
           : organizationName // ignore: cast_nullable_to_non_nullable
@@ -179,8 +123,6 @@ class _$_OrganizerCreateModel implements _OrganizerCreateModel {
   const _$_OrganizerCreateModel(
       {required this.email,
       required this.password,
-      required this.firstName,
-      required this.lastName,
       required this.organizationName});
 
   factory _$_OrganizerCreateModel.fromJson(Map<String, dynamic> json) =>
@@ -191,15 +133,11 @@ class _$_OrganizerCreateModel implements _OrganizerCreateModel {
   @override
   final Password password;
   @override
-  final String firstName;
-  @override
-  final String lastName;
-  @override
   final String organizationName;
 
   @override
   String toString() {
-    return 'OrganizerCreateModel(email: $email, password: $password, firstName: $firstName, lastName: $lastName, organizationName: $organizationName)';
+    return 'OrganizerCreateModel(email: $email, password: $password, organizationName: $organizationName)';
   }
 
   @override
@@ -210,18 +148,14 @@ class _$_OrganizerCreateModel implements _OrganizerCreateModel {
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
-            (identical(other.firstName, firstName) ||
-                other.firstName == firstName) &&
-            (identical(other.lastName, lastName) ||
-                other.lastName == lastName) &&
             (identical(other.organizationName, organizationName) ||
                 other.organizationName == organizationName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, email, password, firstName, lastName, organizationName);
+  int get hashCode =>
+      Object.hash(runtimeType, email, password, organizationName);
 
   @JsonKey(ignore: true)
   @override
@@ -242,8 +176,6 @@ abstract class _OrganizerCreateModel implements OrganizerCreateModel {
   const factory _OrganizerCreateModel(
       {required final EmailAddress email,
       required final Password password,
-      required final String firstName,
-      required final String lastName,
       required final String organizationName}) = _$_OrganizerCreateModel;
 
   factory _OrganizerCreateModel.fromJson(Map<String, dynamic> json) =
@@ -253,10 +185,6 @@ abstract class _OrganizerCreateModel implements OrganizerCreateModel {
   EmailAddress get email;
   @override
   Password get password;
-  @override
-  String get firstName;
-  @override
-  String get lastName;
   @override
   String get organizationName;
   @override

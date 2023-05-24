@@ -21,7 +21,7 @@ OrganizerUpdateModel _$OrganizerUpdateModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$OrganizerUpdateModel {
   String get name => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  EmailAddress get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
 
@@ -37,7 +37,7 @@ abstract class $OrganizerUpdateModelCopyWith<$Res> {
           $Res Function(OrganizerUpdateModel) then) =
       _$OrganizerUpdateModelCopyWithImpl<$Res, OrganizerUpdateModel>;
   @useResult
-  $Res call({String name, String email, String password, String id});
+  $Res call({String name, EmailAddress email, String password, String id});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$OrganizerUpdateModelCopyWithImpl<$Res,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EmailAddress,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -88,7 +88,7 @@ abstract class _$$_OrganizerUpdateModelCopyWith<$Res>
       __$$_OrganizerUpdateModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, String email, String password, String id});
+  $Res call({String name, EmailAddress email, String password, String id});
 }
 
 /// @nodoc
@@ -115,7 +115,7 @@ class __$$_OrganizerUpdateModelCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
+              as EmailAddress,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -143,7 +143,7 @@ class _$_OrganizerUpdateModel implements _OrganizerUpdateModel {
   @override
   final String name;
   @override
-  final String email;
+  final EmailAddress email;
   @override
   final String password;
   @override
@@ -188,7 +188,7 @@ class _$_OrganizerUpdateModel implements _OrganizerUpdateModel {
 abstract class _OrganizerUpdateModel implements OrganizerUpdateModel {
   const factory _OrganizerUpdateModel(
       {required final String name,
-      required final String email,
+      required final EmailAddress email,
       required final String password,
       required final String id}) = _$_OrganizerUpdateModel;
 
@@ -198,7 +198,7 @@ abstract class _OrganizerUpdateModel implements OrganizerUpdateModel {
   @override
   String get name;
   @override
-  String get email;
+  EmailAddress get email;
   @override
   String get password;
   @override

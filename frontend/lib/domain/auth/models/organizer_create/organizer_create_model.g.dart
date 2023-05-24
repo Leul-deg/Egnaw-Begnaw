@@ -11,8 +11,6 @@ _$_OrganizerCreateModel _$$_OrganizerCreateModelFromJson(
     _$_OrganizerCreateModel(
       email: EmailAddress.fromJson(json['email'] as Map<String, dynamic>),
       password: Password.fromJson(json['password'] as Map<String, dynamic>),
-      firstName: json['firstName'] as String,
-      lastName: json['lastName'] as String,
       organizationName: json['organizationName'] as String,
     );
 
@@ -21,7 +19,5 @@ Map<String, dynamic> _$$_OrganizerCreateModelToJson(
     <String, dynamic>{
       'email': instance.email,
       'password': instance.password,
-      'firstName': instance.firstName,
-      'lastName': instance.lastName,
       'organizationName': instance.organizationName,
     };

@@ -10,8 +10,6 @@ class OrganizerCreateModel with _$OrganizerCreateModel {
   const factory OrganizerCreateModel({
     required EmailAddress email,
     required Password password,
-    required String firstName,
-    required String lastName,
     required String organizationName,
   }) = _OrganizerCreateModel;
 

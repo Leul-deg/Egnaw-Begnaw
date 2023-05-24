@@ -14,14 +14,14 @@ class AuthRepositoryImp implements AuthRepository {
 
   // create user
   @override
-  Future<Either<AuthFailure, UserModel>> createUser(
+  Future<Either<AuthFailure, Unit>> createUser(
       UserCreateModel userCreateModel) async {
     return await authDataSource.createUser(userCreateModel);
   }
 
   // login user
   @override
-  Future<Either<AuthFailure, UserModel>> loginUser(
+  Future<Either<AuthFailure, Unit>> loginUser(
       UserLoginModel userLoginModel) async {
     return await authDataSource.loginUser(userLoginModel);
   }
@@ -34,14 +34,14 @@ class AuthRepositoryImp implements AuthRepository {
 
   // create organizer
   @override
-  Future<Either<AuthFailure, OrganizerModel>> createOrganizer(
+  Future<Either<AuthFailure, Unit>> createOrganizer(
       OrganizerCreateModel organizerCreateModel) async {
     return await authDataSource.createOrganizer(organizerCreateModel);
   }
 
   // login organizer
   @override
-  Future<Either<AuthFailure, OrganizerModel>> loginOrganizer(
+  Future<Either<AuthFailure, Unit>> loginOrganizer(
       OrganizerLoginModel organizerLoginModel) async {
     return await authDataSource.loginOrganizer(organizerLoginModel);
   }
