@@ -17,23 +17,7 @@ class EventUpdateBloc extends Bloc<EventUpdateEvent, EventUpdateState> {
   @override
   Stream<EventUpdateState> mapEventToState(EventUpdateEvent event) async* {
     yield* event.map(
-      initialized: (_) async* {
-        final eventOption = await _eventRepository.getEvent(_eventId);
-        yield eventOption.fold(
-            (_) => EventUpdateState.initial().copyWith(isLoading: true),
-          (event) => state.copyWith(
-            isLoading: false,
-            organizerId: event.organizerId,
-            startTime: event.startTime,
-            endTime: event.endTime,
-            place: event.place,
-            availableSeats: event.availableSeats,
-            ticketsSold: event.ticketsSold,
-            description: event.description,
-            title: event.title,
-          ),
-        );
-      },
+      initialized: (_) async* {},
       organizerIdChanged: (e) async* {
         yield state.copyWith(
           organizerId: e.organizerId,
@@ -115,7 +99,7 @@ class EventUpdateBloc extends Bloc<EventUpdateEvent, EventUpdateState> {
           eventId: _eventId,
         );
 
-        final Either<EventFailure, EventModel> failureOrSuccess =
+        final Either<EventFailure, Unit> failureOrSuccess =
             await _eventRepository.updateEvent(_eventId, EventUpdateModel(
               organizerId: event.organizerId,
               startTime: event.startTime,
