@@ -20,8 +20,8 @@ OrganizerCreateModel _$OrganizerCreateModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrganizerCreateModel {
-  EmailAddress get email => throw _privateConstructorUsedError;
-  Password get password => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   String get organizationName => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ abstract class $OrganizerCreateModelCopyWith<$Res> {
           $Res Function(OrganizerCreateModel) then) =
       _$OrganizerCreateModelCopyWithImpl<$Res, OrganizerCreateModel>;
   @useResult
-  $Res call({EmailAddress email, Password password, String organizationName});
+  $Res call({String email, String password, String organizationName});
 }
 
 /// @nodoc
@@ -61,11 +61,11 @@ class _$OrganizerCreateModelCopyWithImpl<$Res,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       organizationName: null == organizationName
           ? _value.organizationName
           : organizationName // ignore: cast_nullable_to_non_nullable
@@ -82,7 +82,7 @@ abstract class _$$_OrganizerCreateModelCopyWith<$Res>
       __$$_OrganizerCreateModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EmailAddress email, Password password, String organizationName});
+  $Res call({String email, String password, String organizationName});
 }
 
 /// @nodoc
@@ -104,11 +104,11 @@ class __$$_OrganizerCreateModelCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       organizationName: null == organizationName
           ? _value.organizationName
           : organizationName // ignore: cast_nullable_to_non_nullable
@@ -129,9 +129,9 @@ class _$_OrganizerCreateModel implements _OrganizerCreateModel {
       _$$_OrganizerCreateModelFromJson(json);
 
   @override
-  final EmailAddress email;
+  final String email;
   @override
-  final Password password;
+  final String password;
   @override
   final String organizationName;
 
@@ -174,17 +174,17 @@ class _$_OrganizerCreateModel implements _OrganizerCreateModel {
 
 abstract class _OrganizerCreateModel implements OrganizerCreateModel {
   const factory _OrganizerCreateModel(
-      {required final EmailAddress email,
-      required final Password password,
+      {required final String email,
+      required final String password,
       required final String organizationName}) = _$_OrganizerCreateModel;
 
   factory _OrganizerCreateModel.fromJson(Map<String, dynamic> json) =
       _$_OrganizerCreateModel.fromJson;
 
   @override
-  EmailAddress get email;
+  String get email;
   @override
-  Password get password;
+  String get password;
   @override
   String get organizationName;
   @override

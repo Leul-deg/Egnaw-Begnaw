@@ -9,7 +9,7 @@ import 'package:frontend/domain/ticket/ticket.dart';
 class TicketDataSource implements TicketRepository {
   final http.Client client;
 
-  final API_URL = dotenv.env['API_URL'];
+  final API_URL = "dotenv.env['API_URL']";
 
   TicketDataSource({
     required this.client,

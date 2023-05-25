@@ -3,8 +3,8 @@ part of 'organizer_create_bloc.dart';
 @freezed
 class OrganizerCreateState with _$OrganizerCreateState {
   const factory OrganizerCreateState({
-    required EmailAddress emailAddress,
-    required Password password,
+    required String emailAddress,
+    required String password,
     required String organizationName,
     required bool isSubmitting,
     required bool showErrorMessages,
@@ -12,8 +12,8 @@ class OrganizerCreateState with _$OrganizerCreateState {
   }) = _OrganizerCreateState;
 
   factory OrganizerCreateState.initial() => OrganizerCreateState(
-        emailAddress: EmailAddress(''),
-        password: Password(''),
+        emailAddress: '',
+        password: '',
         organizationName: '',
         isSubmitting: false,
         showErrorMessages: false,

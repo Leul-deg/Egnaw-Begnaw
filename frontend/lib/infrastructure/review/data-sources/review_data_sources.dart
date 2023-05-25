@@ -7,11 +7,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:frontend/domain/review/review.dart';
 
-class ReviewDataSource implements ReviewRepository{
+class ReviewDataSource implements ReviewRepository {
   final http.Client client;
   final SharedPreferences sharedPreferences;
 
-  final API_URL = dotenv.env['API_URL'];
+  final API_URL = "dotenv.env['API_URL']";
 
   ReviewDataSource({
     required this.client,
@@ -75,10 +75,10 @@ class ReviewDataSource implements ReviewRepository{
       return const Left(ReviewFailure.serverError());
     }
   }
-  
+
   @override
   Future<Either<ReviewFailure, List<Unit>>> getAllReviews() async {
-    try{
+    try {
       final response = await client.get(
         Uri.parse('$API_URL/review'),
         headers: <String, String>{
@@ -97,10 +97,10 @@ class ReviewDataSource implements ReviewRepository{
       return const Left(ReviewFailure.serverError());
     }
   }
-  
+
   @override
   Future<Either<ReviewFailure, Unit>> getReview(String id) async {
-    try{
+    try {
       final response = await client.get(
         Uri.parse('$API_URL/review/$id'),
         headers: <String, String>{

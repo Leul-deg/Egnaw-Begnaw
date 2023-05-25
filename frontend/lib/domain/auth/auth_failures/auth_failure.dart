@@ -19,4 +19,5 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.invalidEmail() = InvalidEmail;
   // when the password is invalid
   const factory AuthFailure.invalidPassword() = InvalidPassword;
+  const factory AuthFailure.invalidInput() = _InvalidInput;
 }

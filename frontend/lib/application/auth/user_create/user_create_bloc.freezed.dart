@@ -25,6 +25,8 @@ mixin _$UserCreateEvent {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function(String phoneNumberStr) phoneNumberChanged,
     required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,8 @@ mixin _$UserCreateEvent {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function(String phoneNumberStr)? phoneNumberChanged,
     TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +51,8 @@ mixin _$UserCreateEvent {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function(String phoneNumberStr)? phoneNumberChanged,
     TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -59,6 +65,8 @@ mixin _$UserCreateEvent {
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +78,8 @@ mixin _$UserCreateEvent {
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -81,6 +91,8 @@ mixin _$UserCreateEvent {
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -148,6 +160,8 @@ class _$_Started implements _Started {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function(String phoneNumberStr) phoneNumberChanged,
     required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
   }) {
     return started();
   }
@@ -162,6 +176,8 @@ class _$_Started implements _Started {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function(String phoneNumberStr)? phoneNumberChanged,
     TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
   }) {
     return started?.call();
   }
@@ -176,6 +192,8 @@ class _$_Started implements _Started {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function(String phoneNumberStr)? phoneNumberChanged,
     TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -194,6 +212,8 @@ class _$_Started implements _Started {
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
   }) {
     return started(this);
   }
@@ -208,6 +228,8 @@ class _$_Started implements _Started {
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
   }) {
     return started?.call(this);
   }
@@ -222,6 +244,8 @@ class _$_Started implements _Started {
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -307,6 +331,8 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function(String phoneNumberStr) phoneNumberChanged,
     required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
   }) {
     return firstNameChanged(firstNameStr);
   }
@@ -321,6 +347,8 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function(String phoneNumberStr)? phoneNumberChanged,
     TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
   }) {
     return firstNameChanged?.call(firstNameStr);
   }
@@ -335,6 +363,8 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function(String phoneNumberStr)? phoneNumberChanged,
     TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (firstNameChanged != null) {
@@ -353,6 +383,8 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
   }) {
     return firstNameChanged(this);
   }
@@ -367,6 +399,8 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
   }) {
     return firstNameChanged?.call(this);
   }
@@ -381,6 +415,8 @@ class _$_FirstNameChanged implements _FirstNameChanged {
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (firstNameChanged != null) {
@@ -472,6 +508,8 @@ class _$_LastNameChanged implements _LastNameChanged {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function(String phoneNumberStr) phoneNumberChanged,
     required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
   }) {
     return lastNameChanged(lastNameStr);
   }
@@ -486,6 +524,8 @@ class _$_LastNameChanged implements _LastNameChanged {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function(String phoneNumberStr)? phoneNumberChanged,
     TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
   }) {
     return lastNameChanged?.call(lastNameStr);
   }
@@ -500,6 +540,8 @@ class _$_LastNameChanged implements _LastNameChanged {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function(String phoneNumberStr)? phoneNumberChanged,
     TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (lastNameChanged != null) {
@@ -518,6 +560,8 @@ class _$_LastNameChanged implements _LastNameChanged {
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
   }) {
     return lastNameChanged(this);
   }
@@ -532,6 +576,8 @@ class _$_LastNameChanged implements _LastNameChanged {
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
   }) {
     return lastNameChanged?.call(this);
   }
@@ -546,6 +592,8 @@ class _$_LastNameChanged implements _LastNameChanged {
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (lastNameChanged != null) {
@@ -637,6 +685,8 @@ class _$_EmailAddressChanged implements _EmailAddressChanged {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function(String phoneNumberStr) phoneNumberChanged,
     required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
   }) {
     return emailAddressChanged(emailAddressStr);
   }
@@ -651,6 +701,8 @@ class _$_EmailAddressChanged implements _EmailAddressChanged {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function(String phoneNumberStr)? phoneNumberChanged,
     TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
   }) {
     return emailAddressChanged?.call(emailAddressStr);
   }
@@ -665,6 +717,8 @@ class _$_EmailAddressChanged implements _EmailAddressChanged {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function(String phoneNumberStr)? phoneNumberChanged,
     TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (emailAddressChanged != null) {
@@ -683,6 +737,8 @@ class _$_EmailAddressChanged implements _EmailAddressChanged {
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
   }) {
     return emailAddressChanged(this);
   }
@@ -697,6 +753,8 @@ class _$_EmailAddressChanged implements _EmailAddressChanged {
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
   }) {
     return emailAddressChanged?.call(this);
   }
@@ -711,6 +769,8 @@ class _$_EmailAddressChanged implements _EmailAddressChanged {
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (emailAddressChanged != null) {
@@ -802,6 +862,8 @@ class _$_PasswordChanged implements _PasswordChanged {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function(String phoneNumberStr) phoneNumberChanged,
     required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
   }) {
     return passwordChanged(passwordStr);
   }
@@ -816,6 +878,8 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function(String phoneNumberStr)? phoneNumberChanged,
     TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
   }) {
     return passwordChanged?.call(passwordStr);
   }
@@ -830,6 +894,8 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function(String phoneNumberStr)? phoneNumberChanged,
     TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -848,6 +914,8 @@ class _$_PasswordChanged implements _PasswordChanged {
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
   }) {
     return passwordChanged(this);
   }
@@ -862,6 +930,8 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
   }) {
     return passwordChanged?.call(this);
   }
@@ -876,6 +946,8 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -967,6 +1039,8 @@ class _$_PhoneNumberChanged implements _PhoneNumberChanged {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function(String phoneNumberStr) phoneNumberChanged,
     required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
   }) {
     return phoneNumberChanged(phoneNumberStr);
   }
@@ -981,6 +1055,8 @@ class _$_PhoneNumberChanged implements _PhoneNumberChanged {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function(String phoneNumberStr)? phoneNumberChanged,
     TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
   }) {
     return phoneNumberChanged?.call(phoneNumberStr);
   }
@@ -995,6 +1071,8 @@ class _$_PhoneNumberChanged implements _PhoneNumberChanged {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function(String phoneNumberStr)? phoneNumberChanged,
     TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (phoneNumberChanged != null) {
@@ -1013,6 +1091,8 @@ class _$_PhoneNumberChanged implements _PhoneNumberChanged {
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
   }) {
     return phoneNumberChanged(this);
   }
@@ -1027,6 +1107,8 @@ class _$_PhoneNumberChanged implements _PhoneNumberChanged {
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
   }) {
     return phoneNumberChanged?.call(this);
   }
@@ -1041,6 +1123,8 @@ class _$_PhoneNumberChanged implements _PhoneNumberChanged {
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (phoneNumberChanged != null) {
@@ -1105,6 +1189,8 @@ class _$_CreateUserPressed implements _CreateUserPressed {
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function(String phoneNumberStr) phoneNumberChanged,
     required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
   }) {
     return createUserPressed();
   }
@@ -1119,6 +1205,8 @@ class _$_CreateUserPressed implements _CreateUserPressed {
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function(String phoneNumberStr)? phoneNumberChanged,
     TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
   }) {
     return createUserPressed?.call();
   }
@@ -1133,6 +1221,8 @@ class _$_CreateUserPressed implements _CreateUserPressed {
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function(String phoneNumberStr)? phoneNumberChanged,
     TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (createUserPressed != null) {
@@ -1151,6 +1241,8 @@ class _$_CreateUserPressed implements _CreateUserPressed {
     required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
     required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
   }) {
     return createUserPressed(this);
   }
@@ -1165,6 +1257,8 @@ class _$_CreateUserPressed implements _CreateUserPressed {
     TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
   }) {
     return createUserPressed?.call(this);
   }
@@ -1179,6 +1273,8 @@ class _$_CreateUserPressed implements _CreateUserPressed {
     TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
     TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
     required TResult orElse(),
   }) {
     if (createUserPressed != null) {
@@ -1193,11 +1289,369 @@ abstract class _CreateUserPressed implements UserCreateEvent {
 }
 
 /// @nodoc
+abstract class _$$_IsOrganizerChangedCopyWith<$Res> {
+  factory _$$_IsOrganizerChangedCopyWith(_$_IsOrganizerChanged value,
+          $Res Function(_$_IsOrganizerChanged) then) =
+      __$$_IsOrganizerChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isOrganizer});
+}
+
+/// @nodoc
+class __$$_IsOrganizerChangedCopyWithImpl<$Res>
+    extends _$UserCreateEventCopyWithImpl<$Res, _$_IsOrganizerChanged>
+    implements _$$_IsOrganizerChangedCopyWith<$Res> {
+  __$$_IsOrganizerChangedCopyWithImpl(
+      _$_IsOrganizerChanged _value, $Res Function(_$_IsOrganizerChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isOrganizer = null,
+  }) {
+    return _then(_$_IsOrganizerChanged(
+      null == isOrganizer
+          ? _value.isOrganizer
+          : isOrganizer // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_IsOrganizerChanged implements _IsOrganizerChanged {
+  const _$_IsOrganizerChanged(this.isOrganizer);
+
+  @override
+  final bool isOrganizer;
+
+  @override
+  String toString() {
+    return 'UserCreateEvent.isOrganizerChanged(isOrganizer: $isOrganizer)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_IsOrganizerChanged &&
+            (identical(other.isOrganizer, isOrganizer) ||
+                other.isOrganizer == isOrganizer));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, isOrganizer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_IsOrganizerChangedCopyWith<_$_IsOrganizerChanged> get copyWith =>
+      __$$_IsOrganizerChangedCopyWithImpl<_$_IsOrganizerChanged>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String firstNameStr) firstNameChanged,
+    required TResult Function(String lastNameStr) lastNameChanged,
+    required TResult Function(String emailAddressStr) emailAddressChanged,
+    required TResult Function(String passwordStr) passwordChanged,
+    required TResult Function(String phoneNumberStr) phoneNumberChanged,
+    required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
+  }) {
+    return isOrganizerChanged(isOrganizer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String firstNameStr)? firstNameChanged,
+    TResult? Function(String lastNameStr)? lastNameChanged,
+    TResult? Function(String emailAddressStr)? emailAddressChanged,
+    TResult? Function(String passwordStr)? passwordChanged,
+    TResult? Function(String phoneNumberStr)? phoneNumberChanged,
+    TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
+  }) {
+    return isOrganizerChanged?.call(isOrganizer);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String firstNameStr)? firstNameChanged,
+    TResult Function(String lastNameStr)? lastNameChanged,
+    TResult Function(String emailAddressStr)? emailAddressChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function(String phoneNumberStr)? phoneNumberChanged,
+    TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
+    required TResult orElse(),
+  }) {
+    if (isOrganizerChanged != null) {
+      return isOrganizerChanged(isOrganizer);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
+    required TResult Function(_EmailAddressChanged value) emailAddressChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
+  }) {
+    return isOrganizerChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
+    TResult? Function(_EmailAddressChanged value)? emailAddressChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
+  }) {
+    return isOrganizerChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
+    TResult Function(_EmailAddressChanged value)? emailAddressChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
+    required TResult orElse(),
+  }) {
+    if (isOrganizerChanged != null) {
+      return isOrganizerChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _IsOrganizerChanged implements UserCreateEvent {
+  const factory _IsOrganizerChanged(final bool isOrganizer) =
+      _$_IsOrganizerChanged;
+
+  bool get isOrganizer;
+  @JsonKey(ignore: true)
+  _$$_IsOrganizerChangedCopyWith<_$_IsOrganizerChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_OrganizerNameChangedCopyWith<$Res> {
+  factory _$$_OrganizerNameChangedCopyWith(_$_OrganizerNameChanged value,
+          $Res Function(_$_OrganizerNameChanged) then) =
+      __$$_OrganizerNameChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String organizerNameStr});
+}
+
+/// @nodoc
+class __$$_OrganizerNameChangedCopyWithImpl<$Res>
+    extends _$UserCreateEventCopyWithImpl<$Res, _$_OrganizerNameChanged>
+    implements _$$_OrganizerNameChangedCopyWith<$Res> {
+  __$$_OrganizerNameChangedCopyWithImpl(_$_OrganizerNameChanged _value,
+      $Res Function(_$_OrganizerNameChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? organizerNameStr = null,
+  }) {
+    return _then(_$_OrganizerNameChanged(
+      null == organizerNameStr
+          ? _value.organizerNameStr
+          : organizerNameStr // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_OrganizerNameChanged implements _OrganizerNameChanged {
+  const _$_OrganizerNameChanged(this.organizerNameStr);
+
+  @override
+  final String organizerNameStr;
+
+  @override
+  String toString() {
+    return 'UserCreateEvent.organizerNameChanged(organizerNameStr: $organizerNameStr)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_OrganizerNameChanged &&
+            (identical(other.organizerNameStr, organizerNameStr) ||
+                other.organizerNameStr == organizerNameStr));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, organizerNameStr);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_OrganizerNameChangedCopyWith<_$_OrganizerNameChanged> get copyWith =>
+      __$$_OrganizerNameChangedCopyWithImpl<_$_OrganizerNameChanged>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String firstNameStr) firstNameChanged,
+    required TResult Function(String lastNameStr) lastNameChanged,
+    required TResult Function(String emailAddressStr) emailAddressChanged,
+    required TResult Function(String passwordStr) passwordChanged,
+    required TResult Function(String phoneNumberStr) phoneNumberChanged,
+    required TResult Function() createUserPressed,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
+    required TResult Function(String organizerNameStr) organizerNameChanged,
+  }) {
+    return organizerNameChanged(organizerNameStr);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String firstNameStr)? firstNameChanged,
+    TResult? Function(String lastNameStr)? lastNameChanged,
+    TResult? Function(String emailAddressStr)? emailAddressChanged,
+    TResult? Function(String passwordStr)? passwordChanged,
+    TResult? Function(String phoneNumberStr)? phoneNumberChanged,
+    TResult? Function()? createUserPressed,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
+    TResult? Function(String organizerNameStr)? organizerNameChanged,
+  }) {
+    return organizerNameChanged?.call(organizerNameStr);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String firstNameStr)? firstNameChanged,
+    TResult Function(String lastNameStr)? lastNameChanged,
+    TResult Function(String emailAddressStr)? emailAddressChanged,
+    TResult Function(String passwordStr)? passwordChanged,
+    TResult Function(String phoneNumberStr)? phoneNumberChanged,
+    TResult Function()? createUserPressed,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
+    TResult Function(String organizerNameStr)? organizerNameChanged,
+    required TResult orElse(),
+  }) {
+    if (organizerNameChanged != null) {
+      return organizerNameChanged(organizerNameStr);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
+    required TResult Function(_EmailAddressChanged value) emailAddressChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_PhoneNumberChanged value) phoneNumberChanged,
+    required TResult Function(_CreateUserPressed value) createUserPressed,
+    required TResult Function(_IsOrganizerChanged value) isOrganizerChanged,
+    required TResult Function(_OrganizerNameChanged value) organizerNameChanged,
+  }) {
+    return organizerNameChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
+    TResult? Function(_EmailAddressChanged value)? emailAddressChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult? Function(_CreateUserPressed value)? createUserPressed,
+    TResult? Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult? Function(_OrganizerNameChanged value)? organizerNameChanged,
+  }) {
+    return organizerNameChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
+    TResult Function(_EmailAddressChanged value)? emailAddressChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_PhoneNumberChanged value)? phoneNumberChanged,
+    TResult Function(_CreateUserPressed value)? createUserPressed,
+    TResult Function(_IsOrganizerChanged value)? isOrganizerChanged,
+    TResult Function(_OrganizerNameChanged value)? organizerNameChanged,
+    required TResult orElse(),
+  }) {
+    if (organizerNameChanged != null) {
+      return organizerNameChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _OrganizerNameChanged implements UserCreateEvent {
+  const factory _OrganizerNameChanged(final String organizerNameStr) =
+      _$_OrganizerNameChanged;
+
+  String get organizerNameStr;
+  @JsonKey(ignore: true)
+  _$$_OrganizerNameChangedCopyWith<_$_OrganizerNameChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$UserCreateState {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
-  EmailAddress get emailAddress => throw _privateConstructorUsedError;
-  Password get password => throw _privateConstructorUsedError;
+  String get organizerName => throw _privateConstructorUsedError;
+  bool get isOrganizer => throw _privateConstructorUsedError;
+  String get emailAddress => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
@@ -1218,8 +1672,10 @@ abstract class $UserCreateStateCopyWith<$Res> {
   $Res call(
       {String firstName,
       String lastName,
-      EmailAddress emailAddress,
-      Password password,
+      String organizerName,
+      bool isOrganizer,
+      String emailAddress,
+      String password,
       String phoneNumber,
       bool isSubmitting,
       bool showErrorMessages,
@@ -1241,6 +1697,8 @@ class _$UserCreateStateCopyWithImpl<$Res, $Val extends UserCreateState>
   $Res call({
     Object? firstName = null,
     Object? lastName = null,
+    Object? organizerName = null,
+    Object? isOrganizer = null,
     Object? emailAddress = null,
     Object? password = null,
     Object? phoneNumber = null,
@@ -1257,14 +1715,22 @@ class _$UserCreateStateCopyWithImpl<$Res, $Val extends UserCreateState>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      organizerName: null == organizerName
+          ? _value.organizerName
+          : organizerName // ignore: cast_nullable_to_non_nullable
+              as String,
+      isOrganizer: null == isOrganizer
+          ? _value.isOrganizer
+          : isOrganizer // ignore: cast_nullable_to_non_nullable
+              as bool,
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -1296,8 +1762,10 @@ abstract class _$$_UserCreateStateCopyWith<$Res>
   $Res call(
       {String firstName,
       String lastName,
-      EmailAddress emailAddress,
-      Password password,
+      String organizerName,
+      bool isOrganizer,
+      String emailAddress,
+      String password,
       String phoneNumber,
       bool isSubmitting,
       bool showErrorMessages,
@@ -1317,6 +1785,8 @@ class __$$_UserCreateStateCopyWithImpl<$Res>
   $Res call({
     Object? firstName = null,
     Object? lastName = null,
+    Object? organizerName = null,
+    Object? isOrganizer = null,
     Object? emailAddress = null,
     Object? password = null,
     Object? phoneNumber = null,
@@ -1333,14 +1803,22 @@ class __$$_UserCreateStateCopyWithImpl<$Res>
           ? _value.lastName
           : lastName // ignore: cast_nullable_to_non_nullable
               as String,
+      organizerName: null == organizerName
+          ? _value.organizerName
+          : organizerName // ignore: cast_nullable_to_non_nullable
+              as String,
+      isOrganizer: null == isOrganizer
+          ? _value.isOrganizer
+          : isOrganizer // ignore: cast_nullable_to_non_nullable
+              as bool,
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
@@ -1367,6 +1845,8 @@ class _$_UserCreateState implements _UserCreateState {
   const _$_UserCreateState(
       {required this.firstName,
       required this.lastName,
+      required this.organizerName,
+      required this.isOrganizer,
       required this.emailAddress,
       required this.password,
       required this.phoneNumber,
@@ -1379,9 +1859,13 @@ class _$_UserCreateState implements _UserCreateState {
   @override
   final String lastName;
   @override
-  final EmailAddress emailAddress;
+  final String organizerName;
   @override
-  final Password password;
+  final bool isOrganizer;
+  @override
+  final String emailAddress;
+  @override
+  final String password;
   @override
   final String phoneNumber;
   @override
@@ -1393,7 +1877,7 @@ class _$_UserCreateState implements _UserCreateState {
 
   @override
   String toString() {
-    return 'UserCreateState(firstName: $firstName, lastName: $lastName, emailAddress: $emailAddress, password: $password, phoneNumber: $phoneNumber, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
+    return 'UserCreateState(firstName: $firstName, lastName: $lastName, organizerName: $organizerName, isOrganizer: $isOrganizer, emailAddress: $emailAddress, password: $password, phoneNumber: $phoneNumber, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, authFailureOrSuccessOption: $authFailureOrSuccessOption)';
   }
 
   @override
@@ -1405,6 +1889,10 @@ class _$_UserCreateState implements _UserCreateState {
                 other.firstName == firstName) &&
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
+            (identical(other.organizerName, organizerName) ||
+                other.organizerName == organizerName) &&
+            (identical(other.isOrganizer, isOrganizer) ||
+                other.isOrganizer == isOrganizer) &&
             (identical(other.emailAddress, emailAddress) ||
                 other.emailAddress == emailAddress) &&
             (identical(other.password, password) ||
@@ -1426,6 +1914,8 @@ class _$_UserCreateState implements _UserCreateState {
       runtimeType,
       firstName,
       lastName,
+      organizerName,
+      isOrganizer,
       emailAddress,
       password,
       phoneNumber,
@@ -1444,8 +1934,10 @@ abstract class _UserCreateState implements UserCreateState {
   const factory _UserCreateState(
       {required final String firstName,
       required final String lastName,
-      required final EmailAddress emailAddress,
-      required final Password password,
+      required final String organizerName,
+      required final bool isOrganizer,
+      required final String emailAddress,
+      required final String password,
       required final String phoneNumber,
       required final bool isSubmitting,
       required final bool showErrorMessages,
@@ -1457,9 +1949,13 @@ abstract class _UserCreateState implements UserCreateState {
   @override
   String get lastName;
   @override
-  EmailAddress get emailAddress;
+  String get organizerName;
   @override
-  Password get password;
+  bool get isOrganizer;
+  @override
+  String get emailAddress;
+  @override
+  String get password;
   @override
   String get phoneNumber;
   @override

@@ -4,11 +4,11 @@ import 'package:frontend/domain/auth/auth.dart';
 import 'package:frontend/infrastructure/auth/data_sources/auth_data_sources.dart';
 
 class AuthRepositoryImp implements AuthRepository {
-  final AuthDataSource authDataSource;
+  final AuthRepository authDataSource;
 
   AuthRepositoryImp({
     required this.authDataSource,
-  });
+  }) : assert(authDataSource != null);
 
   // create user
   @override

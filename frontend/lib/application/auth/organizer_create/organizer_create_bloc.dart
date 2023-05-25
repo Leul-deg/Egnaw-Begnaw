@@ -4,8 +4,6 @@ import 'package:frontend/domain/auth/auth.dart';
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
 part 'organizer_create_event.dart';
 part 'organizer_create_state.dart';
 part 'organizer_create_bloc.freezed.dart';
@@ -26,13 +24,13 @@ class OrganizerCreateBloc
       started: (e) async* {},
       emailChanged: (e) async* {
         yield state.copyWith(
-          emailAddress: EmailAddress(e.emailStr),
+          emailAddress: e.emailStr,
           authFailureOrSuccessOption: none(),
         );
       },
       passwordChanged: (e) async* {
         yield state.copyWith(
-          password: Password(e.passwordStr),
+          password: e.passwordStr,
           authFailureOrSuccessOption: none(),
         );
       },
@@ -45,9 +43,9 @@ class OrganizerCreateBloc
       createPressed: (e) async* {
         Either<AuthFailure, Unit>? failureOrSuccess;
 
-        if (!state.emailAddress.isValid()) {
+        if (!state.emailAddress.isNotEmpty) {
           failureOrSuccess = left(const AuthFailure.invalidEmail());
-        } else if (!state.password.isValid()) {
+        } else if (!state.password.isNotEmpty) {
           failureOrSuccess = left(const AuthFailure.invalidPassword());
         } else if (state.organizationName.isEmpty) {
           failureOrSuccess = left(const AuthFailure.invalidEmail());
