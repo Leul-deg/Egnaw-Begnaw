@@ -15,10 +15,16 @@ class OrganizerRepositoryImp implements OrganizerRepository{
   Future<Either<OrganizerFailure, List<OrganizerModel>>> getAllOrganizers(OrganizerModel allOrganizer) async {
     return await organizerDataSource.getAllOrganizers(allOrganizer);
   }
+  // @override
+  // Future<Either<OrganizerFailure, OrganizerUpdateModel>> updateOrganizer(OrganizerUpdateModel newOrganizer , String id) async {
+  //   return await organizerDataSource.updateOrganizer(newOrganizer);
+  // }
+
   @override
   Future<Either<OrganizerFailure, OrganizerUpdateModel>> updateOrganizer(OrganizerUpdateModel newOrganizer) async {
     return await organizerDataSource.updateOrganizer(newOrganizer);
   }
+
   @override
   Future<Either<OrganizerFailure, Unit>> deleteOrganizer(String id) async {
     return await organizerDataSource.deleteOrganizer(id);
