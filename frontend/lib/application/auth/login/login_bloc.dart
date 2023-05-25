@@ -5,6 +5,11 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../../../domain/auth/value_objects/email_value_object.dart';
+import '../../../domain/auth/value_objects/password_value_object.dart';
+
+
+
 part 'login_bloc.freezed.dart';
 
 part 'login_event.dart';

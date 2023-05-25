@@ -1,3 +1,6 @@
+
+import 'package:dartz/dartz.dart';
+
 import 'package:equatable/equatable.dart';
 
 class EmailAddress extends Equatable {
@@ -32,4 +35,5 @@ class EmailAddress extends Equatable {
 
   @override
   List<Object> get props => [email];
+
 }
