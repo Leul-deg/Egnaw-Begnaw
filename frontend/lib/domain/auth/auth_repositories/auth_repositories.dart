@@ -1,7 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/auth/auth.dart';
-import 'package:frontend/domain/user/user.dart';
-import 'package:frontend/domain/organizer/organizer.dart';
 
 abstract class AuthRepository {
   Future<Either<AuthFailure, Unit>> createUser(UserCreateModel user);

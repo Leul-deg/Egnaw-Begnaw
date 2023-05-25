@@ -1,8 +1,6 @@
 import 'package:dartz/dartz.dart';
 
 import 'package:frontend/domain/auth/auth.dart';
-import 'package:frontend/domain/user/user.dart';
-import 'package:frontend/domain/organizer/organizer.dart';
 import 'package:frontend/infrastructure/auth/data_sources/auth_data_sources.dart';
 
 class AuthRepositoryImp implements AuthRepository {

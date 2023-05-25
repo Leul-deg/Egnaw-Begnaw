@@ -23,6 +23,7 @@ mixin _$EventModel {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   String get place => throw _privateConstructorUsedError;
   String get startTime => throw _privateConstructorUsedError;
   String get endTime => throw _privateConstructorUsedError;
@@ -49,6 +50,7 @@ abstract class $EventModelCopyWith<$Res> {
       {String id,
       String name,
       String description,
+      String title,
       String place,
       String startTime,
       String endTime,
@@ -76,6 +78,7 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
     Object? id = null,
     Object? name = null,
     Object? description = null,
+    Object? title = null,
     Object? place = null,
     Object? startTime = null,
     Object? endTime = null,
@@ -98,6 +101,10 @@ class _$EventModelCopyWithImpl<$Res, $Val extends EventModel>
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       place: null == place
           ? _value.place
@@ -151,6 +158,7 @@ abstract class _$$_EventModelCopyWith<$Res>
       {String id,
       String name,
       String description,
+      String title,
       String place,
       String startTime,
       String endTime,
@@ -176,6 +184,7 @@ class __$$_EventModelCopyWithImpl<$Res>
     Object? id = null,
     Object? name = null,
     Object? description = null,
+    Object? title = null,
     Object? place = null,
     Object? startTime = null,
     Object? endTime = null,
@@ -198,6 +207,10 @@ class __$$_EventModelCopyWithImpl<$Res>
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       place: null == place
           ? _value.place
@@ -246,6 +259,7 @@ class _$_EventModel implements _EventModel {
       {required this.id,
       required this.name,
       required this.description,
+      required this.title,
       required this.place,
       required this.startTime,
       required this.endTime,
@@ -265,6 +279,8 @@ class _$_EventModel implements _EventModel {
   final String name;
   @override
   final String description;
+  @override
+  final String title;
   @override
   final String place;
   @override
@@ -286,7 +302,7 @@ class _$_EventModel implements _EventModel {
 
   @override
   String toString() {
-    return 'EventModel(id: $id, name: $name, description: $description, place: $place, startTime: $startTime, endTime: $endTime, createdAt: $createdAt, updatedAt: $updatedAt, organizerId: $organizerId, availableSeats: $availableSeats, takenSeats: $takenSeats, ticketsSold: $ticketsSold)';
+    return 'EventModel(id: $id, name: $name, description: $description, title: $title, place: $place, startTime: $startTime, endTime: $endTime, createdAt: $createdAt, updatedAt: $updatedAt, organizerId: $organizerId, availableSeats: $availableSeats, takenSeats: $takenSeats, ticketsSold: $ticketsSold)';
   }
 
   @override
@@ -298,6 +314,7 @@ class _$_EventModel implements _EventModel {
             (identical(other.name, name) || other.name == name) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.place, place) || other.place == place) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
@@ -323,6 +340,7 @@ class _$_EventModel implements _EventModel {
       id,
       name,
       description,
+      title,
       place,
       startTime,
       endTime,
@@ -352,6 +370,7 @@ abstract class _EventModel implements EventModel {
       {required final String id,
       required final String name,
       required final String description,
+      required final String title,
       required final String place,
       required final String startTime,
       required final String endTime,
@@ -371,6 +390,8 @@ abstract class _EventModel implements EventModel {
   String get name;
   @override
   String get description;
+  @override
+  String get title;
   @override
   String get place;
   @override
