@@ -1,22 +1,17 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'package:http/http.dart' as client;
+
 import 'package:dartz/dartz.dart';
-import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:frontend/domain/auth/auth.dart';
 
 class AuthDataSource implements AuthRepository {
-  final http.Client client;
-  final SharedPreferences sharedPreferences;
+  final API_URL = "dotenv.env['API_URL']";
 
-  final API_URL = dotenv.env['API_URL'];
-
-  AuthDataSource({
-    required this.client,
-    required this.sharedPreferences,
-  });
+  AuthDataSource();
 
   @override
   Future<Either<AuthFailure, Unit>> loginUser(
@@ -31,7 +26,7 @@ class AuthDataSource implements AuthRepository {
 
     if (response.statusCode == 200) {
       // Save the JWT token to shared preferences
-      await sharedPreferences.setString('jwtToken', response.body);
+      // await sharedPreferences.setString('jwtToken', response.body);
 
       return Right(json.decode(response.body));
     } else if (response.statusCode == 401) {
@@ -44,11 +39,9 @@ class AuthDataSource implements AuthRepository {
   @override
   Future<Either<AuthFailure, Unit>> createUser(
       UserCreateModel userCreateModel) async {
+    print('Submitting to backend...');
     final response = await client.post(
       Uri.parse('$API_URL/auth/register'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
       body: userCreateModel.toJson(),
     );
 
@@ -74,7 +67,7 @@ class AuthDataSource implements AuthRepository {
 
     if (response.statusCode == 200) {
       // Save the JWT token to shared preferences
-      await sharedPreferences.setString('jwtToken', response.body);
+      // await sharedPreferences.setString('jwtToken', response.body);
 
       return Right(json.decode(response.body));
     } else if (response.statusCode == 401) {
@@ -87,7 +80,7 @@ class AuthDataSource implements AuthRepository {
   @override
   Future<void> logoutUser() async {
     // Remove the JWT token from shared preferences
-    await sharedPreferences.remove('jwtToken');
+    // await sharedPreferences.remove('jwtToken');
 
     final response = await client.post(
       Uri.parse('$API_URL/auth/logout'),
@@ -103,9 +96,6 @@ class AuthDataSource implements AuthRepository {
       OrganizerCreateModel organizerCreateModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/auth/register/organizer'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
       body: organizerCreateModel.toJson(),
     );
 
@@ -122,7 +112,7 @@ class AuthDataSource implements AuthRepository {
   @override
   Future<void> logoutOrganizer() async {
     // Remove the JWT token from shared preferences
-    await sharedPreferences.remove('jwtToken');
+    // await sharedPreferences.remove('jwtToken');
 
     final response = await client.post(
       Uri.parse('$API_URL/auth/logout/organizer'),
@@ -134,6 +124,6 @@ class AuthDataSource implements AuthRepository {
 
   // Get the JWT token from shared preferences
   Future<String?> getJwtToken() async {
-    return sharedPreferences.getString('jwtToken');
+    // return sharedPreferences.getString('jwtToken');
   }
 }

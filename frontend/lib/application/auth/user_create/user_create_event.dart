@@ -14,4 +14,9 @@ class UserCreateEvent with _$UserCreateEvent {
   const factory UserCreateEvent.phoneNumberChanged(String phoneNumberStr) =
       _PhoneNumberChanged;
   const factory UserCreateEvent.createUserPressed() = _CreateUserPressed;
+  const factory UserCreateEvent.isOrganizerChanged(bool isOrganizer) =
+      _IsOrganizerChanged;
+
+  const factory UserCreateEvent.organizerNameChanged(String organizerNameStr) =
+      _OrganizerNameChanged;
 }

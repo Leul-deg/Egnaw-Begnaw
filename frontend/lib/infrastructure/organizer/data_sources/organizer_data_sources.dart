@@ -5,16 +5,18 @@ import 'package:frontend/domain/organizer/organizer_repository/organizer_reposit
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:frontend/domain/organizer/organizer.dart';
-class OrganizerDataSource implements OrganizerRepository{
+
+class OrganizerDataSource implements OrganizerRepository {
   final http.Client client;
   final SharedPreferences sharedPreferences;
-  final API_URL = dotenv.env['API_URL'];
+  final API_URL = "dotenv.env['API_URL']";
   OrganizerDataSource({
     required this.client,
     required this.sharedPreferences,
   });
   @override
-  Future<Either<OrganizerFailure, OrganizerModel>> getOrganizerData(String id) async {
+  Future<Either<OrganizerFailure, OrganizerModel>> getOrganizerData(
+      String id) async {
     final response = await client.get(
       Uri.parse('$API_URL/organizer/$id'),
       headers: <String, String>{
@@ -51,31 +53,31 @@ class OrganizerDataSource implements OrganizerRepository{
   @override
   Future<Either<OrganizerFailure, List<OrganizerModel>>> getAllOrganizers(
       OrganizerModel allOrganizer) async {
-   try{
-    final response = await client.get(
-      Uri.parse('$API_URL/organizer'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
-    
-    final organizerIds = json.decode(response.body) as List;
-    final List<OrganizerModel> organizers = [];
-    for (var organizerId in organizerIds) {
-      final organizer = await client.get(
-        Uri.parse('$API_URL/organizer/$organizerId'),
+    try {
+      final response = await client.get(
+        Uri.parse('$API_URL/organizer'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-      organizers.add(OrganizerModel.fromJson(json.decode(organizer.body)));
+
+      final organizerIds = json.decode(response.body) as List;
+      final List<OrganizerModel> organizers = [];
+      for (var organizerId in organizerIds) {
+        final organizer = await client.get(
+          Uri.parse('$API_URL/organizer/$organizerId'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+        );
+        organizers.add(OrganizerModel.fromJson(json.decode(organizer.body)));
+      }
+      return Right(organizers);
+    } catch (e) {
+      return const Left(OrganizerFailure.serverError());
     }
-    return Right(organizers);
-   }
-   catch (e){
-     return const Left(OrganizerFailure.serverError());
-   }
   }
+
   // @override
   // Future<Either<OrganizerFailure, OrganizerModel>> createOrganizer(
   //     OrganizerCreateModel organizerCreateModel) async {
@@ -112,6 +114,7 @@ class OrganizerDataSource implements OrganizerRepository{
       return const Left(OrganizerFailure.serverError());
     }
   }
+
   @override
   Future<Either<OrganizerFailure, Unit>> deleteOrganizer(String id) async {
     final response = await client.delete(

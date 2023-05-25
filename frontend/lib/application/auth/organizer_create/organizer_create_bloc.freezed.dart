@@ -805,8 +805,8 @@ abstract class _CreatePressed implements OrganizerCreateEvent {
 
 /// @nodoc
 mixin _$OrganizerCreateState {
-  EmailAddress get emailAddress => throw _privateConstructorUsedError;
-  Password get password => throw _privateConstructorUsedError;
+  String get emailAddress => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   String get organizationName => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
@@ -825,8 +825,8 @@ abstract class $OrganizerCreateStateCopyWith<$Res> {
       _$OrganizerCreateStateCopyWithImpl<$Res, OrganizerCreateState>;
   @useResult
   $Res call(
-      {EmailAddress emailAddress,
-      Password password,
+      {String emailAddress,
+      String password,
       String organizationName,
       bool isSubmitting,
       bool showErrorMessages,
@@ -858,11 +858,11 @@ class _$OrganizerCreateStateCopyWithImpl<$Res,
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       organizationName: null == organizationName
           ? _value.organizationName
           : organizationName // ignore: cast_nullable_to_non_nullable
@@ -892,8 +892,8 @@ abstract class _$$_OrganizerCreateStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {EmailAddress emailAddress,
-      Password password,
+      {String emailAddress,
+      String password,
       String organizationName,
       bool isSubmitting,
       bool showErrorMessages,
@@ -922,11 +922,11 @@ class __$$_OrganizerCreateStateCopyWithImpl<$Res>
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       organizationName: null == organizationName
           ? _value.organizationName
           : organizationName // ignore: cast_nullable_to_non_nullable
@@ -959,9 +959,9 @@ class _$_OrganizerCreateState implements _OrganizerCreateState {
       required this.authFailureOrSuccessOption});
 
   @override
-  final EmailAddress emailAddress;
+  final String emailAddress;
   @override
-  final Password password;
+  final String password;
   @override
   final String organizationName;
   @override
@@ -1017,8 +1017,8 @@ class _$_OrganizerCreateState implements _OrganizerCreateState {
 
 abstract class _OrganizerCreateState implements OrganizerCreateState {
   const factory _OrganizerCreateState(
-      {required final EmailAddress emailAddress,
-      required final Password password,
+      {required final String emailAddress,
+      required final String password,
       required final String organizationName,
       required final bool isSubmitting,
       required final bool showErrorMessages,
@@ -1026,9 +1026,9 @@ abstract class _OrganizerCreateState implements OrganizerCreateState {
           authFailureOrSuccessOption}) = _$_OrganizerCreateState;
 
   @override
-  EmailAddress get emailAddress;
+  String get emailAddress;
   @override
-  Password get password;
+  String get password;
   @override
   String get organizationName;
   @override

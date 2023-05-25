@@ -5,10 +5,11 @@ import 'package:frontend/domain/user/user_repository/user_repositories.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:frontend/domain/user/user.dart';
-class UserDataSource implements UserRepository{
+
+class UserDataSource implements UserRepository {
   final http.Client client;
   final SharedPreferences sharedPreferences;
-  final API_URL = dotenv.env['API_URL'];
+  final API_URL = "dotenv.env['API_URL']";
   UserDataSource({
     required this.client,
     required this.sharedPreferences,
@@ -29,6 +30,7 @@ class UserDataSource implements UserRepository{
       return const Left(UserFailure.serverError());
     }
   }
+
   @override
   Future<Either<UserFailure, UserUpdateModel>> updateUserData(
       UserModel newData) async {
@@ -47,31 +49,33 @@ class UserDataSource implements UserRepository{
       return const Left(UserFailure.serverError());
     }
   }
+
   @override
   Future<Either<UserFailure, List<UserModel>>> getAllUsers(
       UserModel allUser) async {
-   try{
-    final response = await client.get(
-      Uri.parse('$API_URL/user'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
-    if (response.statusCode == 200) {
-      List<UserModel> users = [];
-      for (var user in json.decode(response.body)) {
-        users.add(UserModel.fromJson(user));
+    try {
+      final response = await client.get(
+        Uri.parse('$API_URL/user'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+      );
+      if (response.statusCode == 200) {
+        List<UserModel> users = [];
+        for (var user in json.decode(response.body)) {
+          users.add(UserModel.fromJson(user));
+        }
+        return Right(users);
+      } else if (response.statusCode == 400) {
+        return const Left(UserFailure.invalidUser());
+      } else {
+        return const Left(UserFailure.serverError());
       }
-      return Right(users);
-    } else if (response.statusCode == 400) {
-      return const Left(UserFailure.invalidUser());
-    } else {
+    } catch (e) {
       return const Left(UserFailure.serverError());
     }
-   }catch(e){
-     return const Left(UserFailure.serverError());
-   }
   }
+
   @override
   Future<Either<UserFailure, Unit>> deleteUser(String id) async {
     final response = await client.delete(
@@ -88,6 +92,7 @@ class UserDataSource implements UserRepository{
       return const Left(UserFailure.serverError());
     }
   }
+
   @override
   Future<Either<UserFailure, UserUpdateModel>> updateUser(
       UserUpdateModel newUser) async {

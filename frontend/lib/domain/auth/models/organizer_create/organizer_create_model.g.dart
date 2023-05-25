@@ -9,8 +9,8 @@ part of 'organizer_create_model.dart';
 _$_OrganizerCreateModel _$$_OrganizerCreateModelFromJson(
         Map<String, dynamic> json) =>
     _$_OrganizerCreateModel(
-      email: EmailAddress.fromJson(json['email'] as Map<String, dynamic>),
-      password: Password.fromJson(json['password'] as Map<String, dynamic>),
+      email: json['email'] as String,
+      password: json['password'] as String,
       organizationName: json['organizationName'] as String,
     );
 

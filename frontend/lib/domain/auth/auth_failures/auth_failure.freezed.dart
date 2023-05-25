@@ -24,6 +24,7 @@ mixin _$AuthFailure {
     required TResult Function() sessionExpired,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function() invalidInput,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$AuthFailure {
     TResult? Function()? sessionExpired,
     TResult? Function()? invalidEmail,
     TResult? Function()? invalidPassword,
+    TResult? Function()? invalidInput,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -44,6 +46,7 @@ mixin _$AuthFailure {
     TResult Function()? sessionExpired,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function()? invalidInput,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -56,6 +59,7 @@ mixin _$AuthFailure {
     required TResult Function(SessionExpired value) sessionExpired,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(_InvalidInput value) invalidInput,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -67,6 +71,7 @@ mixin _$AuthFailure {
     TResult? Function(SessionExpired value)? sessionExpired,
     TResult? Function(InvalidEmail value)? invalidEmail,
     TResult? Function(InvalidPassword value)? invalidPassword,
+    TResult? Function(_InvalidInput value)? invalidInput,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -78,6 +83,7 @@ mixin _$AuthFailure {
     TResult Function(SessionExpired value)? sessionExpired,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(_InvalidInput value)? invalidInput,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -145,6 +151,7 @@ class _$ServerError implements ServerError {
     required TResult Function() sessionExpired,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function() invalidInput,
   }) {
     return serverError();
   }
@@ -158,6 +165,7 @@ class _$ServerError implements ServerError {
     TResult? Function()? sessionExpired,
     TResult? Function()? invalidEmail,
     TResult? Function()? invalidPassword,
+    TResult? Function()? invalidInput,
   }) {
     return serverError?.call();
   }
@@ -171,6 +179,7 @@ class _$ServerError implements ServerError {
     TResult Function()? sessionExpired,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function()? invalidInput,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -189,6 +198,7 @@ class _$ServerError implements ServerError {
     required TResult Function(SessionExpired value) sessionExpired,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(_InvalidInput value) invalidInput,
   }) {
     return serverError(this);
   }
@@ -203,6 +213,7 @@ class _$ServerError implements ServerError {
     TResult? Function(SessionExpired value)? sessionExpired,
     TResult? Function(InvalidEmail value)? invalidEmail,
     TResult? Function(InvalidPassword value)? invalidPassword,
+    TResult? Function(_InvalidInput value)? invalidInput,
   }) {
     return serverError?.call(this);
   }
@@ -217,6 +228,7 @@ class _$ServerError implements ServerError {
     TResult Function(SessionExpired value)? sessionExpired,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(_InvalidInput value)? invalidInput,
     required TResult orElse(),
   }) {
     if (serverError != null) {
@@ -274,6 +286,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function() sessionExpired,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function() invalidInput,
   }) {
     return emailAlreadyInUse();
   }
@@ -287,6 +300,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult? Function()? sessionExpired,
     TResult? Function()? invalidEmail,
     TResult? Function()? invalidPassword,
+    TResult? Function()? invalidInput,
   }) {
     return emailAlreadyInUse?.call();
   }
@@ -300,6 +314,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function()? sessionExpired,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function()? invalidInput,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -318,6 +333,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     required TResult Function(SessionExpired value) sessionExpired,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(_InvalidInput value) invalidInput,
   }) {
     return emailAlreadyInUse(this);
   }
@@ -332,6 +348,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult? Function(SessionExpired value)? sessionExpired,
     TResult? Function(InvalidEmail value)? invalidEmail,
     TResult? Function(InvalidPassword value)? invalidPassword,
+    TResult? Function(_InvalidInput value)? invalidInput,
   }) {
     return emailAlreadyInUse?.call(this);
   }
@@ -346,6 +363,7 @@ class _$EmailAlreadyInUse implements EmailAlreadyInUse {
     TResult Function(SessionExpired value)? sessionExpired,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(_InvalidInput value)? invalidInput,
     required TResult orElse(),
   }) {
     if (emailAlreadyInUse != null) {
@@ -408,6 +426,7 @@ class _$InvalidEmailAndPasswordCombination
     required TResult Function() sessionExpired,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function() invalidInput,
   }) {
     return invalidEmailAndPasswordCombination();
   }
@@ -421,6 +440,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult? Function()? sessionExpired,
     TResult? Function()? invalidEmail,
     TResult? Function()? invalidPassword,
+    TResult? Function()? invalidInput,
   }) {
     return invalidEmailAndPasswordCombination?.call();
   }
@@ -434,6 +454,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function()? sessionExpired,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function()? invalidInput,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -452,6 +473,7 @@ class _$InvalidEmailAndPasswordCombination
     required TResult Function(SessionExpired value) sessionExpired,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(_InvalidInput value) invalidInput,
   }) {
     return invalidEmailAndPasswordCombination(this);
   }
@@ -466,6 +488,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult? Function(SessionExpired value)? sessionExpired,
     TResult? Function(InvalidEmail value)? invalidEmail,
     TResult? Function(InvalidPassword value)? invalidPassword,
+    TResult? Function(_InvalidInput value)? invalidInput,
   }) {
     return invalidEmailAndPasswordCombination?.call(this);
   }
@@ -480,6 +503,7 @@ class _$InvalidEmailAndPasswordCombination
     TResult Function(SessionExpired value)? sessionExpired,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(_InvalidInput value)? invalidInput,
     required TResult orElse(),
   }) {
     if (invalidEmailAndPasswordCombination != null) {
@@ -538,6 +562,7 @@ class _$SessionExpired implements SessionExpired {
     required TResult Function() sessionExpired,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function() invalidInput,
   }) {
     return sessionExpired();
   }
@@ -551,6 +576,7 @@ class _$SessionExpired implements SessionExpired {
     TResult? Function()? sessionExpired,
     TResult? Function()? invalidEmail,
     TResult? Function()? invalidPassword,
+    TResult? Function()? invalidInput,
   }) {
     return sessionExpired?.call();
   }
@@ -564,6 +590,7 @@ class _$SessionExpired implements SessionExpired {
     TResult Function()? sessionExpired,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function()? invalidInput,
     required TResult orElse(),
   }) {
     if (sessionExpired != null) {
@@ -582,6 +609,7 @@ class _$SessionExpired implements SessionExpired {
     required TResult Function(SessionExpired value) sessionExpired,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(_InvalidInput value) invalidInput,
   }) {
     return sessionExpired(this);
   }
@@ -596,6 +624,7 @@ class _$SessionExpired implements SessionExpired {
     TResult? Function(SessionExpired value)? sessionExpired,
     TResult? Function(InvalidEmail value)? invalidEmail,
     TResult? Function(InvalidPassword value)? invalidPassword,
+    TResult? Function(_InvalidInput value)? invalidInput,
   }) {
     return sessionExpired?.call(this);
   }
@@ -610,6 +639,7 @@ class _$SessionExpired implements SessionExpired {
     TResult Function(SessionExpired value)? sessionExpired,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(_InvalidInput value)? invalidInput,
     required TResult orElse(),
   }) {
     if (sessionExpired != null) {
@@ -667,6 +697,7 @@ class _$InvalidEmail implements InvalidEmail {
     required TResult Function() sessionExpired,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function() invalidInput,
   }) {
     return invalidEmail();
   }
@@ -680,6 +711,7 @@ class _$InvalidEmail implements InvalidEmail {
     TResult? Function()? sessionExpired,
     TResult? Function()? invalidEmail,
     TResult? Function()? invalidPassword,
+    TResult? Function()? invalidInput,
   }) {
     return invalidEmail?.call();
   }
@@ -693,6 +725,7 @@ class _$InvalidEmail implements InvalidEmail {
     TResult Function()? sessionExpired,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function()? invalidInput,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -711,6 +744,7 @@ class _$InvalidEmail implements InvalidEmail {
     required TResult Function(SessionExpired value) sessionExpired,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(_InvalidInput value) invalidInput,
   }) {
     return invalidEmail(this);
   }
@@ -725,6 +759,7 @@ class _$InvalidEmail implements InvalidEmail {
     TResult? Function(SessionExpired value)? sessionExpired,
     TResult? Function(InvalidEmail value)? invalidEmail,
     TResult? Function(InvalidPassword value)? invalidPassword,
+    TResult? Function(_InvalidInput value)? invalidInput,
   }) {
     return invalidEmail?.call(this);
   }
@@ -739,6 +774,7 @@ class _$InvalidEmail implements InvalidEmail {
     TResult Function(SessionExpired value)? sessionExpired,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(_InvalidInput value)? invalidInput,
     required TResult orElse(),
   }) {
     if (invalidEmail != null) {
@@ -796,6 +832,7 @@ class _$InvalidPassword implements InvalidPassword {
     required TResult Function() sessionExpired,
     required TResult Function() invalidEmail,
     required TResult Function() invalidPassword,
+    required TResult Function() invalidInput,
   }) {
     return invalidPassword();
   }
@@ -809,6 +846,7 @@ class _$InvalidPassword implements InvalidPassword {
     TResult? Function()? sessionExpired,
     TResult? Function()? invalidEmail,
     TResult? Function()? invalidPassword,
+    TResult? Function()? invalidInput,
   }) {
     return invalidPassword?.call();
   }
@@ -822,6 +860,7 @@ class _$InvalidPassword implements InvalidPassword {
     TResult Function()? sessionExpired,
     TResult Function()? invalidEmail,
     TResult Function()? invalidPassword,
+    TResult Function()? invalidInput,
     required TResult orElse(),
   }) {
     if (invalidPassword != null) {
@@ -840,6 +879,7 @@ class _$InvalidPassword implements InvalidPassword {
     required TResult Function(SessionExpired value) sessionExpired,
     required TResult Function(InvalidEmail value) invalidEmail,
     required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(_InvalidInput value) invalidInput,
   }) {
     return invalidPassword(this);
   }
@@ -854,6 +894,7 @@ class _$InvalidPassword implements InvalidPassword {
     TResult? Function(SessionExpired value)? sessionExpired,
     TResult? Function(InvalidEmail value)? invalidEmail,
     TResult? Function(InvalidPassword value)? invalidPassword,
+    TResult? Function(_InvalidInput value)? invalidInput,
   }) {
     return invalidPassword?.call(this);
   }
@@ -868,6 +909,7 @@ class _$InvalidPassword implements InvalidPassword {
     TResult Function(SessionExpired value)? sessionExpired,
     TResult Function(InvalidEmail value)? invalidEmail,
     TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(_InvalidInput value)? invalidInput,
     required TResult orElse(),
   }) {
     if (invalidPassword != null) {
@@ -879,4 +921,139 @@ class _$InvalidPassword implements InvalidPassword {
 
 abstract class InvalidPassword implements AuthFailure {
   const factory InvalidPassword() = _$InvalidPassword;
+}
+
+/// @nodoc
+abstract class _$$_InvalidInputCopyWith<$Res> {
+  factory _$$_InvalidInputCopyWith(
+          _$_InvalidInput value, $Res Function(_$_InvalidInput) then) =
+      __$$_InvalidInputCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InvalidInputCopyWithImpl<$Res>
+    extends _$AuthFailureCopyWithImpl<$Res, _$_InvalidInput>
+    implements _$$_InvalidInputCopyWith<$Res> {
+  __$$_InvalidInputCopyWithImpl(
+      _$_InvalidInput _value, $Res Function(_$_InvalidInput) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_InvalidInput implements _InvalidInput {
+  const _$_InvalidInput();
+
+  @override
+  String toString() {
+    return 'AuthFailure.invalidInput()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_InvalidInput);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() serverError,
+    required TResult Function() emailAlreadyInUse,
+    required TResult Function() invalidEmailAndPasswordCombination,
+    required TResult Function() sessionExpired,
+    required TResult Function() invalidEmail,
+    required TResult Function() invalidPassword,
+    required TResult Function() invalidInput,
+  }) {
+    return invalidInput();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? serverError,
+    TResult? Function()? emailAlreadyInUse,
+    TResult? Function()? invalidEmailAndPasswordCombination,
+    TResult? Function()? sessionExpired,
+    TResult? Function()? invalidEmail,
+    TResult? Function()? invalidPassword,
+    TResult? Function()? invalidInput,
+  }) {
+    return invalidInput?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? serverError,
+    TResult Function()? emailAlreadyInUse,
+    TResult Function()? invalidEmailAndPasswordCombination,
+    TResult Function()? sessionExpired,
+    TResult Function()? invalidEmail,
+    TResult Function()? invalidPassword,
+    TResult Function()? invalidInput,
+    required TResult orElse(),
+  }) {
+    if (invalidInput != null) {
+      return invalidInput();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ServerError value) serverError,
+    required TResult Function(EmailAlreadyInUse value) emailAlreadyInUse,
+    required TResult Function(InvalidEmailAndPasswordCombination value)
+        invalidEmailAndPasswordCombination,
+    required TResult Function(SessionExpired value) sessionExpired,
+    required TResult Function(InvalidEmail value) invalidEmail,
+    required TResult Function(InvalidPassword value) invalidPassword,
+    required TResult Function(_InvalidInput value) invalidInput,
+  }) {
+    return invalidInput(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ServerError value)? serverError,
+    TResult? Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult? Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult? Function(SessionExpired value)? sessionExpired,
+    TResult? Function(InvalidEmail value)? invalidEmail,
+    TResult? Function(InvalidPassword value)? invalidPassword,
+    TResult? Function(_InvalidInput value)? invalidInput,
+  }) {
+    return invalidInput?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ServerError value)? serverError,
+    TResult Function(EmailAlreadyInUse value)? emailAlreadyInUse,
+    TResult Function(InvalidEmailAndPasswordCombination value)?
+        invalidEmailAndPasswordCombination,
+    TResult Function(SessionExpired value)? sessionExpired,
+    TResult Function(InvalidEmail value)? invalidEmail,
+    TResult Function(InvalidPassword value)? invalidPassword,
+    TResult Function(_InvalidInput value)? invalidInput,
+    required TResult orElse(),
+  }) {
+    if (invalidInput != null) {
+      return invalidInput(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _InvalidInput implements AuthFailure {
+  const factory _InvalidInput() = _$_InvalidInput;
 }

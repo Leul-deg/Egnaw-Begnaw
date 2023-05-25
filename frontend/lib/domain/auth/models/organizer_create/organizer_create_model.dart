@@ -7,8 +7,8 @@ part 'organizer_create_model.g.dart';
 @freezed
 class OrganizerCreateModel with _$OrganizerCreateModel {
   const factory OrganizerCreateModel({
-    required EmailAddress email,
-    required Password password,
+    required String email,
+    required String password,
     required String organizationName,
   }) = _OrganizerCreateModel;
 
