@@ -20,7 +20,7 @@ class EventDataSource implements EventRepository {
   });
 
   @override
-  Future<Either<EventFailure, EventModel>> createEvent(
+  Future<Either<EventFailure, Unit>> createEvent(
       EventCreateModel eventCreateModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/event'),
@@ -31,7 +31,7 @@ class EventDataSource implements EventRepository {
     );
 
     if (response.statusCode == 200) {
-      return Right(EventModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(EventFailure.invalidEvent());
     } else {
@@ -40,10 +40,10 @@ class EventDataSource implements EventRepository {
   }
 
   @override
-  Future<Either<EventFailure, EventModel>> updateEvent(
-      EventUpdateModel eventUpdateModel) async {
+  Future<Either<EventFailure, Unit>> updateEvent(
+      String id, EventUpdateModel eventUpdateModel) async {
     final response = await client.put(
-      Uri.parse('$API_URL/event/${eventUpdateModel.id}'),
+      Uri.parse('$API_URL/event/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },
@@ -51,51 +51,38 @@ class EventDataSource implements EventRepository {
     );
 
     if (response.statusCode == 200) {
-      return Right(EventModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(EventFailure.invalidEvent());
     } else {
       return const Left(EventFailure.serverError());
     }
   }
+     
 
-  @override
-  Future<Either<EventFailure, Unit>> deleteEvent(String id) async {
-    final response = await client.delete(
-      Uri.parse('$API_URL/event/$id'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-    );
+      @override
+      Future<Either<EventFailure, Unit>> deleteEvent(String id) async {
+        final response = await client.delete(
+          Uri.parse('$API_URL/event/$id'),
+          headers: <String, String>{
+            'Content-Type': 'application/json; charset=UTF-8',
+          },
+        );
 
-    if (response.statusCode == 200) {
-      return const Right(unit);
-    } else if (response.statusCode == 400) {
-      return const Left(EventFailure.invalidEvent());
-    } else {
-      return const Left(EventFailure.serverError());
-    }
-  }
+        if (response.statusCode == 200) {
+          return const Right(unit);
+        } else if (response.statusCode == 400) {
+          return const Left(EventFailure.invalidEvent());
+        } else {
+          return const Left(EventFailure.serverError());
+        }
+      }
 
-  // Future<Either<EventFailure, List<EventModel>>> getEvents() async {
 
-  //   final response = await client.get(
-  //     Uri.parse('$API_URL/event'),
-  //     headers: <String, String>{
-  //       'Content-Type': 'application/json; charset=UTF-8'},
-  //   );
-    
-  //   if (response.statusCode == 200) {
-  //     final data = json.decode(response.body) as List;
-  //     final events = data.map((e) => EventModel.fromJson(e)).toList();
-  //     return Right(events);
-  //   } else {
-  //     return Left(EventFailure.serverError());
-  //   }
-  // }
+
   
   @override
-  Future<Either<EventFailure, List<EventModel>>> getAllEvents() async {
+  Future<Either<EventFailure, List<Unit>>> getAllEvents() async {
     try{
       final response = await client.get(
         Uri.parse('$API_URL/event'),
@@ -111,7 +98,7 @@ class EventDataSource implements EventRepository {
         allEvents.add(event as EventModel);
       }
 
-     return Right(allEvents);
+     return Right(allEvents as List<Unit>);
 
   } catch (e) {
     return const Left(EventFailure.unableToGet());
@@ -119,7 +106,7 @@ class EventDataSource implements EventRepository {
   }
 
   @override
- Future<Either<EventFailure, EventModel>> getEvent(String id) async {
+ Future<Either<EventFailure, Unit>> getEvent(String id) async {
     // Implementation of the getEvent method goes here
     try {
       // Get the event data from the API
@@ -141,7 +128,7 @@ class EventDataSource implements EventRepository {
       final eventModel = EventModel(id: id, name: eventDataMap['name'],title:eventDataMap['title'] ,description: eventDataMap['description'], startTime: eventDataMap['startTime'], place: eventDataMap['place'], availableSeats: eventDataMap['availableSeats'], ticketsSold: eventDataMap['ticketsSold'], takenSeats: eventDataMap['takenSeats'], createdAt: eventDataMap['createdAt'], updatedAt: eventDataMap['updatedAt'], organizerId: eventDataMap['organizerId'], endTime: eventDataMap['endTime']);
       
       // Return the EventModel object wrapped in a Right Either object
-      return Right(eventModel);
+      return Right(eventModel as Unit);
     } catch (e) {
       // If there is an error getting the event data from the API, return a Left Either object
       // with an EventFailure object containing an error message
