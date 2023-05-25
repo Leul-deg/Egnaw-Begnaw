@@ -114,7 +114,7 @@ class EventDataSource implements EventRepository {
      return Right(allEvents);
 
   } catch (e) {
-    return Left(EventFailure.unableToGet());
+    return const Left(EventFailure.unableToGet());
   }
   }
 
@@ -138,14 +138,14 @@ class EventDataSource implements EventRepository {
       final eventDataMap = json.decode(eventData.body) as Map<String, dynamic>;
       
       // Create an EventModel object from the API data
-      final eventModel = EventModel(id: id, name: eventDataMap['name'], description: eventDataMap['description'], startTime: eventDataMap['startTime'], place: eventDataMap['place'], availableSeats: eventDataMap['availableSeats'], ticketsSold: eventDataMap['ticketsSold'], takenSeats: eventDataMap['takenSeats'], createdAt: eventDataMap['createdAt'], updatedAt: eventDataMap['updatedAt'], organizerId: eventDataMap['organizerId'], endTime: eventDataMap['endTime']);
+      final eventModel = EventModel(id: id, name: eventDataMap['name'],title:eventDataMap['title'] ,description: eventDataMap['description'], startTime: eventDataMap['startTime'], place: eventDataMap['place'], availableSeats: eventDataMap['availableSeats'], ticketsSold: eventDataMap['ticketsSold'], takenSeats: eventDataMap['takenSeats'], createdAt: eventDataMap['createdAt'], updatedAt: eventDataMap['updatedAt'], organizerId: eventDataMap['organizerId'], endTime: eventDataMap['endTime']);
       
       // Return the EventModel object wrapped in a Right Either object
       return Right(eventModel);
     } catch (e) {
       // If there is an error getting the event data from the API, return a Left Either object
       // with an EventFailure object containing an error message
-      return Left(EventFailure.unableToGet());
+      return const Left(EventFailure.unableToGet());
     }
   }
 }

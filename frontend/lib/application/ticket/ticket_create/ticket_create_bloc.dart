@@ -1,9 +1,7 @@
-import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:frontend/data/local/shared_pref/shared_pref.dart';
 
 import 'package:frontend/domain/ticket/ticket.dart';
 
@@ -11,7 +9,6 @@ import 'package:dartz/dartz.dart';
 
 import 'package:frontend/data/local/local_database/local_storage.dart';
 
-import 'package:shared_preferences/shared_preferences.dart';
 
 part 'ticket_create_event.dart';
 part 'ticket_create_state.dart';
@@ -34,10 +31,10 @@ class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
           createFailureOrSuccessOption: none(),
         );
 
-        final String? userId = await getUserId();
-        final String? eventId = e.eventId;
+        final String userId = await getUserId();
+        final String eventId = e.eventId;
 
-        if (userId == null || eventId == null) {
+        if (eventId == null) {
           yield state.copyWith(
             isLoading: false,
             createFailureOrSuccessOption: some(left(const TicketFailure.invalidTicket())),

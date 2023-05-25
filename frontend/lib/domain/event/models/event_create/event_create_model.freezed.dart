@@ -20,12 +20,15 @@ EventCreateModel _$EventCreateModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EventCreateModel {
-  String get name => throw _privateConstructorUsedError;
+  String get organizerId => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   String get place => throw _privateConstructorUsedError;
-  String get startTime => throw _privateConstructorUsedError;
-  String get endTime => throw _privateConstructorUsedError;
+  DateTime get startTime => throw _privateConstructorUsedError;
+  DateTime get endTime => throw _privateConstructorUsedError;
   int get availableSeats => throw _privateConstructorUsedError;
+  int get ticketsSold => throw _privateConstructorUsedError;
+  dynamic get required => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,12 +43,15 @@ abstract class $EventCreateModelCopyWith<$Res> {
       _$EventCreateModelCopyWithImpl<$Res, EventCreateModel>;
   @useResult
   $Res call(
-      {String name,
+      {String organizerId,
       String description,
+      String title,
       String place,
-      String startTime,
-      String endTime,
-      int availableSeats});
+      DateTime startTime,
+      DateTime endTime,
+      int availableSeats,
+      int ticketsSold,
+      dynamic required});
 }
 
 /// @nodoc
@@ -61,21 +67,28 @@ class _$EventCreateModelCopyWithImpl<$Res, $Val extends EventCreateModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? organizerId = null,
     Object? description = null,
+    Object? title = null,
     Object? place = null,
     Object? startTime = null,
     Object? endTime = null,
     Object? availableSeats = null,
+    Object? ticketsSold = null,
+    Object? required = freezed,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      organizerId: null == organizerId
+          ? _value.organizerId
+          : organizerId // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       place: null == place
           ? _value.place
@@ -84,15 +97,23 @@ class _$EventCreateModelCopyWithImpl<$Res, $Val extends EventCreateModel>
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       availableSeats: null == availableSeats
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
               as int,
+      ticketsSold: null == ticketsSold
+          ? _value.ticketsSold
+          : ticketsSold // ignore: cast_nullable_to_non_nullable
+              as int,
+      required: freezed == required
+          ? _value.required
+          : required // ignore: cast_nullable_to_non_nullable
+              as dynamic,
     ) as $Val);
   }
 }
@@ -106,12 +127,15 @@ abstract class _$$_EventCreateModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name,
+      {String organizerId,
       String description,
+      String title,
       String place,
-      String startTime,
-      String endTime,
-      int availableSeats});
+      DateTime startTime,
+      DateTime endTime,
+      int availableSeats,
+      int ticketsSold,
+      dynamic required});
 }
 
 /// @nodoc
@@ -125,21 +149,28 @@ class __$$_EventCreateModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? organizerId = null,
     Object? description = null,
+    Object? title = null,
     Object? place = null,
     Object? startTime = null,
     Object? endTime = null,
     Object? availableSeats = null,
+    Object? ticketsSold = null,
+    Object? required = freezed,
   }) {
     return _then(_$_EventCreateModel(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      organizerId: null == organizerId
+          ? _value.organizerId
+          : organizerId // ignore: cast_nullable_to_non_nullable
               as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      title: null == title
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
       place: null == place
           ? _value.place
@@ -148,15 +179,20 @@ class __$$_EventCreateModelCopyWithImpl<$Res>
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as String,
+              as DateTime,
       availableSeats: null == availableSeats
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
               as int,
+      ticketsSold: null == ticketsSold
+          ? _value.ticketsSold
+          : ticketsSold // ignore: cast_nullable_to_non_nullable
+              as int,
+      required: freezed == required ? _value.required! : required,
     ));
   }
 }
@@ -165,32 +201,41 @@ class __$$_EventCreateModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_EventCreateModel implements _EventCreateModel {
   const _$_EventCreateModel(
-      {required this.name,
+      {required this.organizerId,
       required this.description,
+      required this.title,
       required this.place,
       required this.startTime,
       required this.endTime,
-      required this.availableSeats});
+      required this.availableSeats,
+      required this.ticketsSold,
+      this.required});
 
   factory _$_EventCreateModel.fromJson(Map<String, dynamic> json) =>
       _$$_EventCreateModelFromJson(json);
 
   @override
-  final String name;
+  final String organizerId;
   @override
   final String description;
   @override
+  final String title;
+  @override
   final String place;
   @override
-  final String startTime;
+  final DateTime startTime;
   @override
-  final String endTime;
+  final DateTime endTime;
   @override
   final int availableSeats;
+  @override
+  final int ticketsSold;
+  @override
+  final dynamic required;
 
   @override
   String toString() {
-    return 'EventCreateModel(name: $name, description: $description, place: $place, startTime: $startTime, endTime: $endTime, availableSeats: $availableSeats)';
+    return 'EventCreateModel(organizerId: $organizerId, description: $description, title: $title, place: $place, startTime: $startTime, endTime: $endTime, availableSeats: $availableSeats, ticketsSold: $ticketsSold, required: $required)';
   }
 
   @override
@@ -198,21 +243,35 @@ class _$_EventCreateModel implements _EventCreateModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_EventCreateModel &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.organizerId, organizerId) ||
+                other.organizerId == organizerId) &&
             (identical(other.description, description) ||
                 other.description == description) &&
+            (identical(other.title, title) || other.title == title) &&
             (identical(other.place, place) || other.place == place) &&
             (identical(other.startTime, startTime) ||
                 other.startTime == startTime) &&
             (identical(other.endTime, endTime) || other.endTime == endTime) &&
             (identical(other.availableSeats, availableSeats) ||
-                other.availableSeats == availableSeats));
+                other.availableSeats == availableSeats) &&
+            (identical(other.ticketsSold, ticketsSold) ||
+                other.ticketsSold == ticketsSold) &&
+            const DeepCollectionEquality().equals(other.required, required));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, description, place,
-      startTime, endTime, availableSeats);
+  int get hashCode => Object.hash(
+      runtimeType,
+      organizerId,
+      description,
+      title,
+      place,
+      startTime,
+      endTime,
+      availableSeats,
+      ticketsSold,
+      const DeepCollectionEquality().hash(required));
 
   @JsonKey(ignore: true)
   @override
@@ -230,28 +289,37 @@ class _$_EventCreateModel implements _EventCreateModel {
 
 abstract class _EventCreateModel implements EventCreateModel {
   const factory _EventCreateModel(
-      {required final String name,
+      {required final String organizerId,
       required final String description,
+      required final String title,
       required final String place,
-      required final String startTime,
-      required final String endTime,
-      required final int availableSeats}) = _$_EventCreateModel;
+      required final DateTime startTime,
+      required final DateTime endTime,
+      required final int availableSeats,
+      required final int ticketsSold,
+      final dynamic required}) = _$_EventCreateModel;
 
   factory _EventCreateModel.fromJson(Map<String, dynamic> json) =
       _$_EventCreateModel.fromJson;
 
   @override
-  String get name;
+  String get organizerId;
   @override
   String get description;
   @override
+  String get title;
+  @override
   String get place;
   @override
-  String get startTime;
+  DateTime get startTime;
   @override
-  String get endTime;
+  DateTime get endTime;
   @override
   int get availableSeats;
+  @override
+  int get ticketsSold;
+  @override
+  dynamic get required;
   @override
   @JsonKey(ignore: true)
   _$$_EventCreateModelCopyWith<_$_EventCreateModel> get copyWith =>

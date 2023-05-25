@@ -73,7 +73,7 @@ class OrganizerDataSource implements OrganizerRepository{
     return Right(organizers);
    }
    catch (e){
-     return Left(OrganizerFailure.serverError());
+     return const Left(OrganizerFailure.serverError());
    }
   }
   // @override

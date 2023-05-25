@@ -18,7 +18,7 @@ class Place with _$Place {
     if (value.isEmpty) {
       throw ArgumentError('Place cannot be empty');
     }
-    final apiKey = 'YOUR_API_KEY_HERE';
+    const apiKey = 'YOUR_API_KEY_HERE';
     final url =
         'https://maps.googleapis.com/maps/api/geocode/json?address=$value&key=$apiKey';
     final response = await http.get(Uri.parse(url));
