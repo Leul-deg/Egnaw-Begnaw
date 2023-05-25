@@ -5,10 +5,13 @@ part 'event_model.g.dart';
 
 @freezed
 class EventModel with _$EventModel {
+  
+
   const factory EventModel({
     required String id,
     required String name,
     required String description,
+    required String title,
     required String place,
     required String startTime,
     required String endTime,

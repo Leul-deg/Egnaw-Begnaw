@@ -6,8 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:frontend/domain/auth/auth.dart';
-import 'package:frontend/domain/organizer/organizer.dart';
-import 'package:frontend/domain/user/user.dart';
 
 class AuthDataSource implements AuthRepository {
   final http.Client client;
