@@ -5,10 +5,10 @@ class EventUpdateState with _$EventUpdateState {
 
   const factory EventUpdateState({
     required bool isLoading,
-    required String? organizerId,
-    required DateTime? startTime,
-    required DateTime? endTime,
-    required String? place,
+    required OrganizerId? organizerId,
+    required StartTime? startTime,
+    required EndTime? endTime,
+    required Place? place,
     required int? availableSeats,
     required int? ticketsSold,
     required String? description,
@@ -23,7 +23,7 @@ factory EventUpdateState.initial() => EventUpdateState(
     organizerId: null,
     startTime: null,
     endTime: null,
-    place: "",
+    place: null,
     availableSeats: 0,
     ticketsSold: 0,
     description: "",

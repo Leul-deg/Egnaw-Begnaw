@@ -2,11 +2,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:frontend/domain/event/event.dart';
 
 import '../../../data/local/local_database/local_storage.dart';
-import '../../../domain/event/event_failure/event_failure.dart';
-import '../../../domain/event/event_repository/event_repository.dart';
-import '../../../domain/event/models/event_create/event_create_model.dart';
 
 part 'event_create_bloc.freezed.dart';
 part 'event_create_event.dart';
@@ -72,10 +70,10 @@ class EventCreateBloc extends Bloc<EventCreateEvent, EventCreateState> {
                 createFailureOrSuccessOption: none(),
               );
 
-              final String organizerId = await getUserId();
-              final DateTime? startTime = state.startTime;
-              final DateTime? endTime = state.endTime;
-              final String? place = state.place;
+              final OrganizerId organizerId = (await getUserId()) as OrganizerId;
+              final StartTime? startTime = state.startTime;
+              final EndTime? endTime = state.endTime;
+              final Place? place = state.place;
               final int? availableSeats = state.availableSeats;
               final int? ticketsSold = state.ticketsSold;
               final String? description = state.description;

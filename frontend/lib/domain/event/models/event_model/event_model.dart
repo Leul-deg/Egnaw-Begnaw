@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:frontend/domain/event/value_objects/value_objects.dart';
 
 part 'event_model.freezed.dart';
 part 'event_model.g.dart';
@@ -12,12 +13,12 @@ class EventModel with _$EventModel {
     required String name,
     required String description,
     required String title,
-    required String place,
-    required String startTime,
-    required String endTime,
+    required Place place,
+    required StartTime startTime,
+    required EndTime endTime,
     required String createdAt,
     required String updatedAt,
-    required String organizerId,
+    required OrganizerId organizerId,
     required int availableSeats,
     required int takenSeats,
     required int ticketsSold,
