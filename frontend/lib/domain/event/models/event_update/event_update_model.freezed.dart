@@ -22,13 +22,13 @@ EventUpdateModel _$EventUpdateModelFromJson(Map<String, dynamic> json) {
 mixin _$EventUpdateModel {
   String get description => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  String get place => throw _privateConstructorUsedError;
-  DateTime get startTime => throw _privateConstructorUsedError;
-  DateTime get endTime => throw _privateConstructorUsedError;
+  Place get place => throw _privateConstructorUsedError;
+  StartTime get startTime => throw _privateConstructorUsedError;
+  EndTime get endTime => throw _privateConstructorUsedError;
   int get availableSeats => throw _privateConstructorUsedError;
   String get eventId => throw _privateConstructorUsedError;
   int get ticketsSold => throw _privateConstructorUsedError;
-  String get organizerId => throw _privateConstructorUsedError;
+  OrganizerId get organizerId => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,13 +45,18 @@ abstract class $EventUpdateModelCopyWith<$Res> {
   $Res call(
       {String description,
       String title,
-      String place,
-      DateTime startTime,
-      DateTime endTime,
+      Place place,
+      StartTime startTime,
+      EndTime endTime,
       int availableSeats,
       String eventId,
       int ticketsSold,
-      String organizerId});
+      OrganizerId organizerId});
+
+  $PlaceCopyWith<$Res> get place;
+  $StartTimeCopyWith<$Res> get startTime;
+  $EndTimeCopyWith<$Res> get endTime;
+  $OrganizerIdCopyWith<$Res> get organizerId;
 }
 
 /// @nodoc
@@ -89,15 +94,15 @@ class _$EventUpdateModelCopyWithImpl<$Res, $Val extends EventUpdateModel>
       place: null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Place,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as StartTime,
       endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as EndTime,
       availableSeats: null == availableSeats
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
@@ -113,8 +118,40 @@ class _$EventUpdateModelCopyWithImpl<$Res, $Val extends EventUpdateModel>
       organizerId: null == organizerId
           ? _value.organizerId
           : organizerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrganizerId,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $PlaceCopyWith<$Res> get place {
+    return $PlaceCopyWith<$Res>(_value.place, (value) {
+      return _then(_value.copyWith(place: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StartTimeCopyWith<$Res> get startTime {
+    return $StartTimeCopyWith<$Res>(_value.startTime, (value) {
+      return _then(_value.copyWith(startTime: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $EndTimeCopyWith<$Res> get endTime {
+    return $EndTimeCopyWith<$Res>(_value.endTime, (value) {
+      return _then(_value.copyWith(endTime: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $OrganizerIdCopyWith<$Res> get organizerId {
+    return $OrganizerIdCopyWith<$Res>(_value.organizerId, (value) {
+      return _then(_value.copyWith(organizerId: value) as $Val);
+    });
   }
 }
 
@@ -129,13 +166,22 @@ abstract class _$$_EventUpdateModelCopyWith<$Res>
   $Res call(
       {String description,
       String title,
-      String place,
-      DateTime startTime,
-      DateTime endTime,
+      Place place,
+      StartTime startTime,
+      EndTime endTime,
       int availableSeats,
       String eventId,
       int ticketsSold,
-      String organizerId});
+      OrganizerId organizerId});
+
+  @override
+  $PlaceCopyWith<$Res> get place;
+  @override
+  $StartTimeCopyWith<$Res> get startTime;
+  @override
+  $EndTimeCopyWith<$Res> get endTime;
+  @override
+  $OrganizerIdCopyWith<$Res> get organizerId;
 }
 
 /// @nodoc
@@ -171,15 +217,15 @@ class __$$_EventUpdateModelCopyWithImpl<$Res>
       place: null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as String,
+              as Place,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as StartTime,
       endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as EndTime,
       availableSeats: null == availableSeats
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
@@ -195,7 +241,7 @@ class __$$_EventUpdateModelCopyWithImpl<$Res>
       organizerId: null == organizerId
           ? _value.organizerId
           : organizerId // ignore: cast_nullable_to_non_nullable
-              as String,
+              as OrganizerId,
     ));
   }
 }
@@ -222,11 +268,11 @@ class _$_EventUpdateModel implements _EventUpdateModel {
   @override
   final String title;
   @override
-  final String place;
+  final Place place;
   @override
-  final DateTime startTime;
+  final StartTime startTime;
   @override
-  final DateTime endTime;
+  final EndTime endTime;
   @override
   final int availableSeats;
   @override
@@ -234,7 +280,7 @@ class _$_EventUpdateModel implements _EventUpdateModel {
   @override
   final int ticketsSold;
   @override
-  final String organizerId;
+  final OrganizerId organizerId;
 
   @override
   String toString() {
@@ -285,13 +331,13 @@ abstract class _EventUpdateModel implements EventUpdateModel {
   const factory _EventUpdateModel(
       {required final String description,
       required final String title,
-      required final String place,
-      required final DateTime startTime,
-      required final DateTime endTime,
+      required final Place place,
+      required final StartTime startTime,
+      required final EndTime endTime,
       required final int availableSeats,
       required final String eventId,
       required final int ticketsSold,
-      required final String organizerId}) = _$_EventUpdateModel;
+      required final OrganizerId organizerId}) = _$_EventUpdateModel;
 
   factory _EventUpdateModel.fromJson(Map<String, dynamic> json) =
       _$_EventUpdateModel.fromJson;
@@ -301,11 +347,11 @@ abstract class _EventUpdateModel implements EventUpdateModel {
   @override
   String get title;
   @override
-  String get place;
+  Place get place;
   @override
-  DateTime get startTime;
+  StartTime get startTime;
   @override
-  DateTime get endTime;
+  EndTime get endTime;
   @override
   int get availableSeats;
   @override
@@ -313,7 +359,7 @@ abstract class _EventUpdateModel implements EventUpdateModel {
   @override
   int get ticketsSold;
   @override
-  String get organizerId;
+  OrganizerId get organizerId;
   @override
   @JsonKey(ignore: true)
   _$$_EventUpdateModelCopyWith<_$_EventUpdateModel> get copyWith =>

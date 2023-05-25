@@ -2,11 +2,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:frontend/domain/event/models/event_model/event_model.dart';
-
-import '../../../domain/event/event_failure/event_failure.dart';
-import '../../../domain/event/event_repository/event_repository.dart';
-import '../../../domain/event/models/event_update/event_update_model.dart';
+import 'package:frontend/domain/event/event.dart';
 
 part 'event_update_bloc.freezed.dart';
 part 'event_update_event.dart';
@@ -28,9 +24,8 @@ class EventUpdateBloc extends Bloc<EventUpdateEvent, EventUpdateState> {
           (event) => state.copyWith(
             isLoading: false,
             organizerId: event.organizerId,
-            startTime: DateTime.parse(event.startTime),
-
-            endTime: DateTime.parse(event.endTime),
+            startTime: event.startTime,
+            endTime: event.endTime,
             place: event.place,
             availableSeats: event.availableSeats,
             ticketsSold: event.ticketsSold,
@@ -85,10 +80,10 @@ class EventUpdateBloc extends Bloc<EventUpdateEvent, EventUpdateState> {
           updateFailureOrSuccessOption: none(),
         );
 
-        final String organizerId = state.organizerId ?? '';
-        final DateTime? startTime = state.startTime;
-        final DateTime? endTime = state.endTime;
-        final String? place = state.place;
+        final OrganizerId organizerId = state.organizerId as OrganizerId;
+        final StartTime? startTime = state.startTime;
+        final EndTime? endTime = state.endTime;
+        final Place? place = state.place;
         final int? availableSeats = state.availableSeats;
         final int? ticketsSold = state.ticketsSold;
         final String? description = state.description;
