@@ -23,7 +23,6 @@ mixin _$UserUpdateModel {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
 
@@ -43,7 +42,6 @@ abstract class $UserUpdateModelCopyWith<$Res> {
       {String firstName,
       String lastName,
       String email,
-      String password,
       String phoneNumber,
       String id});
 }
@@ -64,7 +62,6 @@ class _$UserUpdateModelCopyWithImpl<$Res, $Val extends UserUpdateModel>
     Object? firstName = null,
     Object? lastName = null,
     Object? email = null,
-    Object? password = null,
     Object? phoneNumber = null,
     Object? id = null,
   }) {
@@ -80,10 +77,6 @@ class _$UserUpdateModelCopyWithImpl<$Res, $Val extends UserUpdateModel>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
               as String,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
@@ -109,7 +102,6 @@ abstract class _$$_UserUpdateModelCopyWith<$Res>
       {String firstName,
       String lastName,
       String email,
-      String password,
       String phoneNumber,
       String id});
 }
@@ -128,7 +120,6 @@ class __$$_UserUpdateModelCopyWithImpl<$Res>
     Object? firstName = null,
     Object? lastName = null,
     Object? email = null,
-    Object? password = null,
     Object? phoneNumber = null,
     Object? id = null,
   }) {
@@ -144,10 +135,6 @@ class __$$_UserUpdateModelCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as String,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
               as String,
       phoneNumber: null == phoneNumber
           ? _value.phoneNumber
@@ -168,7 +155,6 @@ class _$_UserUpdateModel implements _UserUpdateModel {
       {required this.firstName,
       required this.lastName,
       required this.email,
-      required this.password,
       required this.phoneNumber,
       required this.id});
 
@@ -182,15 +168,13 @@ class _$_UserUpdateModel implements _UserUpdateModel {
   @override
   final String email;
   @override
-  final String password;
-  @override
   final String phoneNumber;
   @override
   final String id;
 
   @override
   String toString() {
-    return 'UserUpdateModel(firstName: $firstName, lastName: $lastName, email: $email, password: $password, phoneNumber: $phoneNumber, id: $id)';
+    return 'UserUpdateModel(firstName: $firstName, lastName: $lastName, email: $email, phoneNumber: $phoneNumber, id: $id)';
   }
 
   @override
@@ -203,8 +187,6 @@ class _$_UserUpdateModel implements _UserUpdateModel {
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
             (identical(other.id, id) || other.id == id));
@@ -212,8 +194,8 @@ class _$_UserUpdateModel implements _UserUpdateModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, firstName, lastName, email, password, phoneNumber, id);
+  int get hashCode =>
+      Object.hash(runtimeType, firstName, lastName, email, phoneNumber, id);
 
   @JsonKey(ignore: true)
   @override
@@ -234,7 +216,6 @@ abstract class _UserUpdateModel implements UserUpdateModel {
       {required final String firstName,
       required final String lastName,
       required final String email,
-      required final String password,
       required final String phoneNumber,
       required final String id}) = _$_UserUpdateModel;
 
@@ -247,8 +228,6 @@ abstract class _UserUpdateModel implements UserUpdateModel {
   String get lastName;
   @override
   String get email;
-  @override
-  String get password;
   @override
   String get phoneNumber;
   @override

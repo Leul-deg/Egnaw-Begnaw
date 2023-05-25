@@ -9,7 +9,6 @@ class UserUpdateModel with _$UserUpdateModel {
     required String firstName,
     required String lastName,
     required String email,
-    required String password,
     required String phoneNumber,
     required String id,
   }) = _UserUpdateModel;
