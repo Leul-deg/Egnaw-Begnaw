@@ -8,10 +8,8 @@ part 'organizer_update_model.g.dart';
 @freezed
 class OrganizerUpdateModel with _$OrganizerUpdateModel {
   const factory OrganizerUpdateModel({
-    required String name,
-    required EmailAddress email,
-    required String password,
-    required String id,
+    required String organizerName,
+    required String id, 
   }) = _OrganizerUpdateModel;
 
   // to json

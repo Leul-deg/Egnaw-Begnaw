@@ -20,9 +20,7 @@ OrganizerUpdateModel _$OrganizerUpdateModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrganizerUpdateModel {
-  String get name => throw _privateConstructorUsedError;
-  EmailAddress get email => throw _privateConstructorUsedError;
-  String get password => throw _privateConstructorUsedError;
+  String get organizerName => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -37,7 +35,7 @@ abstract class $OrganizerUpdateModelCopyWith<$Res> {
           $Res Function(OrganizerUpdateModel) then) =
       _$OrganizerUpdateModelCopyWithImpl<$Res, OrganizerUpdateModel>;
   @useResult
-  $Res call({String name, EmailAddress email, String password, String id});
+  $Res call({String organizerName, String id});
 }
 
 /// @nodoc
@@ -54,23 +52,13 @@ class _$OrganizerUpdateModelCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? password = null,
+    Object? organizerName = null,
     Object? id = null,
   }) {
     return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      organizerName: null == organizerName
+          ? _value.organizerName
+          : organizerName // ignore: cast_nullable_to_non_nullable
               as String,
       id: null == id
           ? _value.id
@@ -88,7 +76,7 @@ abstract class _$$_OrganizerUpdateModelCopyWith<$Res>
       __$$_OrganizerUpdateModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String name, EmailAddress email, String password, String id});
+  $Res call({String organizerName, String id});
 }
 
 /// @nodoc
@@ -102,23 +90,13 @@ class __$$_OrganizerUpdateModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
-    Object? email = null,
-    Object? password = null,
+    Object? organizerName = null,
     Object? id = null,
   }) {
     return _then(_$_OrganizerUpdateModel(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      organizerName: null == organizerName
+          ? _value.organizerName
+          : organizerName // ignore: cast_nullable_to_non_nullable
               as String,
       id: null == id
           ? _value.id
@@ -132,26 +110,19 @@ class __$$_OrganizerUpdateModelCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_OrganizerUpdateModel implements _OrganizerUpdateModel {
   const _$_OrganizerUpdateModel(
-      {required this.name,
-      required this.email,
-      required this.password,
-      required this.id});
+      {required this.organizerName, required this.id});
 
   factory _$_OrganizerUpdateModel.fromJson(Map<String, dynamic> json) =>
       _$$_OrganizerUpdateModelFromJson(json);
 
   @override
-  final String name;
-  @override
-  final EmailAddress email;
-  @override
-  final String password;
+  final String organizerName;
   @override
   final String id;
 
   @override
   String toString() {
-    return 'OrganizerUpdateModel(name: $name, email: $email, password: $password, id: $id)';
+    return 'OrganizerUpdateModel(organizerName: $organizerName, id: $id)';
   }
 
   @override
@@ -159,16 +130,14 @@ class _$_OrganizerUpdateModel implements _OrganizerUpdateModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_OrganizerUpdateModel &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.password, password) ||
-                other.password == password) &&
+            (identical(other.organizerName, organizerName) ||
+                other.organizerName == organizerName) &&
             (identical(other.id, id) || other.id == id));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, name, email, password, id);
+  int get hashCode => Object.hash(runtimeType, organizerName, id);
 
   @JsonKey(ignore: true)
   @override
@@ -187,20 +156,14 @@ class _$_OrganizerUpdateModel implements _OrganizerUpdateModel {
 
 abstract class _OrganizerUpdateModel implements OrganizerUpdateModel {
   const factory _OrganizerUpdateModel(
-      {required final String name,
-      required final EmailAddress email,
-      required final String password,
+      {required final String organizerName,
       required final String id}) = _$_OrganizerUpdateModel;
 
   factory _OrganizerUpdateModel.fromJson(Map<String, dynamic> json) =
       _$_OrganizerUpdateModel.fromJson;
 
   @override
-  String get name;
-  @override
-  EmailAddress get email;
-  @override
-  String get password;
+  String get organizerName;
   @override
   String get id;
   @override
