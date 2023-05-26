@@ -485,7 +485,7 @@ abstract class _UpdateOrganizerPressed implements OrganizerUpdateEvent {
 mixin _$OrganizerUpdateState {
   bool get isLoading => throw _privateConstructorUsedError;
   String get organizationName => throw _privateConstructorUsedError;
-  Option<Either<OrganizerFailure, Unit>> get updateFailureOrSuccessOption =>
+  Option<Either<OrganizerFailure, Object>> get updateFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -502,7 +502,7 @@ abstract class $OrganizerUpdateStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       String organizationName,
-      Option<Either<OrganizerFailure, Unit>> updateFailureOrSuccessOption});
+      Option<Either<OrganizerFailure, Object>> updateFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -535,7 +535,7 @@ class _$OrganizerUpdateStateCopyWithImpl<$Res,
       updateFailureOrSuccessOption: null == updateFailureOrSuccessOption
           ? _value.updateFailureOrSuccessOption
           : updateFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<OrganizerFailure, Unit>>,
+              as Option<Either<OrganizerFailure, Object>>,
     ) as $Val);
   }
 }
@@ -551,7 +551,7 @@ abstract class _$$_OrganizerUpdateStateCopyWith<$Res>
   $Res call(
       {bool isLoading,
       String organizationName,
-      Option<Either<OrganizerFailure, Unit>> updateFailureOrSuccessOption});
+      Option<Either<OrganizerFailure, Object>> updateFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -581,7 +581,7 @@ class __$$_OrganizerUpdateStateCopyWithImpl<$Res>
       updateFailureOrSuccessOption: null == updateFailureOrSuccessOption
           ? _value.updateFailureOrSuccessOption
           : updateFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<OrganizerFailure, Unit>>,
+              as Option<Either<OrganizerFailure, Object>>,
     ));
   }
 }
@@ -599,7 +599,7 @@ class _$_OrganizerUpdateState implements _OrganizerUpdateState {
   @override
   final String organizationName;
   @override
-  final Option<Either<OrganizerFailure, Unit>> updateFailureOrSuccessOption;
+  final Option<Either<OrganizerFailure, Object>> updateFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -637,7 +637,7 @@ abstract class _OrganizerUpdateState implements OrganizerUpdateState {
   const factory _OrganizerUpdateState(
       {required final bool isLoading,
       required final String organizationName,
-      required final Option<Either<OrganizerFailure, Unit>>
+      required final Option<Either<OrganizerFailure, Object>>
           updateFailureOrSuccessOption}) = _$_OrganizerUpdateState;
 
   @override
@@ -645,7 +645,7 @@ abstract class _OrganizerUpdateState implements OrganizerUpdateState {
   @override
   String get organizationName;
   @override
-  Option<Either<OrganizerFailure, Unit>> get updateFailureOrSuccessOption;
+  Option<Either<OrganizerFailure, Object>> get updateFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_OrganizerUpdateStateCopyWith<_$_OrganizerUpdateState> get copyWith =>

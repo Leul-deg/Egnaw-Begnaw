@@ -13,7 +13,7 @@ class EventCreateState with _$EventCreateState {
     required int? ticketsSold,
     required String? description,
     required String? title,
-    required Option<Either<EventFailure, Unit>> createFailureOrSuccessOption,
+    required Option<Either<EventFailure, Object>> createFailureOrSuccessOption,
 
 }) = _EventCreateState;
 

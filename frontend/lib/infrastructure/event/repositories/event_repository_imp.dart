@@ -12,31 +12,31 @@ class EventRepositoryImp implements EventRepository {
 
   // create event
   @override
-  Future<Either<EventFailure, Unit>> createEvent(
+  Future<Either<EventFailure, Object>> createEvent(
       EventCreateModel eventCreateModel) async {
         return await eventDataSource.createEvent(eventCreateModel);
   }
 
   // update event
   @override
-  Future<Either<EventFailure, Unit>> updateEvent(
+  Future<Either<EventFailure, Object>> updateEvent(
       String id,
       EventUpdateModel eventUpdateModel) async {
         return await eventDataSource.updateEvent(id,eventUpdateModel);
   }
   
   @override
-  Future<Either<EventFailure, Unit>> deleteEvent(String id) async {
+  Future<Either<EventFailure, Object>> deleteEvent(String id) async {
     return await eventDataSource.deleteEvent(id);
   }
   
   @override
-  Future<Either<EventFailure, List<Unit>>> getAllEvents() async {
+  Future<Either<EventFailure, List<Object>>> getAllEvents() async {
     return await eventDataSource.getAllEvents();
   }
   
   @override
-  Future<Either<EventFailure, Unit>> getEvent(String id) async {
+  Future<Either<EventFailure, Object>> getEvent(String id) async {
     return await eventDataSource.getEvent(id);
   }
 }

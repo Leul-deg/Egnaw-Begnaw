@@ -476,7 +476,7 @@ mixin _$ReviewCreateState {
   String get reviewText => throw _privateConstructorUsedError;
   String? get reviewerId => throw _privateConstructorUsedError;
   String? get eventId => throw _privateConstructorUsedError;
-  Option<Either<ReviewFailure, Unit>> get createFailureOrSuccessOption =>
+  Option<Either<ReviewFailure, Object>> get createFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -495,7 +495,7 @@ abstract class $ReviewCreateStateCopyWith<$Res> {
       String reviewText,
       String? reviewerId,
       String? eventId,
-      Option<Either<ReviewFailure, Unit>> createFailureOrSuccessOption});
+      Option<Either<ReviewFailure, Object>> createFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -537,7 +537,7 @@ class _$ReviewCreateStateCopyWithImpl<$Res, $Val extends ReviewCreateState>
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ReviewFailure, Unit>>,
+              as Option<Either<ReviewFailure, Object>>,
     ) as $Val);
   }
 }
@@ -555,7 +555,7 @@ abstract class _$$_ReviewCreateStateCopyWith<$Res>
       String reviewText,
       String? reviewerId,
       String? eventId,
-      Option<Either<ReviewFailure, Unit>> createFailureOrSuccessOption});
+      Option<Either<ReviewFailure, Object>> createFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -595,7 +595,7 @@ class __$$_ReviewCreateStateCopyWithImpl<$Res>
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ReviewFailure, Unit>>,
+              as Option<Either<ReviewFailure, Object>>,
     ));
   }
 }
@@ -619,7 +619,7 @@ class _$_ReviewCreateState implements _ReviewCreateState {
   @override
   final String? eventId;
   @override
-  final Option<Either<ReviewFailure, Unit>> createFailureOrSuccessOption;
+  final Option<Either<ReviewFailure, Object>> createFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -662,7 +662,7 @@ abstract class _ReviewCreateState implements ReviewCreateState {
       required final String reviewText,
       required final String? reviewerId,
       required final String? eventId,
-      required final Option<Either<ReviewFailure, Unit>>
+      required final Option<Either<ReviewFailure, Object>>
           createFailureOrSuccessOption}) = _$_ReviewCreateState;
 
   @override
@@ -674,7 +674,7 @@ abstract class _ReviewCreateState implements ReviewCreateState {
   @override
   String? get eventId;
   @override
-  Option<Either<ReviewFailure, Unit>> get createFailureOrSuccessOption;
+  Option<Either<ReviewFailure, Object>> get createFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewCreateStateCopyWith<_$_ReviewCreateState> get copyWith =>

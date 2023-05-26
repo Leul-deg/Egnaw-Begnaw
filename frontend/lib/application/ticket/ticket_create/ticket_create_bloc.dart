@@ -47,7 +47,7 @@ class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
           eventId: eventId,
         );
 
-        final Either<TicketFailure, Unit> failureOrSuccess =
+        final Either<TicketFailure, Object> failureOrSuccess =
             await _ticketRepository.createTicket(ticket);
 
         yield state.copyWith(

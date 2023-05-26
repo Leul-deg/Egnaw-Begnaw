@@ -3,6 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/auth/auth.dart';
 import 'package:frontend/infrastructure/auth/data_sources/auth_data_sources.dart';
 
+import 'package:frontend/domain/user/user.dart';
+
 class AuthRepositoryImp implements AuthRepository {
   final AuthRepository authDataSource;
 
@@ -12,14 +14,14 @@ class AuthRepositoryImp implements AuthRepository {
 
   // create user
   @override
-  Future<Either<AuthFailure, Unit>> createUser(
+  Future<Either<AuthFailure, Object>> createUser(
       UserCreateModel userCreateModel) async {
     return await authDataSource.createUser(userCreateModel);
   }
 
   // login user
   @override
-  Future<Either<AuthFailure, Unit>> loginUser(
+  Future<Either<AuthFailure, Object>> loginUser(
       UserLoginModel userLoginModel) async {
     return await authDataSource.loginUser(userLoginModel);
   }
@@ -32,14 +34,14 @@ class AuthRepositoryImp implements AuthRepository {
 
   // create organizer
   @override
-  Future<Either<AuthFailure, Unit>> createOrganizer(
+  Future<Either<AuthFailure, Object>> createOrganizer(
       OrganizerCreateModel organizerCreateModel) async {
     return await authDataSource.createOrganizer(organizerCreateModel);
   }
 
   // login organizer
   @override
-  Future<Either<AuthFailure, Unit>> loginOrganizer(
+  Future<Either<AuthFailure, Object>> loginOrganizer(
       OrganizerLoginModel organizerLoginModel) async {
     return await authDataSource.loginOrganizer(organizerLoginModel);
   }

@@ -9,8 +9,8 @@ part of 'organizer_login_model.dart';
 _$_OrganizerLoginModel _$$_OrganizerLoginModelFromJson(
         Map<String, dynamic> json) =>
     _$_OrganizerLoginModel(
-      email: EmailAddress.fromJson(json['email'] as Map<String, dynamic>),
-      password: Password.fromJson(json['password'] as Map<String, dynamic>),
+      email: json['email'] as String,
+      password: json['password'] as String,
     );
 
 Map<String, dynamic> _$$_OrganizerLoginModelToJson(

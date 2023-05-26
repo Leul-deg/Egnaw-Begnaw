@@ -99,7 +99,7 @@ class EventUpdateBloc extends Bloc<EventUpdateEvent, EventUpdateState> {
           eventId: _eventId,
         );
 
-        final Either<EventFailure, Unit> failureOrSuccess =
+        final Either<EventFailure, Object> failureOrSuccess =
             await _eventRepository.updateEvent(_eventId, EventUpdateModel(
               organizerId: event.organizerId,
               startTime: event.startTime,
@@ -114,7 +114,7 @@ class EventUpdateBloc extends Bloc<EventUpdateEvent, EventUpdateState> {
 
         yield state.copyWith(
           isLoading: false,
-          updateFailureOrSuccessOption: optionOf(failureOrSuccess as Either<EventFailure, Unit>?),
+          updateFailureOrSuccessOption: optionOf(failureOrSuccess as Either<EventFailure, Object>?),
         );
       },
     );

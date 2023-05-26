@@ -7,7 +7,7 @@ class ReviewCreateState with _$ReviewCreateState {
     required String reviewText,
     required String? reviewerId,
     required String? eventId,
-    required Option<Either<ReviewFailure, Unit>> createFailureOrSuccessOption,
+    required Option<Either<ReviewFailure, Object>> createFailureOrSuccessOption,
   }) = _ReviewCreateState;
 
   // initial state

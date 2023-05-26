@@ -12,7 +12,6 @@ _$_UserCreateModel _$$_UserCreateModelFromJson(Map<String, dynamic> json) =>
       lastName: json['lastName'] as String,
       email: json['email'] as String,
       password: json['password'] as String,
-      phoneNumber: json['phoneNumber'] as String,
     );
 
 Map<String, dynamic> _$$_UserCreateModelToJson(_$_UserCreateModel instance) =>
@@ -21,5 +20,4 @@ Map<String, dynamic> _$$_UserCreateModelToJson(_$_UserCreateModel instance) =>
       'lastName': instance.lastName,
       'email': instance.email,
       'password': instance.password,
-      'phoneNumber': instance.phoneNumber,
     };

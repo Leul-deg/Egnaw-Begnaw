@@ -1946,7 +1946,7 @@ mixin _$EventCreateState {
   int? get ticketsSold => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
-  Option<Either<EventFailure, Unit>> get createFailureOrSuccessOption =>
+  Option<Either<EventFailure, Object>> get createFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1970,7 +1970,7 @@ abstract class $EventCreateStateCopyWith<$Res> {
       int? ticketsSold,
       String? description,
       String? title,
-      Option<Either<EventFailure, Unit>> createFailureOrSuccessOption});
+      Option<Either<EventFailure, Object>> createFailureOrSuccessOption});
 
   $OrganizerIdCopyWith<$Res>? get organizerId;
   $StartTimeCopyWith<$Res>? get startTime;
@@ -2042,7 +2042,7 @@ class _$EventCreateStateCopyWithImpl<$Res, $Val extends EventCreateState>
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<EventFailure, Unit>>,
+              as Option<Either<EventFailure, Object>>,
     ) as $Val);
   }
 
@@ -2113,7 +2113,7 @@ abstract class _$$_EventCreateStateCopyWith<$Res>
       int? ticketsSold,
       String? description,
       String? title,
-      Option<Either<EventFailure, Unit>> createFailureOrSuccessOption});
+      Option<Either<EventFailure, Object>> createFailureOrSuccessOption});
 
   @override
   $OrganizerIdCopyWith<$Res>? get organizerId;
@@ -2187,7 +2187,7 @@ class __$$_EventCreateStateCopyWithImpl<$Res>
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<EventFailure, Unit>>,
+              as Option<Either<EventFailure, Object>>,
     ));
   }
 }
@@ -2226,7 +2226,7 @@ class _$_EventCreateState implements _EventCreateState {
   @override
   final String? title;
   @override
-  final Option<Either<EventFailure, Unit>> createFailureOrSuccessOption;
+  final Option<Either<EventFailure, Object>> createFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -2291,7 +2291,7 @@ abstract class _EventCreateState implements EventCreateState {
       required final int? ticketsSold,
       required final String? description,
       required final String? title,
-      required final Option<Either<EventFailure, Unit>>
+      required final Option<Either<EventFailure, Object>>
           createFailureOrSuccessOption}) = _$_EventCreateState;
 
   @override
@@ -2313,7 +2313,7 @@ abstract class _EventCreateState implements EventCreateState {
   @override
   String? get title;
   @override
-  Option<Either<EventFailure, Unit>> get createFailureOrSuccessOption;
+  Option<Either<EventFailure, Object>> get createFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_EventCreateStateCopyWith<_$_EventCreateState> get copyWith =>

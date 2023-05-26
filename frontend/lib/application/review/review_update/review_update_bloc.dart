@@ -33,7 +33,7 @@ class ReviewUpdateBloc extends Bloc<ReviewUpdateEvent, ReviewUpdateState> {
         },
         // updateReviewPressed event
         updateReviewPressed: (e) async* {
-          Either<ReviewFailure, Unit>? failureOrSuccess;
+          Either<ReviewFailure, Object>? failureOrSuccess;
 
           if (state.reviewText == '') {
             failureOrSuccess = left(const ReviewFailure.invalidReview());

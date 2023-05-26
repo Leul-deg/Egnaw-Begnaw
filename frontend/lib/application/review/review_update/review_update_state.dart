@@ -5,7 +5,7 @@ class ReviewUpdateState with _$ReviewUpdateState {
   const factory ReviewUpdateState({
     required bool isLoading,
     required String reviewText,
-    required Option<Either<ReviewFailure, Unit>> updateFailureOrSuccessOption,
+    required Option<Either<ReviewFailure, Object>> updateFailureOrSuccessOption,
   }) = _ReviewUpdateState;
 
   // initial state

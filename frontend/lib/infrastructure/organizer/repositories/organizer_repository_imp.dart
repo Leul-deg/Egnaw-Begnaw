@@ -26,7 +26,7 @@ class OrganizerRepositoryImp implements OrganizerRepository{
   }
 
   @override
-  Future<Either<OrganizerFailure, Unit>> deleteOrganizer(String id) async {
+  Future<Either<OrganizerFailure, Object>> deleteOrganizer(String id) async {
     return await organizerDataSource.deleteOrganizer(id);
   }
 }

@@ -3,8 +3,6 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/auth/auth.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:frontend/infrastructure/auth/repositories/auth_repository_imp.dart';
 
 part 'user_create_event.dart';
 part 'user_create_state.dart';
@@ -52,17 +50,8 @@ class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
       );
     });
 
-    on<_PhoneNumberChanged>((event, emit) {
-      emit(
-        state.copyWith(
-          phoneNumber: event.phoneNumberStr,
-          authFailureOrSuccessOption: none(),
-        ),
-      );
-    });
-
     on<_CreateUserPressed>((event, emit) async {
-      Either<AuthFailure, Unit>? failureOrSuccess;
+      Either<AuthFailure, Object>? failureOrSuccess;
       print(state);
 
       if (state.isOrganizer) {
@@ -71,21 +60,29 @@ class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
         final isEmailValid = state.emailAddress.isNotEmpty;
         final isPasswordValid = state.password.isNotEmpty;
 
-        failureOrSuccess = await authRepository.createOrganizer(
-          OrganizerCreateModel(
-            organizationName: state.organizerName,
-            email: state.emailAddress,
-            password: state.password,
-          ),
-        );
+        if (organizerNameValid && isEmailValid && isPasswordValid) {
+          emit(
+            state.copyWith(
+              isSubmitting: true,
+              authFailureOrSuccessOption: none(),
+            ),
+          );
 
-        print(failureOrSuccess);
+          failureOrSuccess = await authRepository.createOrganizer(
+            OrganizerCreateModel(
+              organizationName: state.organizerName,
+              email: state.emailAddress,
+              password: state.password,
+            ),
+          );
+        } else {
+          failureOrSuccess = left(const AuthFailure.invalidEmail());
+        }
       } else {
         final isFirstNameValid = state.firstName.isNotEmpty;
         final isLastNameValid = state.lastName.isNotEmpty;
         final isEmailValid = state.emailAddress.isNotEmpty;
         final isPasswordValid = state.password.isNotEmpty;
-        final isPhoneNumberValid = state.phoneNumber.isNotEmpty;
 
         if (isFirstNameValid &&
             isLastNameValid &&
@@ -105,7 +102,6 @@ class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
             lastName: state.lastName,
             email: state.emailAddress,
             password: state.password,
-            phoneNumber: state.phoneNumber,
           ));
         }
       }

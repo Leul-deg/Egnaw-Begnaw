@@ -7,7 +7,7 @@ class TicketCreateState with _$TicketCreateState {
     required bool isLoading,
     required String? userId,
     required String? eventId,
-    required Option<Either<TicketFailure, Unit>> createFailureOrSuccessOption,
+    required Option<Either<TicketFailure, Object>> createFailureOrSuccessOption,
   }) = _TicketCreateState;
 
 

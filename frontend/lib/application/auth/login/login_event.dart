@@ -7,5 +7,5 @@ class LoginEvent with _$LoginEvent {
   const factory LoginEvent.passwordChanged(String passwordStr) =
       _PasswordChanged;
   const factory LoginEvent.loginPressed() = _LoginPressed;
-  const factory LoginEvent.isOrganizerChanged() = _IsOrganizerChanged;
+  const factory LoginEvent.isOrganizerChanged(bool isOrganizer) = _IsOrganizerChanged;
 }

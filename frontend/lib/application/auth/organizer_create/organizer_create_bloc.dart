@@ -41,7 +41,7 @@ class OrganizerCreateBloc
         );
       },
       createPressed: (e) async* {
-        Either<AuthFailure, Unit>? failureOrSuccess;
+        Either<AuthFailure, Object>? failureOrSuccess;
 
         if (!state.emailAddress.isNotEmpty) {
           failureOrSuccess = left(const AuthFailure.invalidEmail());

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 export const OrganizerSchema = new mongoose.Schema({
-    name: {
+    organizationName: {
         type: String,
         required: true,
     },

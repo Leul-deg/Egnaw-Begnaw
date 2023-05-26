@@ -14,7 +14,7 @@ class EventUpdateState with _$EventUpdateState {
     required String? description,
     required String? title,
     required String eventId, // <--- new
-    required Option<Either<EventFailure, Unit>> updateFailureOrSuccessOption,
+    required Option<Either<EventFailure, Object>> updateFailureOrSuccessOption,
 
 }) = _EventUpdateState;
 

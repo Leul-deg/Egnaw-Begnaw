@@ -20,7 +20,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/common": "^9.0.0",
+    "@nestjs/common": "^9.4.2",
     "@nestjs/config": "github:nestjs/config",
     "@nestjs/core": "^9.0.0",
     "@nestjs/jwt": "^10.0.3",
@@ -30,6 +30,7 @@
     "@nestjs/platform-express": "^9.0.0",
     "argon2": "^0.30.3",
     "class-validator": "^0.14.0",
+    "cors": "^2.8.5",
     "mongoose": "^7.1.0",
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",

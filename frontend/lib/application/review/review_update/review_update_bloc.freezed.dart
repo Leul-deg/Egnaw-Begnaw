@@ -475,7 +475,7 @@ abstract class _UpdateReviewPressed implements ReviewUpdateEvent {
 mixin _$ReviewUpdateState {
   bool get isLoading => throw _privateConstructorUsedError;
   String get reviewText => throw _privateConstructorUsedError;
-  Option<Either<ReviewFailure, Unit>> get updateFailureOrSuccessOption =>
+  Option<Either<ReviewFailure, Object>> get updateFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -492,7 +492,7 @@ abstract class $ReviewUpdateStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       String reviewText,
-      Option<Either<ReviewFailure, Unit>> updateFailureOrSuccessOption});
+      Option<Either<ReviewFailure, Object>> updateFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -524,7 +524,7 @@ class _$ReviewUpdateStateCopyWithImpl<$Res, $Val extends ReviewUpdateState>
       updateFailureOrSuccessOption: null == updateFailureOrSuccessOption
           ? _value.updateFailureOrSuccessOption
           : updateFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ReviewFailure, Unit>>,
+              as Option<Either<ReviewFailure, Object>>,
     ) as $Val);
   }
 }
@@ -540,7 +540,7 @@ abstract class _$$_ReviewUpdateStateCopyWith<$Res>
   $Res call(
       {bool isLoading,
       String reviewText,
-      Option<Either<ReviewFailure, Unit>> updateFailureOrSuccessOption});
+      Option<Either<ReviewFailure, Object>> updateFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -570,7 +570,7 @@ class __$$_ReviewUpdateStateCopyWithImpl<$Res>
       updateFailureOrSuccessOption: null == updateFailureOrSuccessOption
           ? _value.updateFailureOrSuccessOption
           : updateFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<ReviewFailure, Unit>>,
+              as Option<Either<ReviewFailure, Object>>,
     ));
   }
 }
@@ -588,7 +588,7 @@ class _$_ReviewUpdateState implements _ReviewUpdateState {
   @override
   final String reviewText;
   @override
-  final Option<Either<ReviewFailure, Unit>> updateFailureOrSuccessOption;
+  final Option<Either<ReviewFailure, Object>> updateFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -626,7 +626,7 @@ abstract class _ReviewUpdateState implements ReviewUpdateState {
   const factory _ReviewUpdateState(
       {required final bool isLoading,
       required final String reviewText,
-      required final Option<Either<ReviewFailure, Unit>>
+      required final Option<Either<ReviewFailure, Object>>
           updateFailureOrSuccessOption}) = _$_ReviewUpdateState;
 
   @override
@@ -634,7 +634,7 @@ abstract class _ReviewUpdateState implements ReviewUpdateState {
   @override
   String get reviewText;
   @override
-  Option<Either<ReviewFailure, Unit>> get updateFailureOrSuccessOption;
+  Option<Either<ReviewFailure, Object>> get updateFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_ReviewUpdateStateCopyWith<_$_ReviewUpdateState> get copyWith =>

@@ -11,7 +11,6 @@ class UserCreateModel with _$UserCreateModel {
     required String lastName,
     required String email,
     required String password,
-    required String phoneNumber,
   }) = _UserCreateModel;
 
   factory UserCreateModel.fromJson(Map<String, dynamic> json) =>
