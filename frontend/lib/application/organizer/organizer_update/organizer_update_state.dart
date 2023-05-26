@@ -5,7 +5,7 @@ class OrganizerUpdateState with _$OrganizerUpdateState {
   const factory OrganizerUpdateState({
     required bool isLoading,
     required String organizationName,
-    required Option<Either<OrganizerFailure, Unit>> updateFailureOrSuccessOption,
+    required Option<Either<OrganizerFailure, Object>> updateFailureOrSuccessOption,
   }) = _OrganizerUpdateState;
 
   // initial state

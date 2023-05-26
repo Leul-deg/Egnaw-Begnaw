@@ -3,9 +3,9 @@ import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/ticket/ticket.dart';
 
 abstract class TicketRepository {
-  Future<Either<TicketFailure, List<Unit>>> getAllTickets();
-  Future<Either<TicketFailure, Unit>> getTicket(String id);
-  Future<Either<TicketFailure, Unit>> createTicket(TicketCreateModel ticket);
-  Future<Either<TicketFailure, Unit>> updateTicket(TicketUpdateModel ticket);
-  Future<Either<TicketFailure, Unit>> deleteTicket(String id);
+  Future<Either<TicketFailure, List<Object>>> getAllTickets();
+  Future<Either<TicketFailure, Object>> getTicket(String id);
+  Future<Either<TicketFailure, Object>> createTicket(TicketCreateModel ticket);
+  Future<Either<TicketFailure, Object>> updateTicket(TicketUpdateModel ticket);
+  Future<Either<TicketFailure, Object>> deleteTicket(String id);
 }

@@ -11,8 +11,6 @@ class UserCreateEvent with _$UserCreateEvent {
       _EmailAddressChanged;
   const factory UserCreateEvent.passwordChanged(String passwordStr) =
       _PasswordChanged;
-  const factory UserCreateEvent.phoneNumberChanged(String phoneNumberStr) =
-      _PhoneNumberChanged;
   const factory UserCreateEvent.createUserPressed() = _CreateUserPressed;
   const factory UserCreateEvent.isOrganizerChanged(bool isOrganizer) =
       _IsOrganizerChanged;

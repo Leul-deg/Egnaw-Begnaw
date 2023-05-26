@@ -22,7 +22,7 @@ mixin _$LoginEvent {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() loginPressed,
-    required TResult Function() isOrganizerChanged,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +31,7 @@ mixin _$LoginEvent {
     TResult? Function(String emailStr)? emailChanged,
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? loginPressed,
-    TResult? Function()? isOrganizerChanged,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +40,7 @@ mixin _$LoginEvent {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? loginPressed,
-    TResult Function()? isOrganizerChanged,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,7 +133,7 @@ class _$_Started implements _Started {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() loginPressed,
-    required TResult Function() isOrganizerChanged,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
   }) {
     return started();
   }
@@ -145,7 +145,7 @@ class _$_Started implements _Started {
     TResult? Function(String emailStr)? emailChanged,
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? loginPressed,
-    TResult? Function()? isOrganizerChanged,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
   }) {
     return started?.call();
   }
@@ -157,7 +157,7 @@ class _$_Started implements _Started {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? loginPressed,
-    TResult Function()? isOrganizerChanged,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -280,7 +280,7 @@ class _$_EmailChanged implements _EmailChanged {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() loginPressed,
-    required TResult Function() isOrganizerChanged,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
   }) {
     return emailChanged(emailStr);
   }
@@ -292,7 +292,7 @@ class _$_EmailChanged implements _EmailChanged {
     TResult? Function(String emailStr)? emailChanged,
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? loginPressed,
-    TResult? Function()? isOrganizerChanged,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
   }) {
     return emailChanged?.call(emailStr);
   }
@@ -304,7 +304,7 @@ class _$_EmailChanged implements _EmailChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? loginPressed,
-    TResult Function()? isOrganizerChanged,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
     required TResult orElse(),
   }) {
     if (emailChanged != null) {
@@ -432,7 +432,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() loginPressed,
-    required TResult Function() isOrganizerChanged,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
   }) {
     return passwordChanged(passwordStr);
   }
@@ -444,7 +444,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult? Function(String emailStr)? emailChanged,
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? loginPressed,
-    TResult? Function()? isOrganizerChanged,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
   }) {
     return passwordChanged?.call(passwordStr);
   }
@@ -456,7 +456,7 @@ class _$_PasswordChanged implements _PasswordChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? loginPressed,
-    TResult Function()? isOrganizerChanged,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
     required TResult orElse(),
   }) {
     if (passwordChanged != null) {
@@ -557,7 +557,7 @@ class _$_LoginPressed implements _LoginPressed {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() loginPressed,
-    required TResult Function() isOrganizerChanged,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
   }) {
     return loginPressed();
   }
@@ -569,7 +569,7 @@ class _$_LoginPressed implements _LoginPressed {
     TResult? Function(String emailStr)? emailChanged,
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? loginPressed,
-    TResult? Function()? isOrganizerChanged,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
   }) {
     return loginPressed?.call();
   }
@@ -581,7 +581,7 @@ class _$_LoginPressed implements _LoginPressed {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? loginPressed,
-    TResult Function()? isOrganizerChanged,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
     required TResult orElse(),
   }) {
     if (loginPressed != null) {
@@ -640,6 +640,8 @@ abstract class _$$_IsOrganizerChangedCopyWith<$Res> {
   factory _$$_IsOrganizerChangedCopyWith(_$_IsOrganizerChanged value,
           $Res Function(_$_IsOrganizerChanged) then) =
       __$$_IsOrganizerChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isOrganizer});
 }
 
 /// @nodoc
@@ -649,26 +651,52 @@ class __$$_IsOrganizerChangedCopyWithImpl<$Res>
   __$$_IsOrganizerChangedCopyWithImpl(
       _$_IsOrganizerChanged _value, $Res Function(_$_IsOrganizerChanged) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isOrganizer = null,
+  }) {
+    return _then(_$_IsOrganizerChanged(
+      null == isOrganizer
+          ? _value.isOrganizer
+          : isOrganizer // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$_IsOrganizerChanged implements _IsOrganizerChanged {
-  const _$_IsOrganizerChanged();
+  const _$_IsOrganizerChanged(this.isOrganizer);
+
+  @override
+  final bool isOrganizer;
 
   @override
   String toString() {
-    return 'LoginEvent.isOrganizerChanged()';
+    return 'LoginEvent.isOrganizerChanged(isOrganizer: $isOrganizer)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_IsOrganizerChanged);
+        (other.runtimeType == runtimeType &&
+            other is _$_IsOrganizerChanged &&
+            (identical(other.isOrganizer, isOrganizer) ||
+                other.isOrganizer == isOrganizer));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isOrganizer);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_IsOrganizerChangedCopyWith<_$_IsOrganizerChanged> get copyWith =>
+      __$$_IsOrganizerChangedCopyWithImpl<_$_IsOrganizerChanged>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -677,9 +705,9 @@ class _$_IsOrganizerChanged implements _IsOrganizerChanged {
     required TResult Function(String emailStr) emailChanged,
     required TResult Function(String passwordStr) passwordChanged,
     required TResult Function() loginPressed,
-    required TResult Function() isOrganizerChanged,
+    required TResult Function(bool isOrganizer) isOrganizerChanged,
   }) {
-    return isOrganizerChanged();
+    return isOrganizerChanged(isOrganizer);
   }
 
   @override
@@ -689,9 +717,9 @@ class _$_IsOrganizerChanged implements _IsOrganizerChanged {
     TResult? Function(String emailStr)? emailChanged,
     TResult? Function(String passwordStr)? passwordChanged,
     TResult? Function()? loginPressed,
-    TResult? Function()? isOrganizerChanged,
+    TResult? Function(bool isOrganizer)? isOrganizerChanged,
   }) {
-    return isOrganizerChanged?.call();
+    return isOrganizerChanged?.call(isOrganizer);
   }
 
   @override
@@ -701,11 +729,11 @@ class _$_IsOrganizerChanged implements _IsOrganizerChanged {
     TResult Function(String emailStr)? emailChanged,
     TResult Function(String passwordStr)? passwordChanged,
     TResult Function()? loginPressed,
-    TResult Function()? isOrganizerChanged,
+    TResult Function(bool isOrganizer)? isOrganizerChanged,
     required TResult orElse(),
   }) {
     if (isOrganizerChanged != null) {
-      return isOrganizerChanged();
+      return isOrganizerChanged(isOrganizer);
     }
     return orElse();
   }
@@ -752,17 +780,23 @@ class _$_IsOrganizerChanged implements _IsOrganizerChanged {
 }
 
 abstract class _IsOrganizerChanged implements LoginEvent {
-  const factory _IsOrganizerChanged() = _$_IsOrganizerChanged;
+  const factory _IsOrganizerChanged(final bool isOrganizer) =
+      _$_IsOrganizerChanged;
+
+  bool get isOrganizer;
+  @JsonKey(ignore: true)
+  _$$_IsOrganizerChangedCopyWith<_$_IsOrganizerChanged> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$LoginState {
   bool get isOrganizer => throw _privateConstructorUsedError;
-  EmailAddress get emailAddress => throw _privateConstructorUsedError;
-  Password get password => throw _privateConstructorUsedError;
+  String get emailAddress => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+  Option<Either<AuthFailure, Object>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -778,11 +812,11 @@ abstract class $LoginStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isOrganizer,
-      EmailAddress emailAddress,
-      Password password,
+      String emailAddress,
+      String password,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, Object>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -813,11 +847,11 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -829,7 +863,7 @@ class _$LoginStateCopyWithImpl<$Res, $Val extends LoginState>
       authFailureOrSuccessOption: null == authFailureOrSuccessOption
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<AuthFailure, Object>>,
     ) as $Val);
   }
 }
@@ -844,11 +878,11 @@ abstract class _$$_LoginStateCopyWith<$Res>
   @useResult
   $Res call(
       {bool isOrganizer,
-      EmailAddress emailAddress,
-      Password password,
+      String emailAddress,
+      String password,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, Object>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -877,11 +911,11 @@ class __$$_LoginStateCopyWithImpl<$Res>
       emailAddress: null == emailAddress
           ? _value.emailAddress
           : emailAddress // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -893,7 +927,7 @@ class __$$_LoginStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: null == authFailureOrSuccessOption
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<AuthFailure, Object>>,
     ));
   }
 }
@@ -912,15 +946,15 @@ class _$_LoginState implements _LoginState {
   @override
   final bool isOrganizer;
   @override
-  final EmailAddress emailAddress;
+  final String emailAddress;
   @override
-  final Password password;
+  final String password;
   @override
   final bool isSubmitting;
   @override
   final bool showErrorMessages;
   @override
-  final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
+  final Option<Either<AuthFailure, Object>> authFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -962,25 +996,25 @@ class _$_LoginState implements _LoginState {
 abstract class _LoginState implements LoginState {
   const factory _LoginState(
       {required final bool isOrganizer,
-      required final EmailAddress emailAddress,
-      required final Password password,
+      required final String emailAddress,
+      required final String password,
       required final bool isSubmitting,
       required final bool showErrorMessages,
-      required final Option<Either<AuthFailure, Unit>>
+      required final Option<Either<AuthFailure, Object>>
           authFailureOrSuccessOption}) = _$_LoginState;
 
   @override
   bool get isOrganizer;
   @override
-  EmailAddress get emailAddress;
+  String get emailAddress;
   @override
-  Password get password;
+  String get password;
   @override
   bool get isSubmitting;
   @override
   bool get showErrorMessages;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  Option<Either<AuthFailure, Object>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_LoginStateCopyWith<_$_LoginState> get copyWith =>

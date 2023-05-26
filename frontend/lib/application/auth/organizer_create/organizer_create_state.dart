@@ -8,7 +8,7 @@ class OrganizerCreateState with _$OrganizerCreateState {
     required String organizationName,
     required bool isSubmitting,
     required bool showErrorMessages,
-    required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
+    required Option<Either<AuthFailure, Object>> authFailureOrSuccessOption,
   }) = _OrganizerCreateState;
 
   factory OrganizerCreateState.initial() => OrganizerCreateState(

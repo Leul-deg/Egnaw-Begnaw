@@ -20,8 +20,8 @@ UserLoginModel _$UserLoginModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UserLoginModel {
-  EmailAddress get email => throw _privateConstructorUsedError;
-  Password get password => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $UserLoginModelCopyWith<$Res> {
           UserLoginModel value, $Res Function(UserLoginModel) then) =
       _$UserLoginModelCopyWithImpl<$Res, UserLoginModel>;
   @useResult
-  $Res call({EmailAddress email, Password password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -58,11 +58,11 @@ class _$UserLoginModelCopyWithImpl<$Res, $Val extends UserLoginModel>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$_UserLoginModelCopyWith<$Res>
       __$$_UserLoginModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EmailAddress email, Password password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -96,11 +96,11 @@ class __$$_UserLoginModelCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
     ));
   }
 }
@@ -114,9 +114,9 @@ class _$_UserLoginModel implements _UserLoginModel {
       _$$_UserLoginModelFromJson(json);
 
   @override
-  final EmailAddress email;
+  final String email;
   @override
-  final Password password;
+  final String password;
 
   @override
   String toString() {
@@ -153,16 +153,16 @@ class _$_UserLoginModel implements _UserLoginModel {
 
 abstract class _UserLoginModel implements UserLoginModel {
   const factory _UserLoginModel(
-      {required final EmailAddress email,
-      required final Password password}) = _$_UserLoginModel;
+      {required final String email,
+      required final String password}) = _$_UserLoginModel;
 
   factory _UserLoginModel.fromJson(Map<String, dynamic> json) =
       _$_UserLoginModel.fromJson;
 
   @override
-  EmailAddress get email;
+  String get email;
   @override
-  Password get password;
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$_UserLoginModelCopyWith<_$_UserLoginModel> get copyWith =>

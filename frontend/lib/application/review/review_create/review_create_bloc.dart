@@ -32,7 +32,7 @@ class ReviewCreateBloc extends Bloc<ReviewCreateEvent, ReviewCreateState> {
         },
         // createReviewPressed event
         createReviewPressed: (e) async* {
-          Either<ReviewFailure, Unit>? failureOrSuccess;
+          Either<ReviewFailure, Object>? failureOrSuccess;
 
           if (state.reviewText == '') {
             failureOrSuccess = left(const ReviewFailure.invalidReview());

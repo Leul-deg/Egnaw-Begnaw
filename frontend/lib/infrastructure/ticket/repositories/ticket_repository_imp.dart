@@ -11,30 +11,30 @@ class TicketRepositoryImp implements TicketRepository {
 
   // create ticket
   @override
-  Future<Either<TicketFailure, Unit>> createTicket(
+  Future<Either<TicketFailure, Object>> createTicket(
       TicketCreateModel ticketCreateModel) async {
         return await ticketDataSource.createTicket(ticketCreateModel);
   }
 
   // update ticket
   @override
-  Future<Either<TicketFailure, Unit>> updateTicket(
+  Future<Either<TicketFailure, Object>> updateTicket(
       TicketUpdateModel ticketUpdateModel) async {
         return await ticketDataSource.updateTicket(ticketUpdateModel);
   }
   
   @override
-  Future<Either<TicketFailure, Unit>> deleteTicket(String id) async {
+  Future<Either<TicketFailure, Object>> deleteTicket(String id) async {
     return await ticketDataSource.deleteTicket(id);
   }
   
   @override
-  Future<Either<TicketFailure, List<Unit>>> getAllTickets() async {
+  Future<Either<TicketFailure, List<Object>>> getAllTickets() async {
     return await ticketDataSource.getAllTickets();
   }
   
   @override
-  Future<Either<TicketFailure, Unit>> getTicket(String id) async {
+  Future<Either<TicketFailure, Object>> getTicket(String id) async {
     return await ticketDataSource.getTicket(id);
   }
 }

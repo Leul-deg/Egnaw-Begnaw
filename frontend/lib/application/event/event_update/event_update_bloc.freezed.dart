@@ -1947,7 +1947,7 @@ mixin _$EventUpdateState {
   String? get description => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String get eventId => throw _privateConstructorUsedError; // <--- new
-  Option<Either<EventFailure, Unit>> get updateFailureOrSuccessOption =>
+  Option<Either<EventFailure, Object>> get updateFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -1972,7 +1972,7 @@ abstract class $EventUpdateStateCopyWith<$Res> {
       String? description,
       String? title,
       String eventId,
-      Option<Either<EventFailure, Unit>> updateFailureOrSuccessOption});
+      Option<Either<EventFailure, Object>> updateFailureOrSuccessOption});
 
   $OrganizerIdCopyWith<$Res>? get organizerId;
   $StartTimeCopyWith<$Res>? get startTime;
@@ -2049,7 +2049,7 @@ class _$EventUpdateStateCopyWithImpl<$Res, $Val extends EventUpdateState>
       updateFailureOrSuccessOption: null == updateFailureOrSuccessOption
           ? _value.updateFailureOrSuccessOption
           : updateFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<EventFailure, Unit>>,
+              as Option<Either<EventFailure, Object>>,
     ) as $Val);
   }
 
@@ -2121,7 +2121,7 @@ abstract class _$$_EventUpdateStateCopyWith<$Res>
       String? description,
       String? title,
       String eventId,
-      Option<Either<EventFailure, Unit>> updateFailureOrSuccessOption});
+      Option<Either<EventFailure, Object>> updateFailureOrSuccessOption});
 
   @override
   $OrganizerIdCopyWith<$Res>? get organizerId;
@@ -2200,7 +2200,7 @@ class __$$_EventUpdateStateCopyWithImpl<$Res>
       updateFailureOrSuccessOption: null == updateFailureOrSuccessOption
           ? _value.updateFailureOrSuccessOption
           : updateFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<EventFailure, Unit>>,
+              as Option<Either<EventFailure, Object>>,
     ));
   }
 }
@@ -2243,7 +2243,7 @@ class _$_EventUpdateState implements _EventUpdateState {
   final String eventId;
 // <--- new
   @override
-  final Option<Either<EventFailure, Unit>> updateFailureOrSuccessOption;
+  final Option<Either<EventFailure, Object>> updateFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -2311,7 +2311,7 @@ abstract class _EventUpdateState implements EventUpdateState {
       required final String? description,
       required final String? title,
       required final String eventId,
-      required final Option<Either<EventFailure, Unit>>
+      required final Option<Either<EventFailure, Object>>
           updateFailureOrSuccessOption}) = _$_EventUpdateState;
 
   @override
@@ -2335,7 +2335,7 @@ abstract class _EventUpdateState implements EventUpdateState {
   @override
   String get eventId;
   @override // <--- new
-  Option<Either<EventFailure, Unit>> get updateFailureOrSuccessOption;
+  Option<Either<EventFailure, Object>> get updateFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_EventUpdateStateCopyWith<_$_EventUpdateState> get copyWith =>

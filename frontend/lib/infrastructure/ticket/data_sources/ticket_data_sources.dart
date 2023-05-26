@@ -16,7 +16,7 @@ class TicketDataSource implements TicketRepository {
   });
 
   @override
-  Future<Either<TicketFailure, Unit>> createTicket(
+  Future<Either<TicketFailure, Object>> createTicket(
       TicketCreateModel ticketCreateModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/ticket'),
@@ -36,7 +36,7 @@ class TicketDataSource implements TicketRepository {
   }
 
   @override
-  Future<Either<TicketFailure, Unit>> updateTicket(
+  Future<Either<TicketFailure, Object>> updateTicket(
       TicketUpdateModel ticketUpdateModel) async {
     final response = await client.put(
       Uri.parse('$API_URL/ticket/${ticketUpdateModel.id}'),
@@ -56,7 +56,7 @@ class TicketDataSource implements TicketRepository {
   }
 
   @override
-  Future<Either<TicketFailure, Unit>> deleteTicket(String id) async {
+  Future<Either<TicketFailure, Object>> deleteTicket(String id) async {
     final response = await client.delete(
       Uri.parse('$API_URL/ticket/$id'),
       headers: <String, String>{
@@ -65,7 +65,7 @@ class TicketDataSource implements TicketRepository {
     );
 
     if (response.statusCode == 200) {
-      return const Right(unit);
+      return const Right(Object);
     } else if (response.statusCode == 400) {
       return const Left(TicketFailure.invalidTicket());
     } else {
@@ -74,7 +74,7 @@ class TicketDataSource implements TicketRepository {
   }
 
   @override
-  Future<Either<TicketFailure, List<Unit>>> getAllTickets() async {
+  Future<Either<TicketFailure, List<Object>>> getAllTickets() async {
     final response = await client.get(
       Uri.parse('$API_URL/ticket'),
       headers: <String, String>{
@@ -94,7 +94,7 @@ class TicketDataSource implements TicketRepository {
   }
 
   @override
-  Future<Either<TicketFailure, Unit>> getTicket(String id) async {
+  Future<Either<TicketFailure, Object>> getTicket(String id) async {
     final response = await client.get(
       Uri.parse('$API_URL/ticket/$id'),
       headers: <String, String>{

@@ -34,7 +34,7 @@ class OrganizerUpdateBloc extends Bloc<OrganizerUpdateEvent , OrganizerUpdateSta
         },
         // updateOrganizerPressed event
         updateOrganizerPressed: (e) async* {
-          Either<OrganizerFailure, Unit>? failureOrSuccess;
+          Either<OrganizerFailure, Object>? failureOrSuccess;
 
           if (state.organizationName == '') {
             failureOrSuccess = left(const OrganizerFailure.invalidOrganizer());
@@ -54,7 +54,7 @@ class OrganizerUpdateBloc extends Bloc<OrganizerUpdateEvent , OrganizerUpdateSta
               organizerName: state.organizationName, id: '',
             );
 
-            failureOrSuccess = (await organizerRepository.updateOrganizer(organizer)) as Either<OrganizerFailure, Unit>?;
+            failureOrSuccess = (await organizerRepository.updateOrganizer(organizer)) as Either<OrganizerFailure, Object>?;
           }
 
           yield state.copyWith(

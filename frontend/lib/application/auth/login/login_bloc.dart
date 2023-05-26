@@ -5,8 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-
-
 part 'login_bloc.freezed.dart';
 
 part 'login_event.dart';
@@ -14,69 +12,76 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRepository authRepository;
-  final SharedPreferences sharedPrefsService;
 
-  LoginBloc({required this.authRepository, required this.sharedPrefsService})
-      : super(LoginState.initial());
-
-  // @override
-  Stream<LoginState> mapEventToState(LoginEvent event) async* {
-    yield* event.map(
-      started: (e) async* {},
-      emailChanged: (e) async* {
-        yield state.copyWith(
-          emailAddress: EmailAddress(e.emailStr),
+  LoginBloc({required this.authRepository}) : super(LoginState.initial()) {
+    on<_EmailChanged>((event, emit) {
+      emit(
+        state.copyWith(
+          emailAddress: event.emailStr,
           authFailureOrSuccessOption: none(),
-        );
-      },
-      passwordChanged: (e) async* {
-        yield state.copyWith(
-          password: Password(e.passwordStr),
-          authFailureOrSuccessOption: none(),
-        );
-      },
-      isOrganizerChanged: (e) async* {
-        yield state.copyWith(
-          isOrganizer: !state.isOrganizer,
-        );
-      },
-      loginPressed: (e) async* {
-        Either<AuthFailure, Unit>? failureOrSuccess;
+        ),
+      );
+    });
 
-        if (!state.emailAddress.isValid()) {
-          failureOrSuccess = left(const AuthFailure.invalidEmail());
-        } else if (!state.password.isValid()) {
-          failureOrSuccess = left(const AuthFailure.invalidPassword());
+    on<_PasswordChanged>((event, emit) {
+      emit(
+        state.copyWith(
+          password: event.passwordStr,
+          authFailureOrSuccessOption: none(),
+        ),
+      );
+    });
+
+    on<_IsOrganizerChanged>((event, emit) {
+      emit(
+        state.copyWith(
+          isOrganizer: event.isOrganizer,
+          authFailureOrSuccessOption: none(),
+        ),
+      );
+    });
+
+    on<_LoginPressed>((event, emit) async {
+      Either<AuthFailure, Object> failureOrSuccess;
+
+      // check if user if isOrganizer
+      if (state.isOrganizer) {
+        // check if fields are empty
+        final isEmailEmpty = state.emailAddress.isEmpty;
+        final isPasswordEmpty = state.password.isEmpty;
+
+        if (isEmailEmpty || isPasswordEmpty) {
+          failureOrSuccess = left(const AuthFailure.invalidInput());
         } else {
-          yield state.copyWith(
-            isSubmitting: true,
-            authFailureOrSuccessOption: none(),
-          );
-
-          // different login methods for organizer and user
-          if (!state.isOrganizer) {
-            failureOrSuccess = await authRepository.loginUser(
-              UserLoginModel(
-                email: state.emailAddress,
-                password: state.password,
-              ),
-            );
-          } else {
-            failureOrSuccess = await authRepository.loginOrganizer(
-              OrganizerLoginModel(
-                email: state.emailAddress,
-                password: state.password,
-              ),
-            );
-          }
-
-          yield state.copyWith(
-            isSubmitting: false,
-            showErrorMessages: true,
-            authFailureOrSuccessOption: some(failureOrSuccess),
+          failureOrSuccess = await authRepository.loginOrganizer(
+            OrganizerLoginModel(
+              email: state.emailAddress,
+              password: state.password,
+            ),
           );
         }
-      },
-    );
+      } else {
+        // check if fields are empty
+        final isEmailEmpty = state.emailAddress.isEmpty;
+        final isPasswordEmpty = state.password.isEmpty;
+
+        if (isEmailEmpty || isPasswordEmpty) {
+          failureOrSuccess = left(const AuthFailure.invalidInput());
+        } else {
+          failureOrSuccess = await authRepository.loginUser(
+            UserLoginModel(
+              email: state.emailAddress,
+              password: state.password,
+            ),
+          );
+        }
+      }
+      emit(
+        state.copyWith(
+          isSubmitting: true,
+          authFailureOrSuccessOption: some(failureOrSuccess),
+        ),
+      );
+    });
   }
 }

@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'package:frontend/domain/user/user.dart';
+
 import 'package:http/http.dart' as client;
 
 import 'package:dartz/dartz.dart';
@@ -9,27 +11,31 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:frontend/domain/auth/auth.dart';
 
 class AuthDataSource implements AuthRepository {
-  final API_URL = "dotenv.env['API_URL']";
+  final API_URL = "http://localhost:3000";
+  final Future<SharedPreferences> sharedPreferences =
+      SharedPreferences.getInstance();
 
   AuthDataSource();
 
   @override
-  Future<Either<AuthFailure, Unit>> loginUser(
+  Future<Either<AuthFailure, Object>> loginUser(
       UserLoginModel userLoginModel) async {
     final response = await client.post(
-      Uri.parse('$API_URL/auth/login'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
-      body: json.encode(userLoginModel.toJson()),
+      Uri.parse('$API_URL/auth/user/signin'),
+      body: userLoginModel.toJson(),
     );
+    print(response.body);
 
     if (response.statusCode == 200) {
       // Save the JWT token to shared preferences
-      // await sharedPreferences.setString('jwtToken', response.body);
+      final SharedPreferences prefs = await sharedPreferences;
+      prefs.setString('jwt_token', json.decode(response.body)['access_token']);
+
+      // Save the user to local storage
+      print(json.decode(response.body));
 
       return Right(json.decode(response.body));
-    } else if (response.statusCode == 401) {
+    } else if (response.statusCode == 403) {
       return const Left(AuthFailure.invalidEmailAndPasswordCombination());
     } else {
       return const Left(AuthFailure.serverError());
@@ -37,15 +43,37 @@ class AuthDataSource implements AuthRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> createUser(
+  Future<Either<AuthFailure, Object>> createUser(
       UserCreateModel userCreateModel) async {
     print('Submitting to backend...');
     final response = await client.post(
-      Uri.parse('$API_URL/auth/register'),
+      Uri.parse('$API_URL/auth/user/signup'),
       body: userCreateModel.toJson(),
     );
 
-    if (response.statusCode == 200) {
+    print(response.statusCode);
+
+    print(response.body);
+
+    if (response.statusCode == 201) {
+      return Right(json.decode(response.body));
+    } else if (response.statusCode == 400) {
+      return const Left(AuthFailure.emailAlreadyInUse());
+    } else {
+      return const Left(AuthFailure.serverError());
+    }
+  }
+
+  // organizer register
+  @override
+  Future<Either<AuthFailure, Object>> createOrganizer(
+      OrganizerCreateModel organizerCreateModel) async {
+    final response = await client.post(
+      Uri.parse('$API_URL/auth/organizer/signup'),
+      body: organizerCreateModel.toJson(),
+    );
+
+    if (response.statusCode == 201) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(AuthFailure.emailAlreadyInUse());
@@ -55,22 +83,27 @@ class AuthDataSource implements AuthRepository {
   }
 
   @override
-  Future<Either<AuthFailure, Unit>> loginOrganizer(
+  Future<Either<AuthFailure, Object>> loginOrganizer(
       OrganizerLoginModel organizerLoginModel) async {
     final response = await client.post(
-      Uri.parse('$API_URL/auth/login/organizer'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
+      Uri.parse('$API_URL/auth/organizer/signin'),
       body: organizerLoginModel.toJson(),
     );
 
+    // print the userdata from 
+
+    print(response.statusCode);
+    print('noooo');
+
+    print(response.body);
+
     if (response.statusCode == 200) {
       // Save the JWT token to shared preferences
-      // await sharedPreferences.setString('jwtToken', response.body);
+      final SharedPreferences prefs = await sharedPreferences;
+      prefs.setString('jwt_token', json.decode(response.body)['access_token']);
 
       return Right(json.decode(response.body));
-    } else if (response.statusCode == 401) {
+    } else if (response.statusCode == 403) {
       return const Left(AuthFailure.invalidEmailAndPasswordCombination());
     } else {
       return const Left(AuthFailure.serverError());
@@ -80,7 +113,8 @@ class AuthDataSource implements AuthRepository {
   @override
   Future<void> logoutUser() async {
     // Remove the JWT token from shared preferences
-    // await sharedPreferences.remove('jwtToken');
+    SharedPreferences prefs = await sharedPreferences;
+    prefs.remove('jwt_token');
 
     final response = await client.post(
       Uri.parse('$API_URL/auth/logout'),
@@ -88,24 +122,6 @@ class AuthDataSource implements AuthRepository {
         'Content-Type': 'application/json; charset=UTF-8',
       },
     );
-  }
-
-  // organizer register
-  @override
-  Future<Either<AuthFailure, Unit>> createOrganizer(
-      OrganizerCreateModel organizerCreateModel) async {
-    final response = await client.post(
-      Uri.parse('$API_URL/auth/register/organizer'),
-      body: organizerCreateModel.toJson(),
-    );
-
-    if (response.statusCode == 200) {
-      return Right(json.decode(response.body));
-    } else if (response.statusCode == 400) {
-      return const Left(AuthFailure.emailAlreadyInUse());
-    } else {
-      return const Left(AuthFailure.serverError());
-    }
   }
 
   // organizer logout

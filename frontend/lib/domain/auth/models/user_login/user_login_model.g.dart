@@ -8,8 +8,8 @@ part of 'user_login_model.dart';
 
 _$_UserLoginModel _$$_UserLoginModelFromJson(Map<String, dynamic> json) =>
     _$_UserLoginModel(
-      email: EmailAddress.fromJson(json['email'] as Map<String, dynamic>),
-      password: Password.fromJson(json['password'] as Map<String, dynamic>),
+      email: json['email'] as String,
+      password: json['password'] as String,
     );
 
 Map<String, dynamic> _$$_UserLoginModelToJson(_$_UserLoginModel instance) =>

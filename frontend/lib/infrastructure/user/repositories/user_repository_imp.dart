@@ -24,7 +24,7 @@ class UserRepositoryImp implements UserRepository{
     return await userDataSource.updateUser(newUser);
   }
   @override
-  Future<Either<UserFailure,Unit>>deleteUser(String id) async {
+  Future<Either<UserFailure,Object>>deleteUser(String id) async {
     return await userDataSource.deleteUser(id);
   }
 }

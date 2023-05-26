@@ -19,7 +19,7 @@ class EventDataSource implements EventRepository {
   });
 
   @override
-  Future<Either<EventFailure, Unit>> createEvent(
+  Future<Either<EventFailure, Object>> createEvent(
       EventCreateModel eventCreateModel) async {
     final response = await client.post(
       Uri.parse('$API_URL/event'),
@@ -39,7 +39,7 @@ class EventDataSource implements EventRepository {
   }
 
   @override
-  Future<Either<EventFailure, Unit>> updateEvent(
+  Future<Either<EventFailure, Object>> updateEvent(
       String id, EventUpdateModel eventUpdateModel) async {
     final response = await client.put(
       Uri.parse('$API_URL/event/$id'),
@@ -59,7 +59,7 @@ class EventDataSource implements EventRepository {
   }
 
   @override
-  Future<Either<EventFailure, Unit>> deleteEvent(String id) async {
+  Future<Either<EventFailure, Object>> deleteEvent(String id) async {
     final response = await client.delete(
       Uri.parse('$API_URL/event/$id'),
       headers: <String, String>{
@@ -68,7 +68,7 @@ class EventDataSource implements EventRepository {
     );
 
     if (response.statusCode == 200) {
-      return const Right(unit);
+      return const Right(Object);
     } else if (response.statusCode == 400) {
       return const Left(EventFailure.invalidEvent());
     } else {
@@ -77,7 +77,7 @@ class EventDataSource implements EventRepository {
   }
 
   @override
-  Future<Either<EventFailure, List<Unit>>> getAllEvents() async {
+  Future<Either<EventFailure, List<Object>>> getAllEvents() async {
     try {
       final response = await client.get(
         Uri.parse('$API_URL/event'),
@@ -94,14 +94,14 @@ class EventDataSource implements EventRepository {
         allEvents.add(event as EventModel);
       }
 
-      return Right(allEvents as List<Unit>);
+      return Right(allEvents as List<Object>);
     } catch (e) {
       return const Left(EventFailure.unableToGet());
     }
   }
 
   @override
-  Future<Either<EventFailure, Unit>> getEvent(String id) async {
+  Future<Either<EventFailure, Object>> getEvent(String id) async {
     // Implementation of the getEvent method goes here
     try {
       // Get the event data from the API
@@ -137,7 +137,7 @@ class EventDataSource implements EventRepository {
           endTime: eventDataMap['endTime']);
 
       // Return the EventModel object wrapped in a Right Either object
-      return Right(eventModel as Unit);
+      return Right(eventModel as Object);
     } catch (e) {
       // If there is an error getting the event data from the API, return a Left Either object
       // with an EventFailure object containing an error message

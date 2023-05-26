@@ -77,7 +77,7 @@ class UserDataSource implements UserRepository {
   }
 
   @override
-  Future<Either<UserFailure, Unit>> deleteUser(String id) async {
+  Future<Either<UserFailure, Object>> deleteUser(String id) async {
     final response = await client.delete(
       Uri.parse('$API_URL/user/$id'),
       headers: <String, String>{
@@ -85,7 +85,7 @@ class UserDataSource implements UserRepository {
       },
     );
     if (response.statusCode == 200) {
-      return const Right(unit);
+      return const Right(Object);
     } else if (response.statusCode == 400) {
       return const Left(UserFailure.invalidUser());
     } else {

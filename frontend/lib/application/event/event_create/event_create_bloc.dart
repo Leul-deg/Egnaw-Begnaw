@@ -105,8 +105,8 @@ class EventCreateBloc extends Bloc<EventCreateEvent, EventCreateState> {
                 title: title,
               );
 
-              final Either<EventFailure, Unit> failureOrSuccess =
-                  (await _eventRepository.createEvent(event)) as Either<EventFailure, Unit>;
+              final Either<EventFailure, Object> failureOrSuccess =
+                  (await _eventRepository.createEvent(event)) as Either<EventFailure, Object>;
 
               yield state.copyWith(
                 isLoading: false,

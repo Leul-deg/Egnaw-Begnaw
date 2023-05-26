@@ -9,10 +9,9 @@ class UserCreateState with _$UserCreateState {
     required bool isOrganizer,
     required String emailAddress,
     required String password,
-    required String phoneNumber,
     required bool isSubmitting,
     required bool showErrorMessages,
-    required Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption,
+    required Option<Either<AuthFailure, Object>> authFailureOrSuccessOption,
   }) = _UserCreateState;
 
   factory UserCreateState.initial() => UserCreateState(
@@ -22,7 +21,6 @@ class UserCreateState with _$UserCreateState {
         organizerName: '',
         emailAddress: '',
         password: '',
-        phoneNumber: '',
         isSubmitting: false,
         showErrorMessages: false,
         authFailureOrSuccessOption: none(),

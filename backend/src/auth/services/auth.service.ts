@@ -49,15 +49,12 @@ export class AuthService {
 
   async signin(dto: AuthDto) {
 
-    //find user by username
+    //find user by email
 
-    const filter = {userName: dto.userName}
+    const filter = {email: dto.email}
     console.log(dto , "the dto upon signin fucked")
     const cur_user = await this.userModel.findOne(filter)
     console.log(cur_user,"curr user here")
-    //username not found
-    // const newEvent = await this.eventModel.findOne({ _id: id });
-    //         return newEvent;
     if (!cur_user){
       throw new ForbiddenException(
                 'Credentials incorrect',
@@ -75,15 +72,15 @@ export class AuthService {
       throw new ForbiddenException(
         'Credentials incorrect upon signin',
       );
-    return this.signToken(dto.userName);
+    return this.signToken(dto.email);
 
 }
 
 async signToken(
-  username: string,
+  email: string,
 ): Promise<{ access_token: string }> {
   const payload = {
-    username,
+    email,
   };
   const secret = 'JWT_SECRET';
 
@@ -114,10 +111,12 @@ async organizerSignup(dto: CreateOrganizerDTO) {
 
 // function for organizer signin
 async organizerSignin(dto: CreateOrganizerDTO) {
+  console.log("got called", dto);
   const filter = {email: dto.email}
   // find new orgainzer by email
-  console.log(dto , "the dto upon organizer signin fucked")
   const cur_organizer = await this.organizerModel.findOne(filter);
+
+  console.log(cur_organizer, 'hereerer');
  
   if (!cur_organizer){
     throw new ForbiddenException(

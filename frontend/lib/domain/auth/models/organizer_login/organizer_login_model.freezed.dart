@@ -20,8 +20,8 @@ OrganizerLoginModel _$OrganizerLoginModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$OrganizerLoginModel {
-  EmailAddress get email => throw _privateConstructorUsedError;
-  Password get password => throw _privateConstructorUsedError;
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $OrganizerLoginModelCopyWith<$Res> {
           OrganizerLoginModel value, $Res Function(OrganizerLoginModel) then) =
       _$OrganizerLoginModelCopyWithImpl<$Res, OrganizerLoginModel>;
   @useResult
-  $Res call({EmailAddress email, Password password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -58,11 +58,11 @@ class _$OrganizerLoginModelCopyWithImpl<$Res, $Val extends OrganizerLoginModel>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
     ) as $Val);
   }
 }
@@ -75,7 +75,7 @@ abstract class _$$_OrganizerLoginModelCopyWith<$Res>
       __$$_OrganizerLoginModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({EmailAddress email, Password password});
+  $Res call({String email, String password});
 }
 
 /// @nodoc
@@ -96,11 +96,11 @@ class __$$_OrganizerLoginModelCopyWithImpl<$Res>
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
-              as EmailAddress,
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
-              as Password,
+              as String,
     ));
   }
 }
@@ -114,9 +114,9 @@ class _$_OrganizerLoginModel implements _OrganizerLoginModel {
       _$$_OrganizerLoginModelFromJson(json);
 
   @override
-  final EmailAddress email;
+  final String email;
   @override
-  final Password password;
+  final String password;
 
   @override
   String toString() {
@@ -154,16 +154,16 @@ class _$_OrganizerLoginModel implements _OrganizerLoginModel {
 
 abstract class _OrganizerLoginModel implements OrganizerLoginModel {
   const factory _OrganizerLoginModel(
-      {required final EmailAddress email,
-      required final Password password}) = _$_OrganizerLoginModel;
+      {required final String email,
+      required final String password}) = _$_OrganizerLoginModel;
 
   factory _OrganizerLoginModel.fromJson(Map<String, dynamic> json) =
       _$_OrganizerLoginModel.fromJson;
 
   @override
-  EmailAddress get email;
+  String get email;
   @override
-  Password get password;
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$_OrganizerLoginModelCopyWith<_$_OrganizerLoginModel> get copyWith =>

@@ -24,7 +24,6 @@ mixin _$UserCreateModel {
   String get lastName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,12 +37,7 @@ abstract class $UserCreateModelCopyWith<$Res> {
           UserCreateModel value, $Res Function(UserCreateModel) then) =
       _$UserCreateModelCopyWithImpl<$Res, UserCreateModel>;
   @useResult
-  $Res call(
-      {String firstName,
-      String lastName,
-      String email,
-      String password,
-      String phoneNumber});
+  $Res call({String firstName, String lastName, String email, String password});
 }
 
 /// @nodoc
@@ -63,7 +57,6 @@ class _$UserCreateModelCopyWithImpl<$Res, $Val extends UserCreateModel>
     Object? lastName = null,
     Object? email = null,
     Object? password = null,
-    Object? phoneNumber = null,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -82,10 +75,6 @@ class _$UserCreateModelCopyWithImpl<$Res, $Val extends UserCreateModel>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -98,12 +87,7 @@ abstract class _$$_UserCreateModelCopyWith<$Res>
       __$$_UserCreateModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String firstName,
-      String lastName,
-      String email,
-      String password,
-      String phoneNumber});
+  $Res call({String firstName, String lastName, String email, String password});
 }
 
 /// @nodoc
@@ -121,7 +105,6 @@ class __$$_UserCreateModelCopyWithImpl<$Res>
     Object? lastName = null,
     Object? email = null,
     Object? password = null,
-    Object? phoneNumber = null,
   }) {
     return _then(_$_UserCreateModel(
       firstName: null == firstName
@@ -140,10 +123,6 @@ class __$$_UserCreateModelCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -155,8 +134,7 @@ class _$_UserCreateModel implements _UserCreateModel {
       {required this.firstName,
       required this.lastName,
       required this.email,
-      required this.password,
-      required this.phoneNumber});
+      required this.password});
 
   factory _$_UserCreateModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserCreateModelFromJson(json);
@@ -169,12 +147,10 @@ class _$_UserCreateModel implements _UserCreateModel {
   final String email;
   @override
   final String password;
-  @override
-  final String phoneNumber;
 
   @override
   String toString() {
-    return 'UserCreateModel(firstName: $firstName, lastName: $lastName, email: $email, password: $password, phoneNumber: $phoneNumber)';
+    return 'UserCreateModel(firstName: $firstName, lastName: $lastName, email: $email, password: $password)';
   }
 
   @override
@@ -188,15 +164,13 @@ class _$_UserCreateModel implements _UserCreateModel {
                 other.lastName == lastName) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber));
+                other.password == password));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, firstName, lastName, email, password, phoneNumber);
+  int get hashCode =>
+      Object.hash(runtimeType, firstName, lastName, email, password);
 
   @JsonKey(ignore: true)
   @override
@@ -217,8 +191,7 @@ abstract class _UserCreateModel implements UserCreateModel {
       {required final String firstName,
       required final String lastName,
       required final String email,
-      required final String password,
-      required final String phoneNumber}) = _$_UserCreateModel;
+      required final String password}) = _$_UserCreateModel;
 
   factory _UserCreateModel.fromJson(Map<String, dynamic> json) =
       _$_UserCreateModel.fromJson;
@@ -231,8 +204,6 @@ abstract class _UserCreateModel implements UserCreateModel {
   String get email;
   @override
   String get password;
-  @override
-  String get phoneNumber;
   @override
   @JsonKey(ignore: true)
   _$$_UserCreateModelCopyWith<_$_UserCreateModel> get copyWith =>

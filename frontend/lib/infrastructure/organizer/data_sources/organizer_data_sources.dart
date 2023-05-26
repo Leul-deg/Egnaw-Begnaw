@@ -116,7 +116,7 @@ class OrganizerDataSource implements OrganizerRepository {
   }
 
   @override
-  Future<Either<OrganizerFailure, Unit>> deleteOrganizer(String id) async {
+  Future<Either<OrganizerFailure, Object>> deleteOrganizer(String id) async {
     final response = await client.delete(
       Uri.parse('$API_URL/organizer/$id'),
       headers: <String, String>{
@@ -124,7 +124,7 @@ class OrganizerDataSource implements OrganizerRepository {
       },
     );
     if (response.statusCode == 200) {
-      return const Right(unit);
+      return const Right(Object);
     } else if (response.statusCode == 400) {
       return const Left(OrganizerFailure.invalidOrganizer());
     } else {

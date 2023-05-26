@@ -25,10 +25,10 @@ export class JwtStrategy extends PassportStrategy(
   }
 
   async validate(payload: {
-    username: string;
+    email: string;
   }) {
     
-    const filter = {userName:payload.username}
+    const filter = {email:payload.email}
     console.log(filter , "filter oooojh");
     const user =  this.userModel.findOne(filter)
     if(!user){

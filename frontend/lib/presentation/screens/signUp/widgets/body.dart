@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/application/auth/user_create/user_create_bloc.dart';
 import '../../login/loginScreen.dart';
-import './signUpBtn.dart';
 import './signUpWithGoogleBtn.dart';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Body extends StatefulWidget {
@@ -17,7 +15,6 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   bool isLoginPage = false;
   bool isPasswordSeen = true;
-  bool _isChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -69,8 +66,12 @@ class _BodyState extends State<Body> {
                         );
                       },
                       (_) {
-                        // if user creation is successful, navigate to login page
-                        print('User Created');
+                        // show snack bar if user creation is successful
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('User Created Successfully'),
+                          ),
+                        );
                       },
                     ),
                   );

@@ -316,7 +316,7 @@ mixin _$TicketCreateState {
   bool get isLoading => throw _privateConstructorUsedError;
   String? get userId => throw _privateConstructorUsedError;
   String? get eventId => throw _privateConstructorUsedError;
-  Option<Either<TicketFailure, Unit>> get createFailureOrSuccessOption =>
+  Option<Either<TicketFailure, Object>> get createFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -334,7 +334,7 @@ abstract class $TicketCreateStateCopyWith<$Res> {
       {bool isLoading,
       String? userId,
       String? eventId,
-      Option<Either<TicketFailure, Unit>> createFailureOrSuccessOption});
+      Option<Either<TicketFailure, Object>> createFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -371,7 +371,7 @@ class _$TicketCreateStateCopyWithImpl<$Res, $Val extends TicketCreateState>
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<TicketFailure, Unit>>,
+              as Option<Either<TicketFailure, Object>>,
     ) as $Val);
   }
 }
@@ -388,7 +388,7 @@ abstract class _$$_TicketCreateStateCopyWith<$Res>
       {bool isLoading,
       String? userId,
       String? eventId,
-      Option<Either<TicketFailure, Unit>> createFailureOrSuccessOption});
+      Option<Either<TicketFailure, Object>> createFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -423,7 +423,7 @@ class __$$_TicketCreateStateCopyWithImpl<$Res>
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<TicketFailure, Unit>>,
+              as Option<Either<TicketFailure, Object>>,
     ));
   }
 }
@@ -444,7 +444,7 @@ class _$_TicketCreateState implements _TicketCreateState {
   @override
   final String? eventId;
   @override
-  final Option<Either<TicketFailure, Unit>> createFailureOrSuccessOption;
+  final Option<Either<TicketFailure, Object>> createFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -483,7 +483,7 @@ abstract class _TicketCreateState implements TicketCreateState {
       {required final bool isLoading,
       required final String? userId,
       required final String? eventId,
-      required final Option<Either<TicketFailure, Unit>>
+      required final Option<Either<TicketFailure, Object>>
           createFailureOrSuccessOption}) = _$_TicketCreateState;
 
   @override
@@ -493,7 +493,7 @@ abstract class _TicketCreateState implements TicketCreateState {
   @override
   String? get eventId;
   @override
-  Option<Either<TicketFailure, Unit>> get createFailureOrSuccessOption;
+  Option<Either<TicketFailure, Object>> get createFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_TicketCreateStateCopyWith<_$_TicketCreateState> get copyWith =>

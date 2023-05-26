@@ -810,7 +810,7 @@ mixin _$OrganizerCreateState {
   String get organizationName => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showErrorMessages => throw _privateConstructorUsedError;
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption =>
+  Option<Either<AuthFailure, Object>> get authFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -830,7 +830,7 @@ abstract class $OrganizerCreateStateCopyWith<$Res> {
       String organizationName,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, Object>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -878,7 +878,7 @@ class _$OrganizerCreateStateCopyWithImpl<$Res,
       authFailureOrSuccessOption: null == authFailureOrSuccessOption
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<AuthFailure, Object>>,
     ) as $Val);
   }
 }
@@ -897,7 +897,7 @@ abstract class _$$_OrganizerCreateStateCopyWith<$Res>
       String organizationName,
       bool isSubmitting,
       bool showErrorMessages,
-      Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption});
+      Option<Either<AuthFailure, Object>> authFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -942,7 +942,7 @@ class __$$_OrganizerCreateStateCopyWithImpl<$Res>
       authFailureOrSuccessOption: null == authFailureOrSuccessOption
           ? _value.authFailureOrSuccessOption
           : authFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<AuthFailure, Unit>>,
+              as Option<Either<AuthFailure, Object>>,
     ));
   }
 }
@@ -969,7 +969,7 @@ class _$_OrganizerCreateState implements _OrganizerCreateState {
   @override
   final bool showErrorMessages;
   @override
-  final Option<Either<AuthFailure, Unit>> authFailureOrSuccessOption;
+  final Option<Either<AuthFailure, Object>> authFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -1022,7 +1022,7 @@ abstract class _OrganizerCreateState implements OrganizerCreateState {
       required final String organizationName,
       required final bool isSubmitting,
       required final bool showErrorMessages,
-      required final Option<Either<AuthFailure, Unit>>
+      required final Option<Either<AuthFailure, Object>>
           authFailureOrSuccessOption}) = _$_OrganizerCreateState;
 
   @override
@@ -1036,7 +1036,7 @@ abstract class _OrganizerCreateState implements OrganizerCreateState {
   @override
   bool get showErrorMessages;
   @override
-  Option<Either<AuthFailure, Unit>> get authFailureOrSuccessOption;
+  Option<Either<AuthFailure, Object>> get authFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_OrganizerCreateStateCopyWith<_$_OrganizerCreateState> get copyWith =>
