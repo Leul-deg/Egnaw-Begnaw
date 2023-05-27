@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../signUp/signUpScreen.dart';
+
 import './loginBtn.dart';
 import './loginWithGoogleBtn.dart';
+import 'package:go_router/go_router.dart';
+import '../../routes/appRouteConstants.dart';
+
 // import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
@@ -22,11 +25,11 @@ class _BodyState extends State<Body> {
       child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('loginBackground.jpg'),
-                fit: BoxFit.cover,
-              ),
-              ),
+            image: DecorationImage(
+              image: AssetImage('loginBackground.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: Column(
@@ -117,11 +120,8 @@ class _BodyState extends State<Body> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const SignUp()),
-                                  );
+                                  GoRouter.of(context)
+                        .pushNamed(MyAppRouteConstants.signupRouteName);
                                 },
                                 child: const Text(
                                   'Sign Up',

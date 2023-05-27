@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import '../../login/loginScreen.dart';
+
 import './signUpBtn.dart';
 import './signUpWithGoogleBtn.dart';
+import 'package:go_router/go_router.dart';
+import '../../routes/appRouteConstants.dart';
+
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -214,11 +217,8 @@ class _BodyState extends State<Body> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const Login()),
-                                  );
+                                  GoRouter.of(context)
+                        .pushNamed(MyAppRouteConstants.loginRouteName);
                                 },
                                 child: const Text(
                                   'Log in',
