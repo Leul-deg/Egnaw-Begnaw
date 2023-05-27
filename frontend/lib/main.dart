@@ -1,27 +1,31 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
-
 import 'package:flutter/material.dart';
-import './presentation/screens/signUp/signUpScreen.dart';
 
-void main() async {
-  // await dotenv.load(fileName: "./.env");
+import './constants.dart';
+
+import 'package:shared_preferences/shared_preferences.dart';
+import './presentation/screens/routes/appRouteConfig.dart';
+
+
+SharedPreferences? prefs;
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  prefs = await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 
-// MyApp widget
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'MyApp',
-      home: Scaffold(
-        body: Center(
-          child: SignUp(),
-        ),
-      ),
+    return MaterialApp.router(
+      title: 'Flutter Welcome',
+      theme: ThemeData(
+          primaryColor: kPrimaryColor, scaffoldBackgroundColor: Colors.white),
+      routeInformationParser: MyAppRoute().router.routeInformationParser,
+      routerDelegate: MyAppRoute().router.routerDelegate,
     );
   }
 }
