@@ -12,7 +12,7 @@ import '../user/eventComment/eventComment.dart';
 
 class MyAppRoute {
   final GoRouter router = GoRouter(
-    initialLocation: '/userscreen',
+    initialLocation: '/',
     routes: [
       // GoRoute(
       //   name: MyAppRouteConstants.onBoardingRouteName,
@@ -30,7 +30,7 @@ class MyAppRoute {
       ),
       GoRoute(
         name: MyAppRouteConstants.userScreenRouteName,
-        path: '/userscreen',
+        path: '/',
         pageBuilder: (context, state) {
           return MaterialPage(child: UserScreen());
         },
