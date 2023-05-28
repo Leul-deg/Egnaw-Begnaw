@@ -31,7 +31,8 @@ export const EventSchema = new mongoose.Schema({
     ticketsSold: {
         type: Number,
         required: true,
-    }
+    },
+    placeImg: { type: String }
 })
 
 export const Event = mongoose.model('Event', EventSchema);

@@ -15,6 +15,7 @@ import { TicketModule } from './ticket/ticket.module';
 
 
 
+
 @Module({
   imports: [
     MongooseModule.forRoot(
@@ -28,7 +29,7 @@ import { TicketModule } from './ticket/ticket.module';
     ReviewModule,
     RouterModule.register([
       {path: 'event', module: EventModule},
-      {path: 'users', module: UserModule},
+      {path: 'user', module: UserModule},
       {path: 'auth', module: AuthModule},
       {path: 'organizer', module: OrganizerModule},
 
