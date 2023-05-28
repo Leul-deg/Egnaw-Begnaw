@@ -13,6 +13,8 @@ part 'event_create_state.dart';
 class EventCreateBloc extends Bloc<EventCreateEvent, EventCreateState> {
   final EventRepository _eventRepository;
 
+  final local_storage = LocalStorage.LocalDatabase.getInstance;
+
   EventCreateBloc(this._eventRepository) : super(EventCreateState.initial()) {
     on<_StartTimeChanged>((event, emit) {
       emit(state.copyWith(startTime: event.startTime));
@@ -47,7 +49,7 @@ class EventCreateBloc extends Bloc<EventCreateEvent, EventCreateState> {
 
       emit(state.copyWith(isLoading: true));
 
-      final organizerId = await LocalStorage.getUserId();
+      final organizerId = await local_storage.getUserId();
 
       // check if the fields are valid
       final startTimeIsValid = state.startTime != null;

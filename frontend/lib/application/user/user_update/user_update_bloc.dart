@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 
 import 'package:frontend/domain/user/user.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart' as local_storage;
+import 'package:frontend/data/local/local_database/local_storage.dart';
 
 part 'user_update_event.dart';
 part 'user_update_state.dart';
@@ -13,6 +13,8 @@ part 'user_update_bloc.freezed.dart';
 
 class UserUpdateBloc extends Bloc<UserUpdateEvent, UserUpdateState> {
   final UserRepository userRepository;
+  final local_storage = LocalDatabase.getInstance;
+  
   UserUpdateBloc(this.userRepository) : super(UserUpdateState.initial()) {
 
     on<_FirstNameChanged>((event, emit) async {

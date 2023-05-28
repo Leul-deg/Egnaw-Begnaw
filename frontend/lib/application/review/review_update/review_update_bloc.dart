@@ -15,6 +15,8 @@ part 'review_update_bloc.freezed.dart';
 
 class ReviewUpdateBloc extends Bloc<ReviewUpdateEvent, ReviewUpdateState> {
   final ReviewRepository reviewRepository;
+
+  final LocalDatabase local_storage = LocalDatabase.getInstance;
   ReviewUpdateBloc(this.reviewRepository) : super(ReviewUpdateState.initial());
 
   @override
@@ -38,7 +40,7 @@ class ReviewUpdateBloc extends Bloc<ReviewUpdateEvent, ReviewUpdateState> {
           if (state.reviewText == '') {
             failureOrSuccess = left(const ReviewFailure.invalidReview());
           } else {
-            final String? userId = await getUserId();
+            final String? userId = await local_storage.getUserId();
             final String? reviewId = e.reviewId;
 
             if (userId == null || reviewId == null) {
