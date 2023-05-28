@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:frontend/application/auth/user_create/user_create_bloc.dart';
 import 'package:frontend/domain/auth/auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import './widgets/body.dart';
+import 'components/body.dart';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

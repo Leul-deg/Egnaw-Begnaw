@@ -6,10 +6,13 @@ import '../welcome/welcomeScreen.dart';
 import '../login/loginScreen.dart';
 import '../signUp/signUpScreen.dart';
 import '../errorPage/errorPage.dart';
+import '../user/userScreen.dart';
+import '../user/eventDetail/eventDetail.dart';
+import '../user/eventComment/eventComment.dart';
 
 class MyAppRoute {
   final GoRouter router = GoRouter(
-    initialLocation: '/',
+    initialLocation: '/userscreen',
     routes: [
       // GoRoute(
       //   name: MyAppRouteConstants.onBoardingRouteName,
@@ -20,9 +23,30 @@ class MyAppRoute {
       // ),
       GoRoute(
         name: MyAppRouteConstants.welcomeRouteName,
-        path: '/',
+        path: '/welcome',
         pageBuilder: (context, state) {
           return MaterialPage(child: Welcome());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.userScreenRouteName,
+        path: '/userscreen',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: UserScreen());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.eventCommentRouteName,
+        path: '/eventComment',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: EventComment());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.eventDetailRouteName,
+        path: '/eventDetail',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: EventDetail());
         },
       ),
       GoRoute(

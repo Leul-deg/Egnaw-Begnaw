@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../../../constants.dart';
+import '../../../constants.dart';
 import '../../routes/appRouteConstants.dart';
 
 class Body extends StatelessWidget {
