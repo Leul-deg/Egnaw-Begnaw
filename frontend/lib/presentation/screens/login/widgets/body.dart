@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../signUp/signUpScreen.dart';
+
 import './loginBtn.dart';
+import 'package:go_router/go_router.dart';
+import '../../routes/appRouteConstants.dart';
 import './loginWithGoogleBtn.dart';
 // import 'package:google_fonts/google_fonts.dart';
 
@@ -223,12 +225,8 @@ class _BodyState extends State<Body> {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const SignUp()),
-                                      );
+                                      GoRouter.of(context).pushNamed(
+                                          MyAppRouteConstants.signupRouteName);
                                     },
                                     child: const Text(
                                       'Sign Up',
