@@ -14,7 +14,11 @@ export const OrganizerSchema = new mongoose.Schema({
         required: true,
         unique: true,
         match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-    }
+    },
+    profileImage: {
+        type: String
+        
+},
 });
 
 export const Organizer = mongoose.model('Organizer', OrganizerSchema);

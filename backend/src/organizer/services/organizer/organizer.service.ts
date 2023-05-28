@@ -31,6 +31,7 @@ export class OrganizerService {
     async updateOrganizer(id: String, organizer: UpdateOrganizerDTO): Promise<OrganizerI> {
         try {
             const newOrganizer = await this.organizerModel.findOneAndUpdate({ _id: id }, organizer).exec();
+            console.log(newOrganizer);
             return newOrganizer;
         } catch (error) {
             throw error;

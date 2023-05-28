@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-
-import 'constants.dart';
-
+import 'presentation/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import './presentation/screens/routes/appRouteConfig.dart';
+import 'presentation/screens/routes/appRouteConfig.dart';
 
 SharedPreferences? prefs;
 

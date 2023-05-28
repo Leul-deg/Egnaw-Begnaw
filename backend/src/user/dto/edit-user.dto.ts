@@ -19,4 +19,8 @@ export class EditUserDto {
 
   @IsString()
   id?: string;
+
+  @IsString()
+  @IsOptional()
+  profileImage?: string;
 }
