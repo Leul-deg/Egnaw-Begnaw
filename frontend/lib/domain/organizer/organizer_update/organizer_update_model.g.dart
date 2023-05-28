@@ -9,13 +9,15 @@ part of 'organizer_update_model.dart';
 _$_OrganizerUpdateModel _$$_OrganizerUpdateModelFromJson(
         Map<String, dynamic> json) =>
     _$_OrganizerUpdateModel(
-      organizerName: json['organizerName'] as String,
-      id: json['id'] as String,
+      organizerName: json['organizerName'] as String?,
+      email: json['email'] as String?,
+      password: json['password'] as String?,
     );
 
 Map<String, dynamic> _$$_OrganizerUpdateModelToJson(
         _$_OrganizerUpdateModel instance) =>
     <String, dynamic>{
       'organizerName': instance.organizerName,
-      'id': instance.id,
+      'email': instance.email,
+      'password': instance.password,
     };

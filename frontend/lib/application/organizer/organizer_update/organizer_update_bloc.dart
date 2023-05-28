@@ -6,62 +6,65 @@ import 'package:frontend/domain/auth/auth.dart';
 
 import 'package:frontend/domain/organizer/organizer.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart';
+import 'package:frontend/data/local/local_database/local_storage.dart'
+    as local_storage;
 
 import 'package:frontend/data/local/shared_pref/shared_pref.dart';
 
 part 'organizer_update_event.dart';
 part 'organizer_update_state.dart';
 part 'organizer_update_bloc.freezed.dart';
-class OrganizerUpdateBloc extends Bloc<OrganizerUpdateEvent , OrganizerUpdateState>{
 
+class OrganizerUpdateBloc
+    extends Bloc<OrganizerUpdateEvent, OrganizerUpdateState> {
   final OrganizerRepository organizerRepository;
-  OrganizerUpdateBloc(this.organizerRepository) : super(OrganizerUpdateState.initial());
+  OrganizerUpdateBloc(this.organizerRepository)
+      : super(OrganizerUpdateState.initial()) {
+    on<_OrganizationNameChanged>((event, emit) {
+      emit(state.copyWith(
+        organizationName: event.organizationName,
+        updateFailureOrSuccessOption: none(),
+      ));
+    });
 
-  @override
-  Stream<OrganizerUpdateState> mapEventToState(
-    OrganizerUpdateEvent event,
-  ) async* {
-    yield* event.map(
-        // started event
-        started: (e) async* {},
-        // organizationNameChanged event
-        organizationNameChanged: (e) async* {
-          yield state.copyWith(
-            organizationName: e.organizationName,
-            updateFailureOrSuccessOption: none(),
-          );
-        },
-        // updateOrganizerPressed event
-        updateOrganizerPressed: (e) async* {
-          Either<OrganizerFailure, Object>? failureOrSuccess;
+    on<_EmailChanged>((event, emit) {
+      emit(state.copyWith(
+        email: event.email,
+        updateFailureOrSuccessOption: none(),
+      ));
+    });
 
-          if (state.organizationName == '') {
-            failureOrSuccess = left(const OrganizerFailure.invalidOrganizer());
-          } else {
-            final String? userId = await getUserId();
-            final String? organizerId = e.organizerId;
+    on<_PasswordChanged>((event, emit) {
+      emit(state.copyWith(
+        password: event.password,
+        updateFailureOrSuccessOption: none(),
+      ));
+    });
 
-            if (userId == null || organizerId == null) {
-              yield state.copyWith(
-                isLoading: false,
-                updateFailureOrSuccessOption: some(left(const OrganizerFailure.invalidOrganizer())),
-              );
-              return;
-            }
+    on<_UpdateOrganizerPressed>((event, emit) async {
+      emit(state.copyWith(
+        isLoading: true,
+        updateFailureOrSuccessOption: none(),
+      ));
 
-            final OrganizerUpdateModel organizer = OrganizerUpdateModel(
-              organizerName: state.organizationName, id: '',
-            );
+      final organizatioNameIsValid = state.organizationName != null &&
+          state.organizationName!.isNotEmpty;
+      final emailIsValid = state.email != null && state.email!.isNotEmpty;
 
-            failureOrSuccess = (await organizerRepository.updateOrganizer(organizer)) as Either<OrganizerFailure, Object>?;
-          }
+      final organizerId = await local_storage.getUserId();
 
-          yield state.copyWith(
-            isLoading: false,
-            updateFailureOrSuccessOption: optionOf(failureOrSuccess),
-          );
-        },
-    );
+      final failureOrSuccess = await organizerRepository.updateOrganizer(
+          event.organizerId,
+          OrganizerUpdateModel(
+            organizerName: state.organizationName,
+            email: state.email,
+            password: state.password,
+          ));
+
+      emit(state.copyWith(
+        isLoading: false,
+        updateFailureOrSuccessOption: optionOf(failureOrSuccess),
+      ));
+    });
   }
 }

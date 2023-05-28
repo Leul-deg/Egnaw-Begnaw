@@ -8,6 +8,6 @@ abstract class UserRepository {
   Future<Either<UserFailure, UserModel>> getUserData(String id);
   Future<Either<UserFailure, UserUpdateModel>> updateUserData(UserModel newData);
    Future<Either<UserFailure, List<UserModel>>> getAllUsers(UserModel allUser);
-   Future<Either<UserFailure,UserUpdateModel>> updateUser(UserUpdateModel newUser);
+   Future<Either<UserFailure,UserUpdateModel>> updateUser(String userId, UserUpdateModel newUser);
    Future<Either<UserFailure,Object>>deleteUser(String id);
 }

@@ -8,12 +8,12 @@ part 'event_create_model.g.dart';
 @freezed
 class EventCreateModel with _$EventCreateModel {
   const factory EventCreateModel({
-    required OrganizerId organizerId,
+    required String organizerId,
     required String description,
     required String title,
-    required Place place,
-    required StartTime startTime,
-    required EndTime endTime,
+    required String place,
+    required String startTime,
+    required String endTime,
     required int availableSeats,
     required int ticketsSold,
     required

@@ -19,24 +19,30 @@ mixin _$UserUpdateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
     required TResult Function(String userId) updateUserPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String name)? nameChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
     TResult? Function(String userId)? updateUserPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
     TResult Function(String userId)? updateUserPressed,
     required TResult orElse(),
   }) =>
@@ -44,24 +50,30 @@ mixin _$UserUpdateEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_UpdateUserPressed value) updateUserPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_UpdateUserPressed value)? updateUserPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_UpdateUserPressed value)? updateUserPressed,
     required TResult orElse(),
   }) =>
@@ -124,8 +136,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
     required TResult Function(String userId) updateUserPressed,
   }) {
     return started();
@@ -135,8 +149,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String name)? nameChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
     TResult? Function(String userId)? updateUserPressed,
   }) {
     return started?.call();
@@ -146,8 +162,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
     TResult Function(String userId)? updateUserPressed,
     required TResult orElse(),
   }) {
@@ -161,8 +179,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_UpdateUserPressed value) updateUserPressed,
   }) {
     return started(this);
@@ -172,8 +192,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_UpdateUserPressed value)? updateUserPressed,
   }) {
     return started?.call(this);
@@ -183,8 +205,10 @@ class _$_Started implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_UpdateUserPressed value)? updateUserPressed,
     required TResult orElse(),
   }) {
@@ -200,31 +224,31 @@ abstract class _Started implements UserUpdateEvent {
 }
 
 /// @nodoc
-abstract class _$$_NameChangedCopyWith<$Res> {
-  factory _$$_NameChangedCopyWith(
-          _$_NameChanged value, $Res Function(_$_NameChanged) then) =
-      __$$_NameChangedCopyWithImpl<$Res>;
+abstract class _$$_FirstNameChangedCopyWith<$Res> {
+  factory _$$_FirstNameChangedCopyWith(
+          _$_FirstNameChanged value, $Res Function(_$_FirstNameChanged) then) =
+      __$$_FirstNameChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String name});
+  $Res call({String firstName});
 }
 
 /// @nodoc
-class __$$_NameChangedCopyWithImpl<$Res>
-    extends _$UserUpdateEventCopyWithImpl<$Res, _$_NameChanged>
-    implements _$$_NameChangedCopyWith<$Res> {
-  __$$_NameChangedCopyWithImpl(
-      _$_NameChanged _value, $Res Function(_$_NameChanged) _then)
+class __$$_FirstNameChangedCopyWithImpl<$Res>
+    extends _$UserUpdateEventCopyWithImpl<$Res, _$_FirstNameChanged>
+    implements _$$_FirstNameChangedCopyWith<$Res> {
+  __$$_FirstNameChangedCopyWithImpl(
+      _$_FirstNameChanged _value, $Res Function(_$_FirstNameChanged) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? name = null,
+    Object? firstName = null,
   }) {
-    return _then(_$_NameChanged(
-      null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+    return _then(_$_FirstNameChanged(
+      null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -232,67 +256,74 @@ class __$$_NameChangedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_NameChanged implements _NameChanged {
-  const _$_NameChanged(this.name);
+class _$_FirstNameChanged implements _FirstNameChanged {
+  const _$_FirstNameChanged(this.firstName);
 
   @override
-  final String name;
+  final String firstName;
 
   @override
   String toString() {
-    return 'UserUpdateEvent.nameChanged(name: $name)';
+    return 'UserUpdateEvent.firstNameChanged(firstName: $firstName)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_NameChanged &&
-            (identical(other.name, name) || other.name == name));
+            other is _$_FirstNameChanged &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, name);
+  int get hashCode => Object.hash(runtimeType, firstName);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_NameChangedCopyWith<_$_NameChanged> get copyWith =>
-      __$$_NameChangedCopyWithImpl<_$_NameChanged>(this, _$identity);
+  _$$_FirstNameChangedCopyWith<_$_FirstNameChanged> get copyWith =>
+      __$$_FirstNameChangedCopyWithImpl<_$_FirstNameChanged>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
     required TResult Function(String userId) updateUserPressed,
   }) {
-    return nameChanged(name);
+    return firstNameChanged(firstName);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String name)? nameChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
     TResult? Function(String userId)? updateUserPressed,
   }) {
-    return nameChanged?.call(name);
+    return firstNameChanged?.call(firstName);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
     TResult Function(String userId)? updateUserPressed,
     required TResult orElse(),
   }) {
-    if (nameChanged != null) {
-      return nameChanged(name);
+    if (firstNameChanged != null) {
+      return firstNameChanged(firstName);
     }
     return orElse();
   }
@@ -301,46 +332,210 @@ class _$_NameChanged implements _NameChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_UpdateUserPressed value) updateUserPressed,
   }) {
-    return nameChanged(this);
+    return firstNameChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_UpdateUserPressed value)? updateUserPressed,
   }) {
-    return nameChanged?.call(this);
+    return firstNameChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_UpdateUserPressed value)? updateUserPressed,
     required TResult orElse(),
   }) {
-    if (nameChanged != null) {
-      return nameChanged(this);
+    if (firstNameChanged != null) {
+      return firstNameChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class _NameChanged implements UserUpdateEvent {
-  const factory _NameChanged(final String name) = _$_NameChanged;
+abstract class _FirstNameChanged implements UserUpdateEvent {
+  const factory _FirstNameChanged(final String firstName) = _$_FirstNameChanged;
 
-  String get name;
+  String get firstName;
   @JsonKey(ignore: true)
-  _$$_NameChangedCopyWith<_$_NameChanged> get copyWith =>
+  _$$_FirstNameChangedCopyWith<_$_FirstNameChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_LastNameChangedCopyWith<$Res> {
+  factory _$$_LastNameChangedCopyWith(
+          _$_LastNameChanged value, $Res Function(_$_LastNameChanged) then) =
+      __$$_LastNameChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String lastName});
+}
+
+/// @nodoc
+class __$$_LastNameChangedCopyWithImpl<$Res>
+    extends _$UserUpdateEventCopyWithImpl<$Res, _$_LastNameChanged>
+    implements _$$_LastNameChangedCopyWith<$Res> {
+  __$$_LastNameChangedCopyWithImpl(
+      _$_LastNameChanged _value, $Res Function(_$_LastNameChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lastName = null,
+  }) {
+    return _then(_$_LastNameChanged(
+      null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_LastNameChanged implements _LastNameChanged {
+  const _$_LastNameChanged(this.lastName);
+
+  @override
+  final String lastName;
+
+  @override
+  String toString() {
+    return 'UserUpdateEvent.lastNameChanged(lastName: $lastName)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_LastNameChanged &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, lastName);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_LastNameChangedCopyWith<_$_LastNameChanged> get copyWith =>
+      __$$_LastNameChangedCopyWithImpl<_$_LastNameChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String lastName) lastNameChanged,
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function(String userId) updateUserPressed,
+  }) {
+    return lastNameChanged(lastName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String lastName)? lastNameChanged,
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function(String userId)? updateUserPressed,
+  }) {
+    return lastNameChanged?.call(lastName);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
+    TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function(String userId)? updateUserPressed,
+    required TResult orElse(),
+  }) {
+    if (lastNameChanged != null) {
+      return lastNameChanged(lastName);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_UpdateUserPressed value) updateUserPressed,
+  }) {
+    return lastNameChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_UpdateUserPressed value)? updateUserPressed,
+  }) {
+    return lastNameChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_UpdateUserPressed value)? updateUserPressed,
+    required TResult orElse(),
+  }) {
+    if (lastNameChanged != null) {
+      return lastNameChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LastNameChanged implements UserUpdateEvent {
+  const factory _LastNameChanged(final String lastName) = _$_LastNameChanged;
+
+  String get lastName;
+  @JsonKey(ignore: true)
+  _$$_LastNameChangedCopyWith<_$_LastNameChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -409,8 +604,10 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
     required TResult Function(String userId) updateUserPressed,
   }) {
     return emailChanged(email);
@@ -420,8 +617,10 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String name)? nameChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
     TResult? Function(String userId)? updateUserPressed,
   }) {
     return emailChanged?.call(email);
@@ -431,8 +630,10 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
     TResult Function(String userId)? updateUserPressed,
     required TResult orElse(),
   }) {
@@ -446,8 +647,10 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_UpdateUserPressed value) updateUserPressed,
   }) {
     return emailChanged(this);
@@ -457,8 +660,10 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_UpdateUserPressed value)? updateUserPressed,
   }) {
     return emailChanged?.call(this);
@@ -468,8 +673,10 @@ class _$_EmailChanged implements _EmailChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_UpdateUserPressed value)? updateUserPressed,
     required TResult orElse(),
   }) {
@@ -486,6 +693,164 @@ abstract class _EmailChanged implements UserUpdateEvent {
   String get email;
   @JsonKey(ignore: true)
   _$$_EmailChangedCopyWith<_$_EmailChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PasswordChangedCopyWith<$Res> {
+  factory _$$_PasswordChangedCopyWith(
+          _$_PasswordChanged value, $Res Function(_$_PasswordChanged) then) =
+      __$$_PasswordChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String password});
+}
+
+/// @nodoc
+class __$$_PasswordChangedCopyWithImpl<$Res>
+    extends _$UserUpdateEventCopyWithImpl<$Res, _$_PasswordChanged>
+    implements _$$_PasswordChangedCopyWith<$Res> {
+  __$$_PasswordChangedCopyWithImpl(
+      _$_PasswordChanged _value, $Res Function(_$_PasswordChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? password = null,
+  }) {
+    return _then(_$_PasswordChanged(
+      null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PasswordChanged implements _PasswordChanged {
+  const _$_PasswordChanged(this.password);
+
+  @override
+  final String password;
+
+  @override
+  String toString() {
+    return 'UserUpdateEvent.passwordChanged(password: $password)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PasswordChanged &&
+            (identical(other.password, password) ||
+                other.password == password));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, password);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PasswordChangedCopyWith<_$_PasswordChanged> get copyWith =>
+      __$$_PasswordChangedCopyWithImpl<_$_PasswordChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String lastName) lastNameChanged,
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function(String userId) updateUserPressed,
+  }) {
+    return passwordChanged(password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String lastName)? lastNameChanged,
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function(String userId)? updateUserPressed,
+  }) {
+    return passwordChanged?.call(password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
+    TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function(String userId)? updateUserPressed,
+    required TResult orElse(),
+  }) {
+    if (passwordChanged != null) {
+      return passwordChanged(password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
+    required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
+    required TResult Function(_UpdateUserPressed value) updateUserPressed,
+  }) {
+    return passwordChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
+    TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
+    TResult? Function(_UpdateUserPressed value)? updateUserPressed,
+  }) {
+    return passwordChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
+    TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
+    TResult Function(_UpdateUserPressed value)? updateUserPressed,
+    required TResult orElse(),
+  }) {
+    if (passwordChanged != null) {
+      return passwordChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PasswordChanged implements UserUpdateEvent {
+  const factory _PasswordChanged(final String password) = _$_PasswordChanged;
+
+  String get password;
+  @JsonKey(ignore: true)
+  _$$_PasswordChangedCopyWith<_$_PasswordChanged> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -555,8 +920,10 @@ class _$_UpdateUserPressed implements _UpdateUserPressed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
-    required TResult Function(String name) nameChanged,
+    required TResult Function(String firstName) firstNameChanged,
+    required TResult Function(String lastName) lastNameChanged,
     required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
     required TResult Function(String userId) updateUserPressed,
   }) {
     return updateUserPressed(userId);
@@ -566,8 +933,10 @@ class _$_UpdateUserPressed implements _UpdateUserPressed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
-    TResult? Function(String name)? nameChanged,
+    TResult? Function(String firstName)? firstNameChanged,
+    TResult? Function(String lastName)? lastNameChanged,
     TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
     TResult? Function(String userId)? updateUserPressed,
   }) {
     return updateUserPressed?.call(userId);
@@ -577,8 +946,10 @@ class _$_UpdateUserPressed implements _UpdateUserPressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
-    TResult Function(String name)? nameChanged,
+    TResult Function(String firstName)? firstNameChanged,
+    TResult Function(String lastName)? lastNameChanged,
     TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
     TResult Function(String userId)? updateUserPressed,
     required TResult orElse(),
   }) {
@@ -592,8 +963,10 @@ class _$_UpdateUserPressed implements _UpdateUserPressed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
-    required TResult Function(_NameChanged value) nameChanged,
+    required TResult Function(_FirstNameChanged value) firstNameChanged,
+    required TResult Function(_LastNameChanged value) lastNameChanged,
     required TResult Function(_EmailChanged value) emailChanged,
+    required TResult Function(_PasswordChanged value) passwordChanged,
     required TResult Function(_UpdateUserPressed value) updateUserPressed,
   }) {
     return updateUserPressed(this);
@@ -603,8 +976,10 @@ class _$_UpdateUserPressed implements _UpdateUserPressed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
-    TResult? Function(_NameChanged value)? nameChanged,
+    TResult? Function(_FirstNameChanged value)? firstNameChanged,
+    TResult? Function(_LastNameChanged value)? lastNameChanged,
     TResult? Function(_EmailChanged value)? emailChanged,
+    TResult? Function(_PasswordChanged value)? passwordChanged,
     TResult? Function(_UpdateUserPressed value)? updateUserPressed,
   }) {
     return updateUserPressed?.call(this);
@@ -614,8 +989,10 @@ class _$_UpdateUserPressed implements _UpdateUserPressed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
-    TResult Function(_NameChanged value)? nameChanged,
+    TResult Function(_FirstNameChanged value)? firstNameChanged,
+    TResult Function(_LastNameChanged value)? lastNameChanged,
     TResult Function(_EmailChanged value)? emailChanged,
+    TResult Function(_PasswordChanged value)? passwordChanged,
     TResult Function(_UpdateUserPressed value)? updateUserPressed,
     required TResult orElse(),
   }) {
@@ -638,9 +1015,11 @@ abstract class _UpdateUserPressed implements UserUpdateEvent {
 /// @nodoc
 mixin _$UserUpdateState {
   bool get isLoading => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String get firstName => throw _privateConstructorUsedError;
+  String get lastName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  Option<Either<UserFailure, Unit>> get updateFailureOrSuccessOption =>
+  String get password => throw _privateConstructorUsedError;
+  Option<Either<UserFailure, Object>> get updateFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -656,9 +1035,11 @@ abstract class $UserUpdateStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      String name,
+      String firstName,
+      String lastName,
       String email,
-      Option<Either<UserFailure, Unit>> updateFailureOrSuccessOption});
+      String password,
+      Option<Either<UserFailure, Object>> updateFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -675,8 +1056,10 @@ class _$UserUpdateStateCopyWithImpl<$Res, $Val extends UserUpdateState>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? name = null,
+    Object? firstName = null,
+    Object? lastName = null,
     Object? email = null,
+    Object? password = null,
     Object? updateFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
@@ -684,18 +1067,26 @@ class _$UserUpdateStateCopyWithImpl<$Res, $Val extends UserUpdateState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
       updateFailureOrSuccessOption: null == updateFailureOrSuccessOption
           ? _value.updateFailureOrSuccessOption
           : updateFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<UserFailure, Unit>>,
+              as Option<Either<UserFailure, Object>>,
     ) as $Val);
   }
 }
@@ -710,9 +1101,11 @@ abstract class _$$_UserUpdateStateCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      String name,
+      String firstName,
+      String lastName,
       String email,
-      Option<Either<UserFailure, Unit>> updateFailureOrSuccessOption});
+      String password,
+      Option<Either<UserFailure, Object>> updateFailureOrSuccessOption});
 }
 
 /// @nodoc
@@ -727,8 +1120,10 @@ class __$$_UserUpdateStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? name = null,
+    Object? firstName = null,
+    Object? lastName = null,
     Object? email = null,
+    Object? password = null,
     Object? updateFailureOrSuccessOption = null,
   }) {
     return _then(_$_UserUpdateState(
@@ -736,18 +1131,26 @@ class __$$_UserUpdateStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      firstName: null == firstName
+          ? _value.firstName
+          : firstName // ignore: cast_nullable_to_non_nullable
+              as String,
+      lastName: null == lastName
+          ? _value.lastName
+          : lastName // ignore: cast_nullable_to_non_nullable
               as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
       updateFailureOrSuccessOption: null == updateFailureOrSuccessOption
           ? _value.updateFailureOrSuccessOption
           : updateFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<UserFailure, Unit>>,
+              as Option<Either<UserFailure, Object>>,
     ));
   }
 }
@@ -757,22 +1160,28 @@ class __$$_UserUpdateStateCopyWithImpl<$Res>
 class _$_UserUpdateState implements _UserUpdateState {
   const _$_UserUpdateState(
       {required this.isLoading,
-      required this.name,
+      required this.firstName,
+      required this.lastName,
       required this.email,
+      required this.password,
       required this.updateFailureOrSuccessOption});
 
   @override
   final bool isLoading;
   @override
-  final String name;
+  final String firstName;
+  @override
+  final String lastName;
   @override
   final String email;
   @override
-  final Option<Either<UserFailure, Unit>> updateFailureOrSuccessOption;
+  final String password;
+  @override
+  final Option<Either<UserFailure, Object>> updateFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'UserUpdateState(isLoading: $isLoading, name: $name, email: $email, updateFailureOrSuccessOption: $updateFailureOrSuccessOption)';
+    return 'UserUpdateState(isLoading: $isLoading, firstName: $firstName, lastName: $lastName, email: $email, password: $password, updateFailureOrSuccessOption: $updateFailureOrSuccessOption)';
   }
 
   @override
@@ -782,8 +1191,13 @@ class _$_UserUpdateState implements _UserUpdateState {
             other is _$_UserUpdateState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
             (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
             (identical(other.updateFailureOrSuccessOption,
                     updateFailureOrSuccessOption) ||
                 other.updateFailureOrSuccessOption ==
@@ -791,8 +1205,8 @@ class _$_UserUpdateState implements _UserUpdateState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, name, email, updateFailureOrSuccessOption);
+  int get hashCode => Object.hash(runtimeType, isLoading, firstName, lastName,
+      email, password, updateFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -804,19 +1218,25 @@ class _$_UserUpdateState implements _UserUpdateState {
 abstract class _UserUpdateState implements UserUpdateState {
   const factory _UserUpdateState(
       {required final bool isLoading,
-      required final String name,
+      required final String firstName,
+      required final String lastName,
       required final String email,
-      required final Option<Either<UserFailure, Unit>>
+      required final String password,
+      required final Option<Either<UserFailure, Object>>
           updateFailureOrSuccessOption}) = _$_UserUpdateState;
 
   @override
   bool get isLoading;
   @override
-  String get name;
+  String get firstName;
+  @override
+  String get lastName;
   @override
   String get email;
   @override
-  Option<Either<UserFailure, Unit>> get updateFailureOrSuccessOption;
+  String get password;
+  @override
+  Option<Either<UserFailure, Object>> get updateFailureOrSuccessOption;
   @override
   @JsonKey(ignore: true)
   _$$_UserUpdateStateCopyWith<_$_UserUpdateState> get copyWith =>

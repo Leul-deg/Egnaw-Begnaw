@@ -9,8 +9,7 @@ class UserUpdateModel with _$UserUpdateModel {
     required String firstName,
     required String lastName,
     required String email,
-    required String phoneNumber,
-    required String id,
+    required String password,
   }) = _UserUpdateModel;
 
   factory UserUpdateModel.fromJson(Map<String, dynamic> json) =>

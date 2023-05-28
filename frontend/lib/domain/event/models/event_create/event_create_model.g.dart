@@ -8,13 +8,12 @@ part of 'event_create_model.dart';
 
 _$_EventCreateModel _$$_EventCreateModelFromJson(Map<String, dynamic> json) =>
     _$_EventCreateModel(
-      organizerId:
-          OrganizerId.fromJson(json['organizerId'] as Map<String, dynamic>),
+      organizerId: json['organizerId'] as String,
       description: json['description'] as String,
       title: json['title'] as String,
-      place: Place.fromJson(json['place'] as Map<String, dynamic>),
-      startTime: StartTime.fromJson(json['startTime'] as Map<String, dynamic>),
-      endTime: EndTime.fromJson(json['endTime'] as Map<String, dynamic>),
+      place: json['place'] as String,
+      startTime: json['startTime'] as String,
+      endTime: json['endTime'] as String,
       availableSeats: json['availableSeats'] as int,
       ticketsSold: json['ticketsSold'] as int,
       required: json['required'],

@@ -21,8 +21,8 @@ class OrganizerRepositoryImp implements OrganizerRepository{
   // }
 
   @override
-  Future<Either<OrganizerFailure, OrganizerUpdateModel>> updateOrganizer(OrganizerUpdateModel newOrganizer) async {
-    return await organizerDataSource.updateOrganizer(newOrganizer);
+  Future<Either<OrganizerFailure, OrganizerUpdateModel>> updateOrganizer(String organizerId, OrganizerUpdateModel newOrganizer) async {
+    return await organizerDataSource.updateOrganizer(organizerId, newOrganizer);
   }
 
   @override
