@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/application/auth/user_create/user_create_bloc.dart';
-import '../../login/loginScreen.dart';
 import './signUpWithGoogleBtn.dart';
+import 'package:go_router/go_router.dart';
+import '../../routes/appRouteConstants.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -318,12 +319,8 @@ class _BodyState extends State<Body> {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const Login()),
-                                      );
+                                       GoRouter.of(context)
+                        .pushNamed(MyAppRouteConstants.loginRouteName);
                                     },
                                     child: const Text(
                                       'Log in',
