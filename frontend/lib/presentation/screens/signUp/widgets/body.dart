@@ -5,7 +5,6 @@ import './signUpWithGoogleBtn.dart';
 import 'package:go_router/go_router.dart';
 import '../../routes/appRouteConstants.dart';
 
-
 class Body extends StatefulWidget {
   const Body({super.key});
 
@@ -62,7 +61,7 @@ class _BodyState extends State<Body> {
                           borderRadius: BorderRadius.circular(8.0),
                           borderSide: const BorderSide(color: Colors.white60),
                         ),
-                        labelText: "Enter First Name",
+                        labelText: "Enter First Name ",
                         labelStyle: const TextStyle(color: Colors.white),
                       ),
                     ),
@@ -217,8 +216,8 @@ class _BodyState extends State<Body> {
                             ),
                             TextButton(
                                 onPressed: () {
-                                  GoRouter.of(context)
-                        .pushNamed(MyAppRouteConstants.loginRouteName);
+                                  GoRouter.of(context).pushNamed(
+                                      MyAppRouteConstants.loginRouteName);
                                 },
                                 child: const Text(
                                   'Log in',
