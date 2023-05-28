@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:frontend/data/local/shared_pref/shared_pref.dart';
-import 'package:frontend/data/local/local_database/local_storage.dart' as local_storage;
+import 'package:frontend/data/local/local_database/local_storage.dart';
 
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/review/models/review_create/review_create_model.dart';
@@ -14,6 +14,8 @@ part 'review_create_bloc.freezed.dart';
 
 class ReviewCreateBloc extends Bloc<ReviewCreateEvent, ReviewCreateState> {
   final ReviewRepository reviewRepository;
+
+  final LocalDatabase local_storage = LocalDatabase.getInstance;
   ReviewCreateBloc(this.reviewRepository) : super(ReviewCreateState.initial()){
 
     on<_ReviewTextChanged>((event, emit) {

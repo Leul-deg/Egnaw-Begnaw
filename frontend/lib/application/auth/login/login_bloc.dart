@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import 'package:frontend/data/local/local_database/local_storage.dart';
+
 part 'login_bloc.freezed.dart';
 
 part 'login_event.dart';
@@ -12,6 +14,8 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   final AuthRepository authRepository;
+
+  final LocalDatabase local_storage = LocalDatabase.getInstance;
 
   LoginBloc({required this.authRepository}) : super(LoginState.initial()) {
     on<_EmailChanged>((event, emit) {
@@ -43,6 +47,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     on<_LoginPressed>((event, emit) async {
       Either<AuthFailure, Object> failureOrSuccess;
+
+      print(await local_storage.getUser());
 
       // check if user if isOrganizer
       if (state.isOrganizer) {

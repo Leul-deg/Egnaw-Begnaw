@@ -1,63 +1,71 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-Future<Database> openDB() async {
-  final Future<Database> database = openDatabase(
-    join(await getDatabasesPath(), 'local_database.db'),
-    onCreate: (db, version) {
-      return db.execute(
-        '''CREATE TABLE user(
-            id TEXT PRIMARY KEY, 
-            firstName TEXT, 
-            lastName TEXT, 
-            email TEXT, 
-            password TEXT, 
-            phoneNumber TEXT, 
-            createdAt TEXT
-          )
-        ''',
-      );
-    },
-    version: 1,
-  );
-  return database;
-}
+class LocalDatabase {
+  static final LocalDatabase _instance = LocalDatabase._init();
 
-// insert user
-Future<void> insertUser(Map<String, dynamic> user) async {
-  final Database db = await openDB();
-  await db.insert(
-    'user',
-    user,
-    conflictAlgorithm: ConflictAlgorithm.replace,
-  );
-}
+  static Database? _database;
 
-// get user. there will only be one user
-Future<Map<String, dynamic>> getUser() async {
-  final Database db = await openDB();
-  final List<Map<String, dynamic>> maps = await db.query('user');
+  LocalDatabase._init(){
+    _initDB('local_database_.db');
+  }
 
-  // we return only one since there will only be one user (the current logged in user)
-  return maps.first;
-}
+  static LocalDatabase get getInstance => _instance;
 
-// get user id
-Future<String> getUserId() async {
-  final Database db = await openDB();
-  final List<Map<String, dynamic>> maps = await db.query('user');
-  return maps.first['id'];
-}
+  Future<Database> get database async {
+    if (_database != null && _database!.isOpen) {
+      return _database!;
+    }
 
-// delete user
-Future<void> deleteUser() async {
-  final db = await openDB();
-  await db.delete('user');
-}
+    _database = await _initDB('local_database_.db');
+    return _database!;
+  }
 
-// call this function to check if there is a user logged in
-Future<bool> isLoggedIn() async {
-  final Database db = await openDB();
-  final List<Map<String, dynamic>> maps = await db.query('user');
-  return maps.isNotEmpty;
+  Future<Database> _initDB(String filePath) async {
+    final dbPath = await getDatabasesPath();
+    final path = join(dbPath, filePath);
+
+    return await openDatabase(
+      path,
+      version: 1,
+      onCreate: _createDB,
+    );
+  }
+
+  Future _createDB(Database db, int version) async {
+    await db.execute('''
+    CREATE TABLE IF NOT EXISTS user(
+      id STRING PRIMARY KEY,
+      firstName TEXT,
+      lastName TEXT,
+      email TEXT,
+      password TEXT
+    )
+    ''');
+  }
+
+  Future<int> insert(String table, Map<String, Object?> data) async {
+    final db = await _instance.database;
+    return await db.insert(table, data);
+  }
+
+  // get user, there is only one user
+  Future<Map<String, Object?>> getUser() async {
+    final db = await _instance.database;
+    final result = await db.query('user');
+    return result.first;
+  }
+
+  // remove user, there is only one user
+  Future<int> removeUser(String table) async {
+    final db = await _instance.database;
+    return await db.delete(table);
+  }
+
+  // get user id
+  Future<String> getUserId() async {
+    final db = await _instance.database;
+    final result = await db.query('user');
+    return result.first['id'].toString();
+  }
 }

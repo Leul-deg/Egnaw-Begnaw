@@ -6,8 +6,7 @@ import 'package:frontend/domain/auth/auth.dart';
 
 import 'package:frontend/domain/organizer/organizer.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart'
-    as local_storage;
+import 'package:frontend/data/local/local_database/local_storage.dart';
 
 import 'package:frontend/data/local/shared_pref/shared_pref.dart';
 
@@ -18,6 +17,9 @@ part 'organizer_update_bloc.freezed.dart';
 class OrganizerUpdateBloc
     extends Bloc<OrganizerUpdateEvent, OrganizerUpdateState> {
   final OrganizerRepository organizerRepository;
+
+  final LocalDatabase local_storage = LocalDatabase.getInstance;
+
   OrganizerUpdateBloc(this.organizerRepository)
       : super(OrganizerUpdateState.initial()) {
     on<_OrganizationNameChanged>((event, emit) {
@@ -47,8 +49,8 @@ class OrganizerUpdateBloc
         updateFailureOrSuccessOption: none(),
       ));
 
-      final organizatioNameIsValid = state.organizationName != null &&
-          state.organizationName!.isNotEmpty;
+      final organizatioNameIsValid =
+          state.organizationName != null && state.organizationName!.isNotEmpty;
       final emailIsValid = state.email != null && state.email!.isNotEmpty;
 
       final organizerId = await local_storage.getUserId();

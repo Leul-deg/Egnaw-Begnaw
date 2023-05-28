@@ -5,8 +5,7 @@ import 'package:frontend/domain/ticket/ticket.dart';
 
 import 'package:dartz/dartz.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart'
-    as local_storage;
+import 'package:frontend/data/local/local_database/local_storage.dart';
 
 part 'ticket_create_event.dart';
 part 'ticket_create_state.dart';
@@ -14,6 +13,7 @@ part 'ticket_create_bloc.freezed.dart';
 
 class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
   final TicketRepository _ticketRepository;
+  final LocalDatabase local_storage = LocalDatabase.getInstance;
 
   TicketCreateBloc(this._ticketRepository)
       : super(TicketCreateState.initial()) {
