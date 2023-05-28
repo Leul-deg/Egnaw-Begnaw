@@ -1,20 +1,81 @@
 part of 'user_create_bloc.dart';
 
-@freezed
-class UserCreateEvent with _$UserCreateEvent {
-  const factory UserCreateEvent.started() = _Started;
-  const factory UserCreateEvent.firstNameChanged(String firstNameStr) =
-      _FirstNameChanged;
-  const factory UserCreateEvent.lastNameChanged(String lastNameStr) =
-      _LastNameChanged;
-  const factory UserCreateEvent.emailAddressChanged(String emailAddressStr) =
-      _EmailAddressChanged;
-  const factory UserCreateEvent.passwordChanged(String passwordStr) =
-      _PasswordChanged;
-  const factory UserCreateEvent.createUserPressed() = _CreateUserPressed;
-  const factory UserCreateEvent.isOrganizerChanged(bool isOrganizer) =
-      _IsOrganizerChanged;
+class UserCreateEvent {
+  const UserCreateEvent._();
 
-  const factory UserCreateEvent.organizerNameChanged(String organizerNameStr) =
-      _OrganizerNameChanged;
+  factory UserCreateEvent.started() {
+    return const _Started();
+  }
+
+  factory UserCreateEvent.firstNameChanged(String firstNameStr) {
+    return _FirstNameChanged(firstNameStr);
+  }
+
+  factory UserCreateEvent.lastNameChanged(String lastNameStr) {
+    return _LastNameChanged(lastNameStr);
+  }
+
+  factory UserCreateEvent.emailAddressChanged(String emailAddressStr) {
+    return _EmailAddressChanged(emailAddressStr);
+  }
+
+  factory UserCreateEvent.passwordChanged(String passwordStr) {
+    return _PasswordChanged(passwordStr);
+  }
+
+  factory UserCreateEvent.createUserPressed() {
+    return const _CreateUserPressed();
+  }
+
+  factory UserCreateEvent.isOrganizerChanged(bool isOrganizer) {
+    return _IsOrganizerChanged(isOrganizer);
+  }
+
+  factory UserCreateEvent.organizerNameChanged(String organizerNameStr) {
+    return _OrganizerNameChanged(organizerNameStr);
+  }
+}
+
+class _Started extends UserCreateEvent {
+  const _Started() : super._();
+}
+
+class _FirstNameChanged extends UserCreateEvent {
+  const _FirstNameChanged(this.firstNameStr) : super._();
+
+  final String firstNameStr;
+}
+
+class _LastNameChanged extends UserCreateEvent {
+  const _LastNameChanged(this.lastNameStr) : super._();
+
+  final String lastNameStr;
+}
+
+class _EmailAddressChanged extends UserCreateEvent {
+  const _EmailAddressChanged(this.emailAddressStr) : super._();
+
+  final String emailAddressStr;
+}
+
+class _PasswordChanged extends UserCreateEvent {
+  const _PasswordChanged(this.passwordStr) : super._();
+
+  final String passwordStr;
+}
+
+class _CreateUserPressed extends UserCreateEvent {
+  const _CreateUserPressed() : super._();
+}
+
+class _IsOrganizerChanged extends UserCreateEvent {
+  const _IsOrganizerChanged(this.isOrganizer) : super._();
+
+  final bool isOrganizer;
+}
+
+class _OrganizerNameChanged extends UserCreateEvent {
+  const _OrganizerNameChanged(this.organizerNameStr) : super._();
+
+  final String organizerNameStr;
 }

@@ -1,12 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:frontend/domain/auth/auth.dart';
 import 'package:frontend/domain/event/event.dart';
 
 import '../../../data/local/local_database/local_storage.dart' as LocalStorage;
 
-part 'event_create_bloc.freezed.dart';
 part 'event_create_event.dart';
 part 'event_create_state.dart';
 

@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:dartz/dartz.dart';
 
@@ -9,7 +8,6 @@ import 'package:frontend/data/local/local_database/local_storage.dart';
 
 part 'user_update_event.dart';
 part 'user_update_state.dart';
-part 'user_update_bloc.freezed.dart';
 
 class UserUpdateBloc extends Bloc<UserUpdateEvent, UserUpdateState> {
   final UserRepository userRepository;
