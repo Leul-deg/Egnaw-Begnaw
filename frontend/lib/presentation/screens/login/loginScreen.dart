@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import './widgets/body.dart';
+import 'components/body.dart';
 
 import 'package:frontend/infrastructure/auth/repositories/auth_repository_imp.dart';
 import 'package:frontend/infrastructure/auth/data_sources/auth_data_sources.dart';
