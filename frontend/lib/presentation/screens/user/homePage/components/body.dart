@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import './card.dart';
 import './seachBar.dart';
 
-
 class Body extends StatefulWidget {
   @override
   State<Body> createState() => _BodyState();
@@ -33,7 +32,7 @@ class _BodyState extends State<Body> {
                       children: [
                         Positioned.fill(
                           child: Image.asset(
-                            'musician.jpg',
+                            'mainpage.jpg',
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -43,7 +42,7 @@ class _BodyState extends State<Body> {
                           child: Text(
                             'Event Ticketing App',
                             style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold),
                           ),
@@ -54,7 +53,7 @@ class _BodyState extends State<Body> {
                             child: Text(
                               'Get tickets for your exciting moments',
                               style: TextStyle(
-                                color: Colors.white,
+                                color: Colors.black,
                                 fontSize: 20,
                               ),
                             ))
