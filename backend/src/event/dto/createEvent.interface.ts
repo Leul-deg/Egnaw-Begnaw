@@ -5,4 +5,5 @@ export interface CreateEventDTO {
     place: String
     availableSeats: Number
     ticketsSold: Number
+    placeImg: String
 }

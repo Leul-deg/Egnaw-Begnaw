@@ -18,4 +18,6 @@ export class AuthDto {
 
   @IsNotEmpty()
   lastName: string;
+  @IsNotEmpty()
+  profileImage: string;
 }

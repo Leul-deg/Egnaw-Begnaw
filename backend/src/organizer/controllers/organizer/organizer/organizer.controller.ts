@@ -4,7 +4,7 @@ import { UpdateOrganizerDTO } from 'src/organizer/dto/updateOrganizer.dto';
 import { OrganizerI } from 'src/Organizer/interfaces/organizer.interface';
 import { OrganizerService } from 'src/organizer/services/organizer/organizer.service';
 
-@Controller('organizer')
+@Controller()
 export class OrganizerController {
 
     constructor(private organizerService: OrganizerService) {}

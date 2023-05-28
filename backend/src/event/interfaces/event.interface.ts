@@ -5,4 +5,5 @@ export interface EventI {
     place: String
     availableSeats: Number
     ticketsSold: Number
+    placeImg: String
 }
