@@ -5,67 +5,66 @@ import 'package:dartz/dartz.dart';
 
 import 'package:frontend/domain/user/user.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart';
+import 'package:frontend/data/local/local_database/local_storage.dart' as local_storage;
 
 part 'user_update_event.dart';
-part 'user_update_state.dart';  
+part 'user_update_state.dart';
 part 'user_update_bloc.freezed.dart';
-class UserUpdateBloc extends Bloc<UserUpdateEvent , UserUpdateState>{
 
+class UserUpdateBloc extends Bloc<UserUpdateEvent, UserUpdateState> {
   final UserRepository userRepository;
-  UserUpdateBloc(this.userRepository) : super(UserUpdateState.initial());
+  UserUpdateBloc(this.userRepository) : super(UserUpdateState.initial()) {
 
-  @override
-  Stream<UserUpdateState> mapEventToState(
-    UserUpdateEvent event,
-  ) async* {
-    yield* event.map(
-        // started event
-        started: (e) async* {},
-        // nameChanged event
-        nameChanged: (e) async* {
-          yield state.copyWith(
-            name: e.name,
-            updateFailureOrSuccessOption: none(),
-          );
-        },
-        // emailChanged event
-        emailChanged: (e) async* {
-          yield state.copyWith(
-            email: e.email,
-            updateFailureOrSuccessOption: none(),
-          );
-        },
-        // updateOrganizerPressed event
-        updateUserPressed: (e) async* {
-          Either<UserFailure, Unit>? failureOrSuccess;
+    on<_FirstNameChanged>((event, emit) async {
+      emit(state.copyWith(
+        firstName: event.firstName,
+        updateFailureOrSuccessOption: none(),
+      ));
+    });
 
-          if (state.name == '' || state.email == '') {
-            failureOrSuccess = left(const UserFailure.invalidUser());
-          } else {
-            final String? userId = await getUserId();
+    on<_LastNameChanged>((event, emit) async {
+      emit(state.copyWith(
+        lastName: event.lastName,
+        updateFailureOrSuccessOption: none(),
+      ));
+    });
 
-            if (userId == null) {
-              yield state.copyWith(
-                isLoading: false,
-                updateFailureOrSuccessOption: some(left(const UserFailure.invalidUser())),
-              );
-              return;
-            }
+    on<_EmailChanged>((event, emit) async {
+      emit(state.copyWith(
+        email: event.email,
+        updateFailureOrSuccessOption: none(),
+      ));
+    });
 
-            final UserUpdateModel user = UserUpdateModel(
-              firstName: state.name, email: state.email, id: '',
-              lastName: '', phoneNumber: '',
-            );
+    on<_PasswordChanged>((event, emit) async {
+      emit(state.copyWith(
+        password: event.password,
+        updateFailureOrSuccessOption: none(),
+      ));
+    });
 
-            failureOrSuccess = (await userRepository.updateUser(user)) as Either<UserFailure, Unit>?;
-          }
+    on<_UpdateUserPressed>((event, emit) async {
+      emit(state.copyWith(
+        isLoading: true,
+        updateFailureOrSuccessOption: none(),
+      ));
 
-          yield state.copyWith(
-            isLoading: false,
-            updateFailureOrSuccessOption: optionOf(failureOrSuccess),
-          );
-        },
-    );
+      Either<UserFailure, Object>? failureOrSuccess;
+
+      final userId = await local_storage.getUserId();
+
+      failureOrSuccess = await userRepository.updateUser(userId, UserUpdateModel(
+        firstName: state.firstName,
+        lastName: state.lastName,
+        email: state.email,
+        password: state.password,
+      ));
+
+      emit(state.copyWith(
+        isLoading: false,
+        updateFailureOrSuccessOption: some(failureOrSuccess),
+      ));
+    });
+
   }
 }

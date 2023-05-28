@@ -95,9 +95,10 @@ class UserDataSource implements UserRepository {
 
   @override
   Future<Either<UserFailure, UserUpdateModel>> updateUser(
+      String userId,
       UserUpdateModel newUser) async {
     final response = await client.put(
-      Uri.parse('$API_URL/user/${newUser.id}'),
+      Uri.parse('$API_URL/user/$userId'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

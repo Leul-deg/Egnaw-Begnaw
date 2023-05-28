@@ -19,10 +19,10 @@ mixin _$EventCreateEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -33,10 +33,10 @@ mixin _$EventCreateEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -47,10 +47,10 @@ mixin _$EventCreateEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -162,10 +162,10 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -179,10 +179,10 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -196,10 +196,10 @@ class _$_Initialized implements _Initialized {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -280,9 +280,7 @@ abstract class _$$_OrganizerIdChangedCopyWith<$Res> {
           $Res Function(_$_OrganizerIdChanged) then) =
       __$$_OrganizerIdChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({OrganizerId organizerId});
-
-  $OrganizerIdCopyWith<$Res> get organizerId;
+  $Res call({String organizerId});
 }
 
 /// @nodoc
@@ -302,16 +300,8 @@ class __$$_OrganizerIdChangedCopyWithImpl<$Res>
       null == organizerId
           ? _value.organizerId
           : organizerId // ignore: cast_nullable_to_non_nullable
-              as OrganizerId,
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OrganizerIdCopyWith<$Res> get organizerId {
-    return $OrganizerIdCopyWith<$Res>(_value.organizerId, (value) {
-      return _then(_value.copyWith(organizerId: value));
-    });
   }
 }
 
@@ -321,7 +311,7 @@ class _$_OrganizerIdChanged implements _OrganizerIdChanged {
   const _$_OrganizerIdChanged(this.organizerId);
 
   @override
-  final OrganizerId organizerId;
+  final String organizerId;
 
   @override
   String toString() {
@@ -351,10 +341,10 @@ class _$_OrganizerIdChanged implements _OrganizerIdChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -368,10 +358,10 @@ class _$_OrganizerIdChanged implements _OrganizerIdChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -385,10 +375,10 @@ class _$_OrganizerIdChanged implements _OrganizerIdChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -460,10 +450,10 @@ class _$_OrganizerIdChanged implements _OrganizerIdChanged {
 }
 
 abstract class _OrganizerIdChanged implements EventCreateEvent {
-  const factory _OrganizerIdChanged(final OrganizerId organizerId) =
+  const factory _OrganizerIdChanged(final String organizerId) =
       _$_OrganizerIdChanged;
 
-  OrganizerId get organizerId;
+  String get organizerId;
   @JsonKey(ignore: true)
   _$$_OrganizerIdChangedCopyWith<_$_OrganizerIdChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -475,9 +465,7 @@ abstract class _$$_StartTimeChangedCopyWith<$Res> {
           _$_StartTimeChanged value, $Res Function(_$_StartTimeChanged) then) =
       __$$_StartTimeChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({StartTime startTime});
-
-  $StartTimeCopyWith<$Res> get startTime;
+  $Res call({String startTime});
 }
 
 /// @nodoc
@@ -497,16 +485,8 @@ class __$$_StartTimeChangedCopyWithImpl<$Res>
       null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as StartTime,
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StartTimeCopyWith<$Res> get startTime {
-    return $StartTimeCopyWith<$Res>(_value.startTime, (value) {
-      return _then(_value.copyWith(startTime: value));
-    });
   }
 }
 
@@ -516,7 +496,7 @@ class _$_StartTimeChanged implements _StartTimeChanged {
   const _$_StartTimeChanged(this.startTime);
 
   @override
-  final StartTime startTime;
+  final String startTime;
 
   @override
   String toString() {
@@ -545,10 +525,10 @@ class _$_StartTimeChanged implements _StartTimeChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -562,10 +542,10 @@ class _$_StartTimeChanged implements _StartTimeChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -579,10 +559,10 @@ class _$_StartTimeChanged implements _StartTimeChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -654,10 +634,9 @@ class _$_StartTimeChanged implements _StartTimeChanged {
 }
 
 abstract class _StartTimeChanged implements EventCreateEvent {
-  const factory _StartTimeChanged(final StartTime startTime) =
-      _$_StartTimeChanged;
+  const factory _StartTimeChanged(final String startTime) = _$_StartTimeChanged;
 
-  StartTime get startTime;
+  String get startTime;
   @JsonKey(ignore: true)
   _$$_StartTimeChangedCopyWith<_$_StartTimeChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -669,9 +648,7 @@ abstract class _$$_EndTimeChangedCopyWith<$Res> {
           _$_EndTimeChanged value, $Res Function(_$_EndTimeChanged) then) =
       __$$_EndTimeChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({EndTime endTime});
-
-  $EndTimeCopyWith<$Res> get endTime;
+  $Res call({String endTime});
 }
 
 /// @nodoc
@@ -691,16 +668,8 @@ class __$$_EndTimeChangedCopyWithImpl<$Res>
       null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as EndTime,
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EndTimeCopyWith<$Res> get endTime {
-    return $EndTimeCopyWith<$Res>(_value.endTime, (value) {
-      return _then(_value.copyWith(endTime: value));
-    });
   }
 }
 
@@ -710,7 +679,7 @@ class _$_EndTimeChanged implements _EndTimeChanged {
   const _$_EndTimeChanged(this.endTime);
 
   @override
-  final EndTime endTime;
+  final String endTime;
 
   @override
   String toString() {
@@ -738,10 +707,10 @@ class _$_EndTimeChanged implements _EndTimeChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -755,10 +724,10 @@ class _$_EndTimeChanged implements _EndTimeChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -772,10 +741,10 @@ class _$_EndTimeChanged implements _EndTimeChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -847,9 +816,9 @@ class _$_EndTimeChanged implements _EndTimeChanged {
 }
 
 abstract class _EndTimeChanged implements EventCreateEvent {
-  const factory _EndTimeChanged(final EndTime endTime) = _$_EndTimeChanged;
+  const factory _EndTimeChanged(final String endTime) = _$_EndTimeChanged;
 
-  EndTime get endTime;
+  String get endTime;
   @JsonKey(ignore: true)
   _$$_EndTimeChangedCopyWith<_$_EndTimeChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -861,9 +830,7 @@ abstract class _$$_PlaceChangedCopyWith<$Res> {
           _$_PlaceChanged value, $Res Function(_$_PlaceChanged) then) =
       __$$_PlaceChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({Place place});
-
-  $PlaceCopyWith<$Res> get place;
+  $Res call({String place});
 }
 
 /// @nodoc
@@ -883,16 +850,8 @@ class __$$_PlaceChangedCopyWithImpl<$Res>
       null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as Place,
+              as String,
     ));
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PlaceCopyWith<$Res> get place {
-    return $PlaceCopyWith<$Res>(_value.place, (value) {
-      return _then(_value.copyWith(place: value));
-    });
   }
 }
 
@@ -902,7 +861,7 @@ class _$_PlaceChanged implements _PlaceChanged {
   const _$_PlaceChanged(this.place);
 
   @override
-  final Place place;
+  final String place;
 
   @override
   String toString() {
@@ -930,10 +889,10 @@ class _$_PlaceChanged implements _PlaceChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -947,10 +906,10 @@ class _$_PlaceChanged implements _PlaceChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -964,10 +923,10 @@ class _$_PlaceChanged implements _PlaceChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -1039,9 +998,9 @@ class _$_PlaceChanged implements _PlaceChanged {
 }
 
 abstract class _PlaceChanged implements EventCreateEvent {
-  const factory _PlaceChanged(final Place place) = _$_PlaceChanged;
+  const factory _PlaceChanged(final String place) = _$_PlaceChanged;
 
-  Place get place;
+  String get place;
   @JsonKey(ignore: true)
   _$$_PlaceChangedCopyWith<_$_PlaceChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1114,10 +1073,10 @@ class _$_AvailableSeatsChanged implements _AvailableSeatsChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -1131,10 +1090,10 @@ class _$_AvailableSeatsChanged implements _AvailableSeatsChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -1148,10 +1107,10 @@ class _$_AvailableSeatsChanged implements _AvailableSeatsChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -1299,10 +1258,10 @@ class _$_TicketsSoldChanged implements _TicketsSoldChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -1316,10 +1275,10 @@ class _$_TicketsSoldChanged implements _TicketsSoldChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -1333,10 +1292,10 @@ class _$_TicketsSoldChanged implements _TicketsSoldChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -1484,10 +1443,10 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -1501,10 +1460,10 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -1518,10 +1477,10 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -1667,10 +1626,10 @@ class _$_TitleChanged implements _TitleChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -1684,10 +1643,10 @@ class _$_TitleChanged implements _TitleChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -1701,10 +1660,10 @@ class _$_TitleChanged implements _TitleChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -1823,10 +1782,10 @@ class _$_EventCreatePressed implements _EventCreatePressed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initialized,
-    required TResult Function(OrganizerId organizerId) organizerIdChanged,
-    required TResult Function(StartTime startTime) startTimeChanged,
-    required TResult Function(EndTime endTime) endTimeChanged,
-    required TResult Function(Place place) placeChanged,
+    required TResult Function(String organizerId) organizerIdChanged,
+    required TResult Function(String startTime) startTimeChanged,
+    required TResult Function(String endTime) endTimeChanged,
+    required TResult Function(String place) placeChanged,
     required TResult Function(int availableSeats) availableSeatsChanged,
     required TResult Function(int ticketsSold) ticketsSoldChanged,
     required TResult Function(String description) descriptionChanged,
@@ -1840,10 +1799,10 @@ class _$_EventCreatePressed implements _EventCreatePressed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initialized,
-    TResult? Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult? Function(StartTime startTime)? startTimeChanged,
-    TResult? Function(EndTime endTime)? endTimeChanged,
-    TResult? Function(Place place)? placeChanged,
+    TResult? Function(String organizerId)? organizerIdChanged,
+    TResult? Function(String startTime)? startTimeChanged,
+    TResult? Function(String endTime)? endTimeChanged,
+    TResult? Function(String place)? placeChanged,
     TResult? Function(int availableSeats)? availableSeatsChanged,
     TResult? Function(int ticketsSold)? ticketsSoldChanged,
     TResult? Function(String description)? descriptionChanged,
@@ -1857,10 +1816,10 @@ class _$_EventCreatePressed implements _EventCreatePressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initialized,
-    TResult Function(OrganizerId organizerId)? organizerIdChanged,
-    TResult Function(StartTime startTime)? startTimeChanged,
-    TResult Function(EndTime endTime)? endTimeChanged,
-    TResult Function(Place place)? placeChanged,
+    TResult Function(String organizerId)? organizerIdChanged,
+    TResult Function(String startTime)? startTimeChanged,
+    TResult Function(String endTime)? endTimeChanged,
+    TResult Function(String place)? placeChanged,
     TResult Function(int availableSeats)? availableSeatsChanged,
     TResult Function(int ticketsSold)? ticketsSoldChanged,
     TResult Function(String description)? descriptionChanged,
@@ -1938,10 +1897,10 @@ abstract class _EventCreatePressed implements EventCreateEvent {
 /// @nodoc
 mixin _$EventCreateState {
   bool get isLoading => throw _privateConstructorUsedError;
-  OrganizerId? get organizerId => throw _privateConstructorUsedError;
-  StartTime? get startTime => throw _privateConstructorUsedError;
-  EndTime? get endTime => throw _privateConstructorUsedError;
-  Place? get place => throw _privateConstructorUsedError;
+  String? get organizerId => throw _privateConstructorUsedError;
+  String? get startTime => throw _privateConstructorUsedError;
+  String? get endTime => throw _privateConstructorUsedError;
+  String? get place => throw _privateConstructorUsedError;
   int? get availableSeats => throw _privateConstructorUsedError;
   int? get ticketsSold => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -1962,20 +1921,15 @@ abstract class $EventCreateStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      OrganizerId? organizerId,
-      StartTime? startTime,
-      EndTime? endTime,
-      Place? place,
+      String? organizerId,
+      String? startTime,
+      String? endTime,
+      String? place,
       int? availableSeats,
       int? ticketsSold,
       String? description,
       String? title,
       Option<Either<EventFailure, Object>> createFailureOrSuccessOption});
-
-  $OrganizerIdCopyWith<$Res>? get organizerId;
-  $StartTimeCopyWith<$Res>? get startTime;
-  $EndTimeCopyWith<$Res>? get endTime;
-  $PlaceCopyWith<$Res>? get place;
 }
 
 /// @nodoc
@@ -2010,19 +1964,19 @@ class _$EventCreateStateCopyWithImpl<$Res, $Val extends EventCreateState>
       organizerId: freezed == organizerId
           ? _value.organizerId
           : organizerId // ignore: cast_nullable_to_non_nullable
-              as OrganizerId?,
+              as String?,
       startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as StartTime?,
+              as String?,
       endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as EndTime?,
+              as String?,
       place: freezed == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as Place?,
+              as String?,
       availableSeats: freezed == availableSeats
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
@@ -2045,54 +1999,6 @@ class _$EventCreateStateCopyWithImpl<$Res, $Val extends EventCreateState>
               as Option<Either<EventFailure, Object>>,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OrganizerIdCopyWith<$Res>? get organizerId {
-    if (_value.organizerId == null) {
-      return null;
-    }
-
-    return $OrganizerIdCopyWith<$Res>(_value.organizerId!, (value) {
-      return _then(_value.copyWith(organizerId: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StartTimeCopyWith<$Res>? get startTime {
-    if (_value.startTime == null) {
-      return null;
-    }
-
-    return $StartTimeCopyWith<$Res>(_value.startTime!, (value) {
-      return _then(_value.copyWith(startTime: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EndTimeCopyWith<$Res>? get endTime {
-    if (_value.endTime == null) {
-      return null;
-    }
-
-    return $EndTimeCopyWith<$Res>(_value.endTime!, (value) {
-      return _then(_value.copyWith(endTime: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PlaceCopyWith<$Res>? get place {
-    if (_value.place == null) {
-      return null;
-    }
-
-    return $PlaceCopyWith<$Res>(_value.place!, (value) {
-      return _then(_value.copyWith(place: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -2105,24 +2011,15 @@ abstract class _$$_EventCreateStateCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      OrganizerId? organizerId,
-      StartTime? startTime,
-      EndTime? endTime,
-      Place? place,
+      String? organizerId,
+      String? startTime,
+      String? endTime,
+      String? place,
       int? availableSeats,
       int? ticketsSold,
       String? description,
       String? title,
       Option<Either<EventFailure, Object>> createFailureOrSuccessOption});
-
-  @override
-  $OrganizerIdCopyWith<$Res>? get organizerId;
-  @override
-  $StartTimeCopyWith<$Res>? get startTime;
-  @override
-  $EndTimeCopyWith<$Res>? get endTime;
-  @override
-  $PlaceCopyWith<$Res>? get place;
 }
 
 /// @nodoc
@@ -2155,19 +2052,19 @@ class __$$_EventCreateStateCopyWithImpl<$Res>
       organizerId: freezed == organizerId
           ? _value.organizerId
           : organizerId // ignore: cast_nullable_to_non_nullable
-              as OrganizerId?,
+              as String?,
       startTime: freezed == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as StartTime?,
+              as String?,
       endTime: freezed == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as EndTime?,
+              as String?,
       place: freezed == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as Place?,
+              as String?,
       availableSeats: freezed == availableSeats
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
@@ -2210,13 +2107,13 @@ class _$_EventCreateState implements _EventCreateState {
   @override
   final bool isLoading;
   @override
-  final OrganizerId? organizerId;
+  final String? organizerId;
   @override
-  final StartTime? startTime;
+  final String? startTime;
   @override
-  final EndTime? endTime;
+  final String? endTime;
   @override
-  final Place? place;
+  final String? place;
   @override
   final int? availableSeats;
   @override
@@ -2283,10 +2180,10 @@ class _$_EventCreateState implements _EventCreateState {
 abstract class _EventCreateState implements EventCreateState {
   const factory _EventCreateState(
       {required final bool isLoading,
-      required final OrganizerId? organizerId,
-      required final StartTime? startTime,
-      required final EndTime? endTime,
-      required final Place? place,
+      required final String? organizerId,
+      required final String? startTime,
+      required final String? endTime,
+      required final String? place,
       required final int? availableSeats,
       required final int? ticketsSold,
       required final String? description,
@@ -2297,13 +2194,13 @@ abstract class _EventCreateState implements EventCreateState {
   @override
   bool get isLoading;
   @override
-  OrganizerId? get organizerId;
+  String? get organizerId;
   @override
-  StartTime? get startTime;
+  String? get startTime;
   @override
-  EndTime? get endTime;
+  String? get endTime;
   @override
-  Place? get place;
+  String? get place;
   @override
   int? get availableSeats;
   @override

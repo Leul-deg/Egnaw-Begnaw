@@ -1,14 +1,12 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 
 import 'package:frontend/domain/ticket/ticket.dart';
 
 import 'package:dartz/dartz.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart';
-
+import 'package:frontend/data/local/local_database/local_storage.dart'
+    as local_storage;
 
 part 'ticket_create_event.dart';
 part 'ticket_create_state.dart';
@@ -17,44 +15,26 @@ part 'ticket_create_bloc.freezed.dart';
 class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
   final TicketRepository _ticketRepository;
 
-  TicketCreateBloc(this._ticketRepository) : super(TicketCreateState.initial());
+  TicketCreateBloc(this._ticketRepository)
+      : super(TicketCreateState.initial()) {
+    on<_TicketCreatePressed>((event, emit) async {
+      emit(state.copyWith(
+        isLoading: true,
+        createFailureOrSuccessOption: none(),
+      ));
 
-  @override
-  Stream<TicketCreateState> mapEventToState(
-    TicketCreateEvent event,
-  ) async* {
-    yield* event.map(
-      initialized: (e) async* {},
-      ticketCreatePressed: (e) async* {
-        yield state.copyWith(
-          isLoading: true,
-          createFailureOrSuccessOption: none(),
-        );
+      Either<TicketFailure, Object>? failureOrSuccess;
 
-        final String userId = await getUserId();
-        final String eventId = e.eventId;
+      final userId = await local_storage.getUserId();
+      final eventId = event.eventId;
 
-        if (eventId == null) {
-          yield state.copyWith(
-            isLoading: false,
-            createFailureOrSuccessOption: some(left(const TicketFailure.invalidTicket())),
-          );
-          return;
-        }
+      failureOrSuccess = await _ticketRepository
+          .createTicket(TicketCreateModel(eventId: eventId, userId: userId));
 
-        final TicketCreateModel ticket = TicketCreateModel(
-          userId: userId,
-          eventId: eventId,
-        );
-
-        final Either<TicketFailure, Object> failureOrSuccess =
-            await _ticketRepository.createTicket(ticket);
-
-        yield state.copyWith(
-          isLoading: false,
-          createFailureOrSuccessOption: optionOf(failureOrSuccess),
-        );
-      },
-    );
+      emit(state.copyWith(
+        isLoading: false,
+        createFailureOrSuccessOption: some(failureOrSuccess),
+      ));
+    });
   }
 }

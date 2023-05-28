@@ -474,8 +474,6 @@ abstract class _CreateReviewPressed implements ReviewCreateEvent {
 mixin _$ReviewCreateState {
   bool get isLoading => throw _privateConstructorUsedError;
   String get reviewText => throw _privateConstructorUsedError;
-  String? get reviewerId => throw _privateConstructorUsedError;
-  String? get eventId => throw _privateConstructorUsedError;
   Option<Either<ReviewFailure, Object>> get createFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -493,8 +491,6 @@ abstract class $ReviewCreateStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       String reviewText,
-      String? reviewerId,
-      String? eventId,
       Option<Either<ReviewFailure, Object>> createFailureOrSuccessOption});
 }
 
@@ -513,8 +509,6 @@ class _$ReviewCreateStateCopyWithImpl<$Res, $Val extends ReviewCreateState>
   $Res call({
     Object? isLoading = null,
     Object? reviewText = null,
-    Object? reviewerId = freezed,
-    Object? eventId = freezed,
     Object? createFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
@@ -526,14 +520,6 @@ class _$ReviewCreateStateCopyWithImpl<$Res, $Val extends ReviewCreateState>
           ? _value.reviewText
           : reviewText // ignore: cast_nullable_to_non_nullable
               as String,
-      reviewerId: freezed == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      eventId: freezed == eventId
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
-              as String?,
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -553,8 +539,6 @@ abstract class _$$_ReviewCreateStateCopyWith<$Res>
   $Res call(
       {bool isLoading,
       String reviewText,
-      String? reviewerId,
-      String? eventId,
       Option<Either<ReviewFailure, Object>> createFailureOrSuccessOption});
 }
 
@@ -571,8 +555,6 @@ class __$$_ReviewCreateStateCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? reviewText = null,
-    Object? reviewerId = freezed,
-    Object? eventId = freezed,
     Object? createFailureOrSuccessOption = null,
   }) {
     return _then(_$_ReviewCreateState(
@@ -584,14 +566,6 @@ class __$$_ReviewCreateStateCopyWithImpl<$Res>
           ? _value.reviewText
           : reviewText // ignore: cast_nullable_to_non_nullable
               as String,
-      reviewerId: freezed == reviewerId
-          ? _value.reviewerId
-          : reviewerId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      eventId: freezed == eventId
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
-              as String?,
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -606,8 +580,6 @@ class _$_ReviewCreateState implements _ReviewCreateState {
   const _$_ReviewCreateState(
       {required this.isLoading,
       required this.reviewText,
-      required this.reviewerId,
-      required this.eventId,
       required this.createFailureOrSuccessOption});
 
   @override
@@ -615,15 +587,11 @@ class _$_ReviewCreateState implements _ReviewCreateState {
   @override
   final String reviewText;
   @override
-  final String? reviewerId;
-  @override
-  final String? eventId;
-  @override
   final Option<Either<ReviewFailure, Object>> createFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'ReviewCreateState(isLoading: $isLoading, reviewText: $reviewText, reviewerId: $reviewerId, eventId: $eventId, createFailureOrSuccessOption: $createFailureOrSuccessOption)';
+    return 'ReviewCreateState(isLoading: $isLoading, reviewText: $reviewText, createFailureOrSuccessOption: $createFailureOrSuccessOption)';
   }
 
   @override
@@ -635,9 +603,6 @@ class _$_ReviewCreateState implements _ReviewCreateState {
                 other.isLoading == isLoading) &&
             (identical(other.reviewText, reviewText) ||
                 other.reviewText == reviewText) &&
-            (identical(other.reviewerId, reviewerId) ||
-                other.reviewerId == reviewerId) &&
-            (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.createFailureOrSuccessOption,
                     createFailureOrSuccessOption) ||
                 other.createFailureOrSuccessOption ==
@@ -645,8 +610,8 @@ class _$_ReviewCreateState implements _ReviewCreateState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isLoading, reviewText,
-      reviewerId, eventId, createFailureOrSuccessOption);
+  int get hashCode => Object.hash(
+      runtimeType, isLoading, reviewText, createFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -660,8 +625,6 @@ abstract class _ReviewCreateState implements ReviewCreateState {
   const factory _ReviewCreateState(
       {required final bool isLoading,
       required final String reviewText,
-      required final String? reviewerId,
-      required final String? eventId,
       required final Option<Either<ReviewFailure, Object>>
           createFailureOrSuccessOption}) = _$_ReviewCreateState;
 
@@ -669,10 +632,6 @@ abstract class _ReviewCreateState implements ReviewCreateState {
   bool get isLoading;
   @override
   String get reviewText;
-  @override
-  String? get reviewerId;
-  @override
-  String? get eventId;
   @override
   Option<Either<ReviewFailure, Object>> get createFailureOrSuccessOption;
   @override

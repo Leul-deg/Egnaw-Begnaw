@@ -5,16 +5,12 @@ part of 'ticket_create_bloc.dart';
 class TicketCreateState with _$TicketCreateState {
   const factory TicketCreateState({
     required bool isLoading,
-    required String? userId,
-    required String? eventId,
     required Option<Either<TicketFailure, Object>> createFailureOrSuccessOption,
   }) = _TicketCreateState;
 
 
   factory TicketCreateState.initial() => TicketCreateState(
     isLoading: false,
-    userId: null,
-    eventId: null,
     createFailureOrSuccessOption: none(),
   );
 }

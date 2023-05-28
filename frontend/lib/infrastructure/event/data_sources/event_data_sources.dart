@@ -11,7 +11,7 @@ class EventDataSource implements EventRepository {
   final http.Client client;
   final SharedPreferences sharedPreferences;
 
-  final API_URL = "dotenv.env['API_URL']";
+  final API_URL = "http://localhost:3000";
 
   EventDataSource({
     required this.client,
@@ -42,7 +42,7 @@ class EventDataSource implements EventRepository {
   Future<Either<EventFailure, Object>> updateEvent(
       String id, EventUpdateModel eventUpdateModel) async {
     final response = await client.put(
-      Uri.parse('$API_URL/event/$id'),
+      Uri.parse('$API_URL/event/update/$id'),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
       },

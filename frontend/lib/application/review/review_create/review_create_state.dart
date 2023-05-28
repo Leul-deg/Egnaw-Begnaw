@@ -5,8 +5,6 @@ class ReviewCreateState with _$ReviewCreateState {
   const factory ReviewCreateState({
     required bool isLoading,
     required String reviewText,
-    required String? reviewerId,
-    required String? eventId,
     required Option<Either<ReviewFailure, Object>> createFailureOrSuccessOption,
   }) = _ReviewCreateState;
 
@@ -14,8 +12,6 @@ class ReviewCreateState with _$ReviewCreateState {
   factory ReviewCreateState.initial() => ReviewCreateState(
     isLoading: false,
     reviewText: '',
-    reviewerId: null,
-    eventId: null,
     createFailureOrSuccessOption: none(),
   );
 

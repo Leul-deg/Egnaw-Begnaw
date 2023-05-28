@@ -4,16 +4,20 @@ part of 'user_update_bloc.dart';
 class UserUpdateState with _$UserUpdateState{
   const factory UserUpdateState({
     required bool isLoading,
-    required String name,
+    required String firstName,
+    required String lastName,
     required String email,
-    required Option<Either<UserFailure, Unit>> updateFailureOrSuccessOption,
+    required String password,
+    required Option<Either<UserFailure, Object>> updateFailureOrSuccessOption,
   }) = _UserUpdateState;
 
   //initial state
   factory UserUpdateState.initial() => UserUpdateState(
     isLoading: false,
-    name: '',
+    firstName: '',
+    lastName: '', 
     email: '',
+    password: '',
     updateFailureOrSuccessOption: none(),
   );
 }

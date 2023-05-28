@@ -1,4 +1,3 @@
-
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,111 +11,99 @@ class EventUpdateBloc extends Bloc<EventUpdateEvent, EventUpdateState> {
   final EventRepository _eventRepository;
   final String _eventId;
 
-  EventUpdateBloc(this._eventRepository, this._eventId) : super(EventUpdateState.initial());
+  EventUpdateBloc(this._eventRepository, this._eventId)
+      : super(EventUpdateState.initial()) {
 
-  @override
-  Stream<EventUpdateState> mapEventToState(EventUpdateEvent event) async* {
-    yield* event.map(
-      initialized: (_) async* {},
-      organizerIdChanged: (e) async* {
-        yield state.copyWith(
-          organizerId: e.organizerId,
-        );
-      },
-      startTimeChanged: (e) async* {
-        yield state.copyWith(
-          startTime: e.startTime,
-        );
-      },
-      endTimeChanged: (e) async* {
-        yield state.copyWith(
-          endTime: e.endTime,
-        );
-      },
-      placeChanged: (e) async* {
-        yield state.copyWith(
-          place: e.place,
-        );
-      },
-      availableSeatsChanged: (e) async* {
-        yield state.copyWith(
-          availableSeats: e.availableSeats,
-        );
-      },
-      ticketsSoldChanged: (e) async* {
-        yield state.copyWith(
-          ticketsSold: e.ticketsSold,
-        );
-      },
-      descriptionChanged: (e) async* {
-        yield state.copyWith(
-          description: e.description,
-        );
-      },
-      titleChanged: (e) async* {
-        yield state.copyWith(
-          title: e.title,
-        );
-      },
-      eventUpdatePressed: (_) async* {
-        yield state.copyWith(
-          isLoading: true,
-          updateFailureOrSuccessOption: none(),
-        );
+        on<_StartTimeChanged>((event, emit) {
+          emit(state.copyWith(
+            startTime: event.startTime,
+            updateFailureOrSuccessOption: none(),
+          ));
+        });
 
-        final OrganizerId organizerId = state.organizerId as OrganizerId;
-        final StartTime? startTime = state.startTime;
-        final EndTime? endTime = state.endTime;
-        final Place? place = state.place;
-        final int? availableSeats = state.availableSeats;
-        final int? ticketsSold = state.ticketsSold;
-        final String? description = state.description;
-        final String? title = state.title;
+        on<_EndTimeChanged>((event, emit) {
+          emit(state.copyWith(
+            endTime: event.endTime,
+            updateFailureOrSuccessOption: none(),
+          ));
+        });
 
-        if (startTime == null ||
-            endTime == null ||
-            place == null ||
-            availableSeats == null ||
-            ticketsSold == null ||
-            description == null ||
-            title == null) {
-          yield state.copyWith(
+        on<_PlaceChanged>((event, emit) {
+          emit(state.copyWith(
+            place: event.place,
+            updateFailureOrSuccessOption: none(),
+          ));
+        });
+
+        on<_AvailableSeatsChanged>((event, emit) {
+          emit(state.copyWith(
+            availableSeats: event.availableSeats,
+            updateFailureOrSuccessOption: none(),
+          ));
+        });
+
+        on<_TicketsSoldChanged>((event, emit) {
+          emit(state.copyWith(
+            ticketsSold: event.ticketsSold,
+            updateFailureOrSuccessOption: none(),
+          ));
+        });
+
+        on<_DescriptionChanged>((event, emit) {
+          emit(state.copyWith(
+            description: event.description,
+            updateFailureOrSuccessOption: none(),
+          ));
+        });
+
+        on<_TitleChanged>((event, emit) {
+          emit(state.copyWith(
+            title: event.title,
+            updateFailureOrSuccessOption: none(),
+          ));
+        });
+
+        on<_EventUpdatePressed>((event, emit) async {
+          Either<EventFailure, Object> failureOrSuccess;
+
+          emit(state.copyWith(isLoading: true));
+
+          // check if the fields are valid
+          final startTimeIsValid = state.startTime != null;
+          final endTimeIsValid = state.endTime != null;
+          final placeIsValid = state.place != null;
+          final availableSeatsIsValid = state.availableSeats != null;
+          final ticketsSoldIsValid = state.ticketsSold != null;
+          final descriptionIsValid = state.description != null;
+          final titleIsValid = state.title != null;
+
+          if (startTimeIsValid &&
+              endTimeIsValid &&
+              placeIsValid &&
+              availableSeatsIsValid &&
+              ticketsSoldIsValid &&
+              descriptionIsValid &&
+              titleIsValid) {
+            failureOrSuccess = await _eventRepository.updateEvent(event.eventId,
+              EventUpdateModel(startTime: state.startTime!,
+              endTime: state.endTime!,
+              place: state.place!,
+              availableSeats: state.availableSeats!,
+              ticketsSold: state.ticketsSold!,
+              description: state.description!,
+              title: state.title!,)
+            );
+          }
+
+          else {
+            failureOrSuccess = left(const EventFailure.invalidEvent());
+          }
+
+          emit(state.copyWith(
             isLoading: false,
-            updateFailureOrSuccessOption: some(left(const EventFailure.invalidEvent())),
-          );
-          return;
-        }
-
-        final EventUpdateModel event = EventUpdateModel(
-          organizerId: organizerId,
-          startTime: startTime,
-          endTime: endTime,
-          place: place,
-          availableSeats: availableSeats,
-          ticketsSold: ticketsSold,
-          description: description,
-          title: title,
-          eventId: _eventId,
-        );
-
-        final Either<EventFailure, Object> failureOrSuccess =
-            await _eventRepository.updateEvent(_eventId, EventUpdateModel(
-              organizerId: event.organizerId,
-              startTime: event.startTime,
-              endTime: event.endTime,
-              place: event.place,
-              availableSeats: event.availableSeats,
-              ticketsSold: event.ticketsSold,
-              description: event.description,
-              title: event.title,
-              eventId: event.eventId,
-            ));
-
-        yield state.copyWith(
-          isLoading: false,
-          updateFailureOrSuccessOption: optionOf(failureOrSuccess as Either<EventFailure, Object>?),
-        );
-      },
-    );
-  }
+            updateFailureOrSuccessOption: optionOf(failureOrSuccess),
+          ));
+        });
+    
+      }
 }

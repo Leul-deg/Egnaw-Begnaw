@@ -20,12 +20,12 @@ EventCreateModel _$EventCreateModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$EventCreateModel {
-  OrganizerId get organizerId => throw _privateConstructorUsedError;
+  String get organizerId => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
-  Place get place => throw _privateConstructorUsedError;
-  StartTime get startTime => throw _privateConstructorUsedError;
-  EndTime get endTime => throw _privateConstructorUsedError;
+  String get place => throw _privateConstructorUsedError;
+  String get startTime => throw _privateConstructorUsedError;
+  String get endTime => throw _privateConstructorUsedError;
   int get availableSeats => throw _privateConstructorUsedError;
   int get ticketsSold => throw _privateConstructorUsedError;
   dynamic get required => throw _privateConstructorUsedError;
@@ -43,20 +43,15 @@ abstract class $EventCreateModelCopyWith<$Res> {
       _$EventCreateModelCopyWithImpl<$Res, EventCreateModel>;
   @useResult
   $Res call(
-      {OrganizerId organizerId,
+      {String organizerId,
       String description,
       String title,
-      Place place,
-      StartTime startTime,
-      EndTime endTime,
+      String place,
+      String startTime,
+      String endTime,
       int availableSeats,
       int ticketsSold,
       dynamic required});
-
-  $OrganizerIdCopyWith<$Res> get organizerId;
-  $PlaceCopyWith<$Res> get place;
-  $StartTimeCopyWith<$Res> get startTime;
-  $EndTimeCopyWith<$Res> get endTime;
 }
 
 /// @nodoc
@@ -86,7 +81,7 @@ class _$EventCreateModelCopyWithImpl<$Res, $Val extends EventCreateModel>
       organizerId: null == organizerId
           ? _value.organizerId
           : organizerId // ignore: cast_nullable_to_non_nullable
-              as OrganizerId,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -98,15 +93,15 @@ class _$EventCreateModelCopyWithImpl<$Res, $Val extends EventCreateModel>
       place: null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as Place,
+              as String,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as StartTime,
+              as String,
       endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as EndTime,
+              as String,
       availableSeats: null == availableSeats
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
@@ -121,38 +116,6 @@ class _$EventCreateModelCopyWithImpl<$Res, $Val extends EventCreateModel>
               as dynamic,
     ) as $Val);
   }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $OrganizerIdCopyWith<$Res> get organizerId {
-    return $OrganizerIdCopyWith<$Res>(_value.organizerId, (value) {
-      return _then(_value.copyWith(organizerId: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $PlaceCopyWith<$Res> get place {
-    return $PlaceCopyWith<$Res>(_value.place, (value) {
-      return _then(_value.copyWith(place: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StartTimeCopyWith<$Res> get startTime {
-    return $StartTimeCopyWith<$Res>(_value.startTime, (value) {
-      return _then(_value.copyWith(startTime: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $EndTimeCopyWith<$Res> get endTime {
-    return $EndTimeCopyWith<$Res>(_value.endTime, (value) {
-      return _then(_value.copyWith(endTime: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
@@ -164,24 +127,15 @@ abstract class _$$_EventCreateModelCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {OrganizerId organizerId,
+      {String organizerId,
       String description,
       String title,
-      Place place,
-      StartTime startTime,
-      EndTime endTime,
+      String place,
+      String startTime,
+      String endTime,
       int availableSeats,
       int ticketsSold,
       dynamic required});
-
-  @override
-  $OrganizerIdCopyWith<$Res> get organizerId;
-  @override
-  $PlaceCopyWith<$Res> get place;
-  @override
-  $StartTimeCopyWith<$Res> get startTime;
-  @override
-  $EndTimeCopyWith<$Res> get endTime;
 }
 
 /// @nodoc
@@ -209,7 +163,7 @@ class __$$_EventCreateModelCopyWithImpl<$Res>
       organizerId: null == organizerId
           ? _value.organizerId
           : organizerId // ignore: cast_nullable_to_non_nullable
-              as OrganizerId,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -221,15 +175,15 @@ class __$$_EventCreateModelCopyWithImpl<$Res>
       place: null == place
           ? _value.place
           : place // ignore: cast_nullable_to_non_nullable
-              as Place,
+              as String,
       startTime: null == startTime
           ? _value.startTime
           : startTime // ignore: cast_nullable_to_non_nullable
-              as StartTime,
+              as String,
       endTime: null == endTime
           ? _value.endTime
           : endTime // ignore: cast_nullable_to_non_nullable
-              as EndTime,
+              as String,
       availableSeats: null == availableSeats
           ? _value.availableSeats
           : availableSeats // ignore: cast_nullable_to_non_nullable
@@ -261,17 +215,17 @@ class _$_EventCreateModel implements _EventCreateModel {
       _$$_EventCreateModelFromJson(json);
 
   @override
-  final OrganizerId organizerId;
+  final String organizerId;
   @override
   final String description;
   @override
   final String title;
   @override
-  final Place place;
+  final String place;
   @override
-  final StartTime startTime;
+  final String startTime;
   @override
-  final EndTime endTime;
+  final String endTime;
   @override
   final int availableSeats;
   @override
@@ -335,12 +289,12 @@ class _$_EventCreateModel implements _EventCreateModel {
 
 abstract class _EventCreateModel implements EventCreateModel {
   const factory _EventCreateModel(
-      {required final OrganizerId organizerId,
+      {required final String organizerId,
       required final String description,
       required final String title,
-      required final Place place,
-      required final StartTime startTime,
-      required final EndTime endTime,
+      required final String place,
+      required final String startTime,
+      required final String endTime,
       required final int availableSeats,
       required final int ticketsSold,
       final dynamic required}) = _$_EventCreateModel;
@@ -349,17 +303,17 @@ abstract class _EventCreateModel implements EventCreateModel {
       _$_EventCreateModel.fromJson;
 
   @override
-  OrganizerId get organizerId;
+  String get organizerId;
   @override
   String get description;
   @override
   String get title;
   @override
-  Place get place;
+  String get place;
   @override
-  StartTime get startTime;
+  String get startTime;
   @override
-  EndTime get endTime;
+  String get endTime;
   @override
   int get availableSeats;
   @override

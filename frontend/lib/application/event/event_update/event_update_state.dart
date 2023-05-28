@@ -5,15 +5,15 @@ class EventUpdateState with _$EventUpdateState {
 
   const factory EventUpdateState({
     required bool isLoading,
-    required OrganizerId? organizerId,
-    required StartTime? startTime,
-    required EndTime? endTime,
-    required Place? place,
+    required String? organizerId,
+    required String? startTime,
+    required String? endTime,
+    required String? place,
     required int? availableSeats,
     required int? ticketsSold,
     required String? description,
     required String? title,
-    required String eventId, // <--- new
+    required String eventId,
     required Option<Either<EventFailure, Object>> updateFailureOrSuccessOption,
 
 }) = _EventUpdateState;

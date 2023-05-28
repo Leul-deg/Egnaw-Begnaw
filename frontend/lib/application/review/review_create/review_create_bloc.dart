@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:frontend/data/local/shared_pref/shared_pref.dart';
-import 'package:frontend/data/local/local_database/local_storage.dart';
+import 'package:frontend/data/local/local_database/local_storage.dart' as local_storage;
 
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/review/models/review_create/review_create_model.dart';
@@ -14,53 +14,46 @@ part 'review_create_bloc.freezed.dart';
 
 class ReviewCreateBloc extends Bloc<ReviewCreateEvent, ReviewCreateState> {
   final ReviewRepository reviewRepository;
-  ReviewCreateBloc(this.reviewRepository) : super(ReviewCreateState.initial());
+  ReviewCreateBloc(this.reviewRepository) : super(ReviewCreateState.initial()){
 
-  @override
-  Stream<ReviewCreateState> mapEventToState(
-    ReviewCreateEvent event,
-  ) async* {
-    yield* event.map(
-        // started event
-        started: (e) async* {},
-        // reviewTextChanged event
-        reviewTextChanged: (e) async* {
-          yield state.copyWith(
-            reviewText: e.reviewText,
-            createFailureOrSuccessOption: none(),
-          );
-        },
-        // createReviewPressed event
-        createReviewPressed: (e) async* {
-          Either<ReviewFailure, Object>? failureOrSuccess;
+    on<_ReviewTextChanged>((event, emit) {
+      emit(state.copyWith(
+        reviewText: event.reviewText,
+        createFailureOrSuccessOption: none(),
+      ));
+    });
 
-          if (state.reviewText == '') {
-            failureOrSuccess = left(const ReviewFailure.invalidReview());
-          } else {
-            final String? userId = await getUserId();
-            final String? eventId = e.eventId;
+    on<_CreateReviewPressed>((event, emit) async {
+      emit(state.copyWith(
+        isLoading: true,
+        createFailureOrSuccessOption: none(),
+      ));
 
-            if (userId == null || eventId == null) {
-              yield state.copyWith(
-                isLoading: false,
-                createFailureOrSuccessOption: some(left(const ReviewFailure.invalidReview())),
-              );
-              return;
-            }
+      Either<ReviewFailure, Object>? failureOrSuccess;
 
-            final ReviewCreateModel review = ReviewCreateModel(
-              reviewerId: userId,
-              reviewText: state.reviewText,
-              eventId: eventId,
-            );
+      final reviewTextIsValid = state.reviewText.isNotEmpty;
 
-            failureOrSuccess = await reviewRepository.createReview(review);
-          }
+      if (!reviewTextIsValid) {
+        failureOrSuccess = left(const ReviewFailure.invalidReview());
+      }
 
-          yield state.copyWith(
-            isLoading: true,
-            createFailureOrSuccessOption: none(),
-          );
-        });
+      else {
+        final reviewerId = await local_storage.getUserId();
+
+        failureOrSuccess = await reviewRepository.createReview(
+          ReviewCreateModel(
+            reviewText: state.reviewText,
+            reviewerId: reviewerId,
+            eventId: event.eventId,
+          ),
+        );
+      }
+      
+      emit(state.copyWith(
+        isLoading: false,
+        createFailureOrSuccessOption: some(failureOrSuccess),
+      ));
+    });
+
   }
 }

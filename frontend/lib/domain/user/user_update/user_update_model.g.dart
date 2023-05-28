@@ -11,8 +11,7 @@ _$_UserUpdateModel _$$_UserUpdateModelFromJson(Map<String, dynamic> json) =>
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       email: json['email'] as String,
-      phoneNumber: json['phoneNumber'] as String,
-      id: json['id'] as String,
+      password: json['password'] as String,
     );
 
 Map<String, dynamic> _$$_UserUpdateModelToJson(_$_UserUpdateModel instance) =>
@@ -20,6 +19,5 @@ Map<String, dynamic> _$$_UserUpdateModelToJson(_$_UserUpdateModel instance) =>
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'email': instance.email,
-      'phoneNumber': instance.phoneNumber,
-      'id': instance.id,
+      'password': instance.password,
     };

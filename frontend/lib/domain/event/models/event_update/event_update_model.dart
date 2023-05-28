@@ -9,13 +9,11 @@ class EventUpdateModel with _$EventUpdateModel {
   const factory EventUpdateModel({
     required String description,
     required String title,
-    required Place place,
-    required StartTime startTime,
-    required EndTime endTime,
+    required String place,
+    required String startTime,
+    required String endTime,
     required int availableSeats,
-    required String eventId,
     required int ticketsSold,
-    required OrganizerId organizerId,
   }) = _EventUpdateModel;
 
   factory EventUpdateModel.fromJson(Map<String, dynamic> json) =>

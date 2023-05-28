@@ -5,10 +5,10 @@ class EventCreateState with _$EventCreateState {
 
   const factory EventCreateState({
     required bool isLoading,
-    required OrganizerId? organizerId,
-    required StartTime? startTime,
-    required EndTime? endTime,
-    required Place? place,
+    required String? organizerId,
+    required String? startTime,
+    required String? endTime,
+    required String? place,
     required int? availableSeats,
     required int? ticketsSold,
     required String? description,

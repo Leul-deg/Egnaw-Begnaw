@@ -23,8 +23,7 @@ mixin _$UserUpdateModel {
   String get firstName => throw _privateConstructorUsedError;
   String get lastName => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
-  String get phoneNumber => throw _privateConstructorUsedError;
-  String get id => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -38,12 +37,7 @@ abstract class $UserUpdateModelCopyWith<$Res> {
           UserUpdateModel value, $Res Function(UserUpdateModel) then) =
       _$UserUpdateModelCopyWithImpl<$Res, UserUpdateModel>;
   @useResult
-  $Res call(
-      {String firstName,
-      String lastName,
-      String email,
-      String phoneNumber,
-      String id});
+  $Res call({String firstName, String lastName, String email, String password});
 }
 
 /// @nodoc
@@ -62,8 +56,7 @@ class _$UserUpdateModelCopyWithImpl<$Res, $Val extends UserUpdateModel>
     Object? firstName = null,
     Object? lastName = null,
     Object? email = null,
-    Object? phoneNumber = null,
-    Object? id = null,
+    Object? password = null,
   }) {
     return _then(_value.copyWith(
       firstName: null == firstName
@@ -78,13 +71,9 @@ class _$UserUpdateModelCopyWithImpl<$Res, $Val extends UserUpdateModel>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -98,12 +87,7 @@ abstract class _$$_UserUpdateModelCopyWith<$Res>
       __$$_UserUpdateModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String firstName,
-      String lastName,
-      String email,
-      String phoneNumber,
-      String id});
+  $Res call({String firstName, String lastName, String email, String password});
 }
 
 /// @nodoc
@@ -120,8 +104,7 @@ class __$$_UserUpdateModelCopyWithImpl<$Res>
     Object? firstName = null,
     Object? lastName = null,
     Object? email = null,
-    Object? phoneNumber = null,
-    Object? id = null,
+    Object? password = null,
   }) {
     return _then(_$_UserUpdateModel(
       firstName: null == firstName
@@ -136,13 +119,9 @@ class __$$_UserUpdateModelCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
-      phoneNumber: null == phoneNumber
-          ? _value.phoneNumber
-          : phoneNumber // ignore: cast_nullable_to_non_nullable
-              as String,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
+      password: null == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -155,8 +134,7 @@ class _$_UserUpdateModel implements _UserUpdateModel {
       {required this.firstName,
       required this.lastName,
       required this.email,
-      required this.phoneNumber,
-      required this.id});
+      required this.password});
 
   factory _$_UserUpdateModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserUpdateModelFromJson(json);
@@ -168,13 +146,11 @@ class _$_UserUpdateModel implements _UserUpdateModel {
   @override
   final String email;
   @override
-  final String phoneNumber;
-  @override
-  final String id;
+  final String password;
 
   @override
   String toString() {
-    return 'UserUpdateModel(firstName: $firstName, lastName: $lastName, email: $email, phoneNumber: $phoneNumber, id: $id)';
+    return 'UserUpdateModel(firstName: $firstName, lastName: $lastName, email: $email, password: $password)';
   }
 
   @override
@@ -187,15 +163,14 @@ class _$_UserUpdateModel implements _UserUpdateModel {
             (identical(other.lastName, lastName) ||
                 other.lastName == lastName) &&
             (identical(other.email, email) || other.email == email) &&
-            (identical(other.phoneNumber, phoneNumber) ||
-                other.phoneNumber == phoneNumber) &&
-            (identical(other.id, id) || other.id == id));
+            (identical(other.password, password) ||
+                other.password == password));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, firstName, lastName, email, phoneNumber, id);
+      Object.hash(runtimeType, firstName, lastName, email, password);
 
   @JsonKey(ignore: true)
   @override
@@ -216,8 +191,7 @@ abstract class _UserUpdateModel implements UserUpdateModel {
       {required final String firstName,
       required final String lastName,
       required final String email,
-      required final String phoneNumber,
-      required final String id}) = _$_UserUpdateModel;
+      required final String password}) = _$_UserUpdateModel;
 
   factory _UserUpdateModel.fromJson(Map<String, dynamic> json) =
       _$_UserUpdateModel.fromJson;
@@ -229,9 +203,7 @@ abstract class _UserUpdateModel implements UserUpdateModel {
   @override
   String get email;
   @override
-  String get phoneNumber;
-  @override
-  String get id;
+  String get password;
   @override
   @JsonKey(ignore: true)
   _$$_UserUpdateModelCopyWith<_$_UserUpdateModel> get copyWith =>

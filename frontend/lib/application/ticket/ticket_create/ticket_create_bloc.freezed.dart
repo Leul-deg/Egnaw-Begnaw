@@ -314,8 +314,6 @@ abstract class _TicketCreatePressed implements TicketCreateEvent {
 /// @nodoc
 mixin _$TicketCreateState {
   bool get isLoading => throw _privateConstructorUsedError;
-  String? get userId => throw _privateConstructorUsedError;
-  String? get eventId => throw _privateConstructorUsedError;
   Option<Either<TicketFailure, Object>> get createFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
@@ -332,8 +330,6 @@ abstract class $TicketCreateStateCopyWith<$Res> {
   @useResult
   $Res call(
       {bool isLoading,
-      String? userId,
-      String? eventId,
       Option<Either<TicketFailure, Object>> createFailureOrSuccessOption});
 }
 
@@ -351,8 +347,6 @@ class _$TicketCreateStateCopyWithImpl<$Res, $Val extends TicketCreateState>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? userId = freezed,
-    Object? eventId = freezed,
     Object? createFailureOrSuccessOption = null,
   }) {
     return _then(_value.copyWith(
@@ -360,14 +354,6 @@ class _$TicketCreateStateCopyWithImpl<$Res, $Val extends TicketCreateState>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      eventId: freezed == eventId
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
-              as String?,
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -386,8 +372,6 @@ abstract class _$$_TicketCreateStateCopyWith<$Res>
   @useResult
   $Res call(
       {bool isLoading,
-      String? userId,
-      String? eventId,
       Option<Either<TicketFailure, Object>> createFailureOrSuccessOption});
 }
 
@@ -403,8 +387,6 @@ class __$$_TicketCreateStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? isLoading = null,
-    Object? userId = freezed,
-    Object? eventId = freezed,
     Object? createFailureOrSuccessOption = null,
   }) {
     return _then(_$_TicketCreateState(
@@ -412,14 +394,6 @@ class __$$_TicketCreateStateCopyWithImpl<$Res>
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String?,
-      eventId: freezed == eventId
-          ? _value.eventId
-          : eventId // ignore: cast_nullable_to_non_nullable
-              as String?,
       createFailureOrSuccessOption: null == createFailureOrSuccessOption
           ? _value.createFailureOrSuccessOption
           : createFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
@@ -432,23 +406,16 @@ class __$$_TicketCreateStateCopyWithImpl<$Res>
 
 class _$_TicketCreateState implements _TicketCreateState {
   const _$_TicketCreateState(
-      {required this.isLoading,
-      required this.userId,
-      required this.eventId,
-      required this.createFailureOrSuccessOption});
+      {required this.isLoading, required this.createFailureOrSuccessOption});
 
   @override
   final bool isLoading;
-  @override
-  final String? userId;
-  @override
-  final String? eventId;
   @override
   final Option<Either<TicketFailure, Object>> createFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'TicketCreateState(isLoading: $isLoading, userId: $userId, eventId: $eventId, createFailureOrSuccessOption: $createFailureOrSuccessOption)';
+    return 'TicketCreateState(isLoading: $isLoading, createFailureOrSuccessOption: $createFailureOrSuccessOption)';
   }
 
   @override
@@ -458,8 +425,6 @@ class _$_TicketCreateState implements _TicketCreateState {
             other is _$_TicketCreateState &&
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.eventId, eventId) || other.eventId == eventId) &&
             (identical(other.createFailureOrSuccessOption,
                     createFailureOrSuccessOption) ||
                 other.createFailureOrSuccessOption ==
@@ -467,8 +432,8 @@ class _$_TicketCreateState implements _TicketCreateState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, isLoading, userId, eventId, createFailureOrSuccessOption);
+  int get hashCode =>
+      Object.hash(runtimeType, isLoading, createFailureOrSuccessOption);
 
   @JsonKey(ignore: true)
   @override
@@ -481,17 +446,11 @@ class _$_TicketCreateState implements _TicketCreateState {
 abstract class _TicketCreateState implements TicketCreateState {
   const factory _TicketCreateState(
       {required final bool isLoading,
-      required final String? userId,
-      required final String? eventId,
       required final Option<Either<TicketFailure, Object>>
           createFailureOrSuccessOption}) = _$_TicketCreateState;
 
   @override
   bool get isLoading;
-  @override
-  String? get userId;
-  @override
-  String? get eventId;
   @override
   Option<Either<TicketFailure, Object>> get createFailureOrSuccessOption;
   @override
