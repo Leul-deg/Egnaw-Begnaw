@@ -1,12 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/auth/auth.dart';
 
 part 'user_create_event.dart';
 part 'user_create_state.dart';
-part 'user_create_bloc.freezed.dart';
 
 class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
   final AuthRepository authRepository;

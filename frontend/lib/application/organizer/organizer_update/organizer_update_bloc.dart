@@ -12,7 +12,6 @@ import 'package:frontend/data/local/shared_pref/shared_pref.dart';
 
 part 'organizer_update_event.dart';
 part 'organizer_update_state.dart';
-part 'organizer_update_bloc.freezed.dart';
 
 class OrganizerUpdateBloc
     extends Bloc<OrganizerUpdateEvent, OrganizerUpdateState> {

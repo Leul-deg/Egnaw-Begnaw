@@ -3,11 +3,7 @@ import 'package:frontend/domain/auth/auth.dart';
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:freezed_annotation/freezed_annotation.dart';
-
 import 'package:frontend/data/local/local_database/local_storage.dart';
-
-part 'login_bloc.freezed.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

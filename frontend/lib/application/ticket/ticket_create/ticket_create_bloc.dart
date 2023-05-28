@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:frontend/domain/ticket/ticket.dart';
 
@@ -9,7 +8,6 @@ import 'package:frontend/data/local/local_database/local_storage.dart';
 
 part 'ticket_create_event.dart';
 part 'ticket_create_state.dart';
-part 'ticket_create_bloc.freezed.dart';
 
 class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
   final TicketRepository _ticketRepository;
