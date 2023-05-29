@@ -1,14 +1,34 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-part 'organizer_failure.freezed.dart';
+class OrganizerFailure {
+  const OrganizerFailure();
 
-@freezed
-class OrganizerFailure with _$OrganizerFailure {
-  const factory OrganizerFailure.unexpectedError() = _UnexpectedError;
-  const factory OrganizerFailure.insufficientPermission() = _InsufficientPermission;
-  const factory OrganizerFailure.unableToUpdate() = _UnableToUpdate;
-  const factory OrganizerFailure.unableToDelete() = _UnableToDelete;
-  const factory OrganizerFailure.invalidOrganizer() = _InvalidOrganizer;
-  const factory OrganizerFailure.serverError() = _ServerError;
+  factory OrganizerFailure.unexpectedError() = UnexpectedError;
+  factory OrganizerFailure.insufficientPermission() = InsufficientPermission;
+  factory OrganizerFailure.unableToUpdate() = UnableToUpdate;
+  factory OrganizerFailure.unableToDelete() = UnableToDelete;
+  factory OrganizerFailure.invalidOrganizer() = InvalidOrganizer;
+  factory OrganizerFailure.serverError() = ServerError;
+}
 
+class UnexpectedError extends OrganizerFailure {
+  const UnexpectedError() : super();
+}
 
+class InsufficientPermission extends OrganizerFailure {
+  const InsufficientPermission() : super();
+}
+
+class UnableToUpdate extends OrganizerFailure {
+  const UnableToUpdate() : super();
+}
+
+class UnableToDelete extends OrganizerFailure {
+  const UnableToDelete() : super();
+}
+
+class InvalidOrganizer extends OrganizerFailure {
+  const InvalidOrganizer() : super();
+}
+
+class ServerError extends OrganizerFailure {
+  const ServerError() : super();
 }

@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-import 'package:frontend/domain/user/user.dart';
 
 import 'package:http/http.dart' as client;
 
@@ -140,6 +138,8 @@ class AuthDataSource implements AuthRepository {
 
   // Get the JWT token from shared preferences
   Future<String?> getJwtToken() async {
+    return null;
+  
     // return sharedPreferences.getString('jwtToken');
   }
 }

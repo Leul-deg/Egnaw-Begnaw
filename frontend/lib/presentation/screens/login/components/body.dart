@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './loginBtn.dart';
 import 'package:go_router/go_router.dart';
 import '../../routes/appRouteConstants.dart';
 import './loginWithGoogleBtn.dart';
@@ -156,7 +155,7 @@ class _BodyState extends State<Body> {
                               value: state.isOrganizer,
                               onChanged: (value) {
                                 context.read<LoginBloc>().add(
-                                      LoginEvent.isOrganizerChanged(true),
+                                       LoginEvent.isOrganizerChanged(true),
                                     );
                               }),
                         ),
@@ -172,7 +171,7 @@ class _BodyState extends State<Body> {
                             value: !state.isOrganizer,
                             onChanged: (value) {
                               context.read<LoginBloc>().add(
-                                    LoginEvent.isOrganizerChanged(false),
+                                     LoginEvent.isOrganizerChanged(false),
                                   );
                             },
                           ),

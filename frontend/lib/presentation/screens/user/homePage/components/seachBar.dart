@@ -4,7 +4,7 @@ class MySearchBar extends StatefulWidget implements PreferredSizeWidget {
   final double height = 56.0;
   final ValueChanged<String> onSearch;
 
-  MySearchBar({required this.onSearch});
+  const MySearchBar({super.key, required this.onSearch});
 
   @override
   _MySearchBarState createState() => _MySearchBarState();
@@ -29,17 +29,17 @@ class _MySearchBarState extends State<MySearchBar> {
           });
           widget.onSearch(value);
         },
-        style: TextStyle(color: Colors.black),
+        style: const TextStyle(color: Colors.black),
         decoration: InputDecoration(
           hintText: "Search...",
-          hintStyle: TextStyle(color: Colors.grey),
-          prefixIcon: Icon(
+          hintStyle: const TextStyle(color: Colors.grey),
+          prefixIcon: const Icon(
             Icons.search,
             color: Colors.grey,
           ),
           suffixIcon: _searchText.isNotEmpty
               ? IconButton(
-                  icon: Icon(Icons.clear),
+                  icon: const Icon(Icons.clear),
                   onPressed: () {
                     setState(() {
                       _searchController.clear();
@@ -54,7 +54,7 @@ class _MySearchBarState extends State<MySearchBar> {
             borderRadius: BorderRadius.circular(20.0),
           ),
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+            borderSide: const BorderSide(color: Colors.grey),
             borderRadius: BorderRadius.circular(20.0),
           ),
         ),

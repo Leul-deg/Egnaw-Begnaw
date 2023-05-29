@@ -5,7 +5,7 @@ import '../../../constants.dart';
 import '../../routes/appRouteConstants.dart';
 
 class Body extends StatelessWidget {
-  const Body({Key? key});
+  const Body({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class Body extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Expanded(
+          const Expanded(
             child: Center(
               child: Text(
                 'Event Ticketing App',

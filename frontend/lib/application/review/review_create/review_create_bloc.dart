@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:frontend/data/local/shared_pref/shared_pref.dart';
 import 'package:frontend/data/local/local_database/local_storage.dart';
 
 import 'package:dartz/dartz.dart';
@@ -34,7 +33,7 @@ class ReviewCreateBloc extends Bloc<ReviewCreateEvent, ReviewCreateState> {
       final reviewTextIsValid = state.reviewText.isNotEmpty;
 
       if (!reviewTextIsValid) {
-        failureOrSuccess = left(const ReviewFailure.invalidReview());
+        failureOrSuccess = left(ReviewFailure.invalidReview());
       }
 
       else {

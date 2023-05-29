@@ -7,7 +7,6 @@ import 'package:frontend/domain/review/review.dart';
 
 import 'package:frontend/data/local/local_database/local_storage.dart';
 
-import 'package:frontend/data/local/shared_pref/shared_pref.dart';
 
 part 'review_update_event.dart';
 part 'review_update_state.dart';
@@ -38,15 +37,15 @@ class ReviewUpdateBloc extends Bloc<ReviewUpdateEvent, ReviewUpdateState> {
           Either<ReviewFailure, Object>? failureOrSuccess;
 
           if (state.reviewText == '') {
-            failureOrSuccess = left(const ReviewFailure.invalidReview());
+            failureOrSuccess = left( ReviewFailure.invalidReview());
           } else {
-            final String? userId = await local_storage.getUserId();
-            final String? reviewId = e.reviewId;
+            final String userId = await local_storage.getUserId();
+            final String reviewId = e.reviewId;
 
-            if (userId == null || reviewId == null) {
+            if (reviewId == null) {
               yield state.copyWith(
                 isLoading: false,
-                updateFailureOrSuccessOption: some(left(const ReviewFailure.invalidReview())),
+                updateFailureOrSuccessOption: some(left( ReviewFailure.invalidReview())),
               );
               return;
             }

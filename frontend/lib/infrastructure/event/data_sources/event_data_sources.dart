@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
@@ -32,9 +31,9 @@ class EventDataSource implements EventRepository {
     if (response.statusCode == 200) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return const Left(EventFailure.invalidEvent());
+      return  Left(EventFailure.invalidEvent());
     } else {
-      return const Left(EventFailure.serverError());
+      return  Left(EventFailure.serverError());
     }
   }
 
@@ -52,9 +51,9 @@ class EventDataSource implements EventRepository {
     if (response.statusCode == 200) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return const Left(EventFailure.invalidEvent());
+      return  Left(EventFailure.invalidEvent());
     } else {
-      return const Left(EventFailure.serverError());
+      return  Left(EventFailure.serverError());
     }
   }
 
@@ -68,11 +67,11 @@ class EventDataSource implements EventRepository {
     );
 
     if (response.statusCode == 200) {
-      return const Right(Object);
+      return  const Right(Object);
     } else if (response.statusCode == 400) {
-      return const Left(EventFailure.invalidEvent());
+      return  Left(EventFailure.invalidEvent());
     } else {
-      return const Left(EventFailure.serverError());
+      return  Left(EventFailure.serverError());
     }
   }
 
@@ -94,9 +93,9 @@ class EventDataSource implements EventRepository {
         allEvents.add(event as EventModel);
       }
 
-      return Right(allEvents as List<Object>);
+      return Right(allEvents);
     } catch (e) {
-      return const Left(EventFailure.unableToGet());
+      return  Left(EventFailure.unableToGet());
     }
   }
 
@@ -137,11 +136,11 @@ class EventDataSource implements EventRepository {
           endTime: eventDataMap['endTime']);
 
       // Return the EventModel object wrapped in a Right Either object
-      return Right(eventModel as Object);
+      return Right(eventModel);
     } catch (e) {
       // If there is an error getting the event data from the API, return a Left Either object
       // with an EventFailure object containing an error message
-      return const Left(EventFailure.unableToGet());
+      return  Left(EventFailure.unableToGet());
     }
   }
 }

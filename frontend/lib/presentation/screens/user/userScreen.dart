@@ -3,7 +3,7 @@ import './homePage/homePage.dart';
 import './pastEvents/pastEvent.dart';
 
 class UserScreen extends StatefulWidget {
-  UserScreen({
+  const UserScreen({
     super.key,
   });
 
@@ -28,7 +28,7 @@ class _UserScreenState extends State<UserScreen> {
       home: Scaffold(
         body: _getPage(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
-          items: <BottomNavigationBarItem>[
+          items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
@@ -53,9 +53,9 @@ class _UserScreenState extends State<UserScreen> {
   Widget _getPage(int index) {
     switch (index) {
       case 0:
-        return HomePage();
+        return const HomePage();
       case 1:
-        return PastEvent();
+        return const PastEvent();
       case 2:
         return Center(
             child: Container(

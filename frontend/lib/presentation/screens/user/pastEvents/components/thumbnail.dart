@@ -23,7 +23,7 @@ class Thumbnail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Container(
+              child: SizedBox(
                 width: 210,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
@@ -38,11 +38,11 @@ class Thumbnail extends StatelessWidget {
             Text(
               eventName,
               maxLines: 1,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Text(
-              'Ended time ${endTime}',
-              style: TextStyle(fontSize: 14),
+              'Ended time $endTime',
+              style: const TextStyle(fontSize: 14),
             )
           ],
         ),

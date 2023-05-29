@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/organizer/organizer.dart';
-import 'package:frontend/domain/organizer/organizer_repository/organizer_repositories.dart';  
 import 'package:frontend/infrastructure/organizer/data_sources/organizer_data_sources.dart'; 
 class OrganizerRepositoryImp implements OrganizerRepository{
   final OrganizerDataSource organizerDataSource;  

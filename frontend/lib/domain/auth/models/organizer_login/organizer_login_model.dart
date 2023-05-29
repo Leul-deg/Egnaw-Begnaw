@@ -1,16 +1,24 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:frontend/domain/auth/auth.dart';
 
-part 'organizer_login_model.freezed.dart';
-part 'organizer_login_model.g.dart';
+class OrganizerLoginModel {
+  final String email;
+  final String password;
 
-@freezed
-class OrganizerLoginModel with _$OrganizerLoginModel {
-  const factory OrganizerLoginModel({
-    required String email,
-    required String password,
-  }) = _OrganizerLoginModel;
+  OrganizerLoginModel({
+    required this.email,
+    required this.password,
+  });
 
-  factory OrganizerLoginModel.fromJson(Map<String, dynamic> json) =>
-      _$OrganizerLoginModelFromJson(json);
+  factory OrganizerLoginModel.fromJson(Map<String, dynamic> json) {
+    return OrganizerLoginModel(
+      email: json['email'],
+      password: json['password'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'email': email,
+      'password': password,
+    };
+  }
 }
