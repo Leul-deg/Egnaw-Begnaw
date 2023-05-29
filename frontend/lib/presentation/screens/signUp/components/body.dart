@@ -247,7 +247,7 @@ class _BodyState extends State<Body> {
                               value: state.isOrganizer,
                               onChanged: (value) {
                                 context.read<UserCreateBloc>().add(
-                                    const UserCreateEvent.isOrganizerChanged(
+                                    UserCreateEvent.isOrganizerChanged(
                                         true));
                               }),
                         ),
@@ -263,7 +263,7 @@ class _BodyState extends State<Body> {
                             value: !state.isOrganizer,
                             onChanged: (value) {
                               context.read<UserCreateBloc>().add(
-                                  const UserCreateEvent.isOrganizerChanged(
+                                  UserCreateEvent.isOrganizerChanged(
                                       false));
                             },
                           ),
@@ -274,7 +274,7 @@ class _BodyState extends State<Body> {
                           child: ElevatedButton(
                             onPressed: () {
                               context.read<UserCreateBloc>().add(
-                                    const UserCreateEvent.createUserPressed(),
+                                    UserCreateEvent.createUserPressed(),
                                   );
                             },
                             style: ElevatedButton.styleFrom(

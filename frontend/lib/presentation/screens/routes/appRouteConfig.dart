@@ -34,13 +34,6 @@ class MyAppRoute {
       ),
       
       GoRoute(
-        name: MyAppRouteConstants.eventEditRouteName,
-        path: '/eventedit',
-        pageBuilder: (context, state) {
-          return MaterialPage(child: EditEvent());
-        },
-      ),
-      GoRoute(
         name: MyAppRouteConstants.eventCreateRouteName,
         path: '/eventcreate',
         pageBuilder: (context, state) {
