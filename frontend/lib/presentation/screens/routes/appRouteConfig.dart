@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/presentation/screens/organizer/eventCreate/eventCreate.dart';
 import 'package:go_router/go_router.dart';
 import 'appRouteConstants.dart';
 // import '../onboarding/onBoardingScreen.dart';
@@ -9,6 +10,9 @@ import '../errorPage/errorPage.dart';
 import '../user/userScreen.dart';
 import '../user/eventDetail/eventDetail.dart';
 import '../user/eventComment/eventComment.dart';
+import '../organizer/organizerScreen.dart';
+import '../organizer/eventDetail/eventDetail.dart';
+import '../organizer/editEvent/editEvent.dart';
 
 class MyAppRoute {
   final GoRouter router = GoRouter(
@@ -22,19 +26,34 @@ class MyAppRoute {
       //   },
       // ),
       GoRoute(
+        name: MyAppRouteConstants.organizerScreenRouteName,
+        path: '/',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: OrganizerScreen());
+        },
+      ),
+      
+      GoRoute(
+        name: MyAppRouteConstants.eventCreateRouteName,
+        path: '/eventcreate',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: EventCreate());
+        },
+      ),
+      GoRoute(
         name: MyAppRouteConstants.welcomeRouteName,
         path: '/welcome',
         pageBuilder: (context, state) {
           return MaterialPage(child: Welcome());
         },
       ),
-      GoRoute(
-        name: MyAppRouteConstants.userScreenRouteName,
-        path: '/',
-        pageBuilder: (context, state) {
-          return MaterialPage(child: UserScreen());
-        },
-      ),
+      // GoRoute(
+      //   name: MyAppRouteConstants.userScreenRouteName,
+      //   path: '/userscreen',
+      //   pageBuilder: (context, state) {
+      //     return MaterialPage(child: UserScreen());
+      //   },
+      // ),
       GoRoute(
         name: MyAppRouteConstants.eventCommentRouteName,
         path: '/eventComment',
@@ -42,13 +61,14 @@ class MyAppRoute {
           return MaterialPage(child: EventComment());
         },
       ),
-      GoRoute(
-        name: MyAppRouteConstants.eventDetailRouteName,
-        path: '/eventDetail',
-        pageBuilder: (context, state) {
-          return MaterialPage(child: EventDetail());
-        },
-      ),
+      // GoRoute(
+      //   name: MyAppRouteConstants.eventDetailRouteName,
+      //   path: '/eventDetail',
+      //   pageBuilder: (context, state) {
+      //     return MaterialPage(child: EventDetail());
+      //   },
+      // ),
+
       GoRoute(
         name: MyAppRouteConstants.signupRouteName,
         path: '/signup',
