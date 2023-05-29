@@ -8,7 +8,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Event Detail', home: EventDetail());
+    return const MaterialApp(title: 'Event Detail', home: EventDetail());
   }
 }
 
@@ -24,7 +24,7 @@ class _EventDetailState extends State<EventDetail> {
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context).size;
     return SingleChildScrollView(
-      physics: AlwaysScrollableScrollPhysics(),
+      physics: const AlwaysScrollableScrollPhysics(),
       child: Column(
         children: [
           Container(
@@ -32,7 +32,7 @@ class _EventDetailState extends State<EventDetail> {
               width: double.infinity,
               height: screen.height * 0.4,
             ),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage('musician.jpg'),
                 fit: BoxFit.cover,
@@ -50,7 +50,7 @@ class _EventDetailState extends State<EventDetail> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Rophnan Concert',
                   style: TextStyle(
                       color: Colors.black,
@@ -64,13 +64,13 @@ class _EventDetailState extends State<EventDetail> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Start Time', style: TextStyle(fontSize: 16)),
+                          const Text('Start Time', style: TextStyle(fontSize: 16)),
                           SizedBox(height: screen.height * 0.013),
                           Row(
                             children: [
-                              Icon(Icons.timer),
+                              const Icon(Icons.timer),
                               SizedBox(width: screen.width * 0.01),
-                              Text('6:00pm - 10:00pm',
+                              const Text('6:00pm - 10:00pm',
                                   style: TextStyle(
                                       color: Colors.black54, fontSize: 16))
                             ],
@@ -83,13 +83,13 @@ class _EventDetailState extends State<EventDetail> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('End Time', style: TextStyle(fontSize: 16)),
+                          const Text('End Time', style: TextStyle(fontSize: 16)),
                           SizedBox(height: screen.height * 0.013),
                           Row(
                             children: [
-                              Icon(Icons.timer),
+                              const Icon(Icons.timer),
                               SizedBox(width: screen.width * 0.01),
-                              Text('6:00pm - 10:00pm',
+                              const Text('6:00pm - 10:00pm',
                                   style: TextStyle(
                                       color: Colors.black54, fontSize: 16))
                             ],
@@ -102,9 +102,9 @@ class _EventDetailState extends State<EventDetail> {
                 SizedBox(height: screen.height * 0.01),
                 Row(
                   children: [
-                    Icon(Icons.location_pin),
+                    const Icon(Icons.location_pin),
                     SizedBox(width: screen.width * 0.01),
-                    Text(
+                    const Text(
                       'Gihon Hotel - Addis Ababa',
                       style: TextStyle(fontSize: 16),
                     )
@@ -113,13 +113,13 @@ class _EventDetailState extends State<EventDetail> {
                 SizedBox(height: screen.height * 0.01),
                 Row(
                   children: [
-                    Text(
+                    const Text(
                       'Available Seats',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(width: screen.width * 0.02),
-                    Text(
+                    const Text(
                       '500 person',
                       style: TextStyle(color: Colors.black54, fontSize: 16),
                     ),
@@ -128,37 +128,37 @@ class _EventDetailState extends State<EventDetail> {
                 SizedBox(height: screen.height * 0.01),
                 Row(
                   children: [
-                    Text(
+                    const Text(
                       'Tickets Sold',
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     SizedBox(width: screen.width * 0.02),
-                    Text(
+                    const Text(
                       '365 tickets',
                       style: TextStyle(color: Colors.black54, fontSize: 16),
                     ),
                   ],
                 ),
                 SizedBox(height: screen.height * 0.01),
-                Text(
+                const Text(
                   'Details',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: screen.height * 0.01),
-                Text(
+                const Text(
                   'lorem resolving dependencies collections matcher material color utilities source span test api available got dependencies exit code',
                   style: TextStyle(color: Colors.black54, fontSize: 16),
                 ),
                 SizedBox(height: screen.height * 0.01),
-                Text(
+                const Text(
                   'Organizers',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 SizedBox(height: screen.height * 0.02),
-                GestureDetector(onTap: () {}, child: OrganizerBtn()),
+                GestureDetector(onTap: () {}, child: const OrganizerBtn()),
                 SizedBox(height: screen.height * 0.02),
-                BuyTicketsBtn(),
+                const BuyTicketsBtn(),
                 SizedBox(height: screen.height * 0.02),
               ],
             ),

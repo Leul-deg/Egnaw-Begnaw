@@ -1,15 +1,39 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class ReviewFailure {
+  const ReviewFailure();
 
-part 'review_failure.freezed.dart';
+  factory ReviewFailure.unexpectedError() = _UnexpectedError;
+  factory ReviewFailure.insufficientPermission() = _InsufficientPermission;
+  factory ReviewFailure.unableToUpdate() = _UnableToUpdate;
+  factory ReviewFailure.unableToDelete() = _UnableToDelete;
+  factory ReviewFailure.invalidReview() = _InvalidReview;
+  factory ReviewFailure.serverError() = _ServerError;
+  factory ReviewFailure.unableToGet() = _UnableToGet;
+}
 
-@freezed
-class ReviewFailure with _$ReviewFailure {
-  const factory ReviewFailure.unexpectedError() = _UnexpectedError;
-  const factory ReviewFailure.insufficientPermission() =
-      _InsufficientPermission;
-  const factory ReviewFailure.unableToUpdate() = _UnableToUpdate;
-  const factory ReviewFailure.unableToDelete() = _UnableToDelete;
-  const factory ReviewFailure.invalidReview() = _InvalidReview;
-  const factory ReviewFailure.serverError() = _ServerError;
-  const factory ReviewFailure.unableToGet() = _UnableToGet;
+class _UnexpectedError extends ReviewFailure {
+  const _UnexpectedError() : super();
+}
+
+class _InsufficientPermission extends ReviewFailure {
+  const _InsufficientPermission() : super();
+}
+
+class _UnableToUpdate extends ReviewFailure {
+  const _UnableToUpdate() : super();
+}
+
+class _UnableToDelete extends ReviewFailure {
+  const _UnableToDelete() : super();
+}
+
+class _InvalidReview extends ReviewFailure {
+  const _InvalidReview() : super();
+}
+
+class _ServerError extends ReviewFailure {
+  const _ServerError() : super();
+}
+
+class _UnableToGet extends ReviewFailure {
+  const _UnableToGet() : super();
 }

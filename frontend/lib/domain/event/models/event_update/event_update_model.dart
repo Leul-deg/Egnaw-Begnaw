@@ -1,21 +1,43 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:frontend/domain/event/value_objects/value_objects.dart';
+class EventUpdateModel {
+  final String description;
+  final String title;
+  final String place;
+  final String startTime;
+  final String endTime;
+  final int availableSeats;
+  final int ticketsSold;
 
-part 'event_update_model.freezed.dart';
-part 'event_update_model.g.dart';
+  const EventUpdateModel({
+    required this.description,
+    required this.title,
+    required this.place,
+    required this.startTime,
+    required this.endTime,
+    required this.availableSeats,
+    required this.ticketsSold,
+  });
 
-@freezed
-class EventUpdateModel with _$EventUpdateModel {
-  const factory EventUpdateModel({
-    required String description,
-    required String title,
-    required String place,
-    required String startTime,
-    required String endTime,
-    required int availableSeats,
-    required int ticketsSold,
-  }) = _EventUpdateModel;
+  factory EventUpdateModel.fromJson(Map<String, dynamic> json) {
+    return EventUpdateModel(
+      description: json['description'],
+      title: json['title'],
+      place: json['place'],
+      startTime: json['startTime'],
+      endTime: json['endTime'],
+      availableSeats: json['availableSeats'],
+      ticketsSold: json['ticketsSold'],
+    );
+  }
 
-  factory EventUpdateModel.fromJson(Map<String, dynamic> json) =>
-      _$EventUpdateModelFromJson(json);
+  Map<String, dynamic> toJson() {
+    return {
+      'description': description,
+      'title': title,
+      'place': place,
+      'startTime': startTime,
+      'endTime': endTime,
+      'availableSeats': availableSeats,
+      'ticketsSold': ticketsSold,
+    };
+  }
 }

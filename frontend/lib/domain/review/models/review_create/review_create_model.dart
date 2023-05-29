@@ -1,16 +1,27 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class ReviewCreateModel {
+  final String reviewerId;
+  final String reviewText;
+  final String eventId;
 
-part 'review_create_model.freezed.dart';
-part 'review_create_model.g.dart';
+  const ReviewCreateModel({
+    required this.reviewerId,
+    required this.reviewText,
+    required this.eventId,
+  });
 
-@freezed
-class ReviewCreateModel with _$ReviewCreateModel {
-  const factory ReviewCreateModel({
-    required String reviewerId,
-    required String reviewText,
-    required String eventId,
-  }) = _ReviewCreateModel;
+  factory ReviewCreateModel.fromJson(Map<String, dynamic> json) {
+    return ReviewCreateModel(
+      reviewerId: json['reviewerId'],
+      reviewText: json['reviewText'],
+      eventId: json['eventId'],
+    );
+  }
 
-  factory ReviewCreateModel.fromJson(Map<String, dynamic> json) =>
-      _$ReviewCreateModelFromJson(json);
+  Map<String, dynamic> toJson() {
+    return {
+      'reviewerId': reviewerId,
+      'reviewText': reviewText,
+      'eventId': eventId,
+    };
+  }
 }

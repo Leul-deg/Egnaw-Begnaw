@@ -94,7 +94,7 @@ class EventUpdateBloc extends Bloc<EventUpdateEvent, EventUpdateState> {
           }
 
           else {
-            failureOrSuccess = left(const EventFailure.invalidEvent());
+            failureOrSuccess = left( EventFailure.invalidEvent());
           }
 
           emit(state.copyWith(

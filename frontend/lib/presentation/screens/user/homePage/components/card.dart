@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import '../../../routes/appRouteConstants.dart';
 
 class Card1 extends StatefulWidget {
+  const Card1({super.key});
+
   @override
   State<Card1> createState() => _Card1State();
 }
@@ -29,7 +31,7 @@ class _Card1State extends State<Card1> {
             ),
             borderRadius: BorderRadius.all(Radius.circular(10.0)),
           ),
-          child: Stack(
+          child: const Stack(
             children: [
               Positioned(
                   top: 20,

@@ -2,13 +2,11 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:dartz/dartz.dart';
-import 'package:frontend/domain/auth/auth.dart';
 
 import 'package:frontend/domain/organizer/organizer.dart';
 
 import 'package:frontend/data/local/local_database/local_storage.dart';
 
-import 'package:frontend/data/local/shared_pref/shared_pref.dart';
 
 part 'organizer_update_event.dart';
 part 'organizer_update_state.dart';

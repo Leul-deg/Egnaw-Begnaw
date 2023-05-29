@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
@@ -29,9 +28,9 @@ class TicketDataSource implements TicketRepository {
     if (response.statusCode == 200) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return const Left(TicketFailure.invalidTicket());
+      return  Left(TicketFailure.invalidTicket());
     } else {
-      return const Left(TicketFailure.serverError());
+      return  Left(TicketFailure.serverError());
     }
   }
 
@@ -49,9 +48,9 @@ class TicketDataSource implements TicketRepository {
     if (response.statusCode == 200) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return const Left(TicketFailure.invalidTicket());
+      return  Left(TicketFailure.invalidTicket());
     } else {
-      return const Left(TicketFailure.serverError());
+      return  Left(TicketFailure.serverError());
     }
   }
 
@@ -65,11 +64,11 @@ class TicketDataSource implements TicketRepository {
     );
 
     if (response.statusCode == 200) {
-      return const Right(Object);
+      return  const Right(Object);
     } else if (response.statusCode == 400) {
-      return const Left(TicketFailure.invalidTicket());
+      return  Left(TicketFailure.invalidTicket());
     } else {
-      return const Left(TicketFailure.serverError());
+      return  Left(TicketFailure.serverError());
     }
   }
 
@@ -87,9 +86,9 @@ class TicketDataSource implements TicketRepository {
 
       return Right(tickets);
     } else if (response.statusCode == 400) {
-      return const Left(TicketFailure.invalidTicket());
+      return  Left(TicketFailure.invalidTicket());
     } else {
-      return const Left(TicketFailure.serverError());
+      return  Left(TicketFailure.serverError());
     }
   }
 
@@ -105,9 +104,9 @@ class TicketDataSource implements TicketRepository {
     if (response.statusCode == 200) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return const Left(TicketFailure.invalidTicket());
+      return  Left(TicketFailure.invalidTicket());
     } else {
-      return const Left(TicketFailure.serverError());
+      return  Left(TicketFailure.serverError());
     }
   }
 }

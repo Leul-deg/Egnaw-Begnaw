@@ -19,7 +19,7 @@ class _BodyState extends State<Body> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.grey,
-          title: Center(child: Text('Rophnan Concert')),
+          title: const Center(child: Text('Rophnan Concert')),
         ),
         body: Padding(
           padding: EdgeInsets.all(screen.width * 0.01),
@@ -27,7 +27,7 @@ class _BodyState extends State<Body> {
             children: [
               Expanded(
                 child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: const AlwaysScrollableScrollPhysics(),
                   child: ListView.separated(
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
@@ -53,7 +53,7 @@ class _BodyState extends State<Body> {
                   padding: EdgeInsets.all(screen.width * 0.015),
                   child: Row(
                     children: [
-                      Expanded(
+                      const Expanded(
                         child: TextField(
                           decoration: InputDecoration(
                             hintText: 'Add a comment',
@@ -64,7 +64,7 @@ class _BodyState extends State<Body> {
                       SizedBox(width: screen.width * 0.02),
                       IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.send),
+                        icon: const Icon(Icons.send),
                       ),
                     ],
                   ),

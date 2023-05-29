@@ -4,12 +4,14 @@ import './seachBar.dart';
 
 
 class Body extends StatefulWidget {
+  const Body({super.key});
+
   @override
   State<Body> createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  final List<Widget> cards = [Card1(), Card1(), Card1()];
+  final List<Widget> cards = [const Card1(), const Card1(), const Card1()];
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +25,7 @@ class _BodyState extends State<Body> {
         body: OrientationBuilder(
           builder: (BuildContext context, Orientation orientation) {
             return SingleChildScrollView(
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -40,7 +42,7 @@ class _BodyState extends State<Body> {
                         Positioned(
                           top: orientation == Orientation.portrait ? 30 : 10,
                           left: 10,
-                          child: Text(
+                          child: const Text(
                             'Event Ticketing App',
                             style: TextStyle(
                                 color: Colors.white,
@@ -51,7 +53,7 @@ class _BodyState extends State<Body> {
                         Positioned(
                             top: orientation == Orientation.portrait ? 80 : 50,
                             left: 10,
-                            child: Text(
+                            child: const Text(
                               'Get tickets for your exciting moments',
                               style: TextStyle(
                                 color: Colors.white,
@@ -61,8 +63,8 @@ class _BodyState extends State<Body> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       'Collections',
                       style:
@@ -86,8 +88,8 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       'Collections',
                       style:
@@ -111,8 +113,8 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       'Collections',
                       style:
@@ -136,8 +138,8 @@ class _BodyState extends State<Body> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
+                  const Padding(
+                    padding: EdgeInsets.all(8.0),
                     child: Text(
                       'Collections',
                       style:
