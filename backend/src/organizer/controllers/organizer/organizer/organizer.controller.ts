@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Param, Body, Req, RawBodyRequest } from '@nestjs/common';
 import { CreateOrganizerDTO } from 'src/organizer/dto/createOrganizer.dto';
 import { UpdateOrganizerDTO } from 'src/organizer/dto/updateOrganizer.dto'; 
 import { OrganizerI } from 'src/Organizer/interfaces/organizer.interface';
@@ -20,7 +20,9 @@ export class OrganizerController {
     }
 
     @Post('update/:id')
-    async updateOrganizer(@Param('id') id: string, @Body() Organizer: UpdateOrganizerDTO): Promise<OrganizerI> {
+    async updateOrganizer(@Param('id') id: string, @Body() Organizer: UpdateOrganizerDTO, @Req() req: RawBodyRequest<Request>): Promise<OrganizerI> {
+        const raw = req.rawBody;
+        console.log('workinggggggggggggggggggggg');
         return this.organizerService.updateOrganizer(id, Organizer);
     }
 

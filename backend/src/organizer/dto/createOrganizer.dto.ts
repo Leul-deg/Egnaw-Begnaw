@@ -1,5 +1,5 @@
 export interface CreateOrganizerDTO {
-    name: string,
+    organizationName: string,
     email: string,
     password: string,
     profileImage: string,

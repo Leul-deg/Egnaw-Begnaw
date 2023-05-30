@@ -1,5 +1,5 @@
 export interface UpdateOrganizerDTO {
-    name?: String,
+    organizationName?: String,
     email?: String,
     password?: String,
     profileImage?: String,
