@@ -1,5 +1,10 @@
-
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:frontend/application/user/user_update/user_update_bloc.dart';
+import 'package:frontend/application/organizer/organizer_update/organizer_update_bloc.dart';
 
 import 'profileWidget.dart';
 import 'textFieldWidget.dart';
@@ -10,78 +15,68 @@ import 'appbarWidget.dart';
 
 import 'user.dart';
 
-class EditProfilePage extends StatefulWidget {
-  @override
-  _EditProfilePageState createState() => _EditProfilePageState();
-}
-
-class _EditProfilePageState extends State<EditProfilePage> {
+class EditProfilePage extends StatelessWidget {
   User user = UserPreferences.myUser;
 
   @override
-  Widget build(BuildContext context) => Builder(
-        builder: (context) => Scaffold(
-          body: LayoutBuilder(
-            builder: (context, constraints) => OrientationBuilder(
-              builder: (context, orientation) {
-                final isPortrait = orientation == Orientation.portrait;
-                final double spacing = isPortrait ? 20.0 : 40.0;
-                final double imageSize = isPortrait
-                    ? constraints.maxWidth * 0.4
-                    : constraints.maxHeight * 0.4;
-
-                return Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListView(
-                    padding: EdgeInsets.symmetric(horizontal: 32),
-                    physics: BouncingScrollPhysics(),
-                    children: [
-                      ProfileWidget(
-                        imagePath: user.imagePath,
-                        isEdit: true,
-                        onClicked: () async {},
-                      ),
-                      SizedBox(height: spacing),
-                      TextFieldWidget(
-                        label: 'Full Name',
-                        text: user.name,
-                        onChanged: (name) {},
-                      ),
-                      SizedBox(height: spacing),
-                      TextFieldWidget(
-                        label: 'Email',
-                        text: user.email,
-                        onChanged: (email) {},
-                      ),
-                      SizedBox(height: spacing),
-                      TextFieldWidget(
-                        label: 'About',
-                        text: user.about,
-                        maxLines: 5,
-                        onChanged: (about) {},
-                      ),
-                      SizedBox(height: spacing),
-                      TextButton(
-                        onPressed: () {
-                          // TODO: Implement save logic here
-                        },
-                        child: Text('Save'),
-                        style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all<Color>(Colors.yellow),
-                          shape: MaterialStateProperty.all<OutlinedBorder>(
-                            RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                );
-              },
+  Widget build(BuildContext context) => BlocConsumer<OrganizerUpdateBloc, OrganizerUpdateState>(
+        listener: (context, state) {
+          // Show a snackbar or handle other side effects based on the state
+        },
+        builder: (context, state) {
+          return Scaffold(
+            body: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Form(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ProfileWidget(
+                        imagePath: user.imagePath, isEdit: true, onClicked: () {}),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Organizer name'),
+                      initialValue: user.name,
+                      onChanged: (name) {
+                        print(name);
+                        context.read<OrganizerUpdateBloc>().add(
+                            OrganizerUpdateEvent.organizationNameChanged(name));
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Email'),
+                      initialValue: user.email,
+                      onChanged: (email) {
+                        print("on email change");
+                        context.read<OrganizerUpdateBloc>().add(
+                            OrganizerUpdateEvent.emailChanged(email));
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: 'Password'),
+                      initialValue: user.password,
+                      onChanged: (password) {
+                        print("on password change");
+                        context.read<OrganizerUpdateBloc>().add(
+                            OrganizerUpdateEvent.passwordChanged(password));
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      onPressed: () {
+                        print('pressed');
+                        context.read<OrganizerUpdateBloc>().add(
+                            OrganizerUpdateEvent.updateOrganizerPressed());
+                      },
+                      child: Text('Save'),
+                    ),
+                  ],
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       );
 }

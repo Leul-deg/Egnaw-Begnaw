@@ -10,8 +10,6 @@ import 'package:frontend/infrastructure/auth/repositories/auth_repository_imp.da
 import 'package:frontend/infrastructure/auth/data_sources/auth_data_sources.dart';
 
 
-
-
 class SignUp extends StatelessWidget {
   const SignUp({super.key});
 

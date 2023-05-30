@@ -8,12 +8,14 @@ class OrganizerUpdateState {
     required this.email,
     required this.password,
     required this.updateFailureOrSuccessOption,
+    required this.profileImage
   });
 
   final bool isLoading;
   final String? organizationName;
   final String? email;
   final String? password;
+  final String? profileImage;
   final Option<Either<OrganizerFailure, Object>> updateFailureOrSuccessOption;
 
   OrganizerUpdateState copyWith({
@@ -21,6 +23,7 @@ class OrganizerUpdateState {
     String? organizationName,
     String? email,
     String? password,
+    String? profileImage,
     Option<Either<OrganizerFailure, Object>>? updateFailureOrSuccessOption,
   }) {
     return OrganizerUpdateState(
@@ -28,6 +31,7 @@ class OrganizerUpdateState {
       organizationName: organizationName ?? this.organizationName,
       email: email ?? this.email,
       password: password ?? this.password,
+      profileImage: profileImage,
       updateFailureOrSuccessOption: updateFailureOrSuccessOption ?? this.updateFailureOrSuccessOption,
     );
   }
@@ -39,6 +43,7 @@ class OrganizerUpdateState {
       organizationName: null,
       email: null,
       password: null,
+      profileImage: null,
       updateFailureOrSuccessOption: none(),
     );
   }

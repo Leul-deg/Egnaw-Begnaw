@@ -1,12 +1,16 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:frontend/domain/organizer/organizer.dart';
+import 'package:frontend/infrastructure/organizer/data_sources/organizer_data_sources.dart';
+import 'package:frontend/infrastructure/organizer/repositories/organizer_repository_imp.dart';
 import 'user.dart';
 import 'userPreference.dart';
 import 'appbarWidget.dart';
 
 import 'profileWidget.dart';
 import 'editProfilePage.dart';
+
+import 'package:frontend/application/organizer/organizer_update/organizer_update_bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfilePage extends StatefulWidget {
   // const ProfilePage({super.key});
@@ -29,7 +33,15 @@ class _ProfilePageState extends State<ProfilePage> {
               imagePath: user.imagePath,
               onClicked: () {
                 Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => EditProfilePage()),
+                  MaterialPageRoute(
+                      builder: (context) => BlocProvider(
+                            create: (context) => OrganizerUpdateBloc(
+                              OrganizerRepositoryImp(
+                                organizerDataSource: OrganizerDataSource()
+                              )
+                            ),
+                            child: EditProfilePage(),
+                          )),
                 );
               },
             ),
