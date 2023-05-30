@@ -32,7 +32,12 @@ export const EventSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    placeImg: { type: String }
+
+    eventDate: {
+        type: Date,
+        required: true,
+    },
+
 })
 
 export const Event = mongoose.model('Event', EventSchema);
