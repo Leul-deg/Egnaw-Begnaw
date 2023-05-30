@@ -54,13 +54,13 @@ class _BodyState extends State<Body> {
                 SnackBar(
                   content: Text(
                     failure.map(
-                      invalidEvent: (_) => 'Invalid event',
-                      insufficientPermission: (_) => 'Insufficient permissions',
-                      unableToUpdate: (_) => 'Unable to update',
-                      serverError: (_) => 'Server error',
-                      unableToDelete: (_) => 'Unable to delete',
-                      unableToGet: (_) => 'Unable to get',
-                      unexpectedError: (_) => 'Unexpected error',
+                      invalidEvent: () => 'Invalid event',
+                      insufficientPermission: () => 'Insufficient permissions',
+                      unableToUpdate: () => 'Unable to update',
+                      serverError: () => 'Server error',
+                      unableToDelete: () => 'Unable to delete',
+                      unableToGet: () => 'Unable to get',
+                      unexpectedError: () => 'Unexpected error',
                     ),
                   ),
                 ),
