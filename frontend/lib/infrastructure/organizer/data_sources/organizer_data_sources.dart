@@ -9,8 +9,7 @@ class OrganizerDataSource implements OrganizerRepository {
 
   OrganizerDataSource();
   @override
-  Future<Either<OrganizerFailure, OrganizerModel>> getOrganizerData(
-      String id) async {
+  Future<Either<OrganizerFailure, Object>> getOrganizerData(String id) async {
     final response = await client.get(
       Uri.parse('$API_URL/organizer/$id'),
     );
@@ -24,7 +23,7 @@ class OrganizerDataSource implements OrganizerRepository {
   }
 
   @override
-  Future<Either<OrganizerFailure, List<OrganizerModel>>> getAllOrganizers(
+  Future<Either<OrganizerFailure, List<Object>>> getAllOrganizers(
       OrganizerModel allOrganizer) async {
     try {
       final response = await client.get(
@@ -46,16 +45,19 @@ class OrganizerDataSource implements OrganizerRepository {
   }
 
   @override
-  Future<Either<OrganizerFailure, OrganizerUpdateModel>> updateOrganizer(
+  Future<Either<OrganizerFailure, Object>> updateOrganizer(
       String organizerId, OrganizerUpdateModel newOrganizer) async {
-    print(newOrganizer.toJson());
+    // print(newOrganizer.toJson());
 
-    final response = await client.put(
+    final response = await client.post(
       Uri.parse('$API_URL/organizer/update/$organizerId'),
       body: newOrganizer.toJson(),
     );
-    if (response.statusCode == 200) {
-      return Right(OrganizerUpdateModel.fromJson(json.decode(response.body)));
+
+    print(response.statusCode);
+
+    if (response.statusCode == 201) {
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return Left(OrganizerFailure.invalidOrganizer());
     } else {
@@ -68,6 +70,7 @@ class OrganizerDataSource implements OrganizerRepository {
     final response = await client.delete(
       Uri.parse('$API_URL/organizer/$id'),
     );
+
     if (response.statusCode == 200) {
       return const Right(Object);
     } else if (response.statusCode == 400) {

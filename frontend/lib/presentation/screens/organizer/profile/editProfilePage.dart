@@ -19,9 +19,36 @@ class EditProfilePage extends StatelessWidget {
   User user = UserPreferences.myUser;
 
   @override
-  Widget build(BuildContext context) => BlocConsumer<OrganizerUpdateBloc, OrganizerUpdateState>(
+  Widget build(BuildContext context) =>
+      BlocConsumer<OrganizerUpdateBloc, OrganizerUpdateState>(
         listener: (context, state) {
-          // Show a snackbar or handle other side effects based on the state
+          // Show a snackbar based on the state.updatefailureOrSuccess
+          state.updateFailureOrSuccessOption.fold(
+            () {},
+            (either) => either.fold(
+              (failure) {
+                final snackBar = SnackBar(
+                  content: Text(
+                    failure.map(
+                      insufficientPermission: () => 'Insufficient permissions',
+                      unableToUpdate: () => 'Unable to update',
+                      unexpectedError: () => 'Unexpected error',
+                      invalidOrganizer: () => 'Invalid organizer',
+                      serverError: () => 'Server error',
+                      unableToDelete: () => 'Unable to delete',
+                    ),
+                  ),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+              (_) {
+                final snackBar = SnackBar(
+                  content: Text('Update successful'),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+            ),
+          );
         },
         builder: (context, state) {
           return Scaffold(
@@ -32,7 +59,9 @@ class EditProfilePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ProfileWidget(
-                        imagePath: user.imagePath, isEdit: true, onClicked: () {}),
+                        imagePath: user.imagePath,
+                        isEdit: true,
+                        onClicked: () {}),
                     SizedBox(height: 20),
                     TextFormField(
                       decoration: InputDecoration(labelText: 'Organizer name'),
@@ -49,8 +78,9 @@ class EditProfilePage extends StatelessWidget {
                       initialValue: user.email,
                       onChanged: (email) {
                         print("on email change");
-                        context.read<OrganizerUpdateBloc>().add(
-                            OrganizerUpdateEvent.emailChanged(email));
+                        context
+                            .read<OrganizerUpdateBloc>()
+                            .add(OrganizerUpdateEvent.emailChanged(email));
                       },
                     ),
                     SizedBox(height: 20),
@@ -67,8 +97,9 @@ class EditProfilePage extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         print('pressed');
-                        context.read<OrganizerUpdateBloc>().add(
-                            OrganizerUpdateEvent.updateOrganizerPressed());
+                        context
+                            .read<OrganizerUpdateBloc>()
+                            .add(OrganizerUpdateEvent.updateOrganizerPressed());
                       },
                       child: Text('Save'),
                     ),

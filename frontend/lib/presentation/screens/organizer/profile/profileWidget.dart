@@ -15,8 +15,6 @@ class ProfileWidget extends StatefulWidget {
   final bool isEdit;
   final VoidCallback onClicked;
 
-  
-
   const ProfileWidget({
     Key? key,
     required this.imagePath,
@@ -26,7 +24,6 @@ class ProfileWidget extends StatefulWidget {
 
   @override
   State<ProfileWidget> createState() => _ProfileWidgetState();
-
 }
 
 class _ProfileWidgetState extends State<ProfileWidget> {
@@ -56,9 +53,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme.primary;
 
-  // final blocConsumer = BlocProvider.of<OrganizerUpdateBloc>(context).blocConsumerBuilder(context);
-
-
     return Center(
       child: Stack(
         children: [
@@ -76,49 +70,40 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   Widget buildImage(MemoryImage? image) {
     final finalImage = image ?? NetworkImage(widget.imagePath);
 
-    return BlocProvider(
-      create: (context) => OrganizerUpdateBloc(
-        OrganizerRepositoryImp(organizerDataSource: OrganizerDataSource()),
-      ),
-      child: BlocBuilder<OrganizerUpdateBloc, OrganizerUpdateState>(
-        builder: (context, state) {
-          return ClipOval(
-            child: Material(
-              color: Colors.transparent,
-              child: Ink.image(
-                image: finalImage as ImageProvider,
-                fit: BoxFit.cover,
-                width: 128,
-                height: 128,
-                child: InkWell(onTap: widget.onClicked),
-              ),
-            ),
-          );
-        },
+    return ClipOval(
+      child: Material(
+        color: Colors.transparent,
+        child: Ink.image(
+          image: finalImage as ImageProvider,
+          fit: BoxFit.cover,
+          width: 128,
+          height: 128,
+          child: InkWell(onTap: widget.onClicked),
+        ),
       ),
     );
   }
 
   Widget buildEditIcon(Color color) => buildCircle(
-        color: Colors.white,
-        all: 3,
-        child: buildCircle(
-          color: color,
-          all: 8,
-          child: IconButton(
-            onPressed: () async {
-              final image = await _pickImageBase64();
-
-              context
-                  .read<OrganizerUpdateBloc>()
-                  .add(OrganizerUpdateEvent.profileImageChanged(image));
-            },
-            icon: Icon(widget.isEdit ? Icons.add_a_photo : Icons.edit),
-            color: Color(0xffffffff),
-            iconSize: 18,
-          ),
-        ),
-      );
+    color: Colors.white,
+    all: 3,
+    child: buildCircle(
+      color: color,
+      all: 8,
+      child: IconButton(
+        onPressed: () async {
+          final image = await _pickImageBase64();
+          
+          context.read<OrganizerUpdateBloc>().add(
+            OrganizerUpdateEvent.profileImageChanged(image)
+          );
+        },
+        icon: Icon(widget.isEdit ? Icons.add_a_photo : Icons.edit),
+        color: Color(0xffffffff),
+        iconSize: 18,
+      ),
+    ),
+  );
 
   Widget buildCircle({
     required Widget child,

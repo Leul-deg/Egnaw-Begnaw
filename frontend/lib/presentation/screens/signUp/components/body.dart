@@ -150,9 +150,9 @@ class _BodyState extends State<Body> {
                             key: const ValueKey('Organizer\'s Name'),
                             onChanged: (value) {
                               print(value);
-                              // trigger the organizerName bloc event
+                              // trigger the organizationName bloc event
                               context.read<UserCreateBloc>().add(
-                                  UserCreateEvent.organizerNameChanged(value));
+                                  UserCreateEvent.organizationNameChanged(value));
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(

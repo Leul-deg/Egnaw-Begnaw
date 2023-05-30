@@ -4,7 +4,7 @@ class UserCreateState {
   const UserCreateState({
     required this.firstName,
     required this.lastName,
-    required this.organizerName,
+    required this.organizationName,
     required this.isOrganizer,
     required this.emailAddress,
     required this.password,
@@ -15,7 +15,7 @@ class UserCreateState {
 
   final String firstName;
   final String lastName;
-  final String organizerName;
+  final String organizationName;
   final bool isOrganizer;
   final String emailAddress;
   final String password;
@@ -26,7 +26,7 @@ class UserCreateState {
   UserCreateState copyWith({
     String? firstName,
     String? lastName,
-    String? organizerName,
+    String? organizationName,
     bool? isOrganizer,
     String? emailAddress,
     String? password,
@@ -37,7 +37,7 @@ class UserCreateState {
     return UserCreateState(
       firstName: firstName ?? this.firstName,
       lastName: lastName ?? this.lastName,
-      organizerName: organizerName ?? this.organizerName,
+      organizationName: organizationName ?? this.organizationName,
       isOrganizer: isOrganizer ?? this.isOrganizer,
       emailAddress: emailAddress ?? this.emailAddress,
       password: password ?? this.password,
@@ -52,7 +52,7 @@ class UserCreateState {
       firstName: '',
       lastName: '',
       isOrganizer: false,
-      organizerName: '',
+      organizationName: '',
       emailAddress: '',
       password: '',
       isSubmitting: false,

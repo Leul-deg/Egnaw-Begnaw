@@ -1,11 +1,11 @@
 class OrganizerUpdateModel {
-  final String? organizerName;
+  final String? organizationName;
   final String? email;
   final String? password;
   final String? profileImage;
 
   const OrganizerUpdateModel({
-    this.organizerName,
+    this.organizationName,
     this.email,
     this.password,
     this.profileImage,
@@ -13,7 +13,7 @@ class OrganizerUpdateModel {
 
   factory OrganizerUpdateModel.fromJson(Map<String, dynamic> json) {
     return OrganizerUpdateModel(
-      organizerName: json['organizerName'] as String?,
+      organizationName: json['organizationName'] as String?,
       email: json['email'] as String?,
       password: json['password'] as String?,
       profileImage: json['profileImage'] as String?,
@@ -22,7 +22,7 @@ class OrganizerUpdateModel {
 
   Map<String, dynamic> toJson() {
     return {
-      'organizerName': organizerName,
+      'organizationName': organizationName,
       'email': email,
       'password': password,
       'profileImage': profileImage,

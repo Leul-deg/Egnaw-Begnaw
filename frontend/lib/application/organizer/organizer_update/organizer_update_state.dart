@@ -1,15 +1,13 @@
 part of 'organizer_update_bloc.dart';
 
-
 class OrganizerUpdateState {
-  const OrganizerUpdateState({
-    required this.isLoading,
-    required this.organizationName,
-    required this.email,
-    required this.password,
-    required this.updateFailureOrSuccessOption,
-    required this.profileImage
-  });
+  const OrganizerUpdateState(
+      {required this.isLoading,
+      required this.organizationName,
+      required this.email,
+      required this.password,
+      required this.updateFailureOrSuccessOption,
+      required this.profileImage});
 
   final bool isLoading;
   final String? organizationName;
@@ -31,8 +29,9 @@ class OrganizerUpdateState {
       organizationName: organizationName ?? this.organizationName,
       email: email ?? this.email,
       password: password ?? this.password,
-      profileImage: profileImage,
-      updateFailureOrSuccessOption: updateFailureOrSuccessOption ?? this.updateFailureOrSuccessOption,
+      profileImage: profileImage ?? this.profileImage,
+      updateFailureOrSuccessOption:
+          updateFailureOrSuccessOption ?? this.updateFailureOrSuccessOption,
     );
   }
 

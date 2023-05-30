@@ -7,11 +7,11 @@ class OrganizerRepositoryImp implements OrganizerRepository{
     required this.organizerDataSource,
   });
   @override
-  Future<Either<OrganizerFailure, OrganizerModel>> getOrganizerData(String id) async {
+  Future<Either<OrganizerFailure, Object>> getOrganizerData(String id) async {
     return await organizerDataSource.getOrganizerData(id);
   }
   @override
-  Future<Either<OrganizerFailure, List<OrganizerModel>>> getAllOrganizers(OrganizerModel allOrganizer) async {
+  Future<Either<OrganizerFailure, List<Object>>> getAllOrganizers(OrganizerModel allOrganizer) async {
     return await organizerDataSource.getAllOrganizers(allOrganizer);
   }
   // @override
@@ -20,7 +20,7 @@ class OrganizerRepositoryImp implements OrganizerRepository{
   // }
 
   @override
-  Future<Either<OrganizerFailure, OrganizerUpdateModel>> updateOrganizer(String organizerId, OrganizerUpdateModel newOrganizer) async {
+  Future<Either<OrganizerFailure, Object>> updateOrganizer(String organizerId, OrganizerUpdateModel newOrganizer) async {
     return await organizerDataSource.updateOrganizer(organizerId, newOrganizer);
   }
 
