@@ -1,20 +1,27 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:frontend/domain/auth/auth.dart';
+class OrganizerUpdateModel {
+  final String? organizerName;
+  final String? email;
+  final String? password;
 
+  const OrganizerUpdateModel({
+    this.organizerName,
+    this.email,
+    this.password,
+  });
 
-part 'organizer_update_model.freezed.dart';
-part 'organizer_update_model.g.dart';
+  factory OrganizerUpdateModel.fromJson(Map<String, dynamic> json) {
+    return OrganizerUpdateModel(
+      organizerName: json['organizerName'] as String?,
+      email: json['email'] as String?,
+      password: json['password'] as String?,
+    );
+  }
 
-@freezed
-class OrganizerUpdateModel with _$OrganizerUpdateModel {
-  const factory OrganizerUpdateModel({
-    String? organizerName,
-    String? email,
-    String? password,
-  }) = _OrganizerUpdateModel;
-
-  // to json
-  factory OrganizerUpdateModel.fromJson(Map<String, dynamic> json) =>
-      _$OrganizerUpdateModelFromJson(json);
-
+  Map<String, dynamic> toJson() {
+    return {
+      'organizerName': organizerName,
+      'email': email,
+      'password': password,
+    };
+  }
 }

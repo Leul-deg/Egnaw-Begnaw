@@ -1,16 +1,23 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class TicketCreateModel {
+  final String eventId;
+  final String userId;
 
-part 'ticket_create_model.freezed.dart';
-part 'ticket_create_model.g.dart';
+  TicketCreateModel({
+    required this.eventId,
+    required this.userId,
+  });
 
-@freezed
-class TicketCreateModel with _$TicketCreateModel {
-  const factory TicketCreateModel({
-    required String eventId,
-    required String userId,
+  factory TicketCreateModel.fromJson(Map<String, dynamic> json) {
+    return TicketCreateModel(
+      eventId: json['eventId'],
+      userId: json['userId'],
+    );
+  }
 
-  }) = _TicketCreateModel;
-
-  factory TicketCreateModel.fromJson(Map<String, dynamic> json) =>
-      _$TicketCreateModelFromJson(json);
+  Map<String, dynamic> toJson() {
+    return {
+      'eventId': eventId,
+      'userId': userId,
+    };
+  }
 }

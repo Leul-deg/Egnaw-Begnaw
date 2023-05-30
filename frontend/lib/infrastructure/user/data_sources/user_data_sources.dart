@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:dartz/dartz.dart';
-import 'package:frontend/domain/user/user_repository/user_repositories.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:frontend/domain/user/user.dart';
@@ -25,9 +23,9 @@ class UserDataSource implements UserRepository {
     if (response.statusCode == 200) {
       return Right(UserModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return const Left(UserFailure.invalidUser());
+      return  Left(UserFailure.invalidUser());
     } else {
-      return const Left(UserFailure.serverError());
+      return  Left(UserFailure.serverError());
     }
   }
 
@@ -44,9 +42,9 @@ class UserDataSource implements UserRepository {
     if (response.statusCode == 200) {
       return Right(UserUpdateModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return const Left(UserFailure.invalidUser());
+      return  Left(UserFailure.invalidUser());
     } else {
-      return const Left(UserFailure.serverError());
+      return  Left(UserFailure.serverError());
     }
   }
 
@@ -67,12 +65,12 @@ class UserDataSource implements UserRepository {
         }
         return Right(users);
       } else if (response.statusCode == 400) {
-        return const Left(UserFailure.invalidUser());
+        return  Left(UserFailure.invalidUser());
       } else {
-        return const Left(UserFailure.serverError());
+        return  Left(UserFailure.serverError());
       }
     } catch (e) {
-      return const Left(UserFailure.serverError());
+      return  Left(UserFailure.serverError());
     }
   }
 
@@ -87,9 +85,9 @@ class UserDataSource implements UserRepository {
     if (response.statusCode == 200) {
       return const Right(Object);
     } else if (response.statusCode == 400) {
-      return const Left(UserFailure.invalidUser());
+      return  Left(UserFailure.invalidUser());
     } else {
-      return const Left(UserFailure.serverError());
+      return  Left(UserFailure.serverError());
     }
   }
 
@@ -107,9 +105,9 @@ class UserDataSource implements UserRepository {
     if (response.statusCode == 200) {
       return Right(UserUpdateModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return const Left(UserFailure.invalidUser());
+      return  Left(UserFailure.invalidUser());
     } else {
-      return const Left(UserFailure.serverError());
+      return  Left(UserFailure.serverError());
     }
   }
 }

@@ -1,17 +1,31 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class UserUpdateModel {
+  final String firstName;
+  final String lastName;
+  final String email;
+  final String password;
 
-part 'user_update_model.freezed.dart';
-part 'user_update_model.g.dart';
+  const UserUpdateModel({
+    required this.firstName,
+    required this.lastName,
+    required this.email,
+    required this.password,
+  });
 
-@freezed
-class UserUpdateModel with _$UserUpdateModel {
-  const factory UserUpdateModel({
-    required String firstName,
-    required String lastName,
-    required String email,
-    required String password,
-  }) = _UserUpdateModel;
+  factory UserUpdateModel.fromJson(Map<String, dynamic> json) {
+    return UserUpdateModel(
+      firstName: json['firstName'] as String,
+      lastName: json['lastName'] as String,
+      email: json['email'] as String,
+      password: json['password'] as String,
+    );
+  }
 
-  factory UserUpdateModel.fromJson(Map<String, dynamic> json) =>
-      _$UserUpdateModelFromJson(json);
+  Map<String, dynamic> toJson() {
+    return {
+      'firstName': firstName,
+      'lastName': lastName,
+      'email': email,
+      'password': password,
+    };
+  }
 }

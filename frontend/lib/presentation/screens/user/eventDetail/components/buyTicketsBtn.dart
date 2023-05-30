@@ -19,7 +19,7 @@ class BuyTicketsBtn extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 )),
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.all(8),
               child: Text(
                 'Buy Tickets',

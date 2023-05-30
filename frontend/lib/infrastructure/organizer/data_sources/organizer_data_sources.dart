@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:frontend/domain/organizer/organizer.dart';
@@ -20,9 +19,9 @@ class OrganizerDataSource implements OrganizerRepository {
     if (response.statusCode == 200) {
       return Right(OrganizerModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return const Left(OrganizerFailure.invalidOrganizer());
+      return  Left(OrganizerFailure.invalidOrganizer());
     } else {
-      return const Left(OrganizerFailure.serverError());
+      return  Left(OrganizerFailure.serverError());
     }
   }
 
@@ -44,7 +43,7 @@ class OrganizerDataSource implements OrganizerRepository {
       }
       return Right(organizers);
     } catch (e) {
-      return const Left(OrganizerFailure.serverError());
+      return  Left(OrganizerFailure.serverError());
     }
   }
   
@@ -58,9 +57,9 @@ class OrganizerDataSource implements OrganizerRepository {
     if (response.statusCode == 200) {
       return Right(OrganizerUpdateModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return const Left(OrganizerFailure.invalidOrganizer());
+      return  Left(OrganizerFailure.invalidOrganizer());
     } else {
-      return const Left(OrganizerFailure.serverError());
+      return  Left(OrganizerFailure.serverError());
     }
   }
 
@@ -70,11 +69,11 @@ class OrganizerDataSource implements OrganizerRepository {
       Uri.parse('$API_URL/organizer/$id'),
     );
     if (response.statusCode == 200) {
-      return const Right(Object);
+      return  const Right(Object);
     } else if (response.statusCode == 400) {
-      return const Left(OrganizerFailure.invalidOrganizer());
+      return  Left(OrganizerFailure.invalidOrganizer());
     } else {
-      return const Left(OrganizerFailure.serverError());
+      return  Left(OrganizerFailure.serverError());
     }
   }
 }

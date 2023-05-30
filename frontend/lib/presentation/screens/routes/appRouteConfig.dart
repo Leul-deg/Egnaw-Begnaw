@@ -44,7 +44,7 @@ class MyAppRoute {
         name: MyAppRouteConstants.welcomeRouteName,
         path: '/welcome',
         pageBuilder: (context, state) {
-          return MaterialPage(child: Welcome());
+          return const MaterialPage(child: Welcome());
         },
       ),
       // GoRoute(
@@ -58,7 +58,7 @@ class MyAppRoute {
         name: MyAppRouteConstants.eventCommentRouteName,
         path: '/eventComment',
         pageBuilder: (context, state) {
-          return MaterialPage(child: EventComment());
+          return const MaterialPage(child: EventComment());
         },
       ),
       // GoRoute(
@@ -73,14 +73,14 @@ class MyAppRoute {
         name: MyAppRouteConstants.signupRouteName,
         path: '/signup',
         pageBuilder: (context, state) {
-          return MaterialPage(child: SignUp());
+          return const MaterialPage(child: SignUp());
         },
       ),
       GoRoute(
         name: MyAppRouteConstants.loginRouteName,
         path: '/login',
         pageBuilder: (context, state) {
-          return MaterialPage(child: Login());
+          return const MaterialPage(child: Login());
         },
       ),
       // GoRoute(
@@ -99,6 +99,6 @@ class MyAppRoute {
       //   },
       // ),
     ],
-    errorPageBuilder: (context, state) => MaterialPage(child: ErrorPage()),
+    errorPageBuilder: (context, state) => const MaterialPage(child: ErrorPage()),
   );
 }

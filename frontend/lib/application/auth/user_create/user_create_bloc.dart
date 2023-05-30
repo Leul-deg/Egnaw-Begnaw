@@ -104,9 +104,7 @@ class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
         }
       }
 
-      if (failureOrSuccess == null) {
-        failureOrSuccess = left(const AuthFailure.invalidEmail());
-      }
+      failureOrSuccess ??= left(const AuthFailure.invalidEmail());
 
       print(failureOrSuccess);
 

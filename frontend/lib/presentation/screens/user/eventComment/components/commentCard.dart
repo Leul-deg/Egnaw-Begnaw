@@ -70,8 +70,8 @@ class CommentCard extends StatelessWidget {
       ),
       title: Flexible(
         child: Text(
-          '${firstName}  ${lastName}',
-          style: TextStyle(
+          '$firstName  $lastName',
+          style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
         ),

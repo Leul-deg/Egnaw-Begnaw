@@ -1,8 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:frontend/domain/event/value_objects/value_objects.dart';
 
 class EventCreateModel {
+  final String organizerId;
+  final String description;
+  final String title;
+  final String place;
+  final String startTime;
+  final String endTime;
+  final int availableSeats;
+  final int ticketsSold;
+
   const EventCreateModel({
     required this.organizerId,
     required this.description,
@@ -43,6 +49,22 @@ class EventCreateModel {
 
   Map<String, dynamic> toJson() {
     final today = DateTime.now();
+  });
+
+  factory EventCreateModel.fromJson(Map<String, dynamic> json) {
+    return EventCreateModel(
+      organizerId: json['organizerId'],
+      description: json['description'],
+      title: json['title'],
+      place: json['place'],
+      startTime: json['startTime'],
+      endTime: json['endTime'],
+      availableSeats: json['availableSeats'],
+      ticketsSold: json['ticketsSold'],
+    );
+  }
+
+  Map<String, dynamic> toJson() {
     return {
       'organizerId': organizerId,
       'description': description,

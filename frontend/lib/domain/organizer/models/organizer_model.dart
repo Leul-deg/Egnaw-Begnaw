@@ -1,17 +1,25 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
-part 'organizer_model.freezed.dart';
-part 'organizer_model.g.dart';
+class OrganizerModel {
+  final String id;
+  final String name;
+  final String email;
+  final String password;
+  final String createdAt;
 
-@freezed
-class OrganizerModel with _$OrganizerModel {
-  const factory OrganizerModel({
-    required String id,
-    required String name,
-    required String email,
-    required String password,
-    required String createdAt,
-  }) = _OrganizerModel;
+  const OrganizerModel({
+    required this.id,
+    required this.name,
+    required this.email,
+    required this.password,
+    required this.createdAt,
+  });
 
-  factory OrganizerModel.fromJson(Map<String, dynamic> json) =>
-      _$OrganizerModelFromJson(json);
+  factory OrganizerModel.fromJson(Map<String, dynamic> json) {
+    return OrganizerModel(
+      id: json['id'],
+      name: json['name'],
+      email: json['email'],
+      password: json['password'],
+      createdAt: json['createdAt'],
+    );
+  }
 }

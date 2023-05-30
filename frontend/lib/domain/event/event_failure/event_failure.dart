@@ -1,14 +1,39 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
+class EventFailure {
+  const EventFailure();
 
-part 'event_failure.freezed.dart';
+  factory EventFailure.unexpectedError() = UnexpectedError;
+  factory EventFailure.insufficientPermission() = InsufficientPermission;
+  factory EventFailure.unableToUpdate() = UnableToUpdate;
+  factory EventFailure.unableToDelete() = UnableToDelete;
+  factory EventFailure.invalidEvent() = InvalidEvent;
+  factory EventFailure.serverError() = ServerError;
+  factory EventFailure.unableToGet() = UnableToGet;
+}
 
-@freezed
-class EventFailure with _$EventFailure {
-  const factory EventFailure.unexpectedError() = _UnexpectedError;
-  const factory EventFailure.insufficientPermission() = _InsufficientPermission;
-  const factory EventFailure.unableToUpdate() = _UnableToUpdate;
-  const factory EventFailure.unableToDelete() = _UnableToDelete;
-  const factory EventFailure.invalidEvent() = _InvalidEvent;
-  const factory EventFailure.serverError() = _ServerError;
-  const factory EventFailure.unableToGet() = _UnableToGet;
+class UnexpectedError extends EventFailure {
+  const UnexpectedError() : super();
+}
+
+class InsufficientPermission extends EventFailure {
+  const InsufficientPermission() : super();
+}
+
+class UnableToUpdate extends EventFailure {
+  const UnableToUpdate() : super();
+}
+
+class UnableToDelete extends EventFailure {
+  const UnableToDelete() : super();
+}
+
+class InvalidEvent extends EventFailure {
+  const InvalidEvent() : super();
+}
+
+class ServerError extends EventFailure {
+  const ServerError() : super();
+}
+
+class UnableToGet extends EventFailure {
+  const UnableToGet() : super();
 }
