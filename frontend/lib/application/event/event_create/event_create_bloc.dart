@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:frontend/domain/auth/auth.dart';
+import 'package:flutter/material.dart';
 import 'package:frontend/domain/event/event.dart';
 
 import '../../../data/local/local_database/local_storage.dart' as LocalStorage;
@@ -15,11 +15,17 @@ class EventCreateBloc extends Bloc<EventCreateEvent, EventCreateState> {
 
   EventCreateBloc(this._eventRepository) : super(EventCreateState.initial()) {
     on<_StartTimeChanged>((event, emit) {
-      emit(state.copyWith(startTime: event.startTime));
+      emit(state.copyWith(
+        startTime: event.startTime,
+      ));
     });
 
     on<_EndTimeChanged>((event, emit) {
       emit(state.copyWith(endTime: event.endTime));
+    });
+
+    on<_RevertError>((event, emit) {
+      emit(state.copyWith(createFailureOrSuccessOption: none()));
     });
 
     on<_PlaceChanged>((event, emit) {
@@ -42,29 +48,42 @@ class EventCreateBloc extends Bloc<EventCreateEvent, EventCreateState> {
       emit(state.copyWith(title: event.title));
     });
 
+    on<_EventDateChanged>((event, emit) {
+      emit(state.copyWith(eventDate: event.eventDate));
+    });
+
     on<_EventCreatePressed>((event, emit) async {
       Either<EventFailure, Object> failureOrSuccess;
 
       emit(state.copyWith(isLoading: true));
 
-      final organizerId = await local_storage.getUserId();
+      print('got the event');
+
+      // final organizerId = await local_storage.getUserId();
+      final organizerId = '64733886174c2d2f1a643a4d';
 
       // check if the fields are valid
-      final startTimeIsValid = state.startTime != null;
-      final endTimeIsValid = state.endTime != null;
-      final placeIsValid = state.place != null;
-      final availableSeatsIsValid = state.availableSeats != null;
-      final ticketsSoldIsValid = state.ticketsSold != null;
-      final descriptionIsValid = state.description != null;
-      final titleIsValid = state.title != null; 
+      final OrganizerIdIsValid = organizerId != null && organizerId.isNotEmpty;
+      final startTimeIsValid = state.startTime != null &&
+          state.startTime!.hour != null &&
+          state.startTime!.minute != null;
+      final endTimeIsValid = state.endTime != null &&
+          state.endTime!.hour != null &&
+          state.endTime!.minute != null;
+      final placeIsValid = state.place != null && state.place!.isNotEmpty;
+      final availableSeatsIsValid =
+          state.availableSeats != null;
+      final ticketsSoldIsValid =
+          state.ticketsSold != null && state.ticketsSold! >= 0;
+      final descriptionIsValid =
+          state.description != null && state.description!.isNotEmpty;
+      final titleIsValid = state.title != null && state.title!.isNotEmpty;
+      final eventDateIsValid =
+          state.eventDate != null && state.eventDate!.isAfter(DateTime.now());
 
-      if (!startTimeIsValid || !endTimeIsValid || !placeIsValid || !availableSeatsIsValid || !ticketsSoldIsValid || !descriptionIsValid || !titleIsValid) {
-        failureOrSuccess = left(EventFailure.invalidEvent());
-      } 
-      
-      else {
-        failureOrSuccess = await _eventRepository.createEvent(
-          EventCreateModel(
+      print('almost in if');
+
+      print(EventCreateModel(
               organizerId: organizerId,
               description: state.description!,
               title: state.title!,
@@ -72,14 +91,32 @@ class EventCreateBloc extends Bloc<EventCreateEvent, EventCreateState> {
               startTime: state.startTime!,
               endTime: state.endTime!,
               availableSeats: state.availableSeats!,
-              ticketsSold: state.ticketsSold!));
-      }      
-      
+              ticketsSold: state.ticketsSold!,
+              eventDate: state.eventDate!)
+          .toJson());
+
+      if (false) {
+        print('hererereer');
+        failureOrSuccess = left(EventFailure.invalidEvent());
+      } else {
+        print('in else');
+
+        failureOrSuccess = await _eventRepository.createEvent(EventCreateModel(
+            organizerId: organizerId,
+            description: state.description!,
+            title: state.title!,
+            place: state.place!,
+            startTime: state.startTime,
+            endTime: state.endTime,
+            availableSeats: state.availableSeats!,
+            ticketsSold: state.ticketsSold!,
+            eventDate: state.eventDate!));
+      }
+
       emit(state.copyWith(
         isLoading: false,
         createFailureOrSuccessOption: optionOf(failureOrSuccess),
       ));
     });
-
   }
 }

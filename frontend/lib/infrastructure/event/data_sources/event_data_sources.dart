@@ -8,28 +8,27 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:frontend/domain/event/event.dart';
 
 class EventDataSource implements EventRepository {
-  final http.Client client;
-  final SharedPreferences sharedPreferences;
+  final client = http.Client();
 
   final API_URL = "http://localhost:3000";
 
-  EventDataSource({
-    required this.client,
-    required this.sharedPreferences,
-  });
+  EventDataSource();
 
   @override
   Future<Either<EventFailure, Object>> createEvent(
       EventCreateModel eventCreateModel) async {
+    print('got the event');
+    print(eventCreateModel.toJson());
+
     final response = await client.post(
       Uri.parse('$API_URL/event'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
       body: eventCreateModel.toJson(),
     );
 
-    if (response.statusCode == 200) {
+    print('got response');
+    print(response.statusCode);
+
+    if (response.statusCode == 201) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return const Left(EventFailure.invalidEvent());
@@ -43,9 +42,6 @@ class EventDataSource implements EventRepository {
       String id, EventUpdateModel eventUpdateModel) async {
     final response = await client.put(
       Uri.parse('$API_URL/event/update/$id'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
       body: eventUpdateModel.toJson(),
     );
 
