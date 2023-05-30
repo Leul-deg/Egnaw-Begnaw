@@ -6,6 +6,7 @@ class UserPreferences {
     name: 'Samuel Godad',
     email: 'godadsamuel@gmail.com',
     about: 'some texts goes here ',
+    password: 'asdfasdf',
     isDarkMode: false,
   );
 }

@@ -4,12 +4,10 @@ import 'package:http/http.dart' as http;
 import 'package:frontend/domain/organizer/organizer.dart';
 
 class OrganizerDataSource implements OrganizerRepository {
-  final http.Client client;
+  final http.Client client = http.Client();
   final API_URL = "http://localhost:3000";
 
-  OrganizerDataSource({
-    required this.client,
-  });
+  OrganizerDataSource();
   @override
   Future<Either<OrganizerFailure, OrganizerModel>> getOrganizerData(
       String id) async {
@@ -19,9 +17,9 @@ class OrganizerDataSource implements OrganizerRepository {
     if (response.statusCode == 200) {
       return Right(OrganizerModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return  Left(OrganizerFailure.invalidOrganizer());
+      return Left(OrganizerFailure.invalidOrganizer());
     } else {
-      return  Left(OrganizerFailure.serverError());
+      return Left(OrganizerFailure.serverError());
     }
   }
 
@@ -43,23 +41,25 @@ class OrganizerDataSource implements OrganizerRepository {
       }
       return Right(organizers);
     } catch (e) {
-      return  Left(OrganizerFailure.serverError());
+      return Left(OrganizerFailure.serverError());
     }
   }
-  
+
   @override
-  Future<Either<OrganizerFailure, OrganizerUpdateModel>> updateOrganizer(String organizerId,
-      OrganizerUpdateModel newOrganizer) async {
+  Future<Either<OrganizerFailure, OrganizerUpdateModel>> updateOrganizer(
+      String organizerId, OrganizerUpdateModel newOrganizer) async {
+    print(newOrganizer.toJson());
+
     final response = await client.put(
-      Uri.parse('$API_URL/organizer/$organizerId'),
+      Uri.parse('$API_URL/organizer/update/$organizerId'),
       body: newOrganizer.toJson(),
     );
     if (response.statusCode == 200) {
       return Right(OrganizerUpdateModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return  Left(OrganizerFailure.invalidOrganizer());
+      return Left(OrganizerFailure.invalidOrganizer());
     } else {
-      return  Left(OrganizerFailure.serverError());
+      return Left(OrganizerFailure.serverError());
     }
   }
 
@@ -69,11 +69,11 @@ class OrganizerDataSource implements OrganizerRepository {
       Uri.parse('$API_URL/organizer/$id'),
     );
     if (response.statusCode == 200) {
-      return  const Right(Object);
+      return const Right(Object);
     } else if (response.statusCode == 400) {
-      return  Left(OrganizerFailure.invalidOrganizer());
+      return Left(OrganizerFailure.invalidOrganizer());
     } else {
-      return  Left(OrganizerFailure.serverError());
+      return Left(OrganizerFailure.serverError());
     }
   }
 }

@@ -7,7 +7,8 @@ class OrganizerUpdateEvent {
   const factory OrganizerUpdateEvent.organizationNameChanged(String organizationName) = _OrganizationNameChanged;
   const factory OrganizerUpdateEvent.emailChanged(String email) = _EmailChanged;
   const factory OrganizerUpdateEvent.passwordChanged(String password) = _PasswordChanged;
-  const factory OrganizerUpdateEvent.updateOrganizerPressed(String organizerId) = _UpdateOrganizerPressed;
+  const factory OrganizerUpdateEvent.profileImageChanged(String profileImage) = _ProfileImageChanged;
+  const factory OrganizerUpdateEvent.updateOrganizerPressed() = _UpdateOrganizerPressed;
 }
 
 class _Started extends OrganizerUpdateEvent {
@@ -32,8 +33,12 @@ class _PasswordChanged extends OrganizerUpdateEvent {
   final String password;
 }
 
-class _UpdateOrganizerPressed extends OrganizerUpdateEvent {
-  const _UpdateOrganizerPressed(this.organizerId) : super._();
+class _ProfileImageChanged extends OrganizerUpdateEvent {
+  const _ProfileImageChanged(this.profileImage) : super._();
 
-  final String organizerId;
+  final String profileImage;
+}
+
+class _UpdateOrganizerPressed extends OrganizerUpdateEvent {
+  const _UpdateOrganizerPressed() : super._();
 }
