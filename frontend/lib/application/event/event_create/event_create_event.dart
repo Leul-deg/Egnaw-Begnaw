@@ -11,11 +11,11 @@ class EventCreateEvent {
     return _OrganizerIdChanged(organizerId);
   }
 
-  factory EventCreateEvent.startTimeChanged(String startTime) {
+  factory EventCreateEvent.startTimeChanged(TimeOfDay startTime) {
     return _StartTimeChanged(startTime);
   }
 
-  factory EventCreateEvent.endTimeChanged(String endTime) {
+  factory EventCreateEvent.endTimeChanged(TimeOfDay endTime) {
     return _EndTimeChanged(endTime);
   }
 
@@ -42,6 +42,14 @@ class EventCreateEvent {
   factory EventCreateEvent.eventCreatePressed() {
     return const _EventCreatePressed();
   }
+
+  factory EventCreateEvent.eventDateChanged(DateTime eventDate) {
+    return _EventDateChanged(eventDate);
+  }
+
+  factory EventCreateEvent.revertError() {
+    return _RevertError();
+  }
 }
 
 class _Initialized extends EventCreateEvent {
@@ -54,22 +62,32 @@ class _OrganizerIdChanged extends EventCreateEvent {
   final String organizerId;
 }
 
+class _RevertError extends EventCreateEvent {
+  const _RevertError() : super._();
+}
+
 class _StartTimeChanged extends EventCreateEvent {
   const _StartTimeChanged(this.startTime) : super._();
 
-  final String startTime;
+  final TimeOfDay startTime;
 }
 
 class _EndTimeChanged extends EventCreateEvent {
   const _EndTimeChanged(this.endTime) : super._();
 
-  final String endTime;
+  final TimeOfDay endTime;
 }
 
 class _PlaceChanged extends EventCreateEvent {
   const _PlaceChanged(this.place) : super._();
 
   final String place;
+}
+
+class _EventDateChanged extends EventCreateEvent {
+  const _EventDateChanged(this.eventDate) : super._();
+
+  final DateTime eventDate;
 }
 
 class _AvailableSeatsChanged extends EventCreateEvent {
@@ -99,4 +117,3 @@ class _TitleChanged extends EventCreateEvent {
 class _EventCreatePressed extends EventCreateEvent {
   const _EventCreatePressed() : super._();
 }
-
