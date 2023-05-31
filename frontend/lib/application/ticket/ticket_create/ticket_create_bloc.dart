@@ -4,14 +4,13 @@ import 'package:frontend/domain/ticket/ticket.dart';
 
 import 'package:dartz/dartz.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'ticket_create_event.dart';
 part 'ticket_create_state.dart';
 
 class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
   final TicketRepository _ticketRepository;
-  final LocalDatabase local_storage = LocalDatabase.getInstance;
 
   TicketCreateBloc(this._ticketRepository)
       : super(TicketCreateState.initial()) {
@@ -23,7 +22,9 @@ class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
 
       Either<TicketFailure, Object>? failureOrSuccess;
 
-      final userId = await local_storage.getUserId();
+      // get user id from shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String userId = prefs.getString('userId')!;
       final eventId = event.eventId;
 
       failureOrSuccess = await _ticketRepository

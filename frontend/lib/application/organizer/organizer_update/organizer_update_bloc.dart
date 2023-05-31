@@ -6,7 +6,7 @@ import 'package:frontend/domain/event/event.dart';
 
 import 'package:frontend/domain/organizer/organizer.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart';
+// import 'package:frontend/data/local/local_database/local_storage.dart';
 
 part 'organizer_update_event.dart';
 part 'organizer_update_state.dart';
@@ -15,12 +15,13 @@ class OrganizerUpdateBloc
     extends Bloc<OrganizerUpdateEvent, OrganizerUpdateState> {
   final OrganizerRepository organizerRepository;
 
-  final LocalDatabase local_storage = LocalDatabase.getInstance;
+  // final LocalDatabase local_storage = LocalDatabase.getInstance;
 
   OrganizerUpdateBloc(this.organizerRepository)
       : super(OrganizerUpdateState.initial()) {
     on<_OrganizationNameChanged>((event, emit) {
       print('hrtrtrtrtrt');
+      print(event.organizationName);
       emit(state.copyWith(
         organizationName: event.organizationName,
         updateFailureOrSuccessOption: none(),
@@ -28,6 +29,7 @@ class OrganizerUpdateBloc
     });
 
     on<_EmailChanged>((event, emit) {
+      print('email changed in bloc');
       emit(state.copyWith(
         email: event.email,
         updateFailureOrSuccessOption: none(),
@@ -35,6 +37,7 @@ class OrganizerUpdateBloc
     });
 
     on<_PasswordChanged>((event, emit) {
+      print('password changed in bloc');
       emit(state.copyWith(
         password: event.password,
         updateFailureOrSuccessOption: none(),

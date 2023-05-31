@@ -1,7 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart';
+import 'package:dartz/dartz.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
+// import 'package:frontend/data/local/local_database/local_storage.dart';
 
 import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/review/review.dart';
@@ -12,7 +15,7 @@ part 'review_create_state.dart';
 class ReviewCreateBloc extends Bloc<ReviewCreateEvent, ReviewCreateState> {
   final ReviewRepository reviewRepository;
 
-  final LocalDatabase local_storage = LocalDatabase.getInstance;
+  // final LocalDatabase local_storage = LocalDatabase.getInstance;
   ReviewCreateBloc(this.reviewRepository) : super(ReviewCreateState.initial()){
 
     on<_ReviewTextChanged>((event, emit) {
@@ -37,7 +40,10 @@ class ReviewCreateBloc extends Bloc<ReviewCreateEvent, ReviewCreateState> {
       }
 
       else {
-        final reviewerId = await local_storage.getUserId();
+        // get reviewer id from shared preferences
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        String reviewerId = prefs.getString('userId')!;
+
 
         failureOrSuccess = await reviewRepository.createReview(
           ReviewCreateModel(
