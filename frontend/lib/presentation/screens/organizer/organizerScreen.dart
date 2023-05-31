@@ -32,11 +32,7 @@ class _OrganizerScreenState extends State<OrganizerScreen> {
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.event),
-            label: 'Upcoming Events',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'Past Events',
+            label: 'Your Events',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
@@ -59,10 +55,8 @@ class _OrganizerScreenState extends State<OrganizerScreen> {
       case 0:
         return UpcomingEvents();
       case 1:
-        return PastEvent();
-      case 2:
         return EventCreate();
-      case 3:
+      case 2:
         return ProfilePage();
     }
     return Container();
