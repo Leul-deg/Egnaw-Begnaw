@@ -6,15 +6,14 @@ import './myTickets/myTickets.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<UserScreen> createState() => _UserScreenState();
 }
 
 class _UserScreenState extends State<UserScreen> {
-  bool toHomePage = true;
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -30,6 +29,7 @@ class _UserScreenState extends State<UserScreen> {
       home: Scaffold(
         body: _getPage(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
@@ -41,7 +41,7 @@ class _UserScreenState extends State<UserScreen> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.airplane_ticket),
-              label: 'MyTickets',
+              label: 'My Tickets',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),

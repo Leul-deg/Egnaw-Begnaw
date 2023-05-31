@@ -16,6 +16,16 @@ class Body extends StatefulWidget {
 class _BodyState extends State<Body> {
   bool isLoginPage = false;
   bool isPasswordSeen = true;
+  bool isSignup = false;
+
+  void flag() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('User Created Successfully'),
+      ),
+    );
+    isSignup = true;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +78,8 @@ class _BodyState extends State<Body> {
                       },
                       (_) {
                         // show snack bar if user creation is successful
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('User Created Successfully'),
-                          ),
-                        );
+                        flag();
+                        // context.go('/login');
                       },
                     ),
                   );
@@ -152,7 +159,8 @@ class _BodyState extends State<Body> {
                               print(value);
                               // trigger the organizationName bloc event
                               context.read<UserCreateBloc>().add(
-                                  UserCreateEvent.organizationNameChanged(value));
+                                  UserCreateEvent.organizationNameChanged(
+                                      value));
                             },
                             decoration: InputDecoration(
                               border: OutlineInputBorder(
@@ -247,8 +255,7 @@ class _BodyState extends State<Body> {
                               value: state.isOrganizer,
                               onChanged: (value) {
                                 context.read<UserCreateBloc>().add(
-                                    UserCreateEvent.isOrganizerChanged(
-                                        true));
+                                    UserCreateEvent.isOrganizerChanged(true));
                               }),
                         ),
                         ListTile(
@@ -263,8 +270,7 @@ class _BodyState extends State<Body> {
                             value: !state.isOrganizer,
                             onChanged: (value) {
                               context.read<UserCreateBloc>().add(
-                                  UserCreateEvent.isOrganizerChanged(
-                                      false));
+                                  UserCreateEvent.isOrganizerChanged(false));
                             },
                           ),
                         ),
@@ -272,9 +278,11 @@ class _BodyState extends State<Body> {
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           width: double.infinity,
                           child: ElevatedButton(
+                            
                             onPressed: () {
                               context.read<UserCreateBloc>().add(
                                     UserCreateEvent.createUserPressed(),
+                                    
                                   );
                             },
                             style: ElevatedButton.styleFrom(
@@ -319,8 +327,8 @@ class _BodyState extends State<Body> {
                                 ),
                                 TextButton(
                                     onPressed: () {
-                                       GoRouter.of(context)
-                        .pushNamed(MyAppRouteConstants.loginRouteName);
+                                      GoRouter.of(context).pushNamed(
+                                          MyAppRouteConstants.loginRouteName);
                                     },
                                     child: const Text(
                                       'Log in',
