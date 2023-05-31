@@ -28,11 +28,10 @@ class _OrganizerScreenState extends State<OrganizerScreen> {
     return Scaffold(
       body: _getPage(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed, // set type to fixed
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            
-            icon: Icon(Icons.event,
-            ),
+            icon: Icon(Icons.event),
             label: 'Upcoming Events',
           ),
           BottomNavigationBarItem(
