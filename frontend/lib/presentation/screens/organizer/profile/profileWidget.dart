@@ -61,6 +61,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             bottom: 0,
             right: 4,
             child: buildEditIcon(color),
+            
           ),
         ],
       ),
@@ -72,7 +73,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
     return ClipOval(
       child: Material(
-        color: Colors.transparent,
+        color: Colors.grey,
         child: Ink.image(
           image: finalImage as ImageProvider,
           fit: BoxFit.cover,
@@ -85,11 +86,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   }
 
   Widget buildEditIcon(Color color) => buildCircle(
-    color: Colors.white,
-    all: 3,
+    color: Colors.grey.shade800,
+    
+    all: 0,
     child: buildCircle(
       color: color,
-      all: 8,
+      all: 0,
+      
       child: IconButton(
         onPressed: () async {
           final image = await _pickImageBase64();
@@ -100,7 +103,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         },
         icon: Icon(widget.isEdit ? Icons.add_a_photo : Icons.edit),
         color: Color(0xffffffff),
-        iconSize: 18,
+        iconSize: 15,
       ),
     ),
   );

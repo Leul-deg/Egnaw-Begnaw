@@ -48,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
             const SizedBox(height: 24),
             buildName(user),
             const SizedBox(height: 48),
-            buildAbout(user),
+            // buildAbout(user),
           ],
         ),
       ),
@@ -71,21 +71,21 @@ class _ProfilePageState extends State<ProfilePage> {
 
   //
 
-  Widget buildAbout(User user) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 48),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              'About',
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-            ),
-            const SizedBox(height: 16),
-            Text(
-              user.about,
-              style: TextStyle(fontSize: 16, height: 1.4),
-            ),
-          ],
-        ),
-      );
+  // Widget buildAbout(User user) => Container(
+  //       padding: EdgeInsets.symmetric(horizontal: 48),
+  //       child: Column(
+  //         crossAxisAlignment: CrossAxisAlignment.start,
+  //         children: [
+  //           Text(
+  //             'About',
+  //             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+  //           ),
+  //           const SizedBox(height: 16),
+  //           Text(
+  //             user.about,
+  //             style: TextStyle(fontSize: 16, height: 1.4),
+  //           ),
+  //         ],
+  //       ),
+  //     );
 }

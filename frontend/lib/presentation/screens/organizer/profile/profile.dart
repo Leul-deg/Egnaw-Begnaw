@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {
@@ -71,8 +73,7 @@ class _ProfileState extends State<Profile> {
                           children: [
                             CircleAvatar(
                               radius: 50,
-                              backgroundImage: NetworkImage(
-                                  'https://i.pinimg.com/564x/3b/b3/d6/3bb3d628bbcc152f29a9000bacd338fe.jpg'),
+                              backgroundImage: NetworkImage('https://i.pinimg.com/564x/3b/b3/d6/3bb3d628bbcc152f29a9000bacd338fe.jpg'),
                             ),
                             SizedBox(
                               height: 10,

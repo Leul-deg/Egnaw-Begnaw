@@ -31,7 +31,7 @@ class LocalDatabase {
       onCreate: _createDB,
     );
   }
-
+ 
   Future _createDB(Database db, int version) async {
     await db.execute('''
     CREATE TABLE IF NOT EXISTS user(
