@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:frontend/application/auth/user_data/user_data_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,8 +20,36 @@ import 'appbarWidget.dart';
 
 import 'user.dart';
 
-class EditProfilePage extends StatelessWidget {
-  User user = UserPreferences.myUser;
+class EditProfilePage extends StatefulWidget {
+  @override
+  State<EditProfilePage> createState() => _EditProfilePageState();
+}
+class _EditProfilePageState extends State<EditProfilePage> {
+  var user;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    final userData = prefs.getString('userData');
+
+    if (userData != null) {
+      setState(() {
+        print('setting state');
+        print(json.decode(userData));
+        user = json.decode(userData);
+        print('user data set');
+      });
+      print('after set state');
+      print(json.decode(userData));
+    } else {
+      print('no user data');
+    }
+  }
 
   @override
   Widget build(BuildContext context) =>
@@ -53,6 +84,30 @@ class EditProfilePage extends StatelessWidget {
           );
         },
         builder: (context, state) {
+          // context.read<UserDataBloc>().add(UserDataEvent.getUserData());
+
+          print('here is the user in the builder');
+          print(user);
+
+          if(state.email == null){
+          context.read<OrganizerUpdateBloc>().add(
+              OrganizerUpdateEvent.emailChanged(
+                  json.decode(user)['email'].toString()));
+            
+          }
+
+          if (state.password == null){
+          context.read<OrganizerUpdateBloc>().add(
+              OrganizerUpdateEvent.passwordChanged(
+                  json.decode(user)['password'].toString()));
+          }
+
+          if (state.organizationName == null){
+          context.read<OrganizerUpdateBloc>().add(
+              OrganizerUpdateEvent.organizationNameChanged(
+                  json.decode(user)['firstName'].toString()));
+          }
+
           return Scaffold(
             body: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -61,23 +116,25 @@ class EditProfilePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ProfileWidget(
-                        imagePath: user.imagePath,
+                        imagePath: "user['imagePath']",
                         isEdit: true,
                         onClicked: () {}),
                     SizedBox(height: 20),
                     TextFormField(
-                      decoration: InputDecoration(labelText: 'Organizer name'),
-                      initialValue: user.name,
+                      decoration:
+                          InputDecoration(labelText: 'Organizer name'),
+                      initialValue: json.decode(user)['firstName'].toString(),
                       onChanged: (name) {
                         print(name);
                         context.read<OrganizerUpdateBloc>().add(
-                            OrganizerUpdateEvent.organizationNameChanged(name));
+                            OrganizerUpdateEvent.organizationNameChanged(
+                                name));
                       },
                     ),
                     SizedBox(height: 20),
                     TextFormField(
                       decoration: InputDecoration(labelText: 'Email'),
-                      initialValue: user.email,
+                      initialValue: json.decode(user)['email'].toString(),
                       onChanged: (email) {
                         print("on email change");
                         context
@@ -88,7 +145,7 @@ class EditProfilePage extends StatelessWidget {
                     SizedBox(height: 20),
                     TextFormField(
                       decoration: InputDecoration(labelText: 'Password'),
-                      initialValue: user.password,
+                      initialValue: json.decode(user)['password'].toString(),
                       onChanged: (password) {
                         print("on password change");
                         context.read<OrganizerUpdateBloc>().add(
@@ -99,9 +156,8 @@ class EditProfilePage extends StatelessWidget {
                     ElevatedButton(
                       onPressed: () {
                         print('pressed');
-                        context
-                            .read<OrganizerUpdateBloc>()
-                            .add(OrganizerUpdateEvent.updateOrganizerPressed());
+                        context.read<OrganizerUpdateBloc>().add(
+                            OrganizerUpdateEvent.updateOrganizerPressed());
                       },
                       child: Text('Save'),
                     ),

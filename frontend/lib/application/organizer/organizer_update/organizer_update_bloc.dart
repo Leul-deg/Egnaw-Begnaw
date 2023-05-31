@@ -21,6 +21,7 @@ class OrganizerUpdateBloc
       : super(OrganizerUpdateState.initial()) {
     on<_OrganizationNameChanged>((event, emit) {
       print('hrtrtrtrtrt');
+      print(event.organizationName);
       emit(state.copyWith(
         organizationName: event.organizationName,
         updateFailureOrSuccessOption: none(),
@@ -28,6 +29,7 @@ class OrganizerUpdateBloc
     });
 
     on<_EmailChanged>((event, emit) {
+      print('email changed in bloc');
       emit(state.copyWith(
         email: event.email,
         updateFailureOrSuccessOption: none(),
@@ -35,6 +37,7 @@ class OrganizerUpdateBloc
     });
 
     on<_PasswordChanged>((event, emit) {
+      print('password changed in bloc');
       emit(state.copyWith(
         password: event.password,
         updateFailureOrSuccessOption: none(),
