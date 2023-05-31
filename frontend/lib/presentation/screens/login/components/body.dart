@@ -52,6 +52,12 @@ class _BodyState extends State<Body> {
                   content: Text('Login Success'),
                 ),
               );
+            if (state.isOrganizer){
+              GoRouter.of(context).pushNamed(MyAppRouteConstants.organizerScreenRouteName);
+            }else{
+              GoRouter.of(context).pushNamed(MyAppRouteConstants.userScreenRouteName);
+            }
+              
             },
           ),
         );

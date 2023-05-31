@@ -1,14 +1,19 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:frontend/domain/organizer/organizer.dart';
-import 'package:frontend/infrastructure/organizer/data_sources/organizer_data_sources.dart';
-import 'package:frontend/infrastructure/organizer/repositories/organizer_repository_imp.dart';
+import 'package:frontend/domain/user/user.dart';
+import 'package:frontend/infrastructure/user/data_sources/user_data_sources.dart';
+import 'package:frontend/infrastructure/user/repositories/user_repository_imp.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'user.dart';
 import 'userPreference.dart';
+
+import 'package:http/http.dart' as http;
 
 import 'profileWidget.dart';
 import 'editProfilePage.dart';
 
-import 'package:frontend/application/organizer/organizer_update/organizer_update_bloc.dart';
+import 'package:frontend/application/user/user_update/user_update_bloc.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../routes/appRouteConstants.dart';
@@ -20,10 +25,36 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  var user;
+
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    final userData = prefs.getString('userData');
+
+    if (userData != null) {
+      setState(() {
+        print('setting state');
+        print(json.decode(userData));
+        user = json.decode(userData);
+        print('user data set');
+      });
+      print('after set state');
+      print(json.decode(userData));
+    } else {
+      print('no user data');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final user = UserPreferences.myUser;
-
     return Builder(
       builder: (context) => Scaffold(
         appBar: AppBar(
@@ -36,39 +67,41 @@ class _ProfilePageState extends State<ProfilePage> {
           physics: BouncingScrollPhysics(),
           children: [
             ProfileWidget(
-              imagePath: user.imagePath,
+              imagePath: 'google.jpg',
               onClicked: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
                       builder: (context) => BlocProvider(
-                            create: (context) => OrganizerUpdateBloc(
-                                OrganizerRepositoryImp(
-                                    organizerDataSource:
-                                        OrganizerDataSource())),
+                            create: (context) => UserUpdateBloc(
+                              UserRepositoryImp(
+                                userDataSource: UserDataSource(),
+                              ),
+                            ),
                             child: EditProfilePage(),
                           )),
                 );
               },
             ),
             const SizedBox(height: 24),
-            buildName(user),
+            buildName(),
             const SizedBox(height: 48),
-            buildAbout(user),
           ],
         ),
       ),
     );
   }
 
-  Widget buildName(User user) => Column(
+  Widget buildName() => Column(
         children: [
           Text(
-            user.name,
+            json.decode(user)['firstName'] +
+                ' ' +
+                json.decode(user)['lastName'],
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           ),
           const SizedBox(height: 4),
           Text(
-            user.email,
+            json.decode(user)['email'],
             style: TextStyle(color: Colors.grey),
           )
         ],
@@ -76,7 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   //
 
-  Widget buildAbout(User user) => Container(
+  Widget buildAbout() => Container(
         padding: EdgeInsets.symmetric(horizontal: 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

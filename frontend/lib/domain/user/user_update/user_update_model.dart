@@ -1,14 +1,14 @@
 class UserUpdateModel {
-  final String firstName;
-  final String lastName;
-  final String email;
-  final String password;
+  String? firstName;
+  String? lastName;
+  String? email;
+  String? password;
 
-  const UserUpdateModel({
-    required this.firstName,
-    required this.lastName,
-    required this.email,
-    required this.password,
+  UserUpdateModel({
+    this.firstName,
+    this.lastName,
+    this.email,
+    this.password,
   });
 
   factory UserUpdateModel.fromJson(Map<String, dynamic> json) {
