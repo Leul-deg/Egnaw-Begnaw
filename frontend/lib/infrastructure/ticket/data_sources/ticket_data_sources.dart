@@ -6,31 +6,29 @@ import 'package:http/http.dart' as http;
 import 'package:frontend/domain/ticket/ticket.dart';
 
 class TicketDataSource implements TicketRepository {
-  final http.Client client;
+  final http.Client client = http.Client();
 
-  final API_URL = "dotenv.env['API_URL']";
+  final API_URL = "http://localhost:3000";
 
-  TicketDataSource({
-    required this.client,
-  });
+  TicketDataSource();
 
   @override
   Future<Either<TicketFailure, Object>> createTicket(
       TicketCreateModel ticketCreateModel) async {
+    print(ticketCreateModel.toJson());
     final response = await client.post(
       Uri.parse('$API_URL/ticket'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
       body: ticketCreateModel.toJson(),
     );
 
-    if (response.statusCode == 200) {
+    print(response.statusCode);
+
+    if (response.statusCode == 201) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return  Left(TicketFailure.invalidTicket());
+      return Left(TicketFailure.invalidTicket());
     } else {
-      return  Left(TicketFailure.serverError());
+      return Left(TicketFailure.serverError());
     }
   }
 
@@ -48,9 +46,9 @@ class TicketDataSource implements TicketRepository {
     if (response.statusCode == 200) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return  Left(TicketFailure.invalidTicket());
+      return Left(TicketFailure.invalidTicket());
     } else {
-      return  Left(TicketFailure.serverError());
+      return Left(TicketFailure.serverError());
     }
   }
 
@@ -64,11 +62,11 @@ class TicketDataSource implements TicketRepository {
     );
 
     if (response.statusCode == 200) {
-      return  const Right(Object);
+      return const Right(Object);
     } else if (response.statusCode == 400) {
-      return  Left(TicketFailure.invalidTicket());
+      return Left(TicketFailure.invalidTicket());
     } else {
-      return  Left(TicketFailure.serverError());
+      return Left(TicketFailure.serverError());
     }
   }
 
@@ -86,9 +84,9 @@ class TicketDataSource implements TicketRepository {
 
       return Right(tickets);
     } else if (response.statusCode == 400) {
-      return  Left(TicketFailure.invalidTicket());
+      return Left(TicketFailure.invalidTicket());
     } else {
-      return  Left(TicketFailure.serverError());
+      return Left(TicketFailure.serverError());
     }
   }
 
@@ -104,9 +102,9 @@ class TicketDataSource implements TicketRepository {
     if (response.statusCode == 200) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return  Left(TicketFailure.invalidTicket());
+      return Left(TicketFailure.invalidTicket());
     } else {
-      return  Left(TicketFailure.serverError());
+      return Left(TicketFailure.serverError());
     }
   }
 }
