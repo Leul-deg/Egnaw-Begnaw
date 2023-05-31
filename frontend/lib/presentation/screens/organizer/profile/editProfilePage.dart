@@ -183,7 +183,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           print('pressed');
                           context.read<OrganizerUpdateBloc>().add(
                               OrganizerUpdateEvent.updateOrganizerPressed());
+                        GoRouter.of(context).pushNamed(MyAppRouteConstants.organizerScreenRouteName);
                         },
+
+
                         child: Text('Save'),
                       ),
 

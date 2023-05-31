@@ -15,6 +15,8 @@ class OrganizerUpdateBloc
     extends Bloc<OrganizerUpdateEvent, OrganizerUpdateState> {
   final OrganizerRepository organizerRepository;
 
+ 
+
   // final LocalDatabase local_storage = LocalDatabase.getInstance;
 
   OrganizerUpdateBloc(this.organizerRepository)
