@@ -33,7 +33,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
         },
         builder: (context, state) {
           return Scaffold(
-            
+            appBar: AppBar(
+              leading: BackButton(
+                onPressed: () => GoRouter.of(context)
+                    .pushNamed(MyAppRouteConstants.profilePageRouteName),
+              ),
+            ),
             body: Padding(
               padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
               child: Form(

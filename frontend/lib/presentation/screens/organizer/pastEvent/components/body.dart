@@ -62,7 +62,7 @@ class _BodyState extends State<Body> {
           backgroundColor: Colors.green[100],
           title: Center(
               child: Text(
-            'Your Events',
+            'Past Events',
             style: TextStyle(color: Colors.blue),
           )),
         ),

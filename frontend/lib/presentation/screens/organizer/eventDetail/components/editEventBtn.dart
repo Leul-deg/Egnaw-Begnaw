@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../editEvent/editEvent.dart';
+
+import 'package:go_router/go_router.dart';
+import '../../../routes/appRouteConstants.dart';
 
 class EditEventBtn extends StatelessWidget {
   const EditEventBtn({super.key});
@@ -13,8 +15,8 @@ class EditEventBtn extends StatelessWidget {
           height: 100,
           child: ElevatedButton(
             onPressed: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => EditEvent()));
+              GoRouter.of(context)
+                  .pushNamed(MyAppRouteConstants.eventEditRouteName);
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.purple[200],
