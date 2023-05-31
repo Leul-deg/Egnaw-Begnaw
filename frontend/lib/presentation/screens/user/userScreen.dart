@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import './homePage/homePage.dart';
 import './pastEvents/pastEvent.dart';
+import './profile/profilePage.dart';
+import './myTickets/myTickets.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({
@@ -34,8 +36,12 @@ class _UserScreenState extends State<UserScreen> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.last_page),
+              icon: Icon(Icons.history),
               label: 'Past Events',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.airplane_ticket),
+              label: 'MyTickets',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
@@ -57,10 +63,9 @@ class _UserScreenState extends State<UserScreen> {
       case 1:
         return const PastEvent();
       case 2:
-        return Center(
-            child: Container(
-          color: Colors.red,
-        ));
+        return MyTicket();
+      case 3:
+        return ProfilePage();
     }
     return Container();
   }

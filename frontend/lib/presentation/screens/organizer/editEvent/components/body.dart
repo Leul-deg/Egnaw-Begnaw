@@ -35,7 +35,7 @@ class _BodyState extends State<Body> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Post Your Event',
+                'Edit Your Event',
                 style: TextStyle(
                   fontSize: screen.width > 600 ? 50 : 30,
                   fontWeight: FontWeight.bold,
