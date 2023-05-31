@@ -29,7 +29,8 @@ class MyAppRoute {
       // ),
       GoRoute(
         name: MyAppRouteConstants.organizerScreenRouteName,
-        path: '/OrganizerScreen',
+        path: '/organizerScreen',
+
         pageBuilder: (context, state) {
           return MaterialPage(child: OrganizerScreen());
         },

@@ -19,15 +19,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => UserDataBloc(),
-      child: MaterialApp.router(
-        title: 'Welcome',
-        theme: ThemeData(
-            primaryColor: kPrimaryColor, scaffoldBackgroundColor: Colors.white),
-        routeInformationParser: MyAppRoute().router.routeInformationParser,
-        routerDelegate: MyAppRoute().router.routerDelegate,
-      ),
+
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      title: 'Welcome',
+      theme: ThemeData(
+          primaryColor: kPrimaryColor, scaffoldBackgroundColor: Colors.white),
+      routeInformationParser: MyAppRoute().router.routeInformationParser,
+      routerDelegate: MyAppRoute().router.routerDelegate,
+
     );
   }
 }
