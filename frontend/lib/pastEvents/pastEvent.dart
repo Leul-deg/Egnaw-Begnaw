@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import '../pastEvents/components/body.dart';
+import './components/body.dart';
 
 class PastEvent extends StatelessWidget {
   const PastEvent({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Body();
+    return const Scaffold(
+      body: Body(),
+    );
   }
 }

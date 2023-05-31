@@ -8,22 +8,8 @@ class MyTicket extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MyTickets',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Center(
-              child: Text(
-            'Past Events',
-            style: TextStyle(color: Colors.blue),
-          )),
-          leading: BackButton(
-            onPressed: () => GoRouter.of(context)
-                .pushNamed(MyAppRouteConstants.userScreenRouteName),
-          ),
-        ),
-        body: Body(),
-      ),
+    return Scaffold(
+      body: Body(),
     );
   }
 }

@@ -55,33 +55,30 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context).size;
-    return MaterialApp(
-      title: 'Upcoming Events',
-      home: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListView.separated(
-                    itemCount: eventCards.length,
-                    itemBuilder: (context, index) {
-                      final eventCard = eventCards[index];
-                      return GestureDetector(
-                        onTap: () {
-                          GoRouter.of(context).pushNamed(
-                              MyAppRouteConstants.eventDetail1RouteName);
-                        },
-                        child: eventCard,
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(height: 16);
-                    },
-                  )),
-            ),
-          ],
-        ),
+    return SafeArea(
+      child: Column(
+        children: [
+          Expanded(
+            child: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: ListView.separated(
+                  itemCount: eventCards.length,
+                  itemBuilder: (context, index) {
+                    final eventCard = eventCards[index];
+                    return GestureDetector(
+                      onTap: () {
+                        GoRouter.of(context).pushNamed(
+                            MyAppRouteConstants.eventDetail1RouteName);
+                      },
+                      child: eventCard,
+                    );
+                  },
+                  separatorBuilder: (context, index) {
+                    return SizedBox(height: 16);
+                  },
+                )),
+          ),
+        ],
       ),
     );
   }

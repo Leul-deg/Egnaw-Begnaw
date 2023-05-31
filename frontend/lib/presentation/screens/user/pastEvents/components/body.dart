@@ -1,111 +1,99 @@
 import 'package:flutter/material.dart';
-
-import './thumbnail.dart';
-import './mySearchBar.dart';
+import 'package:go_router/go_router.dart';
+import '../../../routes/appRouteConstants.dart';
+import './eventCards.dart';
 
 class Body extends StatefulWidget {
-  const Body({super.key});
+  const Body({Key? key});
 
   @override
   State<Body> createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  String? endTimes;
-  List thumbnails = [
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
+  List<EventCards> eventCards = List.generate(
+    13,
+    (index) => EventCards(
+      title: 'Rophnan Concert',
     ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-    Thumbnail(
-      endTime: '2 days ago',
-      eventName: 'Rophnan Concert',
-    ),
-  ];
+  );
+
   @override
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context).size;
-    return MaterialApp(
-      title: 'Past Event',
-      home: Scaffold(
-        appBar: MySearchBar(
-          onSearch: (value) => true,
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        title: Text(
+          'Past Events',
+          style: TextStyle(
+            color: Colors.blue,
+            fontWeight: FontWeight.bold,
+            fontSize: 20,
+          ),
         ),
-        body: OrientationBuilder(
-          builder: (BuildContext context, Orientation orientation) {
-            return Padding(
-              padding: EdgeInsets.only(
-                left: screen.width * 0.03,
-                right: screen.width * 0.03,
-                top: screen.height * 0.02,
-              ),
-              child: GridView.builder(
-                itemCount: thumbnails.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
-                  childAspectRatio: orientation == Orientation.portrait
-                      ? screen.width / (screen.height * 0.8)
-                      : screen.width / (screen.height * 1.3),
-                  crossAxisSpacing: screen.width * 0.02,
-                  mainAxisSpacing: screen.height * 0.03,
-                ),
-                itemBuilder: (context, index) {
-                  final thumbnail = thumbnails[index];
-                  return Expanded(
-                    child: thumbnail,
-                  );
+        elevation: 0,
+        centerTitle: true,
+      ),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: ListView.separated(
+            itemCount: eventCards.length,
+            itemBuilder: (context, index) {
+              final eventCard = eventCards[index];
+              return GestureDetector(
+                onTap: () {
+                  GoRouter.of(context)
+                      .pushNamed(MyAppRouteConstants.eventDetail1RouteName);
                 },
-              ),
-            );
-          },
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[50],
+                    borderRadius: BorderRadius.circular(10),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          eventCard.title,
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Text(
+                          'Location: New York City',
+                          style: TextStyle(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 14,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
+            separatorBuilder: (context, index) {
+              return SizedBox(height: 16);
+            },
+          ),
         ),
       ),
     );
   }
 }
-
-
