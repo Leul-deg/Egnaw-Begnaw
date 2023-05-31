@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import './homePage/homePage.dart';
 import './pastEvents/pastEvent.dart';
+import './profile/profilePage.dart';
+import './myTickets/myTickets.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({
-    super.key,
-  });
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<UserScreen> createState() => _UserScreenState();
 }
 
 class _UserScreenState extends State<UserScreen> {
-  bool toHomePage = true;
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -28,14 +29,19 @@ class _UserScreenState extends State<UserScreen> {
       home: Scaffold(
         body: _getPage(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.last_page),
+              icon: Icon(Icons.history),
               label: 'Past Events',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.airplane_ticket),
+              label: 'My Tickets',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.person),
@@ -57,10 +63,9 @@ class _UserScreenState extends State<UserScreen> {
       case 1:
         return const PastEvent();
       case 2:
-        return Center(
-            child: Container(
-          color: Colors.red,
-        ));
+        return MyTicket();
+      case 3:
+        return ProfilePage();
     }
     return Container();
   }

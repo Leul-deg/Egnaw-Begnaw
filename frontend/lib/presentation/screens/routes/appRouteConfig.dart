@@ -13,6 +13,8 @@ import '../user/eventComment/eventComment.dart';
 import '../organizer/organizerScreen.dart';
 import '../organizer/eventDetail/eventDetail.dart';
 import '../organizer/editEvent/editEvent.dart';
+import '../organizer/upcomingEvent/upcoming.dart';
+import '../organizer/profile/profilePage.dart';
 
 class MyAppRoute {
   final GoRouter router = GoRouter(
@@ -25,14 +27,21 @@ class MyAppRoute {
       //     return const MaterialPage(child: Onboarding());
       //   },
       // ),
+      // GoRoute(
+      //   name: MyAppRouteConstants.organizerScreenRouteName,
+      //   path: '/',
+      //   pageBuilder: (context, state) {
+      //     return MaterialPage(child: OrganizerScreen());
+      //   },
+      // ),
       GoRoute(
-        name: MyAppRouteConstants.organizerScreenRouteName,
-        path: '/',
+        name: MyAppRouteConstants.upComingEventRouteName,
+        path: '/upComingEvents',
         pageBuilder: (context, state) {
-          return MaterialPage(child: OrganizerScreen());
+          return MaterialPage(child: UpcomingEvents());
         },
       ),
-      
+
       GoRoute(
         name: MyAppRouteConstants.eventCreateRouteName,
         path: '/eventcreate',
@@ -42,18 +51,32 @@ class MyAppRoute {
       ),
       GoRoute(
         name: MyAppRouteConstants.welcomeRouteName,
-        path: '/welcome',
+        path: '/',
         pageBuilder: (context, state) {
           return const MaterialPage(child: Welcome());
         },
       ),
-      // GoRoute(
-      //   name: MyAppRouteConstants.userScreenRouteName,
-      //   path: '/userscreen',
-      //   pageBuilder: (context, state) {
-      //     return MaterialPage(child: UserScreen());
-      //   },
-      // ),
+      GoRoute(
+        name: MyAppRouteConstants.eventDetail1RouteName,
+        path: '/eventDetails',
+        pageBuilder: (context, state) {
+          return const MaterialPage(child: EventDetails());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.eventEditRouteName,
+        path: '/eventEdit',
+        pageBuilder: (context, state) {
+          return const MaterialPage(child: EditEvent());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.userScreenRouteName,
+        path: '/userscreen',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: UserScreen());
+        },
+      ),
       GoRoute(
         name: MyAppRouteConstants.eventCommentRouteName,
         path: '/eventComment',
@@ -61,13 +84,13 @@ class MyAppRoute {
           return const MaterialPage(child: EventComment());
         },
       ),
-      // GoRoute(
-      //   name: MyAppRouteConstants.eventDetailRouteName,
-      //   path: '/eventDetail',
-      //   pageBuilder: (context, state) {
-      //     return MaterialPage(child: EventDetail());
-      //   },
-      // ),
+      GoRoute(
+        name: MyAppRouteConstants.eventDetailRouteName,
+        path: '/eventDetail',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: EventDetail());
+        },
+      ),
 
       GoRoute(
         name: MyAppRouteConstants.signupRouteName,
@@ -81,6 +104,13 @@ class MyAppRoute {
         path: '/login',
         pageBuilder: (context, state) {
           return const MaterialPage(child: Login());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.profilePageRouteName,
+        path: '/profile',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: ProfilePage());
         },
       ),
       // GoRoute(
@@ -99,6 +129,7 @@ class MyAppRoute {
       //   },
       // ),
     ],
-    errorPageBuilder: (context, state) => const MaterialPage(child: ErrorPage()),
+    errorPageBuilder: (context, state) =>
+        const MaterialPage(child: ErrorPage()),
   );
 }

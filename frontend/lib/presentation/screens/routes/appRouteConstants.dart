@@ -11,4 +11,9 @@ class MyAppRouteConstants {
   static const String eventDetail1RouteName = 'EventDetails';
   static const String eventCreateRouteName = 'EventCreate';
   static const String eventEditRouteName = 'EditEvent';
+  static const String upComingEventRouteName = 'UpcomingEvents';
+  static const String profilePageRouteName = 'ProfilePage';
+  static const String editProfilePageRouteName = 'EditProfilePage';
+  static const String userHomePageRouteName = 'HomePage';
+
 }

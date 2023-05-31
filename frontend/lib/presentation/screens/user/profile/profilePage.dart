@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
         appBar: AppBar(
           leading: BackButton(
             onPressed: () => GoRouter.of(context)
-                .pushNamed(MyAppRouteConstants.organizerScreenRouteName),
+                .pushNamed(MyAppRouteConstants.userHomePageRouteName),
           ),
         ),
         body: ListView(

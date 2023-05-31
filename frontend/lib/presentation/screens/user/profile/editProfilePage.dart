@@ -1,17 +1,12 @@
-
-import 'dart:convert';
 import 'dart:html';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:frontend/application/auth/user_data/user_data_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:frontend/application/user/user_update/user_update_bloc.dart';
 import 'package:frontend/application/organizer/organizer_update/organizer_update_bloc.dart';
-
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'profileWidget.dart';
 import 'textFieldWidget.dart';
@@ -27,130 +22,58 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  var user;
-  
+  User user = UserPreferences.myUser;
   final _formKey = GlobalKey<FormState>();
-
-  @override
-  void initState() {
-    super.initState();
-    _loadUserData();
-  }
-
-  Future<void> _loadUserData() async {
-    final prefs = await SharedPreferences.getInstance();
-    final userData = prefs.getString('userData');
-
-    if (userData != null) {
-      setState(() {
-        print('setting state');
-        print(json.decode(userData));
-        user = json.decode(userData);
-        print('user data set');
-      });
-      print('after set state');
-      print(json.decode(userData));
-    } else {
-      print('no user data');
-    }
-  }
-
 
   @override
   Widget build(BuildContext context) =>
       BlocConsumer<OrganizerUpdateBloc, OrganizerUpdateState>(
         listener: (context, state) {
-          // Show a snackbar based on the state.updatefailureOrSuccess
-          state.updateFailureOrSuccessOption.fold(
-            () {},
-            (either) => either.fold(
-              (failure) {
-                final snackBar = SnackBar(
-                  content: Text(
-                    failure.map(
-                      insufficientPermission: () => 'Insufficient permissions',
-                      unableToUpdate: () => 'Unable to update',
-                      unexpectedError: () => 'Unexpected error',
-                      invalidOrganizer: () => 'Invalid organizer',
-                      serverError: () => 'Server error',
-                      unableToDelete: () => 'Unable to delete',
-                    ),
-                  ),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              },
-              (_) {
-                final snackBar = SnackBar(
-                  content: Text('Update successful'),
-                );
-                ScaffoldMessenger.of(context).showSnackBar(snackBar);
-              },
-            ),
-          );
+          // Show a snackbar or handle other side effects based on the state
         },
         builder: (context, state) {
-          // context.read<UserDataBloc>().add(UserDataEvent.getUserData());
-
-          print('here is the user in the builder');
-          print(user);
-
-          if(state.email == null){
-          context.read<OrganizerUpdateBloc>().add(
-              OrganizerUpdateEvent.emailChanged(
-                  json.decode(user)['email'].toString()));
-            
-          }
-
-          if (state.password == null){
-          context.read<OrganizerUpdateBloc>().add(
-              OrganizerUpdateEvent.passwordChanged(
-                  json.decode(user)['password'].toString()));
-          }
-
-          if (state.organizationName == null){
-          context.read<OrganizerUpdateBloc>().add(
-              OrganizerUpdateEvent.organizationNameChanged(
-                  json.decode(user)['firstName'].toString()));
-          }
-
           return Scaffold(
-            
+            appBar: AppBar(
+              leading: BackButton(
+                onPressed: () => GoRouter.of(context)
+                    .pushNamed(MyAppRouteConstants.profilePageRouteName),
+              ),
+            ),
             body: Padding(
               padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
               child: Form(
                 child: ListView(
                   children: [
-
-                    ProfileWidget(
-                        imagePath: "user['imagePath']",
-                        isEdit: true,
-                        onClicked: () {}),
-                    SizedBox(height: 20),
-
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+                    Center(
+                      child: GestureDetector(
+                        onTap: () {},
+                        child: CircleAvatar(
+                          radius: MediaQuery.of(context).size.width * 0.1,
+                          backgroundImage: AssetImage('google.jpg'),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                     TextFormField(
-
                       decoration: InputDecoration(
                         labelText: 'Organizer name',
                         border: OutlineInputBorder(),
                       ),
-                      initialValue: json.decode(user)['firstName'].toString(),
-
+                      initialValue: user.name,
                       onChanged: (name) {
                         print(name);
                         context.read<OrganizerUpdateBloc>().add(
-                            OrganizerUpdateEvent.organizationNameChanged(
-                                name));
+                            OrganizerUpdateEvent.organizationNameChanged(name));
                       },
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                     TextFormField(
-
                       decoration: InputDecoration(
                         labelText: 'Email',
                         border: OutlineInputBorder(),
                       ),
-                      initialValue: json.decode(user)['email'].toString(),
-
+                      initialValue: user.email,
                       onChanged: (email) {
                         print("on email change");
                         context
@@ -160,20 +83,17 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                     TextFormField(
-
                       decoration: InputDecoration(
                         labelText: 'Password',
                         border: OutlineInputBorder(),
                       ),
-                      initialValue: json.decode(user)['password'].toString(),
-
+                      initialValue: user.password,
                       onChanged: (password) {
                         print("on password change");
                         context.read<OrganizerUpdateBloc>().add(
                             OrganizerUpdateEvent.passwordChanged(password));
                       },
                     ),
-
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                     SizedBox(
                       height: 40,
@@ -185,7 +105,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         },
                         child: Text('Save'),
                       ),
-
                     ),
                   ],
                 ),

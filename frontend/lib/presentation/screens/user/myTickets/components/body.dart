@@ -57,40 +57,30 @@ class _BodyState extends State<Body> {
     final screen = MediaQuery.of(context).size;
     return MaterialApp(
       title: 'Upcoming Events',
-      home: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.green[100],
-          title: Center(
-              child: Text(
-            'Your Events',
-            style: TextStyle(color: Colors.blue),
-          )),
-        ),
-        body: SafeArea(
-          child: Column(
-            children: [
-              Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: ListView.separated(
-                      itemCount: eventCards.length,
-                      itemBuilder: (context, index) {
-                        final eventCard = eventCards[index];
-                        return GestureDetector(
-                          onTap: () {
-                            GoRouter.of(context).pushNamed(
-                                MyAppRouteConstants.eventDetail1RouteName);
-                          },
-                          child: eventCard,
-                        );
-                      },
-                      separatorBuilder: (context, index) {
-                        return SizedBox(height: 16);
-                      },
-                    )),
-              ),
-            ],
-          ),
+      home: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: ListView.separated(
+                    itemCount: eventCards.length,
+                    itemBuilder: (context, index) {
+                      final eventCard = eventCards[index];
+                      return GestureDetector(
+                        onTap: () {
+                          GoRouter.of(context).pushNamed(
+                              MyAppRouteConstants.eventDetail1RouteName);
+                        },
+                        child: eventCard,
+                      );
+                    },
+                    separatorBuilder: (context, index) {
+                      return SizedBox(height: 16);
+                    },
+                  )),
+            ),
+          ],
         ),
       ),
     );
