@@ -1,31 +1,26 @@
 import 'dart:convert';
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:frontend/domain/user/user.dart';
 
 class UserDataSource implements UserRepository {
-  final http.Client client;
-  final SharedPreferences sharedPreferences;
-  final API_URL = "dotenv.env['API_URL']";
-  UserDataSource({
-    required this.client,
-    required this.sharedPreferences,
-  });
+  final http.Client client = http.Client();
+
+  final API_URL = "http://localhost:3000";
+  UserDataSource();
+
   @override
   Future<Either<UserFailure, UserModel>> getUserData(String id) async {
     final response = await client.get(
       Uri.parse('$API_URL/user/$id'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
     );
+
     if (response.statusCode == 200) {
       return Right(UserModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return  Left(UserFailure.invalidUser());
+      return Left(UserFailure.invalidUser());
     } else {
-      return  Left(UserFailure.serverError());
+      return Left(UserFailure.serverError());
     }
   }
 
@@ -42,9 +37,9 @@ class UserDataSource implements UserRepository {
     if (response.statusCode == 200) {
       return Right(UserUpdateModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return  Left(UserFailure.invalidUser());
+      return Left(UserFailure.invalidUser());
     } else {
-      return  Left(UserFailure.serverError());
+      return Left(UserFailure.serverError());
     }
   }
 
@@ -65,12 +60,12 @@ class UserDataSource implements UserRepository {
         }
         return Right(users);
       } else if (response.statusCode == 400) {
-        return  Left(UserFailure.invalidUser());
+        return Left(UserFailure.invalidUser());
       } else {
-        return  Left(UserFailure.serverError());
+        return Left(UserFailure.serverError());
       }
     } catch (e) {
-      return  Left(UserFailure.serverError());
+      return Left(UserFailure.serverError());
     }
   }
 
@@ -85,16 +80,15 @@ class UserDataSource implements UserRepository {
     if (response.statusCode == 200) {
       return const Right(Object);
     } else if (response.statusCode == 400) {
-      return  Left(UserFailure.invalidUser());
+      return Left(UserFailure.invalidUser());
     } else {
-      return  Left(UserFailure.serverError());
+      return Left(UserFailure.serverError());
     }
   }
 
   @override
   Future<Either<UserFailure, UserUpdateModel>> updateUser(
-      String userId,
-      UserUpdateModel newUser) async {
+      String userId, UserUpdateModel newUser) async {
     final response = await client.put(
       Uri.parse('$API_URL/user/$userId'),
       headers: <String, String>{
@@ -105,9 +99,9 @@ class UserDataSource implements UserRepository {
     if (response.statusCode == 200) {
       return Right(UserUpdateModel.fromJson(json.decode(response.body)));
     } else if (response.statusCode == 400) {
-      return  Left(UserFailure.invalidUser());
+      return Left(UserFailure.invalidUser());
     } else {
-      return  Left(UserFailure.serverError());
+      return Left(UserFailure.serverError());
     }
   }
 }
