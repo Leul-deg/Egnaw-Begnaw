@@ -24,6 +24,7 @@ class _BodyState extends State<Body> {
         content: Text('User Created Successfully'),
       ),
     );
+
     isSignup = true;
   }
 
@@ -79,7 +80,7 @@ class _BodyState extends State<Body> {
                       (_) {
                         // show snack bar if user creation is successful
                         flag();
-                        // context.go('/login');
+                        GoRouter.of(context).pushNamed(MyAppRouteConstants.loginRouteName);
                       },
                     ),
                   );
@@ -282,8 +283,8 @@ class _BodyState extends State<Body> {
                             onPressed: () {
                               context.read<UserCreateBloc>().add(
                                     UserCreateEvent.createUserPressed(),
-                                    
-                                  );
+                                    );
+
                             },
                             style: ElevatedButton.styleFrom(
                               elevation: 5,
