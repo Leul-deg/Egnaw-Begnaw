@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 
 import 'package:dartz/dartz.dart';
@@ -5,6 +7,8 @@ import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/user/user.dart';
 
 import 'package:frontend/data/local/local_database/local_storage.dart';
+import 'package:frontend/presentation/screens/organizer/profile/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'user_update_event.dart';
 part 'user_update_state.dart';
@@ -51,14 +55,30 @@ class UserUpdateBloc extends Bloc<UserUpdateEvent, UserUpdateState> {
 
       Either<UserFailure, Object>? failureOrSuccess;
 
-      final userId = await local_storage.getUserId();
+      final prefs = await SharedPreferences.getInstance();
+      final userData = json.encode(prefs.getString('userData'));
 
-      failureOrSuccess = await userRepository.updateUser(userId, UserUpdateModel(
-        firstName: state.firstName,
-        lastName: state.lastName,
-        email: state.email,
-        password: state.password,
-      ));
+      final userId = json.decode(userData)['_id'];
+
+      UserUpdateModel data = UserUpdateModel();
+
+      if (state.firstName != null) {
+        data.firstName = state.firstName;
+      }
+
+      if (state.lastName != null) {
+        data.lastName = state.lastName;
+      }
+
+      if (state.email != null) {
+        data.email = state.email;
+      }
+
+      if (state.password != null) {
+        data.password = state.password;
+      }
+
+      failureOrSuccess = await userRepository.updateUser(userId, data);
 
       emit(state.copyWith(
         isLoading: false,

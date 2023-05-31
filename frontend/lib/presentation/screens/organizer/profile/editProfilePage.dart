@@ -124,7 +124,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     ProfileWidget(
                         imagePath: "user['imagePath']",
                         isEdit: true,
-                        onClicked: () {}),
+                        onClicked: () {}
+                    ),
                     SizedBox(height: 20),
 
                     TextFormField(

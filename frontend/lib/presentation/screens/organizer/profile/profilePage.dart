@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/domain/organizer/organizer.dart';
 import 'package:frontend/infrastructure/organizer/data_sources/organizer_data_sources.dart';
 import 'package:frontend/infrastructure/organizer/repositories/organizer_repository_imp.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'user.dart';
 import 'userPreference.dart';
 
@@ -20,6 +23,34 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  var organizer;
+
+  final _formKey = GlobalKey<FormState>();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadUserData();
+  }
+
+  Future<void> _loadUserData() async {
+    final prefs = await SharedPreferences.getInstance();
+    final userData = prefs.getString('userData');
+
+    if (userData != null) {
+      setState(() {
+        print('setting state');
+        print(json.decode(userData));
+        organizer = json.decode(userData);
+        print('user data set');
+      });
+      print('after set state');
+      print(json.decode(userData));
+    } else {
+      print('no user data');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = UserPreferences.myUser;
@@ -51,24 +82,23 @@ class _ProfilePageState extends State<ProfilePage> {
               },
             ),
             const SizedBox(height: 24),
-            buildName(user),
+            buildName(),
             const SizedBox(height: 48),
-            buildAbout(user),
           ],
         ),
       ),
     );
   }
 
-  Widget buildName(User user) => Column(
+  Widget buildName() => Column(
         children: [
           Text(
-            user.name,
+            json.decode(organizer)['organizationName'],
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
           ),
           const SizedBox(height: 4),
           Text(
-            user.email,
+            json.decode(organizer)['email'],
             style: TextStyle(color: Colors.grey),
           )
         ],
@@ -76,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   //
 
-  Widget buildAbout(User user) => Container(
+  Widget buildAbout() => Container(
         padding: EdgeInsets.symmetric(horizontal: 48),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +117,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             const SizedBox(height: 16),
             Text(
-              user.about,
+              'user.about',
               style: TextStyle(fontSize: 16, height: 1.4),
             ),
           ],
