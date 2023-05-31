@@ -6,6 +6,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/application/user/user_update/user_update_bloc.dart';
 import 'package:frontend/application/organizer/organizer_update/organizer_update_bloc.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'profileWidget.dart';
 import 'textFieldWidget.dart';
 

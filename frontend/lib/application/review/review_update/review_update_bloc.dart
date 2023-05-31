@@ -3,10 +3,11 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'package:dartz/dartz.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:frontend/domain/review/review.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart';
-
+// import 'package:frontend/data/local/local_database/local_storage.dart';
 
 part 'review_update_event.dart';
 part 'review_update_state.dart';
@@ -15,7 +16,7 @@ part 'review_update_bloc.freezed.dart';
 class ReviewUpdateBloc extends Bloc<ReviewUpdateEvent, ReviewUpdateState> {
   final ReviewRepository reviewRepository;
 
-  final LocalDatabase local_storage = LocalDatabase.getInstance;
+  // final LocalDatabase local_storage = LocalDatabase.getInstance;
   ReviewUpdateBloc(this.reviewRepository) : super(ReviewUpdateState.initial());
 
   @override
@@ -37,15 +38,19 @@ class ReviewUpdateBloc extends Bloc<ReviewUpdateEvent, ReviewUpdateState> {
           Either<ReviewFailure, Object>? failureOrSuccess;
 
           if (state.reviewText == '') {
-            failureOrSuccess = left( ReviewFailure.invalidReview());
+            failureOrSuccess = left(ReviewFailure.invalidReview());
           } else {
-            final String userId = await local_storage.getUserId();
+            // get user id from shared preferences
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            String userId = prefs.getString('userId')!;
+
             final String reviewId = e.reviewId;
 
             if (reviewId == null) {
               yield state.copyWith(
                 isLoading: false,
-                updateFailureOrSuccessOption: some(left( ReviewFailure.invalidReview())),
+                updateFailureOrSuccessOption:
+                    some(left(ReviewFailure.invalidReview())),
               );
               return;
             }

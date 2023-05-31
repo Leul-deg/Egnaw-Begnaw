@@ -6,7 +6,7 @@ import 'package:frontend/domain/event/event.dart';
 
 import 'package:frontend/domain/organizer/organizer.dart';
 
-import 'package:frontend/data/local/local_database/local_storage.dart';
+// import 'package:frontend/data/local/local_database/local_storage.dart';
 
 part 'organizer_update_event.dart';
 part 'organizer_update_state.dart';
@@ -15,7 +15,7 @@ class OrganizerUpdateBloc
     extends Bloc<OrganizerUpdateEvent, OrganizerUpdateState> {
   final OrganizerRepository organizerRepository;
 
-  final LocalDatabase local_storage = LocalDatabase.getInstance;
+  // final LocalDatabase local_storage = LocalDatabase.getInstance;
 
   OrganizerUpdateBloc(this.organizerRepository)
       : super(OrganizerUpdateState.initial()) {

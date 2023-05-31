@@ -3,7 +3,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/domain/event/event.dart';
 
-import '../../../data/local/local_database/local_storage.dart' as LocalStorage;
+// import '../../../data/local/local_database/local_storage.dart' as LocalStorage;
 
 part 'event_create_event.dart';
 part 'event_create_state.dart';
@@ -11,7 +11,7 @@ part 'event_create_state.dart';
 class EventCreateBloc extends Bloc<EventCreateEvent, EventCreateState> {
   final EventRepository _eventRepository;
 
-  final local_storage = LocalStorage.LocalDatabase.getInstance;
+  // final local_storage = LocalStorage.LocalDatabase.getInstance;
 
   EventCreateBloc(this._eventRepository) : super(EventCreateState.initial()) {
     on<_StartTimeChanged>((event, emit) {
