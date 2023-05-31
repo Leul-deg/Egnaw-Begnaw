@@ -31,8 +31,8 @@ class UserCreateEvent {
     return _IsOrganizerChanged(isOrganizer);
   }
 
-  factory UserCreateEvent.organizerNameChanged(String organizerNameStr) {
-    return _OrganizerNameChanged(organizerNameStr);
+  factory UserCreateEvent.organizationNameChanged(String organizationNameStr) {
+    return _organizationNameChanged(organizationNameStr);
   }
 }
 
@@ -74,8 +74,8 @@ class _IsOrganizerChanged extends UserCreateEvent {
   final bool isOrganizer;
 }
 
-class _OrganizerNameChanged extends UserCreateEvent {
-  const _OrganizerNameChanged(this.organizerNameStr) : super._();
+class _organizationNameChanged extends UserCreateEvent {
+  const _organizationNameChanged(this.organizationNameStr) : super._();
 
-  final String organizerNameStr;
+  final String organizationNameStr;
 }

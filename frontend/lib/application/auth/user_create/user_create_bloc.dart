@@ -54,11 +54,11 @@ class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
 
       if (state.isOrganizer) {
         // check if the fields are valid
-        final organizerNameValid = state.organizerName.isNotEmpty;
+        final organizationNameValid = state.organizationName.isNotEmpty;
         final isEmailValid = state.emailAddress.isNotEmpty;
         final isPasswordValid = state.password.isNotEmpty;
 
-        if (organizerNameValid && isEmailValid && isPasswordValid) {
+        if (organizationNameValid && isEmailValid && isPasswordValid) {
           emit(
             state.copyWith(
               isSubmitting: true,
@@ -68,7 +68,7 @@ class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
 
           failureOrSuccess = await authRepository.createOrganizer(
             OrganizerCreateModel(
-              organizationName: state.organizerName,
+              organizationName: state.organizationName,
               email: state.emailAddress,
               password: state.password,
             ),
@@ -117,10 +117,10 @@ class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
       );
     });
 
-    on<_OrganizerNameChanged>((event, emit) {
+    on<_organizationNameChanged>((event, emit) {
       emit(
         state.copyWith(
-          organizerName: event.organizerNameStr,
+          organizationName: event.organizationNameStr,
           authFailureOrSuccessOption: none(),
         ),
       );

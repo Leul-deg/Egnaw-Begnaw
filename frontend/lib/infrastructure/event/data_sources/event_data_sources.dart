@@ -30,9 +30,9 @@ class EventDataSource implements EventRepository {
     if (response.statusCode == 201) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return  Left(EventFailure.invalidEvent());
+      return Left(EventFailure.invalidEvent());
     } else {
-      return  Left(EventFailure.serverError());
+      return Left(EventFailure.serverError());
     }
   }
 
@@ -44,12 +44,15 @@ class EventDataSource implements EventRepository {
       body: eventUpdateModel.toJson(),
     );
 
+    print('got response');
+    print(response.statusCode);
+
     if (response.statusCode == 200) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return  Left(EventFailure.invalidEvent());
+      return Left(EventFailure.invalidEvent());
     } else {
-      return  Left(EventFailure.serverError());
+      return Left(EventFailure.serverError());
     }
   }
 
@@ -63,11 +66,11 @@ class EventDataSource implements EventRepository {
     );
 
     if (response.statusCode == 200) {
-      return  const Right(Object);
+      return const Right(Object);
     } else if (response.statusCode == 400) {
-      return  Left(EventFailure.invalidEvent());
+      return Left(EventFailure.invalidEvent());
     } else {
-      return  Left(EventFailure.serverError());
+      return Left(EventFailure.serverError());
     }
   }
 
@@ -91,7 +94,7 @@ class EventDataSource implements EventRepository {
 
       return Right(allEvents);
     } catch (e) {
-      return  Left(EventFailure.unableToGet());
+      return Left(EventFailure.unableToGet());
     }
   }
 
@@ -136,7 +139,7 @@ class EventDataSource implements EventRepository {
     } catch (e) {
       // If there is an error getting the event data from the API, return a Left Either object
       // with an EventFailure object containing an error message
-      return  Left(EventFailure.unableToGet());
+      return Left(EventFailure.unableToGet());
     }
   }
 }

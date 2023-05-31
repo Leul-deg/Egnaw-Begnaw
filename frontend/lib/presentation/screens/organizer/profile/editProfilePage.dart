@@ -29,7 +29,33 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) =>
       BlocConsumer<OrganizerUpdateBloc, OrganizerUpdateState>(
         listener: (context, state) {
-          // Show a snackbar or handle other side effects based on the state
+          // Show a snackbar based on the state.updatefailureOrSuccess
+          state.updateFailureOrSuccessOption.fold(
+            () {},
+            (either) => either.fold(
+              (failure) {
+                final snackBar = SnackBar(
+                  content: Text(
+                    failure.map(
+                      insufficientPermission: () => 'Insufficient permissions',
+                      unableToUpdate: () => 'Unable to update',
+                      unexpectedError: () => 'Unexpected error',
+                      invalidOrganizer: () => 'Invalid organizer',
+                      serverError: () => 'Server error',
+                      unableToDelete: () => 'Unable to delete',
+                    ),
+                  ),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+              (_) {
+                final snackBar = SnackBar(
+                  content: Text('Update successful'),
+                );
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
+              },
+            ),
+          );
         },
         builder: (context, state) {
           return Scaffold(
@@ -39,17 +65,13 @@ class _EditProfilePageState extends State<EditProfilePage> {
               child: Form(
                 child: ListView(
                   children: [
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
-                    Center(
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: CircleAvatar(
-                          radius: MediaQuery.of(context).size.width * 0.1,
-                          backgroundImage: AssetImage('google.jpg'),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+
+                    ProfileWidget(
+                        imagePath: user.imagePath,
+                        isEdit: true,
+                        onClicked: () {}),
+                    SizedBox(height: 20),
+
                     TextFormField(
                       decoration: InputDecoration(
                         labelText: 'Organizer name',
@@ -89,6 +111,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             OrganizerUpdateEvent.passwordChanged(password));
                       },
                     ),
+
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                     SizedBox(
                       height: 40,
@@ -100,6 +123,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         },
                         child: Text('Save'),
                       ),
+
                     ),
                   ],
                 ),

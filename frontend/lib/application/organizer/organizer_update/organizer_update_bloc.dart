@@ -8,7 +8,6 @@ import 'package:frontend/domain/organizer/organizer.dart';
 
 import 'package:frontend/data/local/local_database/local_storage.dart';
 
-
 part 'organizer_update_event.dart';
 part 'organizer_update_state.dart';
 
@@ -43,10 +42,8 @@ class OrganizerUpdateBloc
     });
 
     on<_ProfileImageChanged>((event, emit) {
-      print('herererererdkjfhkakh aisdhfkhasdf');
-      print(event.profileImage.length);
       emit(state.copyWith(
-        profileImage: 'event.profileImage',
+        profileImage: event.profileImage,
         updateFailureOrSuccessOption: none(),
       ));
     });
@@ -79,25 +76,22 @@ class OrganizerUpdateBloc
         print(state.email);
         print(state.password);
         failureOrSuccess = left(OrganizerFailure.invalidOrganizer());
-      }
-
-      else {
+      } else {
         print('in else');
         failureOrSuccess = await organizerRepository.updateOrganizer(
-          organizerId,
-          OrganizerUpdateModel(
-            organizerName: state.organizationName,
-            email: state.email,
-            password: state.password,
-            profileImage: state.profileImage,
-          ));
+            organizerId,
+            OrganizerUpdateModel(
+              organizationName: state.organizationName,
+              email: state.email,
+              password: state.password,
+              profileImage: state.profileImage,
+            ));
       }
 
       emit(state.copyWith(
         isLoading: false,
         updateFailureOrSuccessOption: optionOf(failureOrSuccess),
       ));
-
     });
   }
 }
