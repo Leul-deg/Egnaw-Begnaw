@@ -22,8 +22,6 @@ export class AuthService {
   ) {}
 
   async signup(dto: AuthDto) {
-    console.log("got called");
-    console.log(dto , "the dto");
     // generate the password hash
     const hash = await argon.hash(dto.password);
     dto.password = hash
@@ -52,9 +50,7 @@ export class AuthService {
     //find user by email
 
     const filter = {email: dto.email}
-    console.log(dto , "the dto upon signin fucked")
     const cur_user = await this.userModel.findOne(filter)
-    console.log(cur_user,"curr user here")
     if (!cur_user){
       throw new ForbiddenException(
                 'Credentials incorrect',
@@ -72,7 +68,10 @@ export class AuthService {
       throw new ForbiddenException(
         'Credentials incorrect upon signin',
       );
-    return this.signToken(dto.email);
+
+      const token = await this.signToken(dto.email)
+
+    return {...token, ...cur_user['_doc']};
 
 }
 
