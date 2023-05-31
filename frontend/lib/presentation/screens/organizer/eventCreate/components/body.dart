@@ -91,12 +91,7 @@ class _BodyState extends State<Body> {
           body: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
             child: Container(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('test.jpg'),
-                  fit: BoxFit.cover,
-                ),
-              ),
+              decoration: BoxDecoration(),
               child: Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: screen.width > 600 ? screen.width * 0.15 : 18,
@@ -108,7 +103,7 @@ class _BodyState extends State<Body> {
                     Text(
                       'Post Your Event',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.blue,
                         fontSize: screen.width > 600 ? 50 : 30,
                         fontWeight: FontWeight.bold,
                         fontFamily: 'roboto',
@@ -124,7 +119,7 @@ class _BodyState extends State<Body> {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: screen.width > 600 ? 30 : 20,
-                              color: Colors.white,
+                              color: Colors.blue,
                             ),
                           ),
                           SizedBox(height: 10),
@@ -132,7 +127,7 @@ class _BodyState extends State<Body> {
                             decoration: InputDecoration(
                               labelText: 'Event Title',
                               labelStyle: TextStyle(
-                                color: Colors.white,
+                                color: Colors.grey,
                               ),
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.red),
@@ -152,7 +147,7 @@ class _BodyState extends State<Body> {
                             decoration: InputDecoration(
                               labelText: 'Event Details',
                               labelStyle: TextStyle(
-                                color: Colors.white,
+                                color: Colors.blue,
                               ),
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.red),
@@ -173,7 +168,7 @@ class _BodyState extends State<Body> {
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: screen.width > 600 ? 30 : 20,
-                              color: Colors.white,
+                              color: Colors.blue,
                             ),
                           ),
                           SizedBox(height: 10),
@@ -185,7 +180,7 @@ class _BodyState extends State<Body> {
                                   Text(
                                     'Start Time',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.blue,
                                       fontSize: screen.width > 600 ? 24 : 18,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -199,7 +194,7 @@ class _BodyState extends State<Body> {
                                       Text(
                                         'Selected Time: ${state.startTime.format(context)}',
                                         style: TextStyle(
-                                          color: Colors.white,
+                                          color: Colors.blue,
                                         ),
                                       ),
                                       SizedBox(height: 20),
@@ -239,7 +234,7 @@ class _BodyState extends State<Body> {
                                   Text(
                                     'End Time',
                                     style: TextStyle(
-                                      color: Colors.white,
+                                      color: Colors.grey,
                                       fontSize: screen.width > 600 ? 24 : 18,
                                       fontWeight: FontWeight.bold,
                                     ),
@@ -252,8 +247,7 @@ class _BodyState extends State<Body> {
                                     children: <Widget>[
                                       Text(
                                           'Selected Time: ${state.endTime.format(context)}',
-                                          style:
-                                              TextStyle(color: Colors.white)),
+                                          style: TextStyle(color: Colors.grey)),
                                       SizedBox(height: 20),
                                       ElevatedButton(
                                         style: ButtonStyle(
@@ -295,7 +289,7 @@ class _BodyState extends State<Body> {
                             children: <Widget>[
                               Text(
                                   'Selected Date: ${state.eventDate.toString()}',
-                                  style: TextStyle(color: Colors.white)),
+                                  style: TextStyle(color: Colors.grey)),
                               SizedBox(height: 20),
                               ElevatedButton(
                                 style: ButtonStyle(
@@ -330,14 +324,14 @@ class _BodyState extends State<Body> {
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: screen.width > 600 ? 30 : 20,
-                                color: Colors.white),
+                                color: Colors.blue),
                           ),
                           SizedBox(height: 10),
                           TextFormField(
                             decoration: InputDecoration(
                               labelText: 'Location',
                               labelStyle: TextStyle(
-                                color: Colors.white,
+                                color: Colors.blue,
                               ),
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(color: Colors.red),

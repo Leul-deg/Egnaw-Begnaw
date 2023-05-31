@@ -25,28 +25,6 @@ class _BodyState extends State<Body> {
           padding: EdgeInsets.all(screen.width * 0.01),
           child: Column(
             children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  physics: AlwaysScrollableScrollPhysics(),
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    itemCount: commenters.length,
-                    itemBuilder: (context, index) {
-                      final comment = commenters[index];
-                      return comment;
-                    },
-                    separatorBuilder: (context, index) {
-                      return Divider(
-                        thickness: 1,
-                        height: screen.height * 0.01,
-                        color: Colors.grey,
-                      );
-                    },
-                  ),
-                ),
-              ),
-              SizedBox(height: screen.height * 0.02),
               Container(
                 color: Colors.white,
                 child: Padding(
@@ -70,6 +48,30 @@ class _BodyState extends State<Body> {
                   ),
                 ),
               ),
+              SizedBox(height: screen.height * 0.02),
+              Expanded(
+                child: SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    itemCount: commenters.length,
+                    itemBuilder: (context, index) {
+                      final comment = commenters[index];
+                      return comment;
+                    },
+                    separatorBuilder: (context, index) {
+                      return Divider(
+                        thickness: 1,
+                        height: screen.height * 0.01,
+                        color: Colors.grey,
+                      );
+                    },
+                  ),
+                ),
+              ),
+              
+              
             ],
           ),
         ),

@@ -9,7 +9,9 @@ class EventDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'EventDetails',
+     
       home: Scaffold(
         appBar: AppBar(
           leading: BackButton(

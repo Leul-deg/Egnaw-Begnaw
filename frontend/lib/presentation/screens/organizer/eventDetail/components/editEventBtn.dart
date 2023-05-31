@@ -19,7 +19,7 @@ class EditEventBtn extends StatelessWidget {
                   .pushNamed(MyAppRouteConstants.eventEditRouteName);
             },
             style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.purple[200],
+                backgroundColor: Colors.blue,
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),

@@ -27,13 +27,13 @@ class MyAppRoute {
       //     return const MaterialPage(child: Onboarding());
       //   },
       // ),
-      // GoRoute(
-      //   name: MyAppRouteConstants.organizerScreenRouteName,
-      //   path: '/',
-      //   pageBuilder: (context, state) {
-      //     return MaterialPage(child: OrganizerScreen());
-      //   },
-      // ),
+      GoRoute(
+        name: MyAppRouteConstants.organizerScreenRouteName,
+        path: '/organizerScreen',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: OrganizerScreen());
+        },
+      ),
       GoRoute(
         name: MyAppRouteConstants.upComingEventRouteName,
         path: '/upComingEvents',
