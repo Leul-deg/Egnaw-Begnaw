@@ -191,6 +191,7 @@ class _EventDetailState extends State<EventDetail> {
                               const Icon(Icons.location_pin),
                               SizedBox(width: screen.width * 0.01),
                               Text(
+                                
                                 event['place'] ?? 'place',
                                 style: TextStyle(fontSize: 16),
                               )

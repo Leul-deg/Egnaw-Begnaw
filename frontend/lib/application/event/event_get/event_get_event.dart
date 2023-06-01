@@ -16,6 +16,10 @@ abstract class EventGetEvent {
     return GetEventsByOrganizerId();
   }
 
+  factory EventGetEvent.deleteEventById(String eventId) {
+    return DeleteEventById(eventId);
+  }
+
 }
 
 class GetEventById extends EventGetEvent {
@@ -31,4 +35,10 @@ class GetAllEvents extends EventGetEvent {
 class GetEventsByOrganizerId extends EventGetEvent {
  
   const GetEventsByOrganizerId() : super._();
+}
+
+class DeleteEventById extends EventGetEvent {
+  final String eventId;
+
+  const DeleteEventById(this.eventId) : super._();
 }
