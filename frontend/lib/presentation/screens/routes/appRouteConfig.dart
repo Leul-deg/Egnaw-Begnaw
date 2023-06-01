@@ -9,7 +9,6 @@ import '../signUp/signUpScreen.dart';
 import '../errorPage/errorPage.dart';
 import '../user/userScreen.dart';
 import '../user/eventDetail/eventDetail.dart';
-import '../user/eventComment/eventComment.dart';
 import '../organizer/organizerScreen.dart';
 import '../organizer/eventDetail/eventDetail.dart';
 import '../organizer/editEvent/editEvent.dart';
@@ -76,13 +75,6 @@ class MyAppRoute {
         path: '/userscreen',
         pageBuilder: (context, state) {
           return MaterialPage(child: UserScreen());
-        },
-      ),
-      GoRoute(
-        name: MyAppRouteConstants.eventCommentRouteName,
-        path: '/eventComment',
-        pageBuilder: (context, state) {
-          return const MaterialPage(child: EventComment());
         },
       ),
       GoRoute(
