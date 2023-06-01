@@ -30,6 +30,18 @@ class EventGetBloc extends Bloc<EventGetEvent, EventGetState> {
       ));
     });
 
+    on<DeleteEventById>((event, emit) async {
+      emit(state.copyWith(isLoading: true));
+
+      final response = await _eventRepository.deleteEvent(event.eventId);
+
+      emit(state.copyWith(
+        isLoading: false,
+        isError: response.isLeft(),
+        isDeleteSuccess: response.isRight()
+      ));
+    });
+
     on<GetAllEvents>((event, emit) async {
       emit(state.copyWith(isLoading: true));
 
