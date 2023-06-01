@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/my_ticket_icon_icons.dart';
 
 class EventCards extends StatelessWidget {
   final String title;
@@ -35,11 +36,16 @@ class EventCards extends StatelessWidget {
                 ),
                 color: Colors.white,
               ),
-              child: Text(
-                '285 tickets sold',
-                style: TextStyle(
-                  fontSize: 14.0,
-                ),
+              child: Row(
+                children: [
+                  Icon(MyTicketIcon.ticket_alt),
+                  Text(
+                    '285 tickets sold',
+                    style: TextStyle(
+                      fontSize: 14.0,
+                    ),
+                  ),
+                ],
               ),
             ),
           ),

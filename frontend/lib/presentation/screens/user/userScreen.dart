@@ -36,10 +36,6 @@ class _UserScreenState extends State<UserScreen> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.history),
-              label: 'Past Events',
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.airplane_ticket),
               label: 'My Tickets',
             ),
@@ -59,12 +55,10 @@ class _UserScreenState extends State<UserScreen> {
   Widget _getPage(int index) {
     switch (index) {
       case 0:
-        return const HomePage();
-      case 1:
         return const PastEvent();
-      case 2:
+      case 1:
         return MyTicket();
-      case 3:
+      case 2:
         return ProfilePage();
     }
     return Container();

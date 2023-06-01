@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/application/auth/user_create/user_create_bloc.dart';
-import './signUpWithGoogleBtn.dart';
 import 'package:go_router/go_router.dart';
 import '../../routes/appRouteConstants.dart';
 
@@ -31,7 +30,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('loginBackground.jpg'),
@@ -51,7 +50,7 @@ class _BodyState extends State<Body> {
                       fontFamily: 'OpenSans',
                       fontSize: 30,
                       fontWeight: FontWeight.bold)),
-              const SizedBox(height: 20),
+              const SizedBox(height: 35),
               BlocConsumer<UserCreateBloc, UserCreateState>(
                 listener: (context, state) {
                   // show error snack bar if user creation fails
@@ -80,7 +79,8 @@ class _BodyState extends State<Body> {
                       (_) {
                         // show snack bar if user creation is successful
                         flag();
-                        GoRouter.of(context).pushNamed(MyAppRouteConstants.loginRouteName);
+                        GoRouter.of(context)
+                            .pushNamed(MyAppRouteConstants.loginRouteName);
                       },
                     ),
                   );
@@ -148,7 +148,6 @@ class _BodyState extends State<Body> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 20),
                         Visibility(
                           visible: state.isOrganizer,
                           child: TextFormField(
@@ -279,12 +278,10 @@ class _BodyState extends State<Body> {
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           width: double.infinity,
                           child: ElevatedButton(
-                            
                             onPressed: () {
                               context.read<UserCreateBloc>().add(
                                     UserCreateEvent.createUserPressed(),
-                                    );
-
+                                  );
                             },
                             style: ElevatedButton.styleFrom(
                               elevation: 5,
@@ -307,36 +304,23 @@ class _BodyState extends State<Body> {
                             ),
                           ),
                         ),
-                        Column(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              '- OR -',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400),
+                              'Already have an account?',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
                             ),
-                            // const SizedBox(height: 10),
-                            const SignUpWithGoogleBtn(),
-
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  'Already have an account?',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      GoRouter.of(context).pushNamed(
-                                          MyAppRouteConstants.loginRouteName);
-                                    },
-                                    child: const Text(
-                                      'Log in',
-                                      style: TextStyle(fontSize: 18),
-                                    ))
-                              ],
-                            )
+                            TextButton(
+                                onPressed: () {
+                                  GoRouter.of(context).pushNamed(
+                                      MyAppRouteConstants.loginRouteName);
+                                },
+                                child: const Text(
+                                  'Log in',
+                                  style: TextStyle(fontSize: 18),
+                                ))
                           ],
                         )
                       ],
