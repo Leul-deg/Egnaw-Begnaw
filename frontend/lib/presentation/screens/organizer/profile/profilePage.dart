@@ -37,6 +37,8 @@ class _ProfilePageState extends State<ProfilePage> {
     final prefs = await SharedPreferences.getInstance();
     final userData = prefs.getString('userData');
 
+    print(userData);
+
     if (userData != null) {
       setState(() {
         print('setting state');

@@ -19,7 +19,7 @@ class UserRepositoryImp implements UserRepository{
     return await userDataSource.getAllUsers(allUser);
   }
   @override
-  Future<Either<UserFailure,UserUpdateModel>> updateUser(String userId, UserUpdateModel newUser) async {
+  Future<Either<UserFailure,dynamic>> updateUser(String userId, UserUpdateModel newUser) async {
     return await userDataSource.updateUser(userId, newUser);
   }
   @override

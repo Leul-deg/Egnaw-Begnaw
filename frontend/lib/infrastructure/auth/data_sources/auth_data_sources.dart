@@ -1,18 +1,19 @@
 import 'dart:convert';
 
+import 'package:frontend/data/local/local_database/local_storage.dart';
 import 'package:http/http.dart' as client;
 
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:frontend/domain/auth/auth.dart';
 
 class AuthDataSource implements AuthRepository {
+  AuthDataSource() {}
   final API_URL = "http://localhost:3000";
   final Future<SharedPreferences> sharedPreferences =
       SharedPreferences.getInstance();
-
-  AuthDataSource();
 
   @override
   Future<Either<AuthFailure, Object>> loginUser(

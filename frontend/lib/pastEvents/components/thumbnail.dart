@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import '../../../routes/appRouteConstants.dart';
+import '../../presentation/screens/routes/appRouteConstants.dart';
 
 class Thumbnail extends StatelessWidget {
   String eventName;
@@ -41,7 +41,7 @@ class Thumbnail extends StatelessWidget {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Text(
-              'Ended time $endTime',
+              endTime,
               style: const TextStyle(fontSize: 14),
             )
           ],

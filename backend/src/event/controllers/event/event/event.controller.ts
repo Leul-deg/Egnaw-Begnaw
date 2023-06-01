@@ -35,4 +35,10 @@ export class EventController {
         return this.eventService.deleteEvent(id);
     }
 
+    // get events by organizerId
+    @Get('organizer/:id')
+    async getEventsByOrganizerId(@Param('id') id: string): Promise<EventI[]> {
+        return this.eventService.getEventsByOrganizerId(id);
+    }
+
 }

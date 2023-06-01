@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './homePage/homePage.dart';
-import './pastEvents/pastEvent.dart';
+import '../../../pastEvents/pastEvent.dart';
 import './profile/profilePage.dart';
 import './myTickets/myTickets.dart';
 
@@ -48,6 +48,7 @@ class _UserScreenState extends State<UserScreen> {
           selectedItemColor: Colors.blue,
           onTap: _onItemTapped,
         ),
+
       ),
     );
   }

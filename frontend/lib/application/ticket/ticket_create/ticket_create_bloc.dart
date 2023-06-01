@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 
 import 'package:frontend/domain/ticket/ticket.dart';
@@ -10,11 +12,12 @@ part 'ticket_create_event.dart';
 part 'ticket_create_state.dart';
 
 class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
-  final TicketRepository _ticketRepository;
+  final TicketRepository _ticketDataSources;
 
-  TicketCreateBloc(this._ticketRepository)
+  TicketCreateBloc(this._ticketDataSources)
       : super(TicketCreateState.initial()) {
     on<_TicketCreatePressed>((event, emit) async {
+      print('button pressed');
       emit(state.copyWith(
         isLoading: true,
         createFailureOrSuccessOption: none(),
@@ -24,11 +27,20 @@ class TicketCreateBloc extends Bloc<TicketCreateEvent, TicketCreateState> {
 
       // get user id from shared preferences
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      String userId = prefs.getString('userId')!;
-      final eventId = event.eventId;
+      var userData = json.decode(prefs.getString('userData')!);
 
-      failureOrSuccess = await _ticketRepository
-          .createTicket(TicketCreateModel(eventId: eventId, userId: userId));
+      print('here is the user data');
+      print(json.decode(userData));
+      print('here is the ID');
+      print(json.decode(userData)['_id']);
+
+      String userId = json.decode(userData)['_id'];
+
+      print('got userId');
+      print(userId);
+
+      failureOrSuccess = await _ticketDataSources.createTicket(
+          TicketCreateModel(eventId: event.eventId, userId: userId));
 
       emit(state.copyWith(
         isLoading: false,

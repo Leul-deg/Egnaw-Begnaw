@@ -6,4 +6,6 @@ export interface UpdateEventDTO {
     ticketsSold?: Number
     placeImg?: String
     eventDate?: Date
+    description?: String
+    title?: String
 }

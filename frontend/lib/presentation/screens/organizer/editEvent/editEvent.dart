@@ -8,17 +8,14 @@ class EditEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Event Edit Page',
-      home: Scaffold(
-        appBar: AppBar(
-          leading: BackButton(
-            onPressed: () => GoRouter.of(context)
-                .pushNamed(MyAppRouteConstants.eventDetail1RouteName),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        leading: BackButton(
+          onPressed: () => GoRouter.of(context)
+              .pushNamed(MyAppRouteConstants.eventDetail1RouteName),
         ),
-        body: Body(),
       ),
+      body: Body(),
     );
   }
 }

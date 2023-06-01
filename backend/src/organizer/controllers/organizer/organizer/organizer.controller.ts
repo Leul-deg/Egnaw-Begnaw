@@ -22,7 +22,6 @@ export class OrganizerController {
     @Post('update/:id')
     async updateOrganizer(@Param('id') id: string, @Body() Organizer: UpdateOrganizerDTO, @Req() req: RawBodyRequest<Request>): Promise<OrganizerI> {
         const raw = req.rawBody;
-        console.log('workinggggggggggggggggggggg');
         return this.organizerService.updateOrganizer(id, Organizer);
     }
 

@@ -36,7 +36,7 @@ class EventCards extends StatelessWidget {
                 color: Colors.white,
               ),
               child: Text(
-                '3 hours left',
+                '285 tickets sold',
                 style: TextStyle(
                   fontSize: 14.0,
                 ),
@@ -47,7 +47,7 @@ class EventCards extends StatelessWidget {
             top: 16.0,
             left: 16.0,
             child: Text(
-              title,
+              'Rophnan Concert',
               style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,

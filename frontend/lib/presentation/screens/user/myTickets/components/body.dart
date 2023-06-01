@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/application/ticket/ticket_get/ticket_get_bloc.dart';
 import './eventCards.dart';
 import 'package:go_router/go_router.dart';
 import '../../../routes/appRouteConstants.dart';
@@ -11,78 +13,71 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  List eventCards = [
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-    EventCards(
-      title: 'Rophnan Concert',
-    ),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    // get tickets
+    context.read<TicketGetBloc>().add(TicketGetEvent.getTicketsByUserId());
+  }
+
   @override
   Widget build(BuildContext context) {
     final screen = MediaQuery.of(context).size;
-    return MaterialApp(
-      title: 'Upcoming Events',
-      home: SafeArea(
-        child: Column(
-          children: [
-            Expanded(
-              child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: ListView.separated(
-                    itemCount: eventCards.length,
-                    itemBuilder: (context, index) {
-                      final eventCard = eventCards[index];
-                      return GestureDetector(
-                        onTap: () {
-                          GoRouter.of(context).pushNamed(
-                              MyAppRouteConstants.eventDetail1RouteName);
-                        },
-                        child: eventCard,
-                      );
-                    },
-                    separatorBuilder: (context, index) {
-                      return SizedBox(height: 16);
-                    },
-                  )),
+    return BlocConsumer<TicketGetBloc, TicketGetState>(
+      listener: (context, state) {
+        // show snackbar
+        if (state.isError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Could not get tickets, please try again'),
+              backgroundColor: Colors.red,
             ),
-          ],
-        ),
-      ),
+          );
+        }
+      },
+      builder: (context, state) {
+        List eventCards = [];
+
+        print(state.tickets);
+
+        // populate eventCards from the state
+        if (state.tickets.isNotEmpty) {
+          for (var ticket in state.tickets) {
+            eventCards.add(EventCards(
+              title: ticket['eventId'],
+            ));
+          }
+        }
+
+        return Scaffold(
+          body: SafeArea(
+            child: Column(
+              children: [
+                Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: ListView.separated(
+                        itemCount: eventCards.length,
+                        itemBuilder: (context, index) {
+                          final eventCard = eventCards[index];
+                          return GestureDetector(
+                            onTap: () {
+                              GoRouter.of(context).pushNamed(
+                                  MyAppRouteConstants.eventDetail1RouteName);
+                            },
+                            child: eventCard,
+                          );
+                        },
+                        separatorBuilder: (context, index) {
+                          return SizedBox(height: 16);
+                        },
+                      )),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

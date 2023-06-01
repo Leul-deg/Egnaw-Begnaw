@@ -17,6 +17,14 @@ class EventRepositoryImp implements EventRepository {
         return await eventDataSource.createEvent(eventCreateModel);
   }
 
+  // get event by organizer Id
+
+  @override
+  Future<Either<EventFailure, List<dynamic>>> getEventsByOrganizerId(
+      String id) async {
+        return await eventDataSource.getEventsByOrganizerId(id);
+  }
+
   // update event
   @override
   Future<Either<EventFailure, Object>> updateEvent(
@@ -31,7 +39,7 @@ class EventRepositoryImp implements EventRepository {
   }
   
   @override
-  Future<Either<EventFailure, List<Object>>> getAllEvents() async {
+  Future<Either<EventFailure, List<dynamic>>> getAllEvents() async {
     return await eventDataSource.getAllEvents();
   }
   

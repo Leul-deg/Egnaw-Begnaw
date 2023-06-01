@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/application/ticket/ticket_create/ticket_create_bloc.dart';
 
-
-class BuyTicketsBtn extends StatelessWidget {
+class BuyTicketsBtn extends StatefulWidget {
   const BuyTicketsBtn({super.key});
 
+  @override
+  State<BuyTicketsBtn> createState() => _BuyTicketsBtnState();
+}
+
+class _BuyTicketsBtnState extends State<BuyTicketsBtn> {
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -12,7 +18,11 @@ class BuyTicketsBtn extends StatelessWidget {
           width: 300,
           height: 100,
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<TicketCreateBloc>().add(
+                  TicketCreateEvent.ticketCreatePressed(
+                      '6475978b21b437dece3bc330'));
+            },
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue[300],
                 elevation: 5,
