@@ -24,31 +24,31 @@ class _UserScreenState extends State<UserScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: _getPage(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, // set type to fixed
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.history),
-            label: 'Past Events',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.alarm),
-            label: 'My Tickets',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: const Color.fromARGB(255, 13, 17, 21),
-        onTap: _onItemTapped,
+    return MaterialApp(
+      title: 'User Screen',
+      home: Scaffold(
+        body: _getPage(_selectedIndex),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.airplane_ticket),
+              label: 'My Tickets',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+          currentIndex: _selectedIndex,
+          selectedItemColor: Colors.blue,
+          onTap: _onItemTapped,
+        ),
+
       ),
     );
   }
@@ -56,12 +56,10 @@ class _UserScreenState extends State<UserScreen> {
   Widget _getPage(int index) {
     switch (index) {
       case 0:
-        return const HomePage();
-      case 1:
         return const PastEvent();
-      case 2:
+      case 1:
         return MyTicket();
-      case 3:
+      case 2:
         return ProfilePage();
     }
     return Container();
