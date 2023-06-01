@@ -2,32 +2,30 @@ import {
   Body,
   Controller,
   Get,
+  Param,
   Patch,
+  Put,
   UseGuards,
 } from '@nestjs/common';
 import { GetUser } from '../auth/decorator';
 import { JwtGuard } from '../auth/guard';
 import { EditUserDto } from './dto';
 import { UserService } from './user.service';
-import { User } from 'src/auth/interfaces/auth.interface';
 
-@UseGuards(JwtGuard)
+// @UseGuards(JwtGuard)
 @Controller()
 export class UserController {
   constructor(private userService: UserService) {}
-  @Get('me')
-  getMe(@GetUser() user:User) {
-    console.log(user , "user please me");
-    return user;
+  // get all users
+  @Get('users')
+  getUsers() {
+    return this.userService.getUsers();
   }
 
-  @Patch('edit')
-  editUser(
-    @GetUser('id') userId : string,
-    @Body() dto: EditUserDto,
-    // get Id from database
-    
-  ) {
-    return this.userService.editUser(userId, dto);
+
+  @Put('update/:id')
+  updateUser(@Param('id') id: string, @Body() editUserDto: EditUserDto) {
+    console.log(id, "this is the id from the user controller");
+    return this.userService.updateUser(id, editUserDto);
   }
 }

@@ -22,6 +22,13 @@ class TicketRepositoryImp implements TicketRepository {
       TicketUpdateModel ticketUpdateModel) async {
         return await ticketDataSource.updateTicket(ticketUpdateModel);
   }
+
+  // get tickets by user id
+
+  @override
+  Future<Either<TicketFailure, List<dynamic>>> getTicketsByUserId(String userId) async {
+    return await ticketDataSource.getTicketsByUserId(userId);
+  }
   
   @override
   Future<Either<TicketFailure, Object>> deleteTicket(String id) async {

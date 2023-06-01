@@ -9,7 +9,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:frontend/application/user/user_update/user_update_bloc.dart';
-import 'package:frontend/application/organizer/organizer_update/organizer_update_bloc.dart';
 
 import 'package:go_router/go_router.dart';
 import '../../routes/appRouteConstants.dart';
@@ -52,9 +51,37 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Widget build(BuildContext context) =>
       BlocConsumer<UserUpdateBloc, UserUpdateState>(
         listener: (context, state) {
-          // Show a snackbar or handle other side effects based on the state
+          // show snackbar useing the updateFailureOrSuccessOption
+          state.updateFailureOrSuccessOption.fold(
+            () {},
+            (either) => either.fold(
+              (failure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(failure.map(
+                      insufficientPermission: () => 'Insufficient permission',
+                      invalidUser: () => 'Invalid user data',
+                      serverError: () => 'Server error',
+                      unableToDelete: () => 'Unable to delete',
+                      unableToUpdate: () => 'Unable to update',
+                      unexpectedError: () => 'Unexpected error',
+                    )),
+                  ),
+                );
+              },
+              (_) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Profile updated successfully.'),
+                  ),
+                );
+              },
+            ),
+          );
         },
         builder: (context, state) {
+
+
           return Scaffold(
             appBar: AppBar(
               leading: BackButton(
@@ -80,16 +107,26 @@ class _EditProfilePageState extends State<EditProfilePage> {
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                     TextFormField(
                       decoration: const InputDecoration(
-                        labelText: 'Organizer name',
+                        labelText: 'Firstname',
                         border: OutlineInputBorder(),
                       ),
-                      initialValue: json.decode(user)['firstName'] +
-                ' ' +
-                json.decode(user)['lastName'],
+                      initialValue: json.decode(user)['firstName'],
                       onChanged: (name) {
                         print(name);
-                        context.read<OrganizerUpdateBloc>().add(
-                            OrganizerUpdateEvent.organizationNameChanged(name));
+                        context.read<UserUpdateBloc>().add(
+                            UserUpdateEvent.firstNameChanged(name));
+                      },
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        labelText: 'Lastname',
+                        border: OutlineInputBorder(),
+                      ),
+                      initialValue: json.decode(user)['lastName'],
+                      onChanged: (name) {
+                        print(name);
+                        context.read<UserUpdateBloc>().add(
+                            UserUpdateEvent.lastNameChanged(name));
                       },
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
@@ -102,8 +139,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       onChanged: (email) {
                         print("on email change");
                         context
-                            .read<OrganizerUpdateBloc>()
-                            .add(OrganizerUpdateEvent.emailChanged(email));
+                            .read<UserUpdateBloc>()
+                            .add(UserUpdateEvent.emailChanged(email));
                       },
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
@@ -112,11 +149,11 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         labelText: 'Password',
                         border: OutlineInputBorder(),
                       ),
-                      initialValue: json.decode(user)['password'],
+                      initialValue: "",
                       onChanged: (password) {
                         print("on password change");
-                        context.read<OrganizerUpdateBloc>().add(
-                            OrganizerUpdateEvent.passwordChanged(password));
+                        context.read<UserUpdateBloc>().add(
+                            UserUpdateEvent.passwordChanged(password));
                       },
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height * 0.05),
@@ -125,8 +162,8 @@ class _EditProfilePageState extends State<EditProfilePage> {
                       child: ElevatedButton(
                         onPressed: () {
                           print('pressed');
-                          context.read<OrganizerUpdateBloc>().add(
-                              OrganizerUpdateEvent.updateOrganizerPressed());
+                          context.read<UserUpdateBloc>().add(
+                              UserUpdateEvent.updateUserPressed());
                         },
                         child: Text('Save'),
                       ),

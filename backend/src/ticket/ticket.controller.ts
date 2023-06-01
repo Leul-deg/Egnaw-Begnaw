@@ -25,13 +25,15 @@ export class TicketController {
     return this.ticketService.getTicketById(id);
   }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto) {
-  //   return this.ticketService.update(+id, updateTicketDto);
-  // }
-
   @Delete('delete:id')
   async deleteTicket(@Param('id') id: string): Promise<TicketI> {
     return this.ticketService.deleteTicket(id);
   }
+
+  // get event by user id
+  @Get('user/:id')
+  async getTicketByUserId(@Param('id') id: string): Promise<TicketI[]> {
+    return this.ticketService.getTicketByUserId(id);
+  }
+
 }

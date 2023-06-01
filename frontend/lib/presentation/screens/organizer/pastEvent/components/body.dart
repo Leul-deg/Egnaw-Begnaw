@@ -25,7 +25,7 @@ class _BodyState extends State<Body> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         title: Text(
-          'Past Events',
+          'Past Eventadfas',
           style: TextStyle(
             color: Colors.blue,
             fontWeight: FontWeight.bold,

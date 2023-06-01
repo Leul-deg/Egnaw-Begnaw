@@ -58,4 +58,12 @@ export class EventService {
         }
     }
 
+    async getEventsByOrganizerId(id: string): Promise<EventI[]> {
+        try {
+            const events = await this.eventModel.find({ organizerId: id });
+            return events;
+        } catch (error) {
+            throw error;
+        }
+    }
 }

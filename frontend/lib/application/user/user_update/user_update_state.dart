@@ -15,7 +15,7 @@ class UserUpdateState {
   final String? lastName;
   final String? email;
   final String? password;
-  final Option<Either<UserFailure, Object>> updateFailureOrSuccessOption;
+  final Option<Either<UserFailure, dynamic>> updateFailureOrSuccessOption;
 
   UserUpdateState copyWith({
     bool? isLoading,
@@ -23,7 +23,7 @@ class UserUpdateState {
     String? lastName,
     String? email,
     String? password,
-    Option<Either<UserFailure, Object>>? updateFailureOrSuccessOption,
+    Option<Either<UserFailure, dynamic>>? updateFailureOrSuccessOption,
   }) {
     return UserUpdateState(
       isLoading: isLoading ?? this.isLoading,
@@ -31,12 +31,14 @@ class UserUpdateState {
       lastName: lastName ?? this.lastName,
       email: email ?? this.email,
       password: password ?? this.password,
-      updateFailureOrSuccessOption: updateFailureOrSuccessOption ?? this.updateFailureOrSuccessOption,
+      updateFailureOrSuccessOption:
+          updateFailureOrSuccessOption ?? this.updateFailureOrSuccessOption,
     );
   }
 
   // initial state
   factory UserUpdateState.initial() {
+    
     return UserUpdateState(
       isLoading: false,
       firstName: null,

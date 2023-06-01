@@ -12,11 +12,12 @@ export class UserService {
     @InjectModel('User') private userModel: Model<EditUserDto>,
   ) {}
 
-  async editUser(
+  async updateUser(
     userId: string,
     // dto: EditUserDto,
     dto : Partial<User>
   ) {
+    console.log('in the update user function');
     if (dto.password) {
       // encrypt using argon2
       const hash = await argon.hash(dto.password);
@@ -27,18 +28,16 @@ export class UserService {
     const updatedModel = await this.userModel.updateOne({ _id: userId }, dto);
     console.log(updatedModel,
       "this is the updated model from the user service");
-    return updatedModel;
-    // const user = await this.prisma.user.update({
-    //   where: {
-    //     id: userId,
-    //   },
-    //   data: {
-    //     ...dto,
-    //   },
-    // });
 
-    // delete user.hash;
+    // return the updated data
 
-    // return user;
+    const newUser = await this.userModel.findOne({ _id: userId });
+
+    return newUser;
+
+  }
+
+  async getUsers() {
+    return this.userModel.find();
   }
 }

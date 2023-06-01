@@ -1,10 +1,10 @@
 class OrganizerUpdateModel {
-  final String? organizationName;
-  final String? email;
-  final String? password;
-  final String? profileImage;
+  String? organizationName;
+  String? email;
+  String? password;
+  String? profileImage;
 
-  const OrganizerUpdateModel({
+  OrganizerUpdateModel({
     this.organizationName,
     this.email,
     this.password,

@@ -31,7 +31,7 @@ class EventRepositoryImp implements EventRepository {
   }
   
   @override
-  Future<Either<EventFailure, List<Object>>> getAllEvents() async {
+  Future<Either<EventFailure, List<dynamic>>> getAllEvents() async {
     return await eventDataSource.getAllEvents();
   }
   

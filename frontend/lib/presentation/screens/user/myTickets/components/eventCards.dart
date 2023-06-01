@@ -47,7 +47,7 @@ class EventCards extends StatelessWidget {
             top: 16.0,
             left: 16.0,
             child: Text(
-              'Rophnan Concert',
+              title,
               style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,

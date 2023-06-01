@@ -89,29 +89,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
           );
         },
         builder: (context, state) {
-          // context.read<UserDataBloc>().add(UserDataEvent.getUserData());
-
-          print('here is the user in the builder');
-          print(user);
-
-          if(state.email == null){
-          context.read<OrganizerUpdateBloc>().add(
-              OrganizerUpdateEvent.emailChanged(
-                  json.decode(user)['email'].toString()));
-            
-          }
-
-          if (state.password == null){
-          context.read<OrganizerUpdateBloc>().add(
-              OrganizerUpdateEvent.passwordChanged(
-                  json.decode(user)['password'].toString()));
-          }
-
-          if (state.organizationName == null){
-          context.read<OrganizerUpdateBloc>().add(
-              OrganizerUpdateEvent.organizationNameChanged(
-                  json.decode(user)['firstName'].toString()));
-          }
 
           return Scaffold(
             
@@ -122,7 +99,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                   children: [
 
                     ProfileWidget(
-                        imagePath: "user['imagePath']",
+                        imagePath: json.decode(user)['profileImage'].toString(),
                         isEdit: true,
                         onClicked: () {}
                     ),
@@ -134,7 +111,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         labelText: 'Organizer name',
                         border: OutlineInputBorder(),
                       ),
-                      initialValue: json.decode(user)['firstName'].toString(),
+                      initialValue: json.decode(user)['organizationName'].toString(),
 
                       onChanged: (name) {
                         print(name);
@@ -166,7 +143,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         labelText: 'Password',
                         border: OutlineInputBorder(),
                       ),
-                      initialValue: json.decode(user)['password'].toString(),
+                      initialValue: "",
 
                       onChanged: (password) {
                         print("on password change");
@@ -183,7 +160,6 @@ class _EditProfilePageState extends State<EditProfilePage> {
                           print('pressed');
                           context.read<OrganizerUpdateBloc>().add(
                               OrganizerUpdateEvent.updateOrganizerPressed());
-                        GoRouter.of(context).pushNamed(MyAppRouteConstants.organizerScreenRouteName);
                         },
 
 
