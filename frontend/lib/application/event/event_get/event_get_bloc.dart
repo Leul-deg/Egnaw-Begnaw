@@ -12,21 +12,30 @@ class EventGetBloc extends Bloc<EventGetEvent, EventGetState> {
     on<GetEventById>((event, emit) async {
       emit(state.copyWith(isLoading: true));
 
-      final getFailureOrSuccessOption = await _eventRepository.getEvent(event.objectId);
+      print('sending request to get event with id: ${event.objectId}');
+
+      final response = await _eventRepository.getEvent(event.objectId);
 
       emit(state.copyWith(
         isLoading: false,
-        getFailureOrSuccessOption: some(getFailureOrSuccessOption),
+        isError: response.isLeft(),
+        event: response.fold(
+          (l) => {},
+          (r) => r as Map<String, dynamic>,
+        ),
       ));
-
     });
 
     on<GetAllEvents>((event, emit) async {
       emit(state.copyWith(isLoading: true));
-      final getFailureOrSuccessOption = await _eventRepository.getAllEvents();
+
+      final response = await _eventRepository.getAllEvents();
+
       emit(state.copyWith(
         isLoading: false,
-        getFailureOrSuccessOption: some(getFailureOrSuccessOption),
+        isError: response.isLeft(),
+        events:
+            response.fold((l) => [], (r) => r),
       ));
     });
   }

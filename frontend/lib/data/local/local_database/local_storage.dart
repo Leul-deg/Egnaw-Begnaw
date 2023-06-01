@@ -6,7 +6,8 @@ class LocalDatabase {
 
   static Database? _database;
 
-  LocalDatabase._init(){
+  LocalDatabase._init() {
+    print("tried to initali local database  ");
     _initDB('local_database_.db');
   }
 
@@ -22,14 +23,26 @@ class LocalDatabase {
   }
 
   Future<Database> _initDB(String filePath) async {
-    final dbPath = await getDatabasesPath();
-    final path = join(dbPath, filePath);
+    print("what about now");
+    try {
+      final dbPath = await getDatabasesPath();
+    } catch (e) {
+      print(e);
+    }
+    print("what about now 2");
+    final path = join('dbPath', filePath);
 
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: _createDB,
-    );
+    try {
+      final database = await openDatabase(
+        path,
+        version: 1,
+        onCreate: _createDB,
+      );
+      return database;
+    } catch (e) {
+      print('Error opening database: $e');
+      rethrow;
+    }
   }
 
   Future _createDB(Database db, int version) async {

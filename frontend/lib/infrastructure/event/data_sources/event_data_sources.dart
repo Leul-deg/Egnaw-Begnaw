@@ -75,26 +75,23 @@ class EventDataSource implements EventRepository {
   }
 
   @override
-  Future<Either<EventFailure, List<Object>>> getAllEvents() async {
-    try {
-      final response = await client.get(
-        Uri.parse('$API_URL/event'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8'
-        },
-      );
+  Future<Either<EventFailure, List<dynamic>>> getAllEvents() async {
+    final response = await client.get(
+      Uri.parse('$API_URL/event'),
+    );
 
-      final eventsIds = json.decode(response.body)['ids'] as List<String>;
-      final allEvents = <EventModel>[];
+    print('here is the status code');
 
-      for (final eventId in eventsIds) {
-        final event = await getEvent(eventId);
-        allEvents.add(event as EventModel);
-      }
+    print(response.statusCode);
+
+    if (response.statusCode != 200) {
+      return Left(EventFailure.unableToGet());
+    } else {
+      print('got the events');
+
+      final allEvents = json.decode(response.body);
 
       return Right(allEvents);
-    } catch (e) {
-      return Left(EventFailure.unableToGet());
     }
   }
 
@@ -105,37 +102,20 @@ class EventDataSource implements EventRepository {
       // Get the event data from the API
       final eventData = await client.get(
         Uri.parse('$API_URL/event/$id'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8'
-        },
       );
+
+      print(eventData.statusCode);
 
       // If the response is not 200, throw an error
       if (eventData.statusCode != 200) {
-        throw Exception();
+        return Left(EventFailure.unableToGet());
       }
 
       // Convert the response body to a Map object
       final eventDataMap = json.decode(eventData.body) as Map<String, dynamic>;
 
-      // Create an EventModel object from the API data
-      final eventModel = EventModel(
-          id: id,
-          name: eventDataMap['name'],
-          title: eventDataMap['title'],
-          description: eventDataMap['description'],
-          startTime: eventDataMap['startTime'],
-          place: eventDataMap['place'],
-          availableSeats: eventDataMap['availableSeats'],
-          ticketsSold: eventDataMap['ticketsSold'],
-          takenSeats: eventDataMap['takenSeats'],
-          createdAt: eventDataMap['createdAt'],
-          updatedAt: eventDataMap['updatedAt'],
-          organizerId: eventDataMap['organizerId'],
-          endTime: eventDataMap['endTime']);
-
       // Return the EventModel object wrapped in a Right Either object
-      return Right(eventModel);
+      return Right(eventDataMap);
     } catch (e) {
       // If there is an error getting the event data from the API, return a Left Either object
       // with an EventFailure object containing an error message

@@ -107,4 +107,26 @@ class TicketDataSource implements TicketRepository {
       return Left(TicketFailure.serverError());
     }
   }
+
+  // get tickets by user id
+  @override
+  Future<Either<TicketFailure, List<dynamic>>> getTicketsByUserId(
+      String id) async {
+    print('in the ticket ds');
+    final response = await client.get(
+      Uri.parse('$API_URL/ticket/user/$id'),
+    );
+
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      final tickets = json.decode(response.body);
+
+      return Right(tickets);
+    } else if (response.statusCode == 400) {
+      return Left(TicketFailure.invalidTicket());
+    } else {
+      return Left(TicketFailure.serverError());
+    }
+  }
 }

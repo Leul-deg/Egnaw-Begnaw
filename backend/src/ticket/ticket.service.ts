@@ -53,4 +53,13 @@ export class TicketService {
       throw error;
     }
   }
+
+  async getTicketByUserId(id: string): Promise<TicketI[]> {
+    try {
+      const newTicket = await this.ticketModel.find({ userId: id });
+      return newTicket;
+    } catch (error) {
+      throw error;
+    }
+  }
 }

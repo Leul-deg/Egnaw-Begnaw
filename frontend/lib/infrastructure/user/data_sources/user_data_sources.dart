@@ -3,6 +3,8 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import 'package:frontend/domain/user/user.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class UserDataSource implements UserRepository {
   final http.Client client = http.Client();
 
@@ -27,15 +29,22 @@ class UserDataSource implements UserRepository {
   @override
   Future<Either<UserFailure, UserUpdateModel>> updateUserData(
       UserModel newData) async {
+    print('in update user data');
+    // get user id from shared preferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final userData = json.decode(prefs.getString('userData')!);
+
+    final userId = json.decode(userData)['_id'];
+
     final response = await client.put(
-      Uri.parse('$API_URL/user/${newData.id}'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
+      Uri.parse('$API_URL/user/$userId'),
       body: newData.toJson(),
     );
+
+    print(response.statusCode);
+
     if (response.statusCode == 200) {
-      return Right(UserUpdateModel.fromJson(json.decode(response.body)));
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return Left(UserFailure.invalidUser());
     } else {
@@ -49,9 +58,6 @@ class UserDataSource implements UserRepository {
     try {
       final response = await client.get(
         Uri.parse('$API_URL/user'),
-        headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
-        },
       );
       if (response.statusCode == 200) {
         List<UserModel> users = [];
@@ -73,9 +79,6 @@ class UserDataSource implements UserRepository {
   Future<Either<UserFailure, Object>> deleteUser(String id) async {
     final response = await client.delete(
       Uri.parse('$API_URL/user/$id'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
     );
     if (response.statusCode == 200) {
       return const Right(Object);
@@ -87,17 +90,38 @@ class UserDataSource implements UserRepository {
   }
 
   @override
-  Future<Either<UserFailure, UserUpdateModel>> updateUser(
+  Future<Either<UserFailure, dynamic>> updateUser(
       String userId, UserUpdateModel newUser) async {
+    final data = newUser.toJson();
+
+    // filter the null values in the data
+    data.removeWhere((key, value) => value == null);
+
+    print('finallllll');
+    print(data);
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final userData = json.decode(prefs.getString('userData')!);
+
+    final access_token = json.decode(userData)['access_token'];
+
     final response = await client.put(
-      Uri.parse('$API_URL/user/$userId'),
+      Uri.parse('$API_URL/user/update/$userId'),
+      // include the bearer token in the header
       headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'Bearer $access_token',
       },
-      body: newUser.toJson(),
+      body: data,
     );
+
+    print(response.statusCode);
+
     if (response.statusCode == 200) {
-      return Right(UserUpdateModel.fromJson(json.decode(response.body)));
+      // rewrite the user data in shared preferences
+
+      prefs.setString('userData', json.encode(response.body));
+
+      return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
       return Left(UserFailure.invalidUser());
     } else {

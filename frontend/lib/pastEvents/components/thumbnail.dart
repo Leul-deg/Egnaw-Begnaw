@@ -41,7 +41,7 @@ class Thumbnail extends StatelessWidget {
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Text(
-              'Ended time $endTime',
+              endTime,
               style: const TextStyle(fontSize: 14),
             )
           ],

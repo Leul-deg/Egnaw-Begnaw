@@ -1,6 +1,31 @@
 class UserFailure {
   const UserFailure();
 
+  TResult map<TResult extends Object?>({
+    required TResult Function() unexpectedError,
+    required TResult Function() insufficientPermission,
+    required TResult Function() unableToUpdate,
+    required TResult Function() unableToDelete,
+    required TResult Function() invalidUser,
+    required TResult Function() serverError,
+  }) {
+    if (this is _UnexpectedError) {
+      return unexpectedError();
+    } else if (this is _InsufficientPermission) {
+      return insufficientPermission();
+    } else if (this is _UnableToUpdate) {
+      return unableToUpdate();
+    } else if (this is _UnableToDelete) {
+      return unableToDelete();
+    } else if (this is _InvalidUser) {
+      return invalidUser();
+    } else if (this is _ServerError) {
+      return serverError();
+    } else {
+      throw UnimplementedError();
+    }
+  }
+
   factory UserFailure.unexpectedError() = _UnexpectedError;
   factory UserFailure.insufficientPermission() = _InsufficientPermission;
   factory UserFailure.unableToUpdate() = _UnableToUpdate;

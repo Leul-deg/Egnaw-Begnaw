@@ -134,7 +134,11 @@ async organizerSignin(dto: CreateOrganizerDTO) {
     throw new ForbiddenException(
       'Credentials incorrect upon signin',
     );
-  return this.signToken(dto.email);
+  
+    const token = await this.signToken(dto.email);
+    const userData = {...token, ...cur_organizer['_doc']};
+
+  return userData;
 }
 
 }

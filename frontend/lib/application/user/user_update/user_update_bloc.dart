@@ -7,7 +7,6 @@ import 'package:dartz/dartz.dart';
 import 'package:frontend/domain/user/user.dart';
 
 import 'package:frontend/data/local/local_database/local_storage.dart';
-import 'package:frontend/presentation/screens/organizer/profile/user.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'user_update_event.dart';
@@ -15,10 +14,8 @@ part 'user_update_state.dart';
 
 class UserUpdateBloc extends Bloc<UserUpdateEvent, UserUpdateState> {
   final UserRepository userRepository;
-  final local_storage = LocalDatabase.getInstance;
-  
-  UserUpdateBloc(this.userRepository) : super(UserUpdateState.initial()) {
 
+  UserUpdateBloc(this.userRepository) : super(UserUpdateState.initial()) {
     on<_FirstNameChanged>((event, emit) async {
       emit(state.copyWith(
         firstName: event.firstName,
@@ -53,16 +50,24 @@ class UserUpdateBloc extends Bloc<UserUpdateEvent, UserUpdateState> {
         updateFailureOrSuccessOption: none(),
       ));
 
-      Either<UserFailure, Object>? failureOrSuccess;
+      Either<UserFailure, dynamic>? failureOrSuccess;
 
       final prefs = await SharedPreferences.getInstance();
-      final userData = json.encode(prefs.getString('userData'));
+      final userData = json.decode(prefs.getString('userData')!);
+
+      print('got user data');
+      print(json.decode(userData));
 
       final userId = json.decode(userData)['_id'];
+
+      print('got user id');
 
       UserUpdateModel data = UserUpdateModel();
 
       if (state.firstName != null) {
+        print('here is the first name');
+        print(state.firstName);
+
         data.firstName = state.firstName;
       }
 
@@ -78,6 +83,9 @@ class UserUpdateBloc extends Bloc<UserUpdateEvent, UserUpdateState> {
         data.password = state.password;
       }
 
+      print('final one');
+      print(data.toJson());
+
       failureOrSuccess = await userRepository.updateUser(userId, data);
 
       emit(state.copyWith(
@@ -85,6 +93,5 @@ class UserUpdateBloc extends Bloc<UserUpdateEvent, UserUpdateState> {
         updateFailureOrSuccessOption: some(failureOrSuccess),
       ));
     });
-
   }
 }

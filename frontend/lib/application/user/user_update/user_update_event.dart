@@ -8,7 +8,7 @@ class UserUpdateEvent {
   const factory UserUpdateEvent.lastNameChanged(String lastName) = _LastNameChanged;
   const factory UserUpdateEvent.emailChanged(String email) = _EmailChanged;
   const factory UserUpdateEvent.passwordChanged(String password) = _PasswordChanged;
-  const factory UserUpdateEvent.updateUserPressed(String userId) = _UpdateUserPressed;
+  const factory UserUpdateEvent.updateUserPressed() = _UpdateUserPressed;
 }
 
 class _Started extends UserUpdateEvent {
@@ -40,7 +40,6 @@ class _PasswordChanged extends UserUpdateEvent {
 }
 
 class _UpdateUserPressed extends UserUpdateEvent {
-  const _UpdateUserPressed(this.userId) : super._();
+  const _UpdateUserPressed() : super._();
 
-  final String userId;
 }
