@@ -122,4 +122,42 @@ class EventDataSource implements EventRepository {
       return Left(EventFailure.unableToGet());
     }
   }
+
+  // get events by organizerId
+
+  @override
+  Future<Either<EventFailure, List<dynamic>>> getEventsByOrganizerId(
+      String organizerId) async {
+    // Implementation of the getEvent method goes here
+    try {
+
+      print('here is the data');
+      print(organizerId);
+      // Get the event data from the API
+      final eventData = await client.get(
+        Uri.parse('$API_URL/event/organizer/$organizerId'),
+      );
+
+      print(eventData.statusCode);
+
+      // If the response is not 200, throw an error
+      if (eventData.statusCode != 200) {
+        return Left(EventFailure.unableToGet());
+      }
+
+      print('here is the actual data');
+
+      print(eventData.body);
+
+      // Convert the response body to a Map object
+      final eventDataMap = json.decode(eventData.body) as List<dynamic>;
+
+      // Return the EventModel object wrapped in a Right Either object
+      return Right(eventDataMap);
+    } catch (e) {
+      // If there is an error getting the event data from the API, return a Left Either object
+      // with an EventFailure object containing an error message
+      return Left(EventFailure.unableToGet());
+    }
+  }
 }

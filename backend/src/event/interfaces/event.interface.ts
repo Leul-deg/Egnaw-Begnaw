@@ -6,4 +6,6 @@ export interface EventI {
     availableSeats: Number
     ticketsSold: Number
     eventDate: Date
+    description: String
+    title: String
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class EventCards extends StatelessWidget {
-  final String title;
+  final event;
 
-  EventCards({required this.title});
+  EventCards({required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class EventCards extends StatelessWidget {
                 color: Colors.white,
               ),
               child: Text(
-                '285 tickets sold',
+                event['ticketsSold'].toString(),
                 style: TextStyle(
                   fontSize: 14.0,
                 ),
@@ -47,7 +47,7 @@ class EventCards extends StatelessWidget {
             top: 16.0,
             left: 16.0,
             child: Text(
-              'Rophnan Concert',
+              event['title'] ?? 'TITLEEE',
               style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,

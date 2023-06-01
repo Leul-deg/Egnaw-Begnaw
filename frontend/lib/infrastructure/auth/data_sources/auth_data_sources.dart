@@ -10,20 +10,14 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:frontend/domain/auth/auth.dart';
 
 class AuthDataSource implements AuthRepository {
-  AuthDataSource() {
-    sqfliteFfiInit();
-  }
+  AuthDataSource() {}
   final API_URL = "http://localhost:3000";
   final Future<SharedPreferences> sharedPreferences =
       SharedPreferences.getInstance();
-  LocalDatabase local = LocalDatabase.getInstance;
 
   @override
   Future<Either<AuthFailure, Object>> loginUser(
       UserLoginModel userLoginModel) async {
-    print(local);
-
-    await local.getUser();
     print('Submitting to backend...');
     final response = await client.post(
       Uri.parse('$API_URL/auth/user/signin'),

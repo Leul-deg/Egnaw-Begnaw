@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:frontend/domain/event/event.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // import '../../../data/local/local_database/local_storage.dart' as LocalStorage;
 
@@ -59,8 +62,10 @@ class EventCreateBloc extends Bloc<EventCreateEvent, EventCreateState> {
 
       print('got the event');
 
-      // final organizerId = await local_storage.getUserId();
-      final organizerId = '64733886174c2d2f1a643a4d';
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final organizerData = json.decode(prefs.getString('userData')!);
+
+      final organizerId = json.decode(organizerData)['_id'];
 
       // check if the fields are valid
       final OrganizerIdIsValid = organizerId != null && organizerId.isNotEmpty;

@@ -12,6 +12,10 @@ abstract class EventGetEvent {
     return const GetAllEvents();
   }
 
+  factory EventGetEvent.getEventsByOrganizerId() {
+    return GetEventsByOrganizerId();
+  }
+
 }
 
 class GetEventById extends EventGetEvent {
@@ -22,4 +26,9 @@ class GetEventById extends EventGetEvent {
 
 class GetAllEvents extends EventGetEvent {
   const GetAllEvents() : super._();
+}
+
+class GetEventsByOrganizerId extends EventGetEvent {
+ 
+  const GetEventsByOrganizerId() : super._();
 }
