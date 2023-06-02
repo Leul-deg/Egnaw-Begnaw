@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/application/event/event_get/event_get_bloc.dart';
+import 'package:frontend/presentation/screens/eventDetail/components/buyTicketBtn.dart';
 import 'package:intl/intl.dart';
 import './commentCard.dart';
 import './editEventBtn.dart';
@@ -23,7 +24,6 @@ class _BodyState extends State<Body> {
 
   @override
   initState() {
-    
     super.initState();
     BlocProvider.of<EventGetBloc>(context)
         .add(EventGetEvent.getEventById(widget.eventId));
@@ -323,6 +323,8 @@ class _BodyState extends State<Body> {
                               eventDescription: event['description'] ?? '',
                               eventPlace: event['place'] ?? '',
                             ),
+                          if (!isOrganizer)
+                            BuyTicketBtn(eventId: event['_id'] ?? ''),
                           // else show TicketBuy btn
                           // if (!isOrganizer)
                           //   ,

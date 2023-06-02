@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:frontend/infrastructure/auth/data_sources/auth_data_sources.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../routes/appRouteConstants.dart';
@@ -65,7 +66,16 @@ class _UserProfileState extends State<UserProfile> {
                                 'Delete',
                                 style: TextStyle(color: Colors.red),
                               ),
-                              onPressed: () {
+                              onPressed: () async {
+                                print('clicked');
+                                var authDs = AuthDataSource();
+                                await authDs
+                                    .deleteUserAccount(json.decode(organizerData)['_id']);
+                                
+                                final SharedPreferences prefs = await SharedPreferences.getInstance();
+                                prefs.remove('jwt_token');
+                                prefs.remove('userData');
+
                                 GoRouter.of(context).pushNamed(
                                     MyAppRouteConstants.welcomeRouteName);
                                 Navigator.of(context).pop();

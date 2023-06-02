@@ -118,6 +118,43 @@ class AuthDataSource implements AuthRepository {
     }
   }
 
+  // delete user account
+  Future<Either<AuthFailure, Object>> deleteUserAccount(String userId) async {
+    print(userId);
+    final response = await client.delete(
+      Uri.parse('$API_URL/user/delete/$userId'),
+    );
+
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      return Right(json.decode('{}'));
+    } else if (response.statusCode == 400) {
+      return Left(AuthFailure.emailAlreadyInUse());
+    } else {
+      return Left(AuthFailure.serverError());
+    }
+  }
+
+  // delete organizer account
+  Future<Either<AuthFailure, Object>> deleteOrganizerAccount(
+      String organizerId) async {
+    print(organizerId);
+    final response = await client.delete(
+      Uri.parse('$API_URL/organizer/delete/$organizerId'),
+    );
+
+    print(response.statusCode);
+
+    if (response.statusCode == 200) {
+      return Right(json.decode('{}'));
+    } else if (response.statusCode == 400) {
+      return Left(AuthFailure.emailAlreadyInUse());
+    } else {
+      return Left(AuthFailure.serverError());
+    }
+  }
+
   @override
   Future<void> logoutUser() async {
     // Remove the JWT token from shared preferences

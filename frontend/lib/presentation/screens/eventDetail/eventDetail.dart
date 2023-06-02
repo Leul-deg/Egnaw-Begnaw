@@ -4,12 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/application/event/event_get/event_get_bloc.dart';
 import 'package:frontend/domain/event/models/event_model/event_model.dart';
+import 'package:frontend/infrastructure/auth/data_sources/auth_data_sources.dart';
 import 'package:frontend/infrastructure/event/data_sources/event_data_sources.dart';
 import 'package:frontend/infrastructure/event/repositories/event_repository_imp.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import './components/body.dart';
 import 'package:go_router/go_router.dart';
 import '../routes/appRouteConstants.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../routes/appRouteConstants.dart';
+import 'package:go_router/go_router.dart';
 
 class EventDetails extends StatefulWidget {
   EventDetails({super.key, required this.eventId});
@@ -79,7 +83,6 @@ class _EventDetailsState extends State<EventDetails> {
                             TextButton(
                               child: Text('Cancel'),
                               onPressed: () {
-                                // Close the dialog box
                                 Navigator.of(context).pop();
                               },
                             ),
@@ -91,6 +94,15 @@ class _EventDetailsState extends State<EventDetails> {
                               onPressed: () {
                                 // Perform the action
                                 // Close the dialog box
+                                final eventDs = EventDataSource();
+
+                                eventDs.deleteEvent(widget.eventId);
+                                print('deleted');
+
+                                GoRouter.of(context).pushNamed(
+                                    MyAppRouteConstants
+                                        .organizerScreenRouteName);
+
                                 Navigator.of(context).pop();
                               },
                             ),

@@ -41,7 +41,10 @@ export class OrganizerService {
 
     async deleteOrganizer(id: String): Promise<OrganizerI> {
         try {
+            console.log('deleting this organizer', id);
             const newOrganizer = await this.organizerModel.findOneAndDelete({ _id: id });
+            console.log(newOrganizer);
+            console.log("delete organizer");
             return newOrganizer;
         } catch (error) {
             throw error;
