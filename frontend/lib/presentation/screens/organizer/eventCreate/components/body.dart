@@ -121,7 +121,9 @@ class _BodyState extends State<Body> {
                             ),
                           ),
                           onChanged: (val) {
-                            setState(() {});
+                            context
+                                .read<EventCreateBloc>()
+                                .add(EventCreateEvent.titleChanged(val));
                           },
                         ),
                         SizedBox(height: 17),
@@ -134,7 +136,9 @@ class _BodyState extends State<Body> {
                           ),
                           maxLines: 3,
                           onChanged: (val) {
-                            setState(() {});
+                            context
+                                .read<EventCreateBloc>()
+                                .add(EventCreateEvent.descriptionChanged(val));
                           },
                         ),
                         SizedBox(height: 20),
@@ -153,7 +157,7 @@ class _BodyState extends State<Body> {
                                 SizedBox(
                                   height: screen.width > 600 ? 20 : 7,
                                 ),
-                                TimePicker(),
+                                TimePicker(isEnd: false,),
                               ],
                             ),
                             Column(
@@ -168,7 +172,7 @@ class _BodyState extends State<Body> {
                                 SizedBox(
                                   height: screen.width > 600 ? 20 : 7,
                                 ),
-                                TimePicker(),
+                                TimePicker(isEnd: true),
                               ],
                             )
                           ],
@@ -187,7 +191,9 @@ class _BodyState extends State<Body> {
                             ),
                           ),
                           onChanged: (val) {
-                            setState(() {});
+                            context
+                                .read<EventCreateBloc>()
+                                .add(EventCreateEvent.placeChanged(val));
                           },
                         ),
                         SizedBox(height: 20),
@@ -219,7 +225,9 @@ class _BodyState extends State<Body> {
                               ),
                             ),
                             onPressed: () {
-                              // Submit form data to database
+                              context.read<EventCreateBloc>().add(
+                                    EventCreateEvent.eventCreatePressed(),
+                                  );
                             },
                             child: Text(
                               'Submit',

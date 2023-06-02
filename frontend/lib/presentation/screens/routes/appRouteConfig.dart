@@ -59,7 +59,15 @@ class MyAppRoute {
         name: MyAppRouteConstants.eventEditRouteName,
         path: '/eventEdit',
         pageBuilder: (context, state) {
-          return const MaterialPage(child: EditEvent());
+          print(
+              'here is the event title in the route ${state.queryParameters['eventTitle']}');
+          return MaterialPage(
+              child: EditEvent(
+                  eventTitle: state.queryParameters['eventTitle'].toString(),
+                  eventPlace: state.queryParameters['eventPlace'].toString(),
+                  eventId: state.queryParameters['eventId'].toString(),
+                  eventDescription:
+                      state.queryParameters['eventDescription'].toString()));
         },
       ),
       GoRoute(

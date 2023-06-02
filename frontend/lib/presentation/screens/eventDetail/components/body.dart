@@ -8,6 +8,8 @@ import './commentCard.dart';
 import './editEventBtn.dart';
 import './organizerBtn.dart';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class Body extends StatefulWidget {
   String eventId;
   Body({Key? key, required this.eventId}) : super(key: key);
@@ -17,25 +19,52 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  bool isOrganizer = false;
+
   @override
   initState() {
+    
     super.initState();
-    print('here in the page and the id is ${widget.eventId}');
     BlocProvider.of<EventGetBloc>(context)
         .add(EventGetEvent.getEventById(widget.eventId));
+
+    checkUser();
+  }
+
+  checkUser() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var user = json.decode(prefs.getString('userData')!);
+    var userMap = json.decode(user!);
+    if (userMap['organizationName'] != null) {
+      setState(() {
+        isOrganizer = true;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     print('here in the page');
+    print('here is the id i got hereereeee');
+    print(widget.eventId);
+    print('see it?');
     return BlocConsumer<EventGetBloc, EventGetState>(
       listener: (context, state) {
-        // TODO: implement listener
+        // show snackbar
+        if (state.isError) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Could not load event details'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
       },
       builder: (context, state) {
-        print(state.event);
-        print(state.event['title']);
         var event = state.event;
+
+        print('here is the id i recieved');
+        print(widget.eventId);
 
         return Scaffold(
           body: LayoutBuilder(
@@ -144,7 +173,7 @@ class _BodyState extends State<Body> {
                               Icon(Icons.location_pin),
                               SizedBox(width: screen.width * 0.01),
                               Text(
-                                event['place'].toString(),
+                                event['place'] ?? '-',
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey,
@@ -164,8 +193,11 @@ class _BodyState extends State<Body> {
                                 ),
                               ),
                               SizedBox(width: screen.width * 0.02),
+                              // show the availableseats if exists else '0'
                               Text(
-                                event['availableSeats'].toString(),
+                                event['availableSeats'] != null
+                                    ? event['availableSeats'].toString()
+                                    : '0',
                                 style: TextStyle(
                                   fontSize: 16,
                                   color: Colors.grey,
@@ -187,7 +219,9 @@ class _BodyState extends State<Body> {
                               ),
                               SizedBox(width: screen.width * 0.02),
                               Text(
-                                event['ticketsSold'].toString(),
+                                event['ticketsSold'] != null
+                                    ? event['ticketsSold'].toString()
+                                    : '0',
                                 style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 16,
@@ -206,7 +240,7 @@ class _BodyState extends State<Body> {
                           ),
                           SizedBox(height: screen.height * 0.01),
                           Text(
-                            event['desctiption'] ?? 'lorem code',
+                            event['desctiption'] ?? '-',
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 16,
@@ -281,7 +315,14 @@ class _BodyState extends State<Body> {
                             ),
                           ),
                           SizedBox(height: screen.height * 0.02),
-                          EditEventBtn(),
+                          // show the EditButton widget if the user isOrganizer
+                          if (isOrganizer)
+                            EditEventBtn(
+                              eventId: event['_id'] ?? '',
+                              eventTitle: event['title'] ?? '',
+                              eventDescription: event['description'] ?? '',
+                              eventPlace: event['place'] ?? '',
+                            ),
                           SizedBox(height: screen.height * 0.02),
                         ],
                       ),
