@@ -10,10 +10,10 @@ import '../errorPage/errorPage.dart';
 import '../user/userScreen.dart';
 import '../user/eventDetail/eventDetail.dart';
 import '../organizer/organizerScreen.dart';
-import '../organizer/eventDetail/eventDetail.dart';
+import '../eventDetail/eventDetail.dart';
 import '../organizer/editEvent/editEvent.dart';
 import '../organizer/upcomingEvent/upcoming.dart';
-import '../organizer/profile/profilePage.dart';
+import '../organizer/profile/organizerprofile.dart';
 
 class MyAppRoute {
   final GoRouter router = GoRouter(
@@ -29,7 +29,6 @@ class MyAppRoute {
       GoRoute(
         name: MyAppRouteConstants.organizerScreenRouteName,
         path: '/organizerScreen',
-
         pageBuilder: (context, state) {
           return MaterialPage(child: OrganizerScreen());
         },
@@ -77,13 +76,6 @@ class MyAppRoute {
           return MaterialPage(child: UserScreen());
         },
       ),
-      GoRoute(
-        name: MyAppRouteConstants.eventDetailRouteName,
-        path: '/eventDetail',
-        pageBuilder: (context, state) {
-          return MaterialPage(child: EventDetail());
-        },
-      ),
 
       GoRoute(
         name: MyAppRouteConstants.signupRouteName,
@@ -103,7 +95,7 @@ class MyAppRoute {
         name: MyAppRouteConstants.profilePageRouteName,
         path: '/profile',
         pageBuilder: (context, state) {
-          return MaterialPage(child: ProfilePage());
+          return MaterialPage(child: OrganizerProfile());
         },
       ),
       // GoRoute(

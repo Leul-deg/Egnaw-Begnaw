@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 
 import './upcomingEvent/upcoming.dart';
-
-import 'pastEvent/pastEvent.dart';
+import 'profile/organizerprofile.dart';
 import './eventCreate/eventCreate.dart';
-import './profile/profilePage.dart';
-import '../routes/appRouteConstants.dart';
 
 class OrganizerScreen extends StatefulWidget {
   OrganizerScreen();
@@ -57,7 +54,7 @@ class _OrganizerScreenState extends State<OrganizerScreen> {
       case 1:
         return EventCreate();
       case 2:
-        return ProfilePage();
+        return OrganizerProfile();
     }
     return Container();
   }

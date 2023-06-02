@@ -55,6 +55,7 @@ class _BodyState extends State<Body> {
                       ),
                       SizedBox(height: screen.height * 0.02),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Expanded(
                             child: Column(
@@ -63,9 +64,9 @@ class _BodyState extends State<Body> {
                                 Text(
                                   'Start Time',
                                   style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.blue,
-                                  ),
+                                      fontSize: 16,
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(height: screen.height * 0.013),
                                 Row(
@@ -73,7 +74,7 @@ class _BodyState extends State<Body> {
                                     Icon(Icons.timer),
                                     SizedBox(width: screen.width * 0.01),
                                     Text(
-                                      '6:00pm - 10:00pm',
+                                      '6:00pm',
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: 16,
@@ -92,9 +93,9 @@ class _BodyState extends State<Body> {
                                 Text(
                                   'End Time',
                                   style: TextStyle(
-                                    fontSize: 16,
-                                    color: Colors.blue,
-                                  ),
+                                      fontSize: 16,
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(height: screen.height * 0.013),
                                 Row(
@@ -102,7 +103,7 @@ class _BodyState extends State<Body> {
                                     Icon(Icons.timer),
                                     SizedBox(width: screen.width * 0.01),
                                     Text(
-                                      '6:00pm - 10:00pm',
+                                      '10:00pm',
                                       style: TextStyle(
                                         color: Colors.grey,
                                         fontSize: 16,
