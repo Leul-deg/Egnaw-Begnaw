@@ -13,7 +13,6 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-
   @override
   void initState() {
     super.initState();
@@ -53,19 +52,6 @@ class _BodyState extends State<Body> {
         }
 
         return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: Text(
-              'Your Events',
-              style: TextStyle(
-                color: Colors.blue,
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-            ),
-            elevation: 0,
-            centerTitle: true,
-          ),
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -75,8 +61,11 @@ class _BodyState extends State<Body> {
                   final eventCard = eventCards[index];
                   return GestureDetector(
                     onTap: () {
-                      context
-                          .pushNamed(MyAppRouteConstants.eventDetail1RouteName);
+                      context.pushNamed(
+                          MyAppRouteConstants.eventDetailRouteName,
+                          queryParameters: {
+                            'eventId': eventCard.event['_id'],
+                          });
                     },
                     child: eventCard,
                   );

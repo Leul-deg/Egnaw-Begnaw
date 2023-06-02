@@ -67,7 +67,11 @@ class OrganizerDataSource implements OrganizerRepository {
       final newData = json.encode(response.body);
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
+
       prefs.setString('userData', newData);
+      print('here is the new data');
+
+      print(json.decode(json.decode(prefs.getString('userData')!))['organizationName']);
 
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
@@ -77,15 +81,18 @@ class OrganizerDataSource implements OrganizerRepository {
     }
   }
 
-  
-
   @override
   Future<Either<OrganizerFailure, Object>> deleteOrganizer(String id) async {
     final response = await client.delete(
       Uri.parse('$API_URL/organizer/$id'),
     );
 
+    print(response.statusCode);
+
     if (response.statusCode == 200) {
+      // rewrite the shared preferences
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setString('userData', json.encode(response.body));
       return const Right(Object);
     } else if (response.statusCode == 400) {
       return Left(OrganizerFailure.invalidOrganizer());
@@ -93,7 +100,4 @@ class OrganizerDataSource implements OrganizerRepository {
       return Left(OrganizerFailure.serverError());
     }
   }
-
-  
-
 }

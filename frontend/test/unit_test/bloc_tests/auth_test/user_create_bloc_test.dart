@@ -127,7 +127,7 @@ void main() {
       act: (bloc) => bloc.add(UserCreateEvent.createUserPressed()),
       expect: () => [
         UserCreateState.initial().copyWith(isSubmitting: true),
-        UserCreateState.initial().copyWith(isSubmitting: false, authFailureOrSuccessOption: some(left(const AuthFailure.invalidEmail()))),
+        UserCreateState.initial().copyWith(isSubmitting: false, authFailureOrSuccessOption: some(left( AuthFailure.invalidEmail()))),
       ],
     );
 

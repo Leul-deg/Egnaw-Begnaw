@@ -45,7 +45,7 @@ class _BodyState extends State<Body> {
               return GestureDetector(
                 onTap: () {
                   GoRouter.of(context)
-                      .pushNamed(MyAppRouteConstants.eventDetail1RouteName);
+                      .pushNamed(MyAppRouteConstants.eventDetailRouteName);
                 },
                 child: Container(
                   decoration: BoxDecoration(

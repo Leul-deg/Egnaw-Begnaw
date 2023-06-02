@@ -24,6 +24,8 @@ class AuthDataSource implements AuthRepository {
       body: userLoginModel.toJson(),
     );
 
+    print('waiting for loggiqng in...');
+
     print('got response');
     print(response.statusCode);
 
@@ -35,9 +37,11 @@ class AuthDataSource implements AuthRepository {
 
       return Right(json.decode(response.body));
     } else if (response.statusCode == 403) {
-      return const Left(AuthFailure.invalidEmailAndPasswordCombination());
+      print('Invalid email or password, 6734');
+      return Left(AuthFailure.invalidEmailAndPasswordCombination());
     } else {
-      return const Left(AuthFailure.serverError());
+      print('jere=ahfkasdfue');
+      return Left(AuthFailure.serverError());
     }
   }
 
@@ -57,9 +61,9 @@ class AuthDataSource implements AuthRepository {
     if (response.statusCode == 201) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return const Left(AuthFailure.emailAlreadyInUse());
+      return Left(AuthFailure.emailAlreadyInUse());
     } else {
-      return const Left(AuthFailure.serverError());
+      return Left(AuthFailure.serverError());
     }
   }
 
@@ -75,9 +79,9 @@ class AuthDataSource implements AuthRepository {
     if (response.statusCode == 201) {
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
-      return const Left(AuthFailure.emailAlreadyInUse());
+      return Left(AuthFailure.emailAlreadyInUse());
     } else {
-      return const Left(AuthFailure.serverError());
+      return Left(AuthFailure.serverError());
     }
   }
 
@@ -104,11 +108,13 @@ class AuthDataSource implements AuthRepository {
 
       prefs.setString('jwt_token', json.decode(response.body)['access_token']);
 
+      print(response.statusCode);
+
       return Right(json.decode(response.body));
     } else if (response.statusCode == 403) {
-      return const Left(AuthFailure.invalidEmailAndPasswordCombination());
+      return Left(AuthFailure.invalidEmailAndPasswordCombination());
     } else {
-      return const Left(AuthFailure.serverError());
+      return Left(AuthFailure.serverError());
     }
   }
 

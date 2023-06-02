@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/application/event/event_create/event_create_bloc.dart';
+
 class TimePicker extends StatefulWidget {
   @override
   _TimePickerState createState() => _TimePickerState();
+
+  TimePicker({Key? key, required this.isEnd}) : super(key: key);
+
+  bool isEnd;
 }
 
 class _TimePickerState extends State<TimePicker> {
@@ -17,6 +24,15 @@ class _TimePickerState extends State<TimePicker> {
       // If a new time is selected, update the selectedTime variable
       setState(() {
         selectedTime = picked;
+        if (widget.isEnd)
+          context.read<EventCreateBloc>().add(
+                EventCreateEvent.endTimeChanged(selectedTime),
+              );
+        else{
+          context.read<EventCreateBloc>().add(
+                EventCreateEvent.startTimeChanged(selectedTime),
+              );
+        }
       });
     }
 
@@ -26,21 +42,25 @@ class _TimePickerState extends State<TimePicker> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Selected Time: ${selectedTime.format(context)}',
+          '${selectedTime.format(context)}',
         ),
-        SizedBox(height: 20),
-        ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all<Color>(Colors.purple.shade200),
-          ),
-          onPressed: () {
-            _selectTime(context); // Call the function to show the time picker
-          },
-          child: Text('Select Time'),
+        Column(
+          children: [
+            IconButton(
+              onPressed: () {
+                _selectTime(
+                    context); // Call the function to show the time picker
+              },
+              icon: Icon(
+                Icons.access_time,
+                size: 40,
+                color: Colors.blue,
+              ),
+            ),
+          ],
         ),
       ],
     );

@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-
 import 'package:go_router/go_router.dart';
 import '../../routes/appRouteConstants.dart';
-import './loginWithGoogleBtn.dart';
-// import 'package:google_fonts/google_fonts.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/application/auth/login/login_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -32,14 +29,14 @@ class _BodyState extends State<Body> {
                 SnackBar(
                   content: Text(
                     failure.map(
-                      invalidInput: (_) => 'Invalid Input',
-                      invalidPassword: (_) => 'Invalid Password',
-                      invalidEmail: (_) => 'Invalid Email',
-                      sessionExpired: (_) => 'Session Expired',
-                      serverError: (_) => 'Server Error',
-                      emailAlreadyInUse: (_) => 'Email already in use',
                       invalidEmailAndPasswordCombination: (_) =>
                           'Invalid email and password combination',
+                      serverError: (_) => 'Server error',
+                      emailAlreadyInUse: (_) => 'Email already in use',
+                      invalidEmail: (_) => 'Invalid email',
+                      invalidPassword: (_) => 'Invalid password',
+                      invalidInput: (_) => 'Invalid input',
+                      sessionExpired: (_) => 'Session expired',
                     ),
                   ),
                 ),
@@ -52,12 +49,13 @@ class _BodyState extends State<Body> {
                   content: Text('Login Success'),
                 ),
               );
-            if (state.isOrganizer){
-              GoRouter.of(context).pushNamed(MyAppRouteConstants.organizerScreenRouteName);
-            }else{
-              GoRouter.of(context).pushNamed(MyAppRouteConstants.userScreenRouteName);
-            }
-              
+              if (state.isOrganizer) {
+                GoRouter.of(context)
+                    .pushNamed(MyAppRouteConstants.organizerScreenRouteName);
+              } else {
+                GoRouter.of(context)
+                    .pushNamed(MyAppRouteConstants.userScreenRouteName);
+              }
             },
           ),
         );
@@ -66,7 +64,7 @@ class _BodyState extends State<Body> {
         return SingleChildScrollView(
           physics: const AlwaysScrollableScrollPhysics(),
           child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('loginBackground.jpg'),
@@ -84,7 +82,7 @@ class _BodyState extends State<Body> {
                           fontFamily: 'OpenSans',
                           fontSize: 30,
                           fontWeight: FontWeight.bold)),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: 35),
                   Form(
                     child: Column(
                       children: [
@@ -145,8 +143,9 @@ class _BodyState extends State<Body> {
                                   const BorderSide(color: Colors.white60),
                             ),
                             labelText: "Enter Password",
-                            labelStyle: const TextStyle(color: Colors.white),
-                            // GoogleFonts.roboto(),
+                            labelStyle: const TextStyle(
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                         ListTile(
@@ -161,7 +160,7 @@ class _BodyState extends State<Body> {
                               value: state.isOrganizer,
                               onChanged: (value) {
                                 context.read<LoginBloc>().add(
-                                       LoginEvent.isOrganizerChanged(true),
+                                      LoginEvent.isOrganizerChanged(true),
                                     );
                               }),
                         ),
@@ -177,12 +176,12 @@ class _BodyState extends State<Body> {
                             value: !state.isOrganizer,
                             onChanged: (value) {
                               context.read<LoginBloc>().add(
-                                     LoginEvent.isOrganizerChanged(false),
+                                    LoginEvent.isOrganizerChanged(false),
                                   );
                             },
                           ),
                         ),
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 20),
                         Container(
                           padding: const EdgeInsets.symmetric(vertical: 20),
                           width: double.infinity,
@@ -210,35 +209,23 @@ class _BodyState extends State<Body> {
                                 ),
                               )),
                         ),
-                        Column(
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              '- OR -',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w400),
+                              'Don\'t have an account?',
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 18),
                             ),
-                            const LoginWithGoogleBtn(),
-                            const SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text(
-                                  'Don\'t have an account?',
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 18),
-                                ),
-                                TextButton(
-                                    onPressed: () {
-                                      GoRouter.of(context).pushNamed(
-                                          MyAppRouteConstants.signupRouteName);
-                                    },
-                                    child: const Text(
-                                      'Sign Up',
-                                      style: TextStyle(fontSize: 18),
-                                    ))
-                              ],
-                            )
+                            TextButton(
+                                onPressed: () {
+                                  GoRouter.of(context).pushNamed(
+                                      MyAppRouteConstants.signupRouteName);
+                                },
+                                child: const Text(
+                                  'Sign Up',
+                                  style: TextStyle(fontSize: 18),
+                                ))
                           ],
                         )
                       ],

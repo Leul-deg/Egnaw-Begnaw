@@ -31,6 +31,17 @@ export class ReviewService {
         }
     }
 
+    async getReviewByEventId(id: string): Promise<ReviewI[]> {
+        try {
+            const newReview = await this.reviewModel.find({ eventId: id })
+                .sort({ updatedAt: -1 })
+                .exec();
+            return newReview;
+        } catch (error) {
+            throw error;
+        }
+    }
+
     async getReviewById(id: string): Promise<ReviewI> {
         try {
             const newReview = await this.reviewModel.findOne({ _id: id });

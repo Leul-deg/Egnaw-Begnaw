@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-import '../../../constants.dart';
-import '../../routes/appRouteConstants.dart';
+import './roundedBtn.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -27,7 +24,7 @@ class Body extends StatelessWidget {
               child: Text(
                 'Event Ticketing App',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 24,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
@@ -51,52 +48,6 @@ class Body extends StatelessWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class RoundButton extends StatelessWidget {
-  const RoundButton({
-    Key? key,
-    required this.size,
-    required this.text,
-  }) : super(key: key);
-
-  final Size size;
-  final String text;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: size.width * 0.8,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: ElevatedButton(
-          onPressed: () {
-            if (text == 'Login') {
-              GoRouter.of(context)
-                  .pushNamed(MyAppRouteConstants.loginRouteName);
-            } else {
-              GoRouter.of(context)
-                  .pushNamed(MyAppRouteConstants.signupRouteName);
-            }
-          },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: kPrimaryColor,
-            padding: const EdgeInsets.symmetric(
-              vertical: 16.0,
-              horizontal: 32.0,
-            ),
-          ),
-          child: Text(
-            text.toUpperCase(),
-            style: const TextStyle(
-              color: Colors.white,
-              fontSize: 16,
-            ),
-          ),
-        ),
       ),
     );
   }

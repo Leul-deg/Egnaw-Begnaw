@@ -45,12 +45,9 @@ class _BodyState extends State<Body> {
 
           if (state.events.isNotEmpty) {
             for (var event in state.events) {
-              final dateTime = DateTime.parse(event['startTime']);
-              final formattedDate = DateFormat.yMMMMd().format(dateTime);
 
               thumbnails.add(Thumbnail(
-                eventName: 'Event Name',
-                endTime: formattedDate,
+                event: event,
               ));
             }
           }

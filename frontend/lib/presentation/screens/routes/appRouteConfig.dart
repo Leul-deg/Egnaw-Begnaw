@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/presentation/screens/eventDetail/eventDetail.dart';
 import 'package:frontend/presentation/screens/organizer/eventCreate/eventCreate.dart';
 import 'package:go_router/go_router.dart';
 import 'appRouteConstants.dart';
@@ -8,13 +9,11 @@ import '../login/loginScreen.dart';
 import '../signUp/signUpScreen.dart';
 import '../errorPage/errorPage.dart';
 import '../user/userScreen.dart';
-import '../user/eventDetail/eventDetail.dart';
-import '../user/eventComment/eventComment.dart';
 import '../organizer/organizerScreen.dart';
-import '../organizer/eventDetail/eventDetail.dart';
+import '../user/userProfile/userProfile.dart';
 import '../organizer/editEvent/editEvent.dart';
 import '../organizer/upcomingEvent/upcoming.dart';
-import '../organizer/profile/profilePage.dart';
+import '../user/userProfile/editUserProfile.dart';
 
 class MyAppRoute {
   final GoRouter router = GoRouter(
@@ -30,7 +29,6 @@ class MyAppRoute {
       GoRoute(
         name: MyAppRouteConstants.organizerScreenRouteName,
         path: '/organizerScreen',
-
         pageBuilder: (context, state) {
           return MaterialPage(child: OrganizerScreen());
         },
@@ -58,17 +56,18 @@ class MyAppRoute {
         },
       ),
       GoRoute(
-        name: MyAppRouteConstants.eventDetail1RouteName,
-        path: '/eventDetails',
-        pageBuilder: (context, state) {
-          return const MaterialPage(child: EventDetails());
-        },
-      ),
-      GoRoute(
         name: MyAppRouteConstants.eventEditRouteName,
         path: '/eventEdit',
         pageBuilder: (context, state) {
-          return const MaterialPage(child: EditEvent());
+          print(
+              'here is the event title in the route ${state.queryParameters['eventTitle']}');
+          return MaterialPage(
+              child: EditEvent(
+                  eventTitle: state.queryParameters['eventTitle'].toString(),
+                  eventPlace: state.queryParameters['eventPlace'].toString(),
+                  eventId: state.queryParameters['eventId'].toString(),
+                  eventDescription:
+                      state.queryParameters['eventDescription'].toString()));
         },
       ),
       GoRoute(
@@ -79,17 +78,12 @@ class MyAppRoute {
         },
       ),
       GoRoute(
-        name: MyAppRouteConstants.eventCommentRouteName,
-        path: '/eventComment',
-        pageBuilder: (context, state) {
-          return const MaterialPage(child: EventComment());
-        },
-      ),
-      GoRoute(
         name: MyAppRouteConstants.eventDetailRouteName,
         path: '/eventDetail',
         pageBuilder: (context, state) {
-          return MaterialPage(child: EventDetail());
+          return MaterialPage(
+              child: EventDetails(
+                  eventId: state.queryParameters['eventId'].toString()));
         },
       ),
 
@@ -101,19 +95,27 @@ class MyAppRoute {
         },
       ),
       GoRoute(
+        name: MyAppRouteConstants.userProfilePageRouteName,
+        path: '/userProfile',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: UserProfile());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.editUserProfilePageRouteName,
+        path: '/editUserProfile',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: EditUserProfile());
+        },
+      ),
+      GoRoute(
         name: MyAppRouteConstants.loginRouteName,
         path: '/login',
         pageBuilder: (context, state) {
           return const MaterialPage(child: Login());
         },
       ),
-      GoRoute(
-        name: MyAppRouteConstants.profilePageRouteName,
-        path: '/profile',
-        pageBuilder: (context, state) {
-          return MaterialPage(child: ProfilePage());
-        },
-      ),
+
       // GoRoute(
       //   name: MyAppRouteConstants.profileRouteName,
       //   path: '/profile/:userName/:userID', // Added ':userID' to the path

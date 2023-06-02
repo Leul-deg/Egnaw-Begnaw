@@ -5,10 +5,9 @@ class OrganizerBtn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Card(
-      elevation: 6,
+    return Card(
       child: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,

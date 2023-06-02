@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/application/event/event_update/event_update_bloc.dart';
 
 class TimePicker extends StatefulWidget {
   @override
   _TimePickerState createState() => _TimePickerState();
+
+  TimePicker({Key? key, required this.isEnd}) : super(key: key);
+
+  bool isEnd;
 }
 
 class _TimePickerState extends State<TimePicker> {
-  TimeOfDay selectedTime = TimeOfDay.now(); // Default time is the current time
+  TimeOfDay selectedTime = TimeOfDay.now();
 
   Future<TimeOfDay> _selectTime(BuildContext context) async {
     final TimeOfDay? picked = await showTimePicker(
@@ -18,7 +23,16 @@ class _TimePickerState extends State<TimePicker> {
     if (picked != null && picked != selectedTime) {
       // If a new time is selected, update the selectedTime variable
       setState(() {
-        selectedTime = picked;
+        selectedTime = picked;  
+        if (widget.isEnd) {
+          context.read<EventUpdateBloc>().add(
+                EventUpdateEvent.endTimeChanged(selectedTime),
+              );
+        } else {
+          context.read<EventUpdateBloc>().add(
+                EventUpdateEvent.startTimeChanged(selectedTime),
+              );
+        }
       });
     }
 
@@ -28,21 +42,25 @@ class _TimePickerState extends State<TimePicker> {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Text(
-          'Selected Time: ${selectedTime.format(context)}',
+          '${selectedTime.format(context)}',
         ),
-        SizedBox(height: 20),
-        ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all<Color>(Colors.purple.shade200),
-          ),
-          onPressed: () {
-            _selectTime(context); // Call the function to show the time picker
-          },
-          child: Text('Select Time'),
+        Column(
+          children: [
+            IconButton(
+              onPressed: () {
+                _selectTime(
+                    context); // Call the function to show the time picker
+              },
+              icon: Icon(
+                Icons.access_time,
+                size: 40,
+                color: Colors.blue,
+              ),
+            ),
+          ],
         ),
       ],
     );

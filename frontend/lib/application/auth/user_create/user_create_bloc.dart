@@ -75,7 +75,7 @@ class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
             ),
           );
         } else {
-          failureOrSuccess = left(const AuthFailure.invalidEmail());
+          failureOrSuccess = left(AuthFailure.invalidEmail());
         }
       } else {
         final isFirstNameValid = state.firstName.isNotEmpty;
@@ -105,7 +105,7 @@ class UserCreateBloc extends Bloc<UserCreateEvent, UserCreateState> {
         }
       }
 
-      failureOrSuccess ??= left(const AuthFailure.invalidEmail());
+      failureOrSuccess ??= left(AuthFailure.invalidEmail());
 
       print(failureOrSuccess);
 

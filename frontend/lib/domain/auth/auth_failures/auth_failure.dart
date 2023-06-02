@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart';
+
 class AuthFailure {
   final String message;
 
@@ -31,7 +33,15 @@ class AuthFailure {
     } else {
       throw UnimplementedError();
     }
+
   }
+    factory AuthFailure.serverError() = ServerError;
+    factory AuthFailure.emailAlreadyInUse() = EmailAlreadyInUse;
+    factory AuthFailure.invalidEmailAndPasswordCombination() =
+        InvalidEmailAndPasswordCombination;
+    factory AuthFailure.sessionExpired() = SessionExpired;
+    factory AuthFailure.invalidEmail() = InvalidEmail;
+    factory AuthFailure.invalidPassword() = InvalidPassword;
 
   @override
   bool operator ==(Object other) {
@@ -42,18 +52,7 @@ class AuthFailure {
 
   @override
   int get hashCode => message.hashCode;
-  const AuthFailure.invalidEmail() : message = 'Invalid Email';
-  const AuthFailure.invalidPassword() : message = 'Invalid Password';
-  const AuthFailure.invalidInput() : message = 'Invalid Input';
-  const AuthFailure.serverError() : message = 'Server Error';
-  const AuthFailure.emailAlreadyInUse() : message = 'Email Already In Use';
-  const AuthFailure.invalidEmailAndPasswordCombination()
-      : message = 'Invalid Email and Password Combination';
-  const AuthFailure.sessionExpired() : message = 'Session Expired';
-  const AuthFailure.unexpected() : message = 'Unexpected Error';
-  const AuthFailure.noInternetConnection() : message = 'No Internet Connection';
-  const AuthFailure.emailNotVerified() : message = 'Email Not Verified';
-  const AuthFailure.userNotFound() : message = 'User Not Found';
+
 }
 
 class ServerError extends AuthFailure {

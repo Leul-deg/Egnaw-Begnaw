@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/application/event/event_update/event_update_bloc.dart';
 
 class DatePicker extends StatefulWidget {
   @override
@@ -19,6 +21,9 @@ class _DatePickerState extends State<DatePicker> {
       // If a new date is selected, update the selectedDate variable
       setState(() {
         selectedDate = picked;
+        context.read<EventUpdateBloc>().add(
+              EventUpdateEvent.dateChanged(selectedDate),
+            );
       });
     }
 
@@ -31,18 +36,22 @@ class _DatePickerState extends State<DatePicker> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Text(
-          'Selected Date: ${selectedDate.toString()}',
+          '${selectedDate.toString()}',
         ),
-        SizedBox(height: 20),
-        ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all<Color>(Colors.purple.shade200),
-          ),
-          onPressed: () {
-            _selectDate(context); // Call the function to show the date picker
-          },
-          child: Text('Select Date'),
+        Column(
+          children: [
+            IconButton(
+              onPressed: () {
+                _selectDate(
+                    context); // Call the function to show the date picker
+              },
+              icon: Icon(
+                Icons.calendar_today,
+                size: 40,
+                color: Colors.blue,
+              ),
+            ),
+          ],
         ),
       ],
     );

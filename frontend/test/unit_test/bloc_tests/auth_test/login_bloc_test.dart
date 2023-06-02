@@ -77,14 +77,14 @@ void main() {
   'emits [isSubmitting, authFailureOrSuccessOption] when LoginPressed is added and authentication fails',
   build: () {
     when(authRepository.loginUser(UserLoginModel(email:"test@example.com", password:"password123")))
-        .thenAnswer((_) async => left(const AuthFailure.invalidEmailAndPasswordCombination()));
+        .thenAnswer((_) async => left( AuthFailure.invalidEmailAndPasswordCombination()));
     return loginBloc;
   },
   act: (bloc) => bloc.add(LoginEvent.loginPressed()),
   expect: () => [
     LoginState.initial().copyWith(
       isSubmitting: true,
-      authFailureOrSuccessOption: some(left(const AuthFailure.invalidEmailAndPasswordCombination())),
+      authFailureOrSuccessOption: some(left( AuthFailure.invalidEmailAndPasswordCombination())),
     ),
   ],
 );

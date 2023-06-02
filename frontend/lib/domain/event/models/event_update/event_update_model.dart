@@ -1,31 +1,38 @@
-class EventUpdateModel {
-  final String description;
-  final String title;
-  final String place;
-  final String startTime;
-  final String endTime;
-  final int availableSeats;
-  final int ticketsSold;
+import 'package:flutter/material.dart';
 
-  const EventUpdateModel({
-    required this.description,
-    required this.title,
-    required this.place,
-    required this.startTime,
-    required this.endTime,
-    required this.availableSeats,
-    required this.ticketsSold,
+class EventUpdateModel {
+  String? description;
+  String? title;
+  String? place;
+  TimeOfDay? startTime;
+  TimeOfDay? endTime;
+  int? availableSeats;
+  int? ticketsSold;
+  DateTime? eventDate;
+
+  EventUpdateModel({
+    this.description,
+    this.title,
+    this.place,
+    this.startTime,
+    this.endTime,
+    this.availableSeats,
+    this.ticketsSold,
+    this.eventDate,
   });
 
   factory EventUpdateModel.fromJson(Map<String, dynamic> json) {
     return EventUpdateModel(
-      description: json['description'],
-      title: json['title'],
-      place: json['place'],
-      startTime: json['startTime'],
-      endTime: json['endTime'],
-      availableSeats: json['availableSeats'],
-      ticketsSold: json['ticketsSold'],
+      description: json['description'] as String,
+      title: json['title'] as String,
+      place: json['place'] as String,
+      startTime:
+          TimeOfDay.fromDateTime(DateTime.parse(json['startTime'] as String)),
+      endTime:
+          TimeOfDay.fromDateTime(DateTime.parse(json['endTime'] as String)),
+      availableSeats: json['availableSeats'] as int,
+      ticketsSold: json['ticketsSold'] as int,
+      eventDate: DateTime.parse(json['eventDate'] as String),
     );
   }
 
@@ -34,10 +41,11 @@ class EventUpdateModel {
       'description': description,
       'title': title,
       'place': place,
-      'startTime': startTime,
-      'endTime': endTime,
+      'startTime': startTime?.toString(),
+      'endTime': endTime?.toString(),
       'availableSeats': availableSeats,
       'ticketsSold': ticketsSold,
+      'eventDate': eventDate?.toString(),
     };
   }
 }
