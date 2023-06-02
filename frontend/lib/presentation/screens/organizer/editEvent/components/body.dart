@@ -1,5 +1,6 @@
 import 'dart:convert';
-
+import '../../../routes/appRouteConstants.dart';
+import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/application/event/event_get/event_get_bloc.dart';
@@ -56,6 +57,8 @@ class _BodyState extends State<Body> {
                   backgroundColor: Colors.green,
                 ),
               );
+              GoRouter.of(context).pushNamed(
+                                      MyAppRouteConstants.organizerScreenRouteName);
             },
           ),
         );

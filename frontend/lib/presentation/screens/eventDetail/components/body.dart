@@ -239,26 +239,13 @@ class _BodyState extends State<Body> {
                           ),
                           SizedBox(height: screen.height * 0.01),
                           Text(
-                            event['desctiption'] ?? '-',
+                            event['description'] ?? '-',
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 16,
                             ),
                           ),
-                          SizedBox(height: screen.height * 0.01),
-                          Text(
-                            'Organizers',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                            ),
-                          ),
-                          SizedBox(height: screen.height * 0.02),
-                          GestureDetector(
-                            onTap: () {},
-                            child: OrganizerBtn(),
-                          ),
+
                           SizedBox(height: screen.height * 0.02),
 
                           // show the EditButton widget if the user isOrganizer

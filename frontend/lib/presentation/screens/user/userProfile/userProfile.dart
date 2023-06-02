@@ -83,7 +83,7 @@ class _UserProfileState extends State<UserProfile> {
                                 print('clicked');
                                 var authDs = AuthDataSource();
                                 await authDs
-                                    .deleteUserAccount(json.decode(organizerData)['_id']);
+                                    .deleteUserAccount(json.decode(userData)['_id']);
                                 
                                 final SharedPreferences prefs = await SharedPreferences.getInstance();
                                 prefs.remove('jwt_token');

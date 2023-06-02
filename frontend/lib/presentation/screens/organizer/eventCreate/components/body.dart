@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import './datePicker.dart';
 import './timePicker.dart';
-
+import '../../../routes/appRouteConstants.dart';
+import 'package:go_router/go_router.dart';
 import 'package:frontend/application/event/event_create/event_create_bloc.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class Body extends StatefulWidget {
   @override
@@ -82,6 +84,8 @@ class _BodyState extends State<Body> {
               context
                   .read<EventCreateBloc>()
                   .add(EventCreateEvent.revertError());
+              GoRouter.of(context).pushNamed(
+                                      MyAppRouteConstants.organizerScreenRouteName);
             },
           ),
         );
