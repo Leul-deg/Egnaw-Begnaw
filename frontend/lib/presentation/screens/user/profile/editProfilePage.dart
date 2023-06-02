@@ -36,12 +36,12 @@ class _EditProfilePageState extends State<EditProfilePage> {
     if (userData != null) {
       setState(() {
         print('setting state');
-        print(json.decode(userData));
+        // print(json.decode(userData));
         user = json.decode(userData);
         print('user data set');
       });
       print('after set state');
-      print(json.decode(userData));
+      // print(json.decode(userData));
     } else {
       print('no user data');
     }

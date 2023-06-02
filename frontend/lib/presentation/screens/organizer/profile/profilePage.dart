@@ -37,17 +37,17 @@ class _ProfilePageState extends State<ProfilePage> {
     final prefs = await SharedPreferences.getInstance();
     final userData = prefs.getString('userData');
 
-    print(userData);
+    // print(userData);
 
     if (userData != null) {
       setState(() {
         print('setting state');
-        print(json.decode(userData));
+        // print(json.decode(userData));
         organizer = json.decode(userData);
         print('user data set');
       });
       print('after set state');
-      print(json.decode(userData));
+      // print(json.decode(userData));
     } else {
       print('no user data');
     }
@@ -55,7 +55,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    final user = UserPreferences.myUser;
+    // final user = UserPreferences.myUser;
 
     return Builder(
       builder: (context) => Scaffold(
@@ -69,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
           physics: BouncingScrollPhysics(),
           children: [
             ProfileWidget(
-              imagePath: user.imagePath,
+              imagePath: json.decode(organizer)['profileImage'],
               onClicked: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(

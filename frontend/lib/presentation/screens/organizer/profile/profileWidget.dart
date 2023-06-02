@@ -26,50 +26,44 @@ class ProfileWidget extends StatefulWidget {
   State<ProfileWidget> createState() => _ProfileWidgetState();
 }
 
+
 class _ProfileWidgetState extends State<ProfileWidget> {
   MemoryImage? _imageFile;
-  final ImagePicker _picker = ImagePicker();
-
-  Future<String> _pickImageBase64() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
-
-    if (pickedFile == null) return '';
-
-    Uint8List bytes = await pickedFile.readAsBytes();
-    String base64 = base64Encode(bytes);
-
-    print("base64");
-    // print(base64);
-    print("base64 end here");
-
-    setState(() {
-      _imageFile = MemoryImage(bytes);
-    });
-
-    return base64;
+  @override
+  void initState() {
+    super.initState();
+    Uint8List bytes = base64Decode(widget.imagePath);
+    _imageFile = MemoryImage(bytes);
+    
   }
+ 
+
 
   @override
   Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
+    final ImagePicker _picker = ImagePicker();
 
-    return Center(
-      child: Stack(
-        children: [
-          buildImage(_imageFile),
-          Positioned(
-            bottom: 0,
-            right: 4,
-            child: buildEditIcon(color),
-          ),
-        ],
-      ),
-    );
-  }
+    Future<String> _pickImageBase64() async {
+      final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
-  Widget buildImage(MemoryImage? image) {
-    final finalImage = image ?? NetworkImage(widget.imagePath);
+      if (pickedFile == null) return '';
 
+      Uint8List bytes = await pickedFile.readAsBytes();
+      String base64 = base64Encode(bytes);
+
+      print("base64");
+      // print(base64);
+      print("base64 end here");
+
+      setState(() {
+        _imageFile = MemoryImage(bytes);
+      });
+
+      return base64;
+    }
+    Widget buildImage(MemoryImage? image) {
+
+    final finalImage = image ?? _imageFile;
     return ClipOval(
       child: Material(
         color: Colors.transparent,
@@ -104,8 +98,24 @@ class _ProfileWidgetState extends State<ProfileWidget> {
       ),
     ),
   );
+    
 
-  Widget buildCircle({
+    final color = Theme.of(context).colorScheme.primary;
+
+    return Center(
+      child: Stack(
+        children: [
+          buildImage(_imageFile),
+          Positioned(
+            bottom: 0,
+            right: 4,
+            child: buildEditIcon(color),
+          ),
+        ],
+      ),
+    );
+  }
+    Widget buildCircle({
     required Widget child,
     required double all,
     required Color color,
@@ -118,3 +128,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         ),
       );
 }
+
+
+
