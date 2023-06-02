@@ -30,7 +30,7 @@ class _BodyState extends State<Body> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 70),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage('loginBackground.jpg'),

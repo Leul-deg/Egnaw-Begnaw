@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../../constants.dart';
 import 'package:go_router/go_router.dart';
 import '../../routes/appRouteConstants.dart';
 
 class RoundButton extends StatelessWidget {
-  const RoundButton({
+  RoundButton({
     Key? key,
     required this.size,
     required this.text,
@@ -12,6 +11,7 @@ class RoundButton extends StatelessWidget {
 
   final Size size;
   final String text;
+  final kPrimaryColor = Color(0xFF6F35A5);
 
   @override
   Widget build(BuildContext context) {

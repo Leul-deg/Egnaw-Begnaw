@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import './homePage/homePage.dart';
 import '../../../pastEvents/pastEvent.dart';
 import './profile/profilePage.dart';
 import './myTickets/myTickets.dart';
