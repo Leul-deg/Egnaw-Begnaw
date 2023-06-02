@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,6 +11,24 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
+
+  var organizerData;
+
+  @override
+  void initState() {
+    super.initState();
+
+    getOrganizer();
+  }
+
+  getOrganizer() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      organizerData = json.decode(prefs.getString('userData')!);
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,6 +51,7 @@ class _UserProfileState extends State<UserProfile> {
                         await SharedPreferences.getInstance();
                     print("loggin out ");
                     prefs.remove('jwt_token');
+                    prefs.remove('userData');
 
                     GoRouter.of(context)
                         .pushNamed(MyAppRouteConstants.welcomeRouteName);
@@ -98,7 +119,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.02),
                     Text(
-                      'millinium hall',
+                      json.decode(organizerData)['firstName'] + " " + json.decode(organizerData)['lastName'],
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.035,
                         fontWeight: FontWeight.bold,
@@ -106,7 +127,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.01),
                     Text(
-                      'jorka events',
+                      json.decode(organizerData)['email'],
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.02,
                         color: Colors.grey[600],
@@ -127,7 +148,7 @@ class _UserProfileState extends State<UserProfile> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Personal Information',
+                          'Your profile',
                           style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -135,14 +156,14 @@ class _UserProfileState extends State<UserProfile> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Name: Jorka Events',
+                          'Name: ${json.decode(organizerData)['firstName'] + " " + json.decode(organizerData)['lastName']}',
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Email: info@jorkaevents.com',
+                          'Email: ${json.decode(organizerData)['email']}',
                           style: TextStyle(
                             fontSize: 16,
                           ),
