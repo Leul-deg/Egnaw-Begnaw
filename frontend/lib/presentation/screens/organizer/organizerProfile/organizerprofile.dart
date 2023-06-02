@@ -3,6 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'editorganizerprofile.dart';
+import 'package:go_router/go_router.dart';
+
+import '../../routes/appRouteConstants.dart';
 
 class OrganizerProfile extends StatefulWidget {
   @override
@@ -31,6 +34,71 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          PopupMenuButton(
+            itemBuilder: (context) => [
+              PopupMenuItem(
+                  child: ListTile(
+                leading: Icon(
+                  Icons.delete,
+                ),
+                title: Text('Delete account'),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Confirm Action'),
+                        content: Text(
+                            'Are you sure you want to delete this account?'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text('Cancel'),
+                            onPressed: () {
+                              // Close the dialog box
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          TextButton(
+                            child: Text(
+                              'Delete',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            onPressed: () {
+                              GoRouter.of(context).pushNamed(
+                                  MyAppRouteConstants.welcomeRouteName);
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              )),
+              PopupMenuItem(
+                  child: ListTile(
+                leading: Icon(
+                  Icons.logout,
+                ),
+                title: Text('Logout'),
+                onTap: () async {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  print("loggin out ");
+                  prefs.remove('jwt_token');
+                  prefs.remove('userData');
+
+                  GoRouter.of(context)
+                      .pushNamed(MyAppRouteConstants.welcomeRouteName);
+                },
+              ))
+            ],
+            icon: Icon(Icons.more_vert),
+          )
+        ],
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Stack(
