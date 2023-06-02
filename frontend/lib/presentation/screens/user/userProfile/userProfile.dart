@@ -23,6 +23,45 @@ class _UserProfileState extends State<UserProfile> {
                 PopupMenuItem(
                     child: ListTile(
                   leading: Icon(
+                    Icons.delete,
+                  ),
+                  title: Text('Delete account'),
+                  onTap: () {
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) {
+                        return AlertDialog(
+                          title: Text('Confirm Action'),
+                          content: Text(
+                              'Are you sure you want to delete this account?'),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text('Cancel'),
+                              onPressed: () {
+                                // Close the dialog box
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            TextButton(
+                              child: Text(
+                                'Delete',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                              onPressed: () {
+                                GoRouter.of(context).pushNamed(
+                                    MyAppRouteConstants.welcomeRouteName);
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  },
+                )),
+                PopupMenuItem(
+                    child: ListTile(
+                  leading: Icon(
                     Icons.logout,
                   ),
                   title: Text('Logout'),
