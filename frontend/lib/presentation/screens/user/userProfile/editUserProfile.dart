@@ -1,11 +1,12 @@
 import 'dart:convert';
-
+import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/application/user/user_update/user_update_bloc.dart';
 import 'package:frontend/infrastructure/user/data_sources/user_data_sources.dart';
 import 'package:frontend/infrastructure/user/repositories/user_repository_imp.dart';
 import 'package:go_router/go_router.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../routes/appRouteConstants.dart';
 
@@ -16,8 +17,9 @@ class EditUserProfile extends StatefulWidget {
 
 class _EditUserProfileState extends State<EditUserProfile> {
   bool _passwordVisible = false;
-
-  var organizerData;
+  final ImagePicker _picker = ImagePicker();
+  var _imageFile;
+  var userData;
 
   @override
   void initState() {
@@ -29,8 +31,24 @@ class _EditUserProfileState extends State<EditUserProfile> {
   getOrganizer() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      organizerData = json.decode(prefs.getString('userData')!);
+      userData = json.decode(prefs.getString('userData')!);
     });
+  }
+     Future<String> _pickImageBase64() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile == null) return '';
+
+    Uint8List bytes = await pickedFile.readAsBytes();
+    String base64 = base64Encode(bytes);
+
+  
+
+    setState(() {
+      _imageFile = MemoryImage(bytes);
+    });
+
+    return base64;
   }
 
   @override
@@ -125,7 +143,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextFormField(
-                            initialValue: json.decode(organizerData)['firstName'],
+                            initialValue: json.decode(userData)['firstName'],
                             onChanged: (value) {
                               context.read<UserUpdateBloc>().add(
                                     UserUpdateEvent.firstNameChanged(value),
@@ -147,7 +165,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                           ),
                           SizedBox(height: 20),
                           TextFormField(
-                            initialValue: json.decode(organizerData)['lastName'],
+                            initialValue: json.decode(userData)['lastName'],
                             onChanged: (value) {
                               context.read<UserUpdateBloc>().add(
                                     UserUpdateEvent.lastNameChanged(value),
@@ -169,7 +187,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                           ),
                           SizedBox(height: 20),
                           TextFormField(
-                            initialValue: json.decode(organizerData)['email'],
+                            initialValue: json.decode(userData)['email'],
                             onChanged: (value) {
                               context.read<UserUpdateBloc>().add(
                                     UserUpdateEvent.emailChanged(value),

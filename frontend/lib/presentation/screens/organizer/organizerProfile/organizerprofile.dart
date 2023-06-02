@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -14,7 +15,7 @@ class OrganizerProfile extends StatefulWidget {
 
 class _OrganizerProfileState extends State<OrganizerProfile> {
   var organizerData;
-
+  var profileImage;
   @override
   void initState() {
     print('init called ajkdfhkjasdhfk');
@@ -28,6 +29,17 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
     setState(() {
       organizerData = json.decode(prefs.getString('userData')!);
       print(organizerData);
+
+      if(json.decode(organizerData)["profileImage"] != null)
+      {
+       Uint8List  bytes =  base64.decode(json.decode(organizerData)["profileImage"]);
+        profileImage = MemoryImage(bytes);
+      }
+      else
+      {
+        print("is it inside here?");
+        profileImage = AssetImage('assets/person.png');
+      }
     });
   }
 
@@ -126,13 +138,8 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                       children: [
                         CircleAvatar(
                           radius: constraints.maxWidth * 0.14,
-                          backgroundImage: NetworkImage(
-                              'https://media.istockphoto.com/id/1419539600/photo/business-presentation-and-man-on-a-laptop-in-a-corporate-conference-or-office-collaboration.jpg?s=1024x1024&w=is&k=20&c=j9UcrrobYnsnwhrP3jG8Bzr9q5lAYu9Cg28Ne74vJtk='),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                            ),
+                          backgroundImage: profileImage,
+                          child: Container( 
                             padding:
                                 EdgeInsets.all(constraints.maxWidth * 0.04),
                           ),
