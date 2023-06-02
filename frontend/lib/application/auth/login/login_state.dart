@@ -1,6 +1,6 @@
 part of 'login_bloc.dart';
 
-class LoginState {
+class LoginState extends Equatable {
   const LoginState({
     required this.isOrganizer,
     required this.emailAddress,
@@ -45,4 +45,14 @@ class LoginState {
       authFailureOrSuccessOption: none(),
     );
   }
+  
+  @override
+  List<Object> get props => [
+    isOrganizer,
+    emailAddress,
+    password,
+    isSubmitting,
+    showErrorMessages,
+    authFailureOrSuccessOption,
+  ];
 }

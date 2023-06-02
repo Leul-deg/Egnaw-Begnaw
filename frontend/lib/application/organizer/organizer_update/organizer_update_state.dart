@@ -1,6 +1,6 @@
 part of 'organizer_update_bloc.dart';
 
-class OrganizerUpdateState {
+class OrganizerUpdateState extends Equatable {
   const OrganizerUpdateState(
       {required this.isLoading,
       required this.organizationName,
@@ -46,4 +46,15 @@ class OrganizerUpdateState {
       updateFailureOrSuccessOption: none(),
     );
   }
+  
+  @override
+  
+  List<Object?> get props => [
+    isLoading,
+    organizationName,
+    email,
+    password,
+    profileImage,
+    updateFailureOrSuccessOption,
+  ];
 }
