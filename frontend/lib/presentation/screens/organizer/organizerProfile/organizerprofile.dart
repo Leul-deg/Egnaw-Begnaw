@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:frontend/infrastructure/auth/data_sources/auth_data_sources.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'editorganizerprofile.dart';
 import 'package:go_router/go_router.dart';
@@ -77,7 +78,12 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                               'Delete',
                               style: TextStyle(color: Colors.red),
                             ),
-                            onPressed: () {
+                            onPressed: () async {
+
+                              final authDs = AuthDataSource();
+
+                              await authDs.deleteOrganizerAccount(json.decode(organizerData)['_id']);
+
                               GoRouter.of(context).pushNamed(
                                   MyAppRouteConstants.welcomeRouteName);
                               Navigator.of(context).pop();
