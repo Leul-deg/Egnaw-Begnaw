@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../user/eventComment/components/commentCard.dart';
+import './commentCard.dart';
 import './editEventBtn.dart';
 import './organizerBtn.dart';
 

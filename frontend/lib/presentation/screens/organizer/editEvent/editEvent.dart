@@ -8,8 +8,17 @@ class EditEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screen = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        title: Text(
+          'Edit Your Event',
+          style: TextStyle(
+            fontSize: screen.width > 600 ? 40 : 20,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'roboto',
+          ),
+        ),
         leading: BackButton(
           onPressed: () => GoRouter.of(context)
               .pushNamed(MyAppRouteConstants.eventDetail1RouteName),
