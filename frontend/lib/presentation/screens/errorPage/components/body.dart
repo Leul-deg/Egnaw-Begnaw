@@ -8,7 +8,9 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: const Center(
-        child: Text('Route not found'),
+        child: Text(
+          'Route not found',
+        ),
       ),
     );
   }
