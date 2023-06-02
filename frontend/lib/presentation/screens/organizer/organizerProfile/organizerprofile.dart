@@ -186,6 +186,44 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                   ],
                 ),
               ),
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.56,
+                left: 16,
+                right: 16,
+                child: Card(
+                  child: Padding(
+                    padding: EdgeInsets.all(16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Your Profile',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Name: ${json.decode(organizerData)['organizationName']}',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        Text(
+                          'Email: ${json.decode(organizerData)['email']}',
+                          style: TextStyle(
+                            fontSize: 16,
+                          ),
+                        ),
+                        SizedBox(height: 8),
+                        // Add any additional information here
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ],
           );
         },
