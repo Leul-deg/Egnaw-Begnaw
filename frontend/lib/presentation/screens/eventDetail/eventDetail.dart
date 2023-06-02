@@ -34,7 +34,36 @@ class EventDetails extends StatelessWidget {
               ],
               onSelected: (value) {
                 if (value == 'delete') {
-                  // Perform delete operation
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Confirm Action'),
+                        content:
+                            Text('Are you sure you want to delete this event?'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text('Cancel'),
+                            onPressed: () {
+                              // Close the dialog box
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          TextButton(
+                            child: Text(
+                              'Delete',
+                              style: TextStyle(color: Colors.red),
+                            ),
+                            onPressed: () {
+                              // Perform the action
+                              // Close the dialog box
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 }
               },
               icon: Icon(Icons.more_vert),
@@ -44,7 +73,9 @@ class EventDetails extends StatelessWidget {
         body: BlocProvider(
           create: (context) => EventGetBloc(
               EventRepositoryImp(eventDataSource: EventDataSource())),
-          child: Body(eventId: eventId,),
+          child: Body(
+            eventId: eventId,
+          ),
         ),
       ),
     );
