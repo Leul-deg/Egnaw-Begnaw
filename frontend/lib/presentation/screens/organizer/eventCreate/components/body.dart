@@ -88,16 +88,6 @@ class _BodyState extends State<Body> {
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Post Your Event',
-              style: TextStyle(
-                fontSize: screen.width > 600 ? 40 : 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'roboto',
-              ),
-            ),
-          ),
           body: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
             child: Padding(
@@ -108,6 +98,14 @@ class _BodyState extends State<Body> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    'Post Your Event',
+                    style: TextStyle(
+                      fontSize: screen.width > 600 ? 40 : 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'roboto',
+                    ),
+                  ),
                   Form(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,7 +155,9 @@ class _BodyState extends State<Body> {
                                 SizedBox(
                                   height: screen.width > 600 ? 20 : 7,
                                 ),
-                                TimePicker(isEnd: false,),
+                                TimePicker(
+                                  isEnd: false,
+                                ),
                               ],
                             ),
                             Column(
