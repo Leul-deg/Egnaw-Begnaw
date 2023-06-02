@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -11,8 +12,8 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-  var organizerData;
-
+  var userData;
+  var profileImage;
   @override
   void initState() {
     super.initState();
@@ -23,8 +24,20 @@ class _UserProfileState extends State<UserProfile> {
   getOrganizer() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      organizerData = json.decode(prefs.getString('userData')!);
+      userData = json.decode(prefs.getString('userData')!);
+      
+      if(json.decode(userData)["profileImage"] != null)
+      {
+       Uint8List  bytes =  base64.decode(json.decode(userData)["profileImage"]);
+        profileImage = MemoryImage(bytes);
+      }
+      else
+      {
+        print("is it inside here?");
+        profileImage = AssetImage('assets/person.png');
+      }
     });
+    
   }
 
   @override
@@ -125,13 +138,8 @@ class _UserProfileState extends State<UserProfile> {
                       children: [
                         CircleAvatar(
                           radius: constraints.maxWidth * 0.14,
-                          backgroundImage: NetworkImage(
-                              'https://media.istockphoto.com/id/1419539600/photo/business-presentation-and-man-on-a-laptop-in-a-corporate-conference-or-office-collaboration.jpg?s=1024x1024&w=is&k=20&c=j9UcrrobYnsnwhrP3jG8Bzr9q5lAYu9Cg28Ne74vJtk='),
+                          backgroundImage:profileImage,
                           child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                            ),
                             padding:
                                 EdgeInsets.all(constraints.maxWidth * 0.04),
                           ),
@@ -156,9 +164,9 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.02),
                     Text(
-                      json.decode(organizerData)['firstName'] +
+                      json.decode(userData)['firstName'] +
                           " " +
-                          json.decode(organizerData)['lastName'],
+                          json.decode(userData)['lastName'],
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.035,
                         fontWeight: FontWeight.bold,
@@ -166,7 +174,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.01),
                     Text(
-                      json.decode(organizerData)['email'],
+                      json.decode(userData)['email'],
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.02,
                         color: Colors.grey[600],
@@ -195,14 +203,14 @@ class _UserProfileState extends State<UserProfile> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Name: ${json.decode(organizerData)['firstName'] + " " + json.decode(organizerData)['lastName']}',
+                          'Name: ${json.decode(userData)['firstName'] + " " + json.decode(userData)['lastName']}',
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Email: ${json.decode(organizerData)['email']}',
+                          'Email: ${json.decode(userData)['email']}',
                           style: TextStyle(
                             fontSize: 16,
                           ),

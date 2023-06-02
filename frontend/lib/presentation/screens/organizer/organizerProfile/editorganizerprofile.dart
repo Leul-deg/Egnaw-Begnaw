@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/application/organizer/organizer_update/organizer_update_bloc.dart';
 import 'package:frontend/infrastructure/organizer/data_sources/organizer_data_sources.dart';
 import 'package:frontend/infrastructure/organizer/repositories/organizer_repository_imp.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class EditorganizerProfile extends StatefulWidget {
@@ -14,6 +16,8 @@ class EditorganizerProfile extends StatefulWidget {
 
 class _EditProfilePageState extends State<EditorganizerProfile> {
   bool _passwordVisible = false;
+  final ImagePicker _picker = ImagePicker();
+  var _imageFile;
 
   var organizerData;
 
@@ -22,13 +26,32 @@ class _EditProfilePageState extends State<EditorganizerProfile> {
     super.initState();
 
     getOrganizer();
+   
   }
 
   getOrganizer() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       organizerData = json.decode(prefs.getString('userData')!);
+
     });
+  }
+
+   Future<String> _pickImageBase64() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile == null) return '';
+
+    Uint8List bytes = await pickedFile.readAsBytes();
+    String base64 = base64Encode(bytes);
+
+  
+
+    setState(() {
+      _imageFile = MemoryImage(bytes);
+    });
+
+    return base64;
   }
 
   @override
@@ -84,8 +107,7 @@ class _EditProfilePageState extends State<EditorganizerProfile> {
                     alignment: Alignment.bottomRight, // Align at bottom-right
                     children: [
                       CircleAvatar(
-                        backgroundImage: NetworkImage(
-                            'https://media.istockphoto.com/id/1419539600/photo/business-presentation-and-man-on-a-laptop-in-a-corporate-conference-or-office-collaboration.jpg?s=1024x1024&w=is&k=20&c=j9UcrrobYnsnwhrP3jG8Bzr9q5lAYu9Cg28Ne74vJtk='),
+                        backgroundImage: _imageFile ?? AssetImage('assets/person.png'),
                         radius: 70,
                       ),
                       Positioned(
@@ -100,8 +122,13 @@ class _EditProfilePageState extends State<EditorganizerProfile> {
                             child: IconButton(
                               iconSize: 20,
                               icon: Icon(Icons.camera_alt),
-                              onPressed: () {
-                                // Handle camera button press
+                              onPressed: () async {
+                               String s = await _pickImageBase64();
+                                context.read<OrganizerUpdateBloc>().add(
+                                      OrganizerUpdateEvent
+                                          .profileImageChanged(s),
+                                    );
+
                               },
                             ),
                           ),
