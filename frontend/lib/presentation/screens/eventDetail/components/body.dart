@@ -43,9 +43,8 @@ class _BodyState extends State<Body> {
               final screen = MediaQuery.of(context).size;
 
               return SingleChildScrollView(
-                physics: AlwaysScrollableScrollPhysics(),
-                child: Column(
-                  children: [
+                  physics: AlwaysScrollableScrollPhysics(),
+                  child: Column(children: [
                     Container(
                       constraints: BoxConstraints.expand(
                         width: double.infinity,
@@ -58,7 +57,6 @@ class _BodyState extends State<Body> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                     
                     ),
                     SizedBox(height: screen.height * 0.02),
                     Padding(
@@ -76,93 +74,70 @@ class _BodyState extends State<Body> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: screen.height * 0.02),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-
-                                  children: [
-                                    Text(
-
-                            '6:00pm',
-
-                                      'Start Time',
-
-                                      style: TextStyle(
+                          SizedBox(height: screen.height * .02),
+                          Row(children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Start Time',
+                                    style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.blue,
-                                      ),
-                                    ),
-                                    SizedBox(height: screen.height * 0.013),
-                                    Row(
-                                      children: [
-                                        Icon(Icons.timer),
-                                        SizedBox(width: screen.width * 0.01),
-                                        Text(
-                                          DateFormat('yyyy-MM-dd HH:mm').format(
-                                              DateTime.parse(
-                                                  event['startTime'] ?? '2021-09-09 09:09')),
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 16,
-                                          ),
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(height: screen.height * 0.013),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.timer),
+                                      SizedBox(width: screen.width * 0.01),
+                                      Text(
+                                        DateFormat('yyyy-MM-dd HH:mm').format(
+                                            DateTime.parse(event['startTime'] ??
+                                                '2021-09-09 09:09')),
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 16,
                                         ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-
-                              ],
-                            ),
-                          ),
-                          SizedBox(width: screen.width * 0.05),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'End Time',
-                                  style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.blue,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                                SizedBox(height: screen.height * 0.013),
-                                Row(
-                                  children: [
-                                    Text(
-
-                                      '10:00pm',
-
-                                      'End Time',
-
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.blue,
                                       ),
-                                    ),
-                                    SizedBox(height: screen.height * 0.013),
-                                    Row(
-                                      children: [
-                                        Icon(Icons.timer),
-                                        SizedBox(width: screen.width * 0.01),
-                                        Text(
-                                          DateFormat('yyyy-MM-dd HH:mm').format(
-                                              DateTime.parse(event['endTime'] ?? '2021-09-09 09:09')),
-                                          style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 16,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                            SizedBox(width: screen.width * 0.05),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'End Time',
+                                    style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.blue,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(height: screen.height * 0.013),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.timer),
+                                      SizedBox(width: screen.width * 0.01),
+                                      Text(
+                                        DateFormat('yyyy-MM-dd HH:mm').format(
+                                            DateTime.parse(event['endTime'] ??
+                                                '2021-09-09 09:09')),
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ]),
                           SizedBox(height: screen.height * 0.01),
                           Row(
                             children: [
@@ -181,11 +156,19 @@ class _BodyState extends State<Body> {
                           Row(
                             children: [
                               Text(
-                                event['availableSeats'].toString(),
+                                'Available Seats',
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                   color: Colors.blue,
+                                ),
+                              ),
+                              SizedBox(width: screen.width * 0.02),
+                              Text(
+                                event['availableSeats'].toString(),
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
                                 ),
                               ),
                               SizedBox(width: screen.width * 0.02),
@@ -302,10 +285,8 @@ class _BodyState extends State<Body> {
                           SizedBox(height: screen.height * 0.02),
                         ],
                       ),
-                    ),
-                  ],
-                ),
-              );
+                    )
+                  ]));
             },
           ),
         );
