@@ -62,15 +62,15 @@ class _BodyState extends State<Body> {
                           SnackBar(
                             content: Text(
                               failure.map(
-                                invalidInput: (_) => 'Invalid Input',
-                                invalidEmail: (value) => 'Invalid Email',
-                                invalidPassword: (_) => 'Invalid Password',
-                                sessionExpired: (value) => 'Session Expired',
-                                serverError: (_) => 'Server Error',
-                                emailAlreadyInUse: (_) =>
-                                    'Email already in use',
                                 invalidEmailAndPasswordCombination: (_) =>
                                     'Invalid email and password combination',
+                                serverError: (_) => 'Server error',
+                                emailAlreadyInUse: (_) =>
+                                    'Email already in use',
+                                invalidEmail: (_) => 'Invalid email',
+                                invalidPassword: (_) => 'Invalid password',
+                                invalidInput: (_) => 'Invalid input',
+                                sessionExpired: (_) => 'Session expired',
                               ),
                             ),
                           ),

@@ -24,6 +24,7 @@ class _BodyState extends State<Body> {
   @override
   void initState() {
     super.initState();
+    print('hererauidhflajkhdfuih');
     context.read<EventGetBloc>().add(EventGetEvent.getAllEvents());
   }
 
@@ -60,7 +61,7 @@ class _BodyState extends State<Body> {
                   return GestureDetector(
                     onTap: () {
                       GoRouter.of(context)
-                          .pushNamed(MyAppRouteConstants.eventDetail1RouteName);
+                          .pushNamed(MyAppRouteConstants.eventDetailRouteName);
                     },
                     child: Container(
                       decoration: BoxDecoration(
