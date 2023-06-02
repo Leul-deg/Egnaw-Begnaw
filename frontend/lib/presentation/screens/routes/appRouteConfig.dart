@@ -10,12 +10,10 @@ import '../signUp/signUpScreen.dart';
 import '../errorPage/errorPage.dart';
 import '../user/userScreen.dart';
 import '../organizer/organizerScreen.dart';
-
-import '../eventDetail/eventDetail.dart';
-
+import '../user/userProfile/userProfile.dart';
 import '../organizer/editEvent/editEvent.dart';
 import '../organizer/upcomingEvent/upcoming.dart';
-import '../organizer/profile/organizerprofile.dart';
+import '../user/userProfile/editUserProfile.dart';
 
 class MyAppRoute {
   final GoRouter router = GoRouter(
@@ -75,10 +73,11 @@ class MyAppRoute {
         name: MyAppRouteConstants.eventDetailRouteName,
         path: '/eventDetail',
         pageBuilder: (context, state) {
-          return MaterialPage(child: EventDetails(eventId: state.queryParameters['eventId'].toString()));
+          return MaterialPage(
+              child: EventDetails(
+                  eventId: state.queryParameters['eventId'].toString()));
         },
       ),
-
 
       GoRoute(
         name: MyAppRouteConstants.signupRouteName,
@@ -88,19 +87,27 @@ class MyAppRoute {
         },
       ),
       GoRoute(
+        name: MyAppRouteConstants.userProfilePageRouteName,
+        path: '/userProfile',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: UserProfile());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.editUserProfilePageRouteName,
+        path: '/editUserProfile',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: EditUserProfile());
+        },
+      ),
+      GoRoute(
         name: MyAppRouteConstants.loginRouteName,
         path: '/login',
         pageBuilder: (context, state) {
           return const MaterialPage(child: Login());
         },
       ),
-      GoRoute(
-        name: MyAppRouteConstants.profilePageRouteName,
-        path: '/profile',
-        pageBuilder: (context, state) {
-          return MaterialPage(child: OrganizerProfile());
-        },
-      ),
+
       // GoRoute(
       //   name: MyAppRouteConstants.profileRouteName,
       //   path: '/profile/:userName/:userID', // Added ':userID' to the path

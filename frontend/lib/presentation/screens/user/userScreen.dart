@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../pastEvents/pastEvent.dart';
-import './profile/profilePage.dart';
+import 'userProfile/userProfile.dart';
 import './myTickets/myTickets.dart';
 
 class UserScreen extends StatefulWidget {
@@ -24,6 +24,7 @@ class _UserScreenState extends State<UserScreen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'User Screen',
       home: Scaffold(
         body: _getPage(_selectedIndex),
@@ -44,10 +45,9 @@ class _UserScreenState extends State<UserScreen> {
             ),
           ],
           currentIndex: _selectedIndex,
-          selectedItemColor: Colors.blue,
+          selectedItemColor: const Color.fromARGB(255, 13, 17, 21),
           onTap: _onItemTapped,
         ),
-
       ),
     );
   }
@@ -59,7 +59,7 @@ class _UserScreenState extends State<UserScreen> {
       case 1:
         return MyTicket();
       case 2:
-        return ProfilePage();
+        return UserProfile();
     }
     return Container();
   }
