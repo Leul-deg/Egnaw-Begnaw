@@ -11,7 +11,6 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-
   var organizerData;
 
   @override
@@ -27,7 +26,6 @@ class _UserProfileState extends State<UserProfile> {
       organizerData = json.decode(prefs.getString('userData')!);
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -158,7 +156,9 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.02),
                     Text(
-                      json.decode(organizerData)['firstName'] + " " + json.decode(organizerData)['lastName'],
+                      json.decode(organizerData)['firstName'] +
+                          " " +
+                          json.decode(organizerData)['lastName'],
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.035,
                         fontWeight: FontWeight.bold,
