@@ -1,5 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/application/user/user_update/user_update_bloc.dart';
+import 'package:frontend/infrastructure/user/data_sources/user_data_sources.dart';
+import 'package:frontend/infrastructure/user/repositories/user_repository_imp.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../routes/appRouteConstants.dart';
 
 class EditUserProfile extends StatefulWidget {
@@ -10,152 +17,237 @@ class EditUserProfile extends StatefulWidget {
 class _EditUserProfileState extends State<EditUserProfile> {
   bool _passwordVisible = false;
 
+  var organizerData;
+
+  @override
+  void initState() {
+    super.initState();
+
+    getOrganizer();
+  }
+
+  getOrganizer() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      organizerData = json.decode(prefs.getString('userData')!);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Edit Profile'),
-        backgroundColor: Colors.blue,
-        leading: BackButton(
-          onPressed: () => GoRouter.of(context)
-              .pushNamed(MyAppRouteConstants.userProfilePageRouteName),
-        ),
-      ),
-      body: Container(
-        padding: EdgeInsets.only(top: 15), // Add padding to the top
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Stack(
-              alignment: Alignment.bottomRight, // Align at bottom-right
-              children: [
-                CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://media.istockphoto.com/id/1419539600/photo/business-presentation-and-man-on-a-laptop-in-a-corporate-conference-or-office-collaboration.jpg?s=1024x1024&w=is&k=20&c=j9UcrrobYnsnwhrP3jG8Bzr9q5lAYu9Cg28Ne74vJtk='),
-                  radius: 70,
-                ),
-                Positioned(
-                  bottom: 2, // Adjust the value as needed
-                  right: 3, // Adjust the value as needed
-                  child: Padding(
-                    padding: EdgeInsets.all(4), // Add padding to the IconButton
-                    child: CircleAvatar(
-                      backgroundColor: Colors.grey,
-                      radius: 23,
-                      child: IconButton(
-                        iconSize: 20,
-                        icon: Icon(Icons.camera_alt),
-                        onPressed: () {
-                          // Handle camera button press
-                        },
+    return BlocProvider(
+      create: (context) =>
+          UserUpdateBloc(UserRepositoryImp(userDataSource: UserDataSource())),
+      child: BlocConsumer<UserUpdateBloc, UserUpdateState>(
+        listener: (context, state) {
+          // show snack bar based on updateFailureOrSuccessOption
+          state.updateFailureOrSuccessOption.fold(
+            () {},
+            (either) => either.fold(
+              (failure) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text(
+                      failure.map(
+                        insufficientPermission: () => 'Insufficient Permission',
+                        invalidUser: () => 'Invalid User',
+                        serverError: () => 'Server Error',
+                        unableToDelete: () => 'Unable to Delete',
+                        unableToUpdate: () => 'Unable to Update',
+                        unexpectedError: () => 'Unexpected Error',
                       ),
                     ),
                   ),
-                ),
-              ],
+                );
+              },
+              (_) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Profile Updated'),
+                  ),
+                );
+                GoRouter.of(context)
+                    .pushNamed(MyAppRouteConstants.userProfilePageRouteName);
+              },
             ),
-            SizedBox(height: 30),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25),
+          );
+        },
+        builder: (context, state) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text('Edit Profile'),
+              backgroundColor: Colors.blue,
+              leading: BackButton(
+                onPressed: () => GoRouter.of(context)
+                    .pushNamed(MyAppRouteConstants.userProfilePageRouteName),
+              ),
+            ),
+            body: Container(
+              padding: EdgeInsets.only(top: 15), // Add padding to the top
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                      labelText: 'First Name',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
+                  Stack(
+                    alignment: Alignment.bottomRight, // Align at bottom-right
+                    children: [
+                      CircleAvatar(
+                        backgroundImage: NetworkImage(
+                            'https://media.istockphoto.com/id/1419539600/photo/business-presentation-and-man-on-a-laptop-in-a-corporate-conference-or-office-collaboration.jpg?s=1024x1024&w=is&k=20&c=j9UcrrobYnsnwhrP3jG8Bzr9q5lAYu9Cg28Ne74vJtk='),
+                        radius: 70,
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.blue,
+                      Positioned(
+                        bottom: 2, // Adjust the value as needed
+                        right: 3, // Adjust the value as needed
+                        child: Padding(
+                          padding: EdgeInsets.all(
+                              4), // Add padding to the IconButton
+                          child: CircleAvatar(
+                            backgroundColor: Colors.grey,
+                            radius: 23,
+                            child: IconButton(
+                              iconSize: 20,
+                              icon: Icon(Icons.camera_alt),
+                              onPressed: () {
+                                // Handle camera button press
+                              },
+                            ),
+                          ),
                         ),
                       ),
-                    ),
+                    ],
                   ),
-                  SizedBox(height: 20),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      prefixIcon: Icon(Icons.person),
-                      labelText: 'Last Name',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.blue,
+                  SizedBox(height: 30),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 25),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextFormField(
+                          initialValue: json.decode(organizerData)['firstName'],
+                          onChanged: (value) {
+                            context.read<UserUpdateBloc>().add(
+                                  UserUpdateEvent.firstNameChanged(value),
+                                );
+                          },
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.person),
+                            labelText: 'First Name',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      prefixIcon: Icon(Icons.email),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.blue,
+                        SizedBox(height: 20),
+                        TextFormField(
+                          initialValue: json.decode(organizerData)['lastName'],
+                          onChanged: (value) {
+                            context.read<UserUpdateBloc>().add(
+                                  UserUpdateEvent.lastNameChanged(value),
+                                );
+                          },
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.person),
+                            labelText: 'Last Name',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  TextFormField(
-                    obscureText: !_passwordVisible,
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      prefixIcon: Icon(Icons.lock),
-                      suffixIcon: IconButton(
-                        icon: Icon(_passwordVisible
-                            ? Icons.visibility
-                            : Icons.visibility_off),
-                        onPressed: () {
-                          setState(() {
-                            _passwordVisible = !_passwordVisible;
-                          });
-                        },
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                        borderSide: BorderSide(
-                          color: Colors.blue,
+                        SizedBox(height: 20),
+                        TextFormField(
+                          initialValue: json.decode(organizerData)['email'],
+                          onChanged: (value) {
+                            context.read<UserUpdateBloc>().add(
+                                  UserUpdateEvent.emailChanged(value),
+                                );
+                          },
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            prefixIcon: Icon(Icons.email),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
                         ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 20),
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Save',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0),
+                        SizedBox(height: 20),
+                        TextFormField(
+                          onChanged: (value) {
+                            context.read<UserUpdateBloc>().add(
+                                  UserUpdateEvent.passwordChanged(value),
+                                );
+                          },
+                          obscureText: !_passwordVisible,
+                          decoration: InputDecoration(
+                            labelText: 'Password',
+                            prefixIcon: Icon(Icons.lock),
+                            suffixIcon: IconButton(
+                              icon: Icon(_passwordVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off),
+                              onPressed: () {
+                                setState(() {
+                                  _passwordVisible = !_passwordVisible;
+                                });
+                              },
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: Colors.blue,
+                              ),
+                            ),
+                          ),
                         ),
-                        padding: EdgeInsets.symmetric(vertical: 18),
-                      ),
+                        SizedBox(height: 20),
+                        SizedBox(
+                          width: double.infinity,
+                          child: ElevatedButton(
+                            onPressed: () {
+                              context.read<UserUpdateBloc>().add(
+                                    UserUpdateEvent.updateUserPressed(),
+                                  );
+                            },
+                            child: Text(
+                              'Save',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              padding: EdgeInsets.symmetric(vertical: 18),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

@@ -323,6 +323,9 @@ class _BodyState extends State<Body> {
                               eventDescription: event['description'] ?? '',
                               eventPlace: event['place'] ?? '',
                             ),
+                          // else show TicketBuy btn
+                          // if (!isOrganizer)
+                          //   ,
                           SizedBox(height: screen.height * 0.02),
                         ],
                       ),
