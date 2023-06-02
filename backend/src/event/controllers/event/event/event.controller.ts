@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Param, Body, Put } from '@nestjs/common';
 import { CreateEventDTO } from 'src/event/dto/createEvent.interface';
 import { UpdateEventDTO } from 'src/event/dto/updateEvent.interface';
 import { EventI } from 'src/event/interfaces/event.interface';
@@ -25,7 +25,7 @@ export class EventController {
         return this.eventService.getEventById(id);
     }
 
-    @Get('update/:id')
+    @Put('update/:id')
     async updateEvent(@Param('id') id: string, @Body() event: UpdateEventDTO): Promise<EventI> {
         return this.eventService.updateEvent(id, event);
     }

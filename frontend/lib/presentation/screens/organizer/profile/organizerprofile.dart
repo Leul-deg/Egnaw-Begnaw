@@ -1,7 +1,33 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'editorganizerprofile.dart';
 
-class OrganizerProfile extends StatelessWidget {
+class OrganizerProfile extends StatefulWidget {
+  @override
+  State<OrganizerProfile> createState() => _OrganizerProfileState();
+}
+
+class _OrganizerProfileState extends State<OrganizerProfile> {
+  var organizerData;
+
+  @override
+  void initState() {
+    print('init called ajkdfhkjasdhfk');
+    super.initState();
+
+    getOrganizer();
+  }
+
+  getOrganizer() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      organizerData = json.decode(prefs.getString('userData')!);
+      print(organizerData);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +93,8 @@ class OrganizerProfile extends StatelessWidget {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.02),
                     Text(
-                      'millinium hall',
+                      json.decode(organizerData)['organizationName'] ??
+                          'Organizer Name',
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.035,
                         fontWeight: FontWeight.bold,
@@ -75,7 +102,7 @@ class OrganizerProfile extends StatelessWidget {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.01),
                     Text(
-                      'jorka events',
+                      json.decode(organizerData)['email'] ?? 'Email',
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.02,
                         color: Colors.grey[600],

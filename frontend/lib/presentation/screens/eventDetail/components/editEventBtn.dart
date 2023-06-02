@@ -4,7 +4,12 @@ import 'package:go_router/go_router.dart';
 import '../../routes/appRouteConstants.dart';
 
 class EditEventBtn extends StatelessWidget {
-  const EditEventBtn({super.key});
+
+  EditEventBtn({super.key, required this.eventId, required this.eventTitle, required this.eventPlace, required this.eventDescription });
+  String eventId;
+  String eventTitle;
+  String eventPlace;
+  String eventDescription;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +20,9 @@ class EditEventBtn extends StatelessWidget {
           height: 100,
           child: ElevatedButton(
             onPressed: () {
-              GoRouter.of(context)
-                  .pushNamed(MyAppRouteConstants.eventEditRouteName);
+              GoRouter.of(context).pushNamed(
+                  MyAppRouteConstants.eventEditRouteName,
+                  queryParameters: {'eventId': eventId, 'eventTitle': eventTitle, 'eventPlace': eventPlace, 'eventDescription': eventDescription});
             },
             style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,

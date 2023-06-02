@@ -61,7 +61,15 @@ class MyAppRoute {
         name: MyAppRouteConstants.eventEditRouteName,
         path: '/eventEdit',
         pageBuilder: (context, state) {
-          return const MaterialPage(child: EditEvent());
+          print(
+              'here is the event title in the route ${state.queryParameters['eventTitle']}');
+          return MaterialPage(
+              child: EditEvent(
+                  eventTitle: state.queryParameters['eventTitle'].toString(),
+                  eventPlace: state.queryParameters['eventPlace'].toString(),
+                  eventId: state.queryParameters['eventId'].toString(),
+                  eventDescription:
+                      state.queryParameters['eventDescription'].toString()));
         },
       ),
       GoRoute(
@@ -75,10 +83,12 @@ class MyAppRoute {
         name: MyAppRouteConstants.eventDetailRouteName,
         path: '/eventDetail',
         pageBuilder: (context, state) {
-          return MaterialPage(child: EventDetails(eventId: state.queryParameters['eventId'].toString()));
+          print('here is the freaking id ${state.queryParameters['eventId']}');
+          return MaterialPage(
+              child: EventDetails(
+                  eventId: state.queryParameters['eventId'].toString()));
         },
       ),
-
 
       GoRoute(
         name: MyAppRouteConstants.signupRouteName,

@@ -39,9 +39,13 @@ class EventDataSource implements EventRepository {
   @override
   Future<Either<EventFailure, Object>> updateEvent(
       String id, EventUpdateModel eventUpdateModel) async {
+        print('in the data source');
+    final data = eventUpdateModel.toJson();
+    data.removeWhere((key, value) => value == null);
+
     final response = await client.put(
       Uri.parse('$API_URL/event/update/$id'),
-      body: eventUpdateModel.toJson(),
+      body: data,
     );
 
     print('got response');
@@ -60,9 +64,6 @@ class EventDataSource implements EventRepository {
   Future<Either<EventFailure, Object>> deleteEvent(String id) async {
     final response = await client.delete(
       Uri.parse('$API_URL/event/$id'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
     );
 
     if (response.statusCode == 200) {
@@ -130,7 +131,6 @@ class EventDataSource implements EventRepository {
       String organizerId) async {
     // Implementation of the getEvent method goes here
     try {
-
       print('here is the data');
       print(organizerId);
       // Get the event data from the API

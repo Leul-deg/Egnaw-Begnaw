@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/application/event/event_create/event_create_bloc.dart';
 
 class TimePicker extends StatefulWidget {
   @override
   _TimePickerState createState() => _TimePickerState();
+
+  TimePicker({Key? key, required this.isEnd}) : super(key: key);
+
+  bool isEnd;
 }
 
 class _TimePickerState extends State<TimePicker> {
@@ -18,6 +24,15 @@ class _TimePickerState extends State<TimePicker> {
       // If a new time is selected, update the selectedTime variable
       setState(() {
         selectedTime = picked;
+        if (widget.isEnd)
+          context.read<EventCreateBloc>().add(
+                EventCreateEvent.endTimeChanged(selectedTime),
+              );
+        else{
+          context.read<EventCreateBloc>().add(
+                EventCreateEvent.startTimeChanged(selectedTime),
+              );
+        }
       });
     }
 

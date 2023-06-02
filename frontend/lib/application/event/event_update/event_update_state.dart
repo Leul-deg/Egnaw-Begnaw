@@ -11,33 +11,33 @@ class EventUpdateState {
     required this.ticketsSold,
     required this.description,
     required this.title,
-    required this.eventId,
+    required this.eventDate,
     required this.updateFailureOrSuccessOption,
   });
 
   final bool isLoading;
   final String? organizerId;
-  final String? startTime;
-  final String? endTime;
+  final TimeOfDay? startTime;
+  final TimeOfDay? endTime;
   final String? place;
   final int? availableSeats;
   final int? ticketsSold;
   final String? description;
   final String? title;
-  final String eventId;
+  final DateTime? eventDate;
   final Option<Either<EventFailure, Object>> updateFailureOrSuccessOption;
 
   EventUpdateState copyWith({
     bool? isLoading,
     String? organizerId,
-    String? startTime,
-    String? endTime,
+    TimeOfDay? startTime,
+    TimeOfDay? endTime,
     String? place,
     int? availableSeats,
     int? ticketsSold,
     String? description,
     String? title,
-    String? eventId,
+    DateTime? eventDate,
     Option<Either<EventFailure, Object>>? updateFailureOrSuccessOption,
   }) {
     return EventUpdateState(
@@ -50,7 +50,7 @@ class EventUpdateState {
       ticketsSold: ticketsSold ?? this.ticketsSold,
       description: description ?? this.description,
       title: title ?? this.title,
-      eventId: eventId ?? this.eventId,
+      eventDate: eventDate ?? this.eventDate,
       updateFailureOrSuccessOption: updateFailureOrSuccessOption ?? this.updateFailureOrSuccessOption,
     );
   }
@@ -62,11 +62,11 @@ class EventUpdateState {
       startTime: null,
       endTime: null,
       place: null,
-      availableSeats: 0,
-      ticketsSold: 0,
-      description: '',
-      title: '',
-      eventId: '',
+      availableSeats: null,
+      ticketsSold: null,
+      description: null,
+      title: null,
+      eventDate: null,
       updateFailureOrSuccessOption: none(),
     );
   }

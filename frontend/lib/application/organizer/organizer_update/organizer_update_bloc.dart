@@ -72,8 +72,10 @@ class OrganizerUpdateBloc
 
       print(organizerId);
 
-
       OrganizerUpdateModel data = OrganizerUpdateModel();
+      print('init data');
+
+      print('here is org name ${state.organizationName}');
 
       if (state.organizationName != null) {
         data.organizationName = state.organizationName;
@@ -90,6 +92,8 @@ class OrganizerUpdateBloc
       if (state.profileImage != null) {
         data.profileImage = state.profileImage;
       }
+
+      print('weyneeeeeeeeeeee');
 
       print('got user data');
 

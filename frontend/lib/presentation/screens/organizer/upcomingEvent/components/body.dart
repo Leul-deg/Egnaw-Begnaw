@@ -52,7 +52,6 @@ class _BodyState extends State<Body> {
         }
 
         return Scaffold(
-      
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(10.0),
@@ -62,8 +61,11 @@ class _BodyState extends State<Body> {
                   final eventCard = eventCards[index];
                   return GestureDetector(
                     onTap: () {
-                      context
-                          .pushNamed(MyAppRouteConstants.eventDetailRouteName);
+                      context.pushNamed(
+                          MyAppRouteConstants.eventDetailRouteName,
+                          queryParameters: {
+                            'eventId': eventCard.event['_id'],
+                          });
                     },
                     child: eventCard,
                   );
