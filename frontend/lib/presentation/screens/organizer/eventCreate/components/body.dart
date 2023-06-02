@@ -196,18 +196,6 @@ class _BodyState extends State<Body> {
                                 .add(EventCreateEvent.placeChanged(val));
                           },
                         ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            labelText: 'Image Link',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(17.0),
-                            ),
-                          ),
-                          onChanged: (val) {
-                            setState(() {});
-                          },
-                        ),
                         SizedBox(height: screen.width > 600 ? 40 : 20),
                         Center(
                           child: ElevatedButton(
