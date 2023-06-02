@@ -22,7 +22,8 @@ class UserDataBloc extends Bloc<UserDataEvent, UserDataState> {
       var userData =
           json.decode(prefs.getString('userData') ?? '{}');
 
-      print('here is user data in bloc');
+      
+      ('here is user data in bloc');
       print(userData);
 
       emit(state.copyWith(userData: userData));

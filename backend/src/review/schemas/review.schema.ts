@@ -7,10 +7,10 @@ export const ReviewSchema = new mongoose.Schema({
         ref: 'User'
     },
 
-    organizerId: {
+    eventId: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
-        ref: 'Organizer'
+        ref: 'Event'
     },
 
     reviewText: {

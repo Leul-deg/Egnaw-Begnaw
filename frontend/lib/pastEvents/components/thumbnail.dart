@@ -15,7 +15,7 @@ class Thumbnail extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => GoRouter.of(context)
-                        .pushNamed(MyAppRouteConstants.eventCommentRouteName),
+                        .pushNamed(MyAppRouteConstants.eventDetail1RouteName),
       child: Container(
         width: 140,
         padding: const EdgeInsets.all(8),
@@ -28,7 +28,7 @@ class Thumbnail extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.asset(
-                    'card1.jpg',
+                    'assets/card1.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),

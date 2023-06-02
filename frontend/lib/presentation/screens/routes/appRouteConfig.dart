@@ -56,6 +56,7 @@ class MyAppRoute {
           return const MaterialPage(child: Welcome());
         },
       ),
+      
       GoRoute(
         name: MyAppRouteConstants.eventDetail1RouteName,
         path: '/eventDetails',

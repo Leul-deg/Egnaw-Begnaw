@@ -29,7 +29,7 @@ class _BodyState extends State<Body> {
                   ),
                   decoration: BoxDecoration(
                     image: DecorationImage(
-                      image: AssetImage('musician.jpg'),
+                      image: AssetImage('assets/musician.jpg'),
                       fit: BoxFit.cover,
                     ),
                   ),

@@ -1,23 +1,27 @@
 import 'dart:convert';
+// import 'dart:js_interop';
 
 import 'package:frontend/data/local/local_database/local_storage.dart';
 import 'package:http/http.dart' as client;
 
 import 'package:dartz/dartz.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-
 import 'package:frontend/domain/auth/auth.dart';
 
 class AuthDataSource implements AuthRepository {
-  AuthDataSource() {}
-  final API_URL = "http://localhost:3000";
+  
+  // final DatabaseHelper databaseHelper = DatabaseHelper.instance;
+  final LocalDatabase localStorage = LocalDatabase.instance;
+
+  AuthDataSource();
+  final API_URL = "http://192.168.56.1:3000";
   final Future<SharedPreferences> sharedPreferences =
       SharedPreferences.getInstance();
 
   @override
   Future<Either<AuthFailure, Object>> loginUser(
       UserLoginModel userLoginModel) async {
+
     print('Submitting to backend...');
     final response = await client.post(
       Uri.parse('$API_URL/auth/user/signin'),
@@ -32,7 +36,35 @@ class AuthDataSource implements AuthRepository {
       final SharedPreferences prefs = await sharedPreferences;
       prefs.setString('jwt_token', json.decode(response.body)['access_token']);
       prefs.setString('userData', json.encode(response.body));
+      
+      var data = json.encode(response.body);
 
+       try{
+          print(userLoginModel.toJson());
+          // print(jsonDecode(data));
+         final Map<String, Object?> responseBody = jsonDecode(response.body);
+
+         final dynamic id = responseBody.remove('_id');
+         responseBody.remove('access_token');
+         responseBody.remove('__v');
+        responseBody.addAll({'userId': id});
+        // final String encodedBody = jsonEncode(responseBody);
+          
+          final String encodedBody = jsonEncode(responseBody);
+          localStorage.insert('users', responseBody);
+          // print(p);
+          print("this is p ");
+          
+      }
+      catch(e){
+        print(e);
+        print("the eroor");
+      }
+      
+      var k = await localStorage.getUser();
+      print(k);
+      print("this is what I got from the local storage");
+      
       return Right(json.decode(response.body));
     } else if (response.statusCode == 403) {
       return const Left(AuthFailure.invalidEmailAndPasswordCombination());

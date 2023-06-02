@@ -111,7 +111,7 @@ class _EventDetailState extends State<EventDetail> {
                       ),
                       decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage('musician.jpg'),
+                          image: AssetImage('assets/assets/musician.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),

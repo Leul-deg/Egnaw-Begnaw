@@ -1,84 +1,234 @@
-import 'package:sqflite/sqflite.dart';
+import 'dart:convert';
+
 import 'package:path/path.dart';
+import 'package:sqflite/sqflite.dart';
+import 'dart:async';
+import 'package:http/http.dart';
+
 
 class LocalDatabase {
-  static final LocalDatabase _instance = LocalDatabase._init();
+
+  LocalDatabase._privateConstructor();  
+
+  static final LocalDatabase instance = LocalDatabase._privateConstructor();
 
   static Database? _database;
 
-  LocalDatabase._init() {
-    print("tried to initali local database  ");
-    _initDB('local_database_.db');
+  Future<Database> get database async => _database ??= await _initDatabase();
+
+  Future<Database> _initDatabase() async {
+    String path = join(await getDatabasesPath(), 'vAddd.db');
+    return await openDatabase(path, version: 3, onCreate: _onCreate);
   }
 
-  static LocalDatabase get getInstance => _instance;
+  
 
-  Future<Database> get database async {
-    if (_database != null && _database!.isOpen) {
-      return _database!;
-    }
+  Future _onCreate(Database db, int version) async {
 
-    _database = await _initDB('local_database_.db');
-    return _database!;
+ await db.execute('''
+  CREATE TABLE users (
+    userId TEXT NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    date TEXT NOT NULL,
+    password TEXT NOT NULL,
+    firstName TEXT NOT NULL,
+    lastName TEXT NOT NULL,
+    email TEXT NOT NULL UNIQUE,
+    profileImage TEXT
+  )
+''');
+await db.execute('''
+  CREATE TABLE events (
+    eventId TEXT NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    organizerId TEXT,
+    startTime TEXT,
+    endTime TEXT,
+    place TEXT,
+    availableSeats INTEGER,
+    ticketsSold INTEGER,
+    eventDate TEXT,
+    description TEXT ,
+    title TEXT
+  )
+''');
+await db.execute('''
+  CREATE TABLE tickets (
+    ticketId TEXT NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userId TEXT NOT NULL,
+    eventId TEXT NOT NULL
+  )
+''');
+await db.execute('''
+  CREATE TABLE reviews (
+    reviewId TEXT NOT NULL,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    userId TEXT NOT NULL,
+    eventId TEXT NOT NULL,
+    reviewText TEXT NOT NULL
+  )
+''');
+
   }
 
-  Future<Database> _initDB(String filePath) async {
-    print("what about now");
-    try {
-      final dbPath = await getDatabasesPath();
-    } catch (e) {
-      print(e);
-    }
-    print("what about now 2");
-    final path = join('dbPath', filePath);
+  Future<void> insert(String table, Map<String, Object?> data) async {
+    
+    print("trying to insert the data");
+    final Database db = await database;
+    await db.transaction(
+      (transac) async{
+        final batch = transac.batch();
+        
+      // Map<String, dynamic> data = jsonDecode(jsonData);
 
-    try {
-      final database = await openDatabase(
-        path,
-        version: 1,
-        onCreate: _createDB,
-      );
-      return database;
-    } catch (e) {
-      print('Error opening database: $e');
-      rethrow;
-    }
+
+        
+        batch.insert(table ,  data , conflictAlgorithm: ConflictAlgorithm.replace);
+      await batch.commit(noResult: true);
+      }
+    );
+
   }
+  Future<void> insertEvents(List<dynamic> arr) async {
 
-  Future _createDB(Database db, int version) async {
-    await db.execute('''
-    CREATE TABLE IF NOT EXISTS user(
-      id STRING PRIMARY KEY,
-      firstName TEXT,
-      lastName TEXT,
-      email TEXT,
-      password TEXT
-    )
-    ''');
-  }
+    print("trying to insert the data");
+    final Database db = await database;
+    await db.transaction(
+      (transac) async{
+        final batch = transac.batch();
+        
+      // Map<String, dynamic> data = jsonDecode(jsonData);
+      for (var i = 0; i < arr.length; i++) {
+        print(i);
+        print("from the top make it drop");
+      final Map<String, Object?> cur = arr[i];
 
-  Future<int> insert(String table, Map<String, Object?> data) async {
-    final db = await _instance.database;
-    return await db.insert(table, data);
+        // var cur = arr[i];
+        cur.remove('__v');
+        var eventId = cur.remove('_id');
+        cur.addAll({'eventId': eventId});
+        batch.insert('events' ,  cur , conflictAlgorithm: ConflictAlgorithm.replace);
+        print(i);
+      }
+        
+      
+      try{await batch.commit(noResult: true);
+      print("adding to the database was a success");}
+      catch(e){
+        print(e);
+      }
+      }
+    );
+
   }
 
   // get user, there is only one user
-  Future<Map<String, Object?>> getUser() async {
-    final db = await _instance.database;
-    final result = await db.query('user');
-    return result.first;
+  Future<Map<String , Object?>> getUser() async {
+    final Database db = await database;
+    final List<Map<String, dynamic>> userList = await db.query("users");
+    print("getting the user ya bish");
+    print(userList);
+
+    return userList[0];
+  }
+  Future<List<Map<String , Object?>>> getter(String table) async {
+    final Database db = await database;
+    final List<Map<String, Object?>> userList = await db.query(table);
+    print("getting the user ya bish");
+    print(userList);
+
+    return userList;
+  }
+  Future<List<Map<String , Object?>>> getEvent(String eventId) async {
+    final Database db = await database;
+    final List<Map<String, Object?>> eventList = await db.query('events', where: 'eventId = ?', whereArgs: [eventId]);
+    print("getting the user ya bish");
+    print(eventList);
+
+    return eventList;
   }
 
   // remove user, there is only one user
   Future<int> removeUser(String table) async {
-    final db = await _instance.database;
+     final Database db = await database;
+
     return await db.delete(table);
   }
 
   // get user id
   Future<String> getUserId() async {
-    final db = await _instance.database;
-    final result = await db.query('user');
-    return result.first['id'].toString();
+    final Database db = await database;
+    final List<Map<String, dynamic>> userList = await db.query("user");
+    return userList[0]['id'].toString();
   }
+
+  Future<void> addTickets(List<dynamic> arr) async {
+
+    print("trying to insert the data");
+    final Database db = await database;
+    await db.transaction(
+      (transac) async{
+        final batch = transac.batch();
+        
+      // Map<String, dynamic> data = jsonDecode(jsonData);
+      for (var i = 0; i < arr.length; i++) {
+        print(i);
+        print("from the top make it drop");
+      final Map<String, Object?> cur = arr[i];
+
+        // var cur = arr[i];
+        cur.remove('__v');
+        var ticketId = cur.remove('_id');
+        cur.addAll({'ticketId': ticketId});
+        batch.insert('tickets' ,  cur , conflictAlgorithm: ConflictAlgorithm.replace);
+        print(i);
+      }
+        
+      
+      try{await batch.commit(noResult: true);}
+      catch(e){
+        print(e);
+      }
+      }
+    );
+
+  }
+  Future<void> addReviews(List<dynamic> arr) async {
+
+    print("trying to insert the data");
+    final Database db = await database;
+    await db.transaction(
+      (transac) async{
+        final batch = transac.batch();
+        
+      // Map<String, dynamic> data = jsonDecode(jsonData);
+      for (var i = 0; i < arr.length; i++) {
+       
+      final Map<String, Object?> cur = arr[i];
+
+        // var cur = arr[i];
+        cur.remove('__v');
+        var reviewId = cur.remove('_id');
+        cur.addAll({'reviewId': reviewId});
+        batch.insert('reviews' ,  cur , conflictAlgorithm: ConflictAlgorithm.replace);
+        print(i);
+      }
+        
+      
+      try{await batch.commit(noResult: true);}
+      catch(e){
+        print(e);
+      }
+      }
+    );
+
+  }
+
+
 }
+
+
+
+
+

@@ -18,7 +18,7 @@ class EventCards extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               image: DecorationImage(
-                image: AssetImage('card1.jpg'),
+                image: AssetImage('assets/card1.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -59,7 +59,7 @@ class EventCards extends StatelessWidget {
               style: TextStyle(
                 fontSize: 24.0,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
           ),

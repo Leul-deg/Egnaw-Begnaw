@@ -8,13 +8,20 @@ import 'package:shared_preferences/shared_preferences.dart';
 class UserDataSource implements UserRepository {
   final http.Client client = http.Client();
 
-  final API_URL = "http://localhost:3000";
+  final API_URL = "http://192.168.56.1:3000";
   UserDataSource();
 
   @override
   Future<Either<UserFailure, UserModel>> getUserData(String id) async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+        final String? jwtToken = prefs.getString('jwt_token');
     final response = await client.get(
       Uri.parse('$API_URL/user/$id'),
+       headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+         'Authorization': 'Bearer $jwtToken'
+
+        }
     );
 
     if (response.statusCode == 200) {
@@ -29,9 +36,11 @@ class UserDataSource implements UserRepository {
   @override
   Future<Either<UserFailure, UserUpdateModel>> updateUserData(
       UserModel newData) async {
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        final String? jwtToken = prefs.getString('jwt_token');
     print('in update user data');
     // get user id from shared preferences
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    // SharedPreferences prefs = await SharedPreferences.getInstance();
     final userData = json.decode(prefs.getString('userData')!);
 
     final userId = json.decode(userData)['_id'];
@@ -39,6 +48,11 @@ class UserDataSource implements UserRepository {
     final response = await client.put(
       Uri.parse('$API_URL/user/$userId'),
       body: newData.toJson(),
+       headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+         'Authorization': 'Bearer $jwtToken'
+
+        }
     );
 
     print(response.statusCode);
@@ -55,9 +69,16 @@ class UserDataSource implements UserRepository {
   @override
   Future<Either<UserFailure, List<UserModel>>> getAllUsers(
       UserModel allUser) async {
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+        final String? jwtToken = prefs.getString('jwt_token');
     try {
       final response = await client.get(
         Uri.parse('$API_URL/user'),
+         headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+         'Authorization': 'Bearer $jwtToken'
+
+        }
       );
       if (response.statusCode == 200) {
         List<UserModel> users = [];
@@ -77,8 +98,13 @@ class UserDataSource implements UserRepository {
 
   @override
   Future<Either<UserFailure, Object>> deleteUser(String id) async {
+
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+        final String? jwtToken = prefs.getString('jwt_token');
     final response = await client.delete(
       Uri.parse('$API_URL/user/$id'),
+         headers: {'Content-Type': 'application/json; charset=UTF-8','Authorization': 'Bearer $jwtToken'}
+
     );
     if (response.statusCode == 200) {
       return const Right(Object);
@@ -109,6 +135,7 @@ class UserDataSource implements UserRepository {
       Uri.parse('$API_URL/user/update/$userId'),
       // include the bearer token in the header
       headers: <String, String>{
+        'Content-Type': 'application/json; charset=UTF-8',
         'Authorization': 'Bearer $access_token',
       },
       body: data,

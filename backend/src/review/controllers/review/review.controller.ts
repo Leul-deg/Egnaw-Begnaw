@@ -1,10 +1,12 @@
-import { Controller, Post, Get, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Get, Body, Param, Delete, UseGuards } from '@nestjs/common';
+import { JwtGuard } from 'src/auth/guard';
 import { CreateReviewDTO } from 'src/review/dtos/createReview.dto';
 import { UpdateReviewDTO } from 'src/review/dtos/updateReview.dto';
 import { ReviewI } from 'src/review/interfaces/review.interface';
 import { ReviewService } from 'src/review/services/review/review.service';
 
-@Controller('review')
+@UseGuards(JwtGuard)
+@Controller()
 export class ReviewController {
     
     constructor(private reviewService: ReviewService) {}

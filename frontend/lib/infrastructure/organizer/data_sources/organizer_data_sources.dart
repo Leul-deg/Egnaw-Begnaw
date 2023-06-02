@@ -7,13 +7,19 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class OrganizerDataSource implements OrganizerRepository {
   final http.Client client = http.Client();
-  final API_URL = "http://localhost:3000";
+  final API_URL = "http://192.168.56.1:3000";
 
   OrganizerDataSource();
   @override
   Future<Either<OrganizerFailure, Object>> getOrganizerData(String id) async {
+
+    
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? jwtToken = prefs.getString('jwt_token');
     final response = await client.get(
       Uri.parse('$API_URL/organizer/$id'),
+      headers: {'Content-Type': 'application/json; charset=UTF-8','Authorization': 'Bearer $jwtToken'}
+
     );
     if (response.statusCode == 200) {
       return Right(OrganizerModel.fromJson(json.decode(response.body)));
@@ -27,9 +33,14 @@ class OrganizerDataSource implements OrganizerRepository {
   @override
   Future<Either<OrganizerFailure, List<Object>>> getAllOrganizers(
       OrganizerModel allOrganizer) async {
+        
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? jwtToken = prefs.getString('jwt_token');
     try {
       final response = await client.get(
         Uri.parse('$API_URL/organizer'),
+                    headers: {'Content-Type': 'application/json; charset=UTF-8','Authorization': 'Bearer $jwtToken'}
+
       );
 
       final organizerIds = json.decode(response.body) as List;
@@ -37,6 +48,8 @@ class OrganizerDataSource implements OrganizerRepository {
       for (var organizerId in organizerIds) {
         final organizer = await client.get(
           Uri.parse('$API_URL/organizer/$organizerId'),
+         headers: {'Content-Type': 'application/json; charset=UTF-8','Authorization': 'Bearer $jwtToken'}
+
         );
         organizers.add(OrganizerModel.fromJson(json.decode(organizer.body)));
       }
@@ -49,6 +62,9 @@ class OrganizerDataSource implements OrganizerRepository {
   @override
   Future<Either<OrganizerFailure, Object>> updateOrganizer(
       String organizerId, OrganizerUpdateModel newOrganizer) async {
+        
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? jwtToken = prefs.getString('jwt_token');
     // print(newOrganizer.toJson());
 
     final data = newOrganizer.toJson();
@@ -59,6 +75,8 @@ class OrganizerDataSource implements OrganizerRepository {
     final response = await client.post(
       Uri.parse('$API_URL/organizer/update/$organizerId'),
       body: data,
+       headers: {'Content-Type': 'application/json; charset=UTF-8','Authorization': 'Bearer $jwtToken'}
+
     );
 
     print(response.statusCode);
@@ -66,8 +84,7 @@ class OrganizerDataSource implements OrganizerRepository {
     if (response.statusCode == 201) {
       final newData = json.encode(response.body);
 
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.setString('userData', newData);
+      
 
       return Right(json.decode(response.body));
     } else if (response.statusCode == 400) {
@@ -81,8 +98,13 @@ class OrganizerDataSource implements OrganizerRepository {
 
   @override
   Future<Either<OrganizerFailure, Object>> deleteOrganizer(String id) async {
+    
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String? jwtToken = prefs.getString('jwt_token');
     final response = await client.delete(
       Uri.parse('$API_URL/organizer/$id'),
+         headers: {'Content-Type': 'application/json; charset=UTF-8','Authorization': 'Bearer $jwtToken'}
+
     );
 
     if (response.statusCode == 200) {

@@ -67,7 +67,7 @@ class _ProfilePageState extends State<ProfilePage> {
           physics: BouncingScrollPhysics(),
           children: [
             ProfileWidget(
-              imagePath: 'google.jpg',
+              imagePath: 'assets/google.jpg',
               onClicked: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(

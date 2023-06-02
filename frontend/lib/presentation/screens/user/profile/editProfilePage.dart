@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:html';
+// import 'dart:html';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -100,7 +100,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         onTap: () {},
                         child: CircleAvatar(
                           radius: MediaQuery.of(context).size.width * 0.1,
-                          backgroundImage: AssetImage('google.jpg'),
+                          backgroundImage: AssetImage('assets/google.jpg'),
                         ),
                       ),
                     ),

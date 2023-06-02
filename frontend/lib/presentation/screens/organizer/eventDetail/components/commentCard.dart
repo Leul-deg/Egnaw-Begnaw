@@ -5,42 +5,42 @@ List commenters = [
         comment: 'It was so exciting. We love you!',
         firstName: 'Beyene',
         lastName: 'Kaleb',
-        image: 'google.jpg'),
+        image: 'assets/google.jpg'),
     CommentCard(
         comment: 'It was so exciting. We love you!',
         firstName: 'Beyene',
         lastName: 'Kaleb',
-        image: 'google.jpg'),
+        image: 'assets/google.jpg'),
     CommentCard(
         comment: 'It was so exciting. We love you!',
         firstName: 'Beyene',
         lastName: 'Kaleb',
-        image: 'google.jpg'),
+        image: 'assets/google.jpg'),
     CommentCard(
         comment: 'It was so exciting. We love you!',
         firstName: 'Beyene',
         lastName: 'Kaleb',
-        image: 'google.jpg'),
+        image: 'assets/google.jpg'),
     CommentCard(
         comment: 'It was so exciting. We love you!',
         firstName: 'Beyene',
         lastName: 'Kaleb',
-        image: 'google.jpg'),
+        image: 'assets/google.jpg'),
     CommentCard(
         comment: 'It was so exciting. We love you!',
         firstName: 'Beyene',
         lastName: 'Kaleb',
-        image: 'google.jpg'),
+        image: 'assets/google.jpg'),
     CommentCard(
         comment: 'It was so exciting. We love you!',
         firstName: 'Beyene',
         lastName: 'Kaleb',
-        image: 'google.jpg'),
+        image: 'assets/google.jpg'),
     CommentCard(
         comment: 'It was so exciting. We love you!',
         firstName: 'Beyene',
         lastName: 'Kaleb',
-        image: 'google.jpg'),
+        image: 'assets/google.jpg'),
   ];
 
 class CommentCard extends StatelessWidget {
