@@ -63,7 +63,7 @@ class _BodyState extends State<Body> {
                           return GestureDetector(
                             onTap: () {
                               GoRouter.of(context).pushNamed(
-                                  MyAppRouteConstants.eventDetail1RouteName);
+                                  MyAppRouteConstants.eventDetailRouteName);
                             },
                             child: eventCard,
                           );

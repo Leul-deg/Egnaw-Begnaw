@@ -53,7 +53,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final isPasswordEmpty = state.password.isEmpty;
 
         if (isEmailEmpty || isPasswordEmpty) {
-          failureOrSuccess = left(const AuthFailure.invalidInput());
+          failureOrSuccess = left(AuthFailure.invalidEmail());
         } else {
           failureOrSuccess = await authRepository.loginOrganizer(
             OrganizerLoginModel(
@@ -68,7 +68,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         final isPasswordEmpty = state.password.isEmpty;
 
         if (isEmailEmpty || isPasswordEmpty) {
-          failureOrSuccess = left(const AuthFailure.invalidInput());
+          failureOrSuccess = left(AuthFailure.invalidEmail());
         } else {
           failureOrSuccess = await authRepository.loginUser(
             UserLoginModel(

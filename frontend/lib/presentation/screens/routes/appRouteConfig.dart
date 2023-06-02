@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/presentation/screens/eventDetail/eventDetail.dart';
 import 'package:frontend/presentation/screens/organizer/eventCreate/eventCreate.dart';
 import 'package:go_router/go_router.dart';
 import 'appRouteConstants.dart';
@@ -8,9 +9,10 @@ import '../login/loginScreen.dart';
 import '../signUp/signUpScreen.dart';
 import '../errorPage/errorPage.dart';
 import '../user/userScreen.dart';
-import '../user/eventDetail/eventDetail.dart';
 import '../organizer/organizerScreen.dart';
+
 import '../eventDetail/eventDetail.dart';
+
 import '../organizer/editEvent/editEvent.dart';
 import '../organizer/upcomingEvent/upcoming.dart';
 import '../organizer/profile/organizerprofile.dart';
@@ -56,13 +58,6 @@ class MyAppRoute {
         },
       ),
       GoRoute(
-        name: MyAppRouteConstants.eventDetail1RouteName,
-        path: '/eventDetails',
-        pageBuilder: (context, state) {
-          return const MaterialPage(child: EventDetails());
-        },
-      ),
-      GoRoute(
         name: MyAppRouteConstants.eventEditRouteName,
         path: '/eventEdit',
         pageBuilder: (context, state) {
@@ -76,6 +71,14 @@ class MyAppRoute {
           return MaterialPage(child: UserScreen());
         },
       ),
+      GoRoute(
+        name: MyAppRouteConstants.eventDetailRouteName,
+        path: '/eventDetail',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: EventDetails(eventId: state.queryParameters['eventId'].toString()));
+        },
+      ),
+
 
       GoRoute(
         name: MyAppRouteConstants.signupRouteName,

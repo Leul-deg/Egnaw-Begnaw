@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/application/event/event_get/event_get_bloc.dart';
+import 'package:frontend/domain/event/models/event_model/event_model.dart';
+import 'package:frontend/infrastructure/event/data_sources/event_data_sources.dart';
+import 'package:frontend/infrastructure/event/repositories/event_repository_imp.dart';
 import './components/body.dart';
 import 'package:go_router/go_router.dart';
 import '../routes/appRouteConstants.dart';
 
 class EventDetails extends StatelessWidget {
-  const EventDetails({super.key});
+  EventDetails({super.key, required this.eventId});
+
+  String eventId;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +41,11 @@ class EventDetails extends StatelessWidget {
             ),
           ],
         ),
-        body: Body(),
+        body: BlocProvider(
+          create: (context) => EventGetBloc(
+              EventRepositoryImp(eventDataSource: EventDataSource())),
+          child: Body(eventId: eventId,),
+        ),
       ),
     );
   }

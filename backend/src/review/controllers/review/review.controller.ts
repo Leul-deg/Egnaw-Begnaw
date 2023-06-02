@@ -25,6 +25,13 @@ export class ReviewController {
         return this.reviewService.getReviewById(id);
     }
 
+    // get review by eventId
+    @Get('event/:id')
+    async getReviewByEventId(@Param('id') id: string) {
+        return this.reviewService.getReviewByEventId(id);
+    }
+    
+
     @Get('update/:id')
     async updateReview(@Param('id') id: string, @Body() Review: UpdateReviewDTO): Promise<ReviewI> {
         return this.reviewService.updateReview(id, Review);
