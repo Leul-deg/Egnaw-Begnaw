@@ -2,7 +2,7 @@ part of 'event_get_bloc.dart';
 
 class EventGetState {
   final bool isLoading; // Indicates whether the app is currently loading data
-  final Map<String, dynamic> event;
+  final dynamic event;
   final List<dynamic> events; // The list of events
   final bool isError; // Indicates whether an error has occurred
   final bool? isDeleteSuccess;
@@ -33,11 +33,10 @@ class EventGetState {
     bool? isDeleteSuccess,
   }) {
     return EventGetState(
-      isLoading: isLoading ?? this.isLoading,
-      event: event ?? this.event,
-      events: events ?? this.events,
-      isError: isError ?? this.isError,
-      isDeleteSuccess: isDeleteSuccess ?? this.isDeleteSuccess
-    );
+        isLoading: isLoading ?? this.isLoading,
+        event: event ?? this.event,
+        events: events ?? this.events,
+        isError: isError ?? this.isError,
+        isDeleteSuccess: isDeleteSuccess ?? this.isDeleteSuccess);
   }
 }

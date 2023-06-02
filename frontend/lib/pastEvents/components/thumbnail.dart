@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:frontend/domain/event/event.dart';
 
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 import '../../presentation/screens/routes/appRouteConstants.dart';
 
 class Thumbnail extends StatelessWidget {
-  String eventName;
-  String endTime;
+  dynamic event;
+
   Thumbnail({
     super.key,
-    required this.eventName,
-    required this.endTime,
+    required this.event,
   });
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => GoRouter.of(context)
-                        .pushNamed(MyAppRouteConstants.eventCommentRouteName),
+                        .pushNamed(MyAppRouteConstants.eventDetailRouteName, queryParameters: {'eventId': event['_id']}),
       child: Container(
         width: 140,
         padding: const EdgeInsets.all(8),
@@ -36,12 +37,12 @@ class Thumbnail extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              eventName,
+              event['title'] ?? 'EV TITLE',
               maxLines: 1,
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Text(
-              endTime,
+              DateFormat.yMMMMd().format(DateTime.parse(event['startTime'])),
               style: const TextStyle(fontSize: 14),
             )
           ],

@@ -21,7 +21,7 @@ class EditEvent extends StatelessWidget {
         ),
         leading: BackButton(
           onPressed: () => GoRouter.of(context)
-              .pushNamed(MyAppRouteConstants.eventDetail1RouteName),
+              .pushNamed(MyAppRouteConstants.eventDetailRouteName),
         ),
       ),
       body: Body(),
