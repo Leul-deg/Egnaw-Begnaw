@@ -58,9 +58,7 @@ class _BodyState extends State<Body> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      child: Stack(
-                        children: [Container()],
-                      ),
+                     
                     ),
                     SizedBox(height: screen.height * 0.02),
                     Padding(
@@ -84,9 +82,14 @@ class _BodyState extends State<Body> {
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
+
                                   children: [
                                     Text(
+
+                            '6:00pm',
+
                                       'Start Time',
+
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.blue,
@@ -110,14 +113,31 @@ class _BodyState extends State<Body> {
                                     ),
                                   ],
                                 ),
-                              ),
-                              SizedBox(width: screen.width * 0.05),
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                              ],
+                            ),
+                          ),
+                          SizedBox(width: screen.width * 0.05),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'End Time',
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                SizedBox(height: screen.height * 0.013),
+                                Row(
                                   children: [
                                     Text(
+
+                                      '10:00pm',
+
                                       'End Time',
+
                                       style: TextStyle(
                                         fontSize: 16,
                                         color: Colors.blue,

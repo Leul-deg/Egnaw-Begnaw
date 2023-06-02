@@ -89,14 +89,12 @@ class _BodyState extends State<Body> {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: Center(
-              child: Text(
-                'Add Your Event',
-                style: TextStyle(
-                  fontSize: screen.width > 600 ? 40 : 20,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'roboto',
-                ),
+            title: Text(
+              'Post Your Event',
+              style: TextStyle(
+                fontSize: screen.width > 600 ? 40 : 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'roboto',
               ),
             ),
           ),

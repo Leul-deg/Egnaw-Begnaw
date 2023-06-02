@@ -24,6 +24,22 @@ class EventDetails extends StatelessWidget {
             onPressed: () => GoRouter.of(context)
                 .pushNamed(MyAppRouteConstants.organizerScreenRouteName),
           ),
+          actions: [
+            PopupMenuButton(
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  value: 'delete',
+                  child: Text('Delete event'),
+                ),
+              ],
+              onSelected: (value) {
+                if (value == 'delete') {
+                  // Perform delete operation
+                }
+              },
+              icon: Icon(Icons.more_vert),
+            ),
+          ],
         ),
         body: BlocProvider(
           create: (context) => EventGetBloc(
