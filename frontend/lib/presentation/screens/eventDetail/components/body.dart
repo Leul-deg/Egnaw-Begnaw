@@ -33,7 +33,7 @@ class _BodyState extends State<Body> {
   checkUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     var user = json.decode(prefs.getString('userData')!);
-    var userMap = json.decode(user!);
+    var userMap = json.decode(user ?? '{}');
     if (userMap['organizationName'] != null) {
       setState(() {
         isOrganizer = true;
@@ -61,6 +61,9 @@ class _BodyState extends State<Body> {
       },
       builder: (context, state) {
         var event = state.event;
+
+        print('here is the freaking event in the detail page');
+        print(event);
 
         print('here is the id i recieved');
         print(widget.eventId);
@@ -95,7 +98,7 @@ class _BodyState extends State<Body> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            event['title'] ?? 'Rophnan Concert',
+                            event['title'] ?? 'Event name',
                             style: TextStyle(
                               color: Colors.blue,
                               fontSize: 24,
@@ -257,9 +260,8 @@ class _BodyState extends State<Body> {
                               eventPlace: event['place'] ?? '',
                             ),
                           if (!isOrganizer)
-                            BuyTicketBtn(eventId: event['_id'] ?? ''),
-                          // else show TicketBuy btn
-                          // if (!isOrganizer)
+                            BuyTicketBtn(eventId: event['_id'] ?? '' ),
+
                           //   ,
                           SizedBox(height: screen.height * 0.02),
                         ],

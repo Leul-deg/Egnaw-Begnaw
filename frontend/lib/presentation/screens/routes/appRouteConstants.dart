@@ -14,4 +14,5 @@ class MyAppRouteConstants {
   static const String userHomePageRouteName = 'HomePage';
   static const String userProfilePageRouteName = 'UserProfile';
   static const String editUserProfilePageRouteName = 'EditUserProfile';
+  static const String organizerProfileRouteName = 'OrganizerProfile';
 }

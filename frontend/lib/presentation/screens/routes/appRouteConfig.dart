@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/presentation/screens/eventDetail/eventDetail.dart';
 import 'package:frontend/presentation/screens/organizer/eventCreate/eventCreate.dart';
+import 'package:frontend/presentation/screens/organizer/organizerProfile/organizerprofile.dart';
 import 'package:go_router/go_router.dart';
 import 'appRouteConstants.dart';
 // import '../onboarding/onBoardingScreen.dart';
@@ -75,6 +76,13 @@ class MyAppRoute {
         path: '/userscreen',
         pageBuilder: (context, state) {
           return MaterialPage(child: UserScreen());
+        },
+      ),
+      GoRoute(
+        name: MyAppRouteConstants.organizerProfileRouteName,
+        path: '/organizerProfile',
+        pageBuilder: (context, state) {
+          return MaterialPage(child: OrganizerProfile());
         },
       ),
       GoRoute(

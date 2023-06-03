@@ -22,7 +22,10 @@ export class OrganizerService {
     async getOrganizerById(id: string): Promise<OrganizerI> {
         try {
             const newOrganizer = await this.organizerModel.findOne({ _id: id });
-            return newOrganizer;
+
+            const org = await this.organizerModel.findOne({ _id: id });
+
+            return org;
         } catch (error) {
             throw error;
         }
@@ -32,8 +35,9 @@ export class OrganizerService {
         console.log(id)
         try {
             const newOrganizer = await this.organizerModel.findOneAndUpdate({ _id: id }, organizer);
-            console.log(newOrganizer)
-            return newOrganizer;
+            const newO = await this.organizerModel.findOne({_id: id})
+
+            return newO
         } catch (error) {
             throw error;
         }

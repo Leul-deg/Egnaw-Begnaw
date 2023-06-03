@@ -13,7 +13,7 @@ import { JwtGuard } from '../auth/guard';
 import { EditUserDto } from './dto';
 import { UserService } from './user.service';
 
-// @UseGuards(JwtGuard)
+@UseGuards(JwtGuard)
 @Controller()
 export class UserController {
   constructor(private userService: UserService) {}

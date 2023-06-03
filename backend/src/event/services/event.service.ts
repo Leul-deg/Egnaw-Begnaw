@@ -63,6 +63,7 @@ export class EventService {
             const events = await this.eventModel.find({ organizerId: id });
             return events;
         } catch (error) {
+            console.log("here is the error");
             throw error;
         }
     }

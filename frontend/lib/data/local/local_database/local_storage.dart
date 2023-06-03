@@ -19,7 +19,7 @@ class LocalDatabase {
   Future<Database> get database async => _database ??= await _initDatabase();
 
   Future<Database> _initDatabase() async {
-    String path = join(await getDatabasesPath(), 'vAddd.db');
+    String path = join(await getDatabasesPath(), 'vAddlld6.db');
     return await openDatabase(path, version: 3, onCreate: _onCreate);
   }
 
@@ -54,9 +54,10 @@ await db.execute('''
     title TEXT
   )
 ''');
+// eventId is actually an object that contains the event title and the event id and the organizerId etc
 await db.execute('''
   CREATE TABLE tickets (
-    ticketId TEXT NOT NULL,
+    ticketId TEXT,
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     userId TEXT NOT NULL,
     eventId TEXT NOT NULL
@@ -81,11 +82,7 @@ await db.execute('''
     await db.transaction(
       (transac) async{
         final batch = transac.batch();
-        
-      // Map<String, dynamic> data = jsonDecode(jsonData);
 
-
-        
         batch.insert(table ,  data , conflictAlgorithm: ConflictAlgorithm.replace);
       await batch.commit(noResult: true);
       }
@@ -137,7 +134,7 @@ await db.execute('''
   Future<List<Map<String , Object?>>> getter(String table) async {
     final Database db = await database;
     final List<Map<String, Object?>> userList = await db.query(table);
-    print("getting the user ya bish");
+    print("getting $table");
     print(userList);
 
     return userList;
@@ -167,13 +164,17 @@ await db.execute('''
 
   Future<void> addTickets(List<dynamic> arr) async {
 
+    // clear the table first
+
+
     print("trying to insert the data");
     final Database db = await database;
+
+    await db.delete('tickets');
     await db.transaction(
       (transac) async{
         final batch = transac.batch();
         
-      // Map<String, dynamic> data = jsonDecode(jsonData);
       for (var i = 0; i < arr.length; i++) {
         print(i);
         print("from the top make it drop");
@@ -182,6 +183,14 @@ await db.execute('''
         // var cur = arr[i];
         cur.remove('__v');
         var ticketId = cur.remove('_id');
+        var a = cur.remove('eventId');
+        print(a.runtimeType);
+        print("hellolllll");
+        //convert a to string and insert
+        cur.addAll({'eventId': jsonEncode(a)});
+
+
+
         cur.addAll({'ticketId': ticketId});
         batch.insert('tickets' ,  cur , conflictAlgorithm: ConflictAlgorithm.replace);
         print(i);
@@ -190,6 +199,7 @@ await db.execute('''
       
       try{await batch.commit(noResult: true);}
       catch(e){
+        print('the error is');
         print(e);
       }
       }

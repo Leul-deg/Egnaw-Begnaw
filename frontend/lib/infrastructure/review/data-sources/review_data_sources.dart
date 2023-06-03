@@ -11,7 +11,7 @@ class ReviewDataSource implements ReviewRepository {
   final SharedPreferences sharedPreferences;
 
   // final API_URL = "dotenv.env['API_URL']";
-    final API_URL = "http://192.168.56.1:3000";
+    final API_URL = "http://10.0.2.2:3000";
 
 
   ReviewDataSource({
