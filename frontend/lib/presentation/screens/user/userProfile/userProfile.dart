@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:frontend/infrastructure/auth/data_sources/auth_data_sources.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../routes/appRouteConstants.dart';
@@ -11,9 +13,8 @@ class UserProfile extends StatefulWidget {
 }
 
 class _UserProfileState extends State<UserProfile> {
-
-  var organizerData;
-
+  var userData;
+  var profileImage;
   @override
   void initState()  {
     super.initState();
@@ -29,16 +30,15 @@ class _UserProfileState extends State<UserProfile> {
     setState(() {
       print("up here");
       print(prefs.getString('userData'));
-      organizerData = json.decode(prefs.getString('userData')!);
-      print(organizerData);
+      userData = json.decode(prefs.getString('userData')!);
     });
+    
   }
-
 
   @override
   Widget build(BuildContext context) {
     print("before organiez data");
-    print(organizerData);
+    print(userData);
     print("after organiez data");
 
     return Scaffold(
@@ -77,7 +77,16 @@ class _UserProfileState extends State<UserProfile> {
                                 'Delete',
                                 style: TextStyle(color: Colors.red),
                               ),
-                              onPressed: () {
+                              onPressed: () async {
+                                print('clicked');
+                                var authDs = AuthDataSource();
+                                await authDs
+                                    .deleteUserAccount(json.decode(userData)['_id']);
+                                
+                                final SharedPreferences prefs = await SharedPreferences.getInstance();
+                                prefs.remove('jwt_token');
+                                prefs.remove('userData');
+
                                 GoRouter.of(context).pushNamed(
                                     MyAppRouteConstants.welcomeRouteName);
                                 Navigator.of(context).pop();
@@ -137,13 +146,8 @@ class _UserProfileState extends State<UserProfile> {
                       children: [
                         CircleAvatar(
                           radius: constraints.maxWidth * 0.14,
-                          backgroundImage: NetworkImage(
-                              'https://media.istockphoto.com/id/1419539600/photo/business-presentation-and-man-on-a-laptop-in-a-corporate-conference-or-office-collaboration.jpg?s=1024x1024&w=is&k=20&c=j9UcrrobYnsnwhrP3jG8Bzr9q5lAYu9Cg28Ne74vJtk='),
+                          backgroundImage:profileImage,
                           child: Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.grey,
-                            ),
                             padding:
                                 EdgeInsets.all(constraints.maxWidth * 0.04),
                           ),
@@ -168,7 +172,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.02),
                     Text(
-                      json.decode(organizerData ?? '{}')['firstName'].toString() + " " + json.decode(organizerData ?? '{}')['lastName'].toString(),
+                      json.decode(userData ?? '{}')['firstName'].toString() + " " + json.decode(userData ?? '{}')['lastName'].toString(),
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.035,
                         fontWeight: FontWeight.bold,
@@ -176,7 +180,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.01),
                     Text(
-                      json.decode(organizerData ?? '{}')['email'].toString(),
+                      json.decode(userData ?? '{}')['email'].toString(),
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.02,
                         color: Colors.grey[600],
@@ -205,14 +209,14 @@ class _UserProfileState extends State<UserProfile> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Name: ${json.decode(organizerData ?? '{}')['firstName'].toString() + " " + json.decode(organizerData ?? '{}')['lastName'].toString()}',
+                          'Name: ${json.decode(userData ?? '{}')['firstName'].toString() + " " + json.decode(userData ?? '{}')['lastName'].toString()}',
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Email: ${json.decode(organizerData ?? '{}')['email'].toString()}',
+                          'Email: ${json.decode(userData ?? '{}')['email'].toString()}',
                           style: TextStyle(
                             fontSize: 16,
                           ),

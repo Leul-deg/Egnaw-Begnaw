@@ -81,7 +81,7 @@ class EventDataSource implements EventRepository {
   @override
   Future<Either<EventFailure, Object>> deleteEvent(String id) async {
     final response = await client.delete(
-      Uri.parse('$API_URL/event/$id'),
+      Uri.parse('$API_URL/event/delete/$id'),
     );
 
     if (response.statusCode == 200) {

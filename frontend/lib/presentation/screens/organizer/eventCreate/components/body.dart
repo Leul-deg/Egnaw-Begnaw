@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import './datePicker.dart';
 import './timePicker.dart';
-
+import '../../../routes/appRouteConstants.dart';
+import 'package:go_router/go_router.dart';
 import 'package:frontend/application/event/event_create/event_create_bloc.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 
 class Body extends StatefulWidget {
   @override
@@ -82,22 +84,14 @@ class _BodyState extends State<Body> {
               context
                   .read<EventCreateBloc>()
                   .add(EventCreateEvent.revertError());
+              GoRouter.of(context).pushNamed(
+                                      MyAppRouteConstants.organizerScreenRouteName);
             },
           ),
         );
       },
       builder: (context, state) {
         return Scaffold(
-          appBar: AppBar(
-            title: Text(
-              'Post Your Event',
-              style: TextStyle(
-                fontSize: screen.width > 600 ? 40 : 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'roboto',
-              ),
-            ),
-          ),
           body: SingleChildScrollView(
             physics: AlwaysScrollableScrollPhysics(),
             child: Padding(
@@ -108,6 +102,14 @@ class _BodyState extends State<Body> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text(
+                    'Post Your Event',
+                    style: TextStyle(
+                      fontSize: screen.width > 600 ? 40 : 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'roboto',
+                    ),
+                  ),
                   Form(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -157,7 +159,9 @@ class _BodyState extends State<Body> {
                                 SizedBox(
                                   height: screen.width > 600 ? 20 : 7,
                                 ),
-                                TimePicker(isEnd: false,),
+                                TimePicker(
+                                  isEnd: false,
+                                ),
                               ],
                             ),
                             Column(
@@ -194,18 +198,6 @@ class _BodyState extends State<Body> {
                             context
                                 .read<EventCreateBloc>()
                                 .add(EventCreateEvent.placeChanged(val));
-                          },
-                        ),
-                        SizedBox(height: 20),
-                        TextFormField(
-                          decoration: InputDecoration(
-                            labelText: 'Image Link',
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(17.0),
-                            ),
-                          ),
-                          onChanged: (val) {
-                            setState(() {});
                           },
                         ),
                         SizedBox(height: screen.width > 600 ? 40 : 20),

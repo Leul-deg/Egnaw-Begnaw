@@ -1,6 +1,6 @@
 part of 'event_create_bloc.dart';
 
-class EventCreateState {
+class EventCreateState extends Equatable{
   const EventCreateState({
     required this.isLoading,
     required this.organizerId,
@@ -71,4 +71,22 @@ class EventCreateState {
       createFailureOrSuccessOption: none(),
     );
   }
+  
+  @override
+  
+  List<Object?> get props =>[
+    isLoading,
+    organizerId,
+    startTime,
+    endTime,
+    place,
+    availableSeats,
+    ticketsSold,
+    description,
+    title,
+    eventDate,
+    createFailureOrSuccessOption,
+
+  ];
+
 }

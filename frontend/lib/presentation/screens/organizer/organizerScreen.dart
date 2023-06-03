@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import './upcomingEvent/upcoming.dart';
-import 'profile/organizerprofile.dart';
+import 'organizerProfile/organizerprofile.dart';
 import './eventCreate/eventCreate.dart';
 
 class OrganizerScreen extends StatefulWidget {

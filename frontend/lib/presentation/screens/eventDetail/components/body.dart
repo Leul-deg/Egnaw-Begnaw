@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/application/event/event_get/event_get_bloc.dart';
+import 'package:frontend/presentation/screens/eventDetail/components/buyTicketBtn.dart';
 import 'package:intl/intl.dart';
-import './commentCard.dart';
 import './editEventBtn.dart';
 import './organizerBtn.dart';
 
@@ -23,7 +23,6 @@ class _BodyState extends State<Body> {
 
   @override
   initState() {
-    
     super.initState();
     BlocProvider.of<EventGetBloc>(context)
         .add(EventGetEvent.getEventById(widget.eventId));
@@ -240,81 +239,15 @@ class _BodyState extends State<Body> {
                           ),
                           SizedBox(height: screen.height * 0.01),
                           Text(
-                            event['desctiption'] ?? '-',
+                            event['description'] ?? '-',
                             style: TextStyle(
                               color: Colors.grey,
                               fontSize: 16,
                             ),
                           ),
-                          SizedBox(height: screen.height * 0.01),
-                          Text(
-                            'Organizers',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue,
-                            ),
-                          ),
+
                           SizedBox(height: screen.height * 0.02),
-                          GestureDetector(
-                            onTap: () {},
-                            child: OrganizerBtn(),
-                          ),
-                          SizedBox(height: screen.height * 0.02),
-                          Container(
-                            height: constraints.maxHeight * 0.6,
-                            child: Column(
-                              children: [
-                                Container(
-                                  color: Colors.white,
-                                  child: Padding(
-                                    padding:
-                                        EdgeInsets.all(screen.width * 0.015),
-                                    child: Row(
-                                      children: [
-                                        Expanded(
-                                          child: TextField(
-                                            decoration: InputDecoration(
-                                              hintText: 'Add a comment',
-                                              border: OutlineInputBorder(
-                                                borderRadius: BorderRadius.circular(
-                                                    15.0), // Set the border radius value
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(width: screen.width * 0.02),
-                                        IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(Icons.send),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(height: screen.height * 0.02),
-                                Expanded(
-                                  child: ListView.separated(
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: commenters.length,
-                                    itemBuilder: (context, index) {
-                                      final comment = commenters[index];
-                                      return comment;
-                                    },
-                                    separatorBuilder: (context, index) {
-                                      return Divider(
-                                        thickness: 1,
-                                        height: screen.height * 0.01,
-                                        color: Colors.grey,
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          SizedBox(height: screen.height * 0.02),
+
                           // show the EditButton widget if the user isOrganizer
                           if (isOrganizer)
                             EditEventBtn(
@@ -323,6 +256,8 @@ class _BodyState extends State<Body> {
                               eventDescription: event['description'] ?? '',
                               eventPlace: event['place'] ?? '',
                             ),
+                          if (!isOrganizer)
+                            BuyTicketBtn(eventId: event['_id'] ?? ''),
                           // else show TicketBuy btn
                           // if (!isOrganizer)
                           //   ,

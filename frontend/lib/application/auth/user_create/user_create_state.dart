@@ -1,6 +1,6 @@
 part of 'user_create_bloc.dart';
 
-class UserCreateState {
+class UserCreateState extends Equatable{
   const UserCreateState({
     required this.firstName,
     required this.lastName,
@@ -60,4 +60,17 @@ class UserCreateState {
       authFailureOrSuccessOption: none(),
     );
   }
+  
+  @override
+  List<Object?> get props => [
+    firstName,
+    lastName,
+    organizationName,
+    isOrganizer,
+    emailAddress,
+    password,
+    isSubmitting,
+    showErrorMessages,
+    authFailureOrSuccessOption,
+  ];
 }

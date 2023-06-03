@@ -40,4 +40,15 @@ export class UserService {
   async getUsers() {
     return this.userModel.find();
   }
+
+  // delete user
+  async deleteUser(userId: string) {
+    // find the user and delete the user
+
+    console.log(userId, "this is the user id from the user service");
+    console.log("this is the user id from the user service"); 
+
+    return this.userModel.deleteOne({ _id: userId });
+
+  }
 }

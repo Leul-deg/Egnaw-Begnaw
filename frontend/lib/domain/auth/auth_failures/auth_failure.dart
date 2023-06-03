@@ -44,10 +44,10 @@ class AuthFailure {
     factory AuthFailure.invalidPassword() = InvalidPassword;
 
   @override
-  bool operator ==(Object o) {
-    if (identical(this, o)) return true;
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
 
-    return o is AuthFailure && o.message == message;
+    return other is AuthFailure && other.message == message;
   }
 
   @override
