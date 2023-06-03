@@ -33,7 +33,7 @@ class _BodyState extends State<Body> {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('loginBackground.jpg'),
+            image: AssetImage('assets/loginBackground.jpg'),
             fit: BoxFit.cover,
           ),
         ),

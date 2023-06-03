@@ -123,7 +123,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextFormField(
-                          initialValue: json.decode(organizerData)['firstName'],
+                          initialValue: json.decode(organizerData ?? '{}')['firstName'],
                           onChanged: (value) {
                             context.read<UserUpdateBloc>().add(
                                   UserUpdateEvent.firstNameChanged(value),
@@ -145,7 +145,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                         ),
                         SizedBox(height: 20),
                         TextFormField(
-                          initialValue: json.decode(organizerData)['lastName'],
+                          initialValue: json.decode(organizerData ?? '{}')['lastName'],
                           onChanged: (value) {
                             context.read<UserUpdateBloc>().add(
                                   UserUpdateEvent.lastNameChanged(value),
@@ -167,7 +167,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                         ),
                         SizedBox(height: 20),
                         TextFormField(
-                          initialValue: json.decode(organizerData)['email'],
+                          initialValue: json.decode(organizerData ?? '{}')['email'],
                           onChanged: (value) {
                             context.read<UserUpdateBloc>().add(
                                   UserUpdateEvent.emailChanged(value),

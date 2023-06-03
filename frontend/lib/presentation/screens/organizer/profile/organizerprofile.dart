@@ -93,7 +93,7 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.02),
                     Text(
-                      json.decode(organizerData)['organizationName'] ??
+                      json.decode(organizerData ?? '{}')['organizationName'] ??
                           'Organizer Name',
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.035,
@@ -102,7 +102,7 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.01),
                     Text(
-                      json.decode(organizerData)['email'] ?? 'Email',
+                      json.decode(organizerData ?? '{}')['email'] ?? 'Email',
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.02,
                         color: Colors.grey[600],

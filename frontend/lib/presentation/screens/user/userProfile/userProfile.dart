@@ -15,22 +15,32 @@ class _UserProfileState extends State<UserProfile> {
   var organizerData;
 
   @override
-  void initState() {
+  void initState()  {
     super.initState();
-
-    getOrganizer();
+    print('before get organizer');
+     getOrganizer();
+    print("after get organizer");
   }
 
-  getOrganizer() async {
+  Future<void> getOrganizer() async {
+    print("get organizer() function");
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    print("after shared preference");
     setState(() {
+      print("up here");
+      print(prefs.getString('userData'));
       organizerData = json.decode(prefs.getString('userData')!);
+      print(organizerData);
     });
   }
 
 
   @override
   Widget build(BuildContext context) {
+    print("before organiez data");
+    print(organizerData);
+    print("after organiez data");
+
     return Scaffold(
       appBar: AppBar(
           leading: BackButton(
@@ -158,7 +168,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.02),
                     Text(
-                      json.decode(organizerData)['firstName'] + " " + json.decode(organizerData)['lastName'],
+                      json.decode(organizerData ?? '{}')['firstName'].toString() + " " + json.decode(organizerData ?? '{}')['lastName'].toString(),
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.035,
                         fontWeight: FontWeight.bold,
@@ -166,7 +176,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.01),
                     Text(
-                      json.decode(organizerData)['email'],
+                      json.decode(organizerData ?? '{}')['email'].toString(),
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.02,
                         color: Colors.grey[600],
@@ -195,14 +205,14 @@ class _UserProfileState extends State<UserProfile> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Name: ${json.decode(organizerData)['firstName'] + " " + json.decode(organizerData)['lastName']}',
+                          'Name: ${json.decode(organizerData ?? '{}')['firstName'].toString() + " " + json.decode(organizerData ?? '{}')['lastName'].toString()}',
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Email: ${json.decode(organizerData)['email']}',
+                          'Email: ${json.decode(organizerData ?? '{}')['email'].toString()}',
                           style: TextStyle(
                             fontSize: 16,
                           ),

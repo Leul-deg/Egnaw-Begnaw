@@ -7,7 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 class OrganizerDataSource implements OrganizerRepository {
   final http.Client client = http.Client();
-  final API_URL = "http://localhost:3000";
+  // final API_URL = "http://localhost:3000";
+    final API_URL = "http://192.168.56.1:3000";
+
 
   OrganizerDataSource();
   @override

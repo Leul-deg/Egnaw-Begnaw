@@ -11,7 +11,9 @@ import 'package:frontend/domain/auth/auth.dart';
 
 class AuthDataSource implements AuthRepository {
   AuthDataSource() {}
-  final API_URL = "http://localhost:3000";
+  // final API_URL = "http:// 192.168.195.119:3000";
+    final API_URL = "http://192.168.56.1:3000";
+
   final Future<SharedPreferences> sharedPreferences =
       SharedPreferences.getInstance();
 
@@ -34,6 +36,10 @@ class AuthDataSource implements AuthRepository {
       final SharedPreferences prefs = await sharedPreferences;
       prefs.setString('jwt_token', json.decode(response.body)['access_token']);
       prefs.setString('userData', json.encode(response.body));
+
+      print(prefs.getString('userData'));
+
+
 
       return Right(json.decode(response.body));
     } else if (response.statusCode == 403) {

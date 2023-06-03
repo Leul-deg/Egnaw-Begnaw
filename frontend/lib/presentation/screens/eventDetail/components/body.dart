@@ -82,7 +82,7 @@ class _BodyState extends State<Body> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                              event['profileImage'] ?? 'musician.jpg'),
+                              event['profileImage'] ?? 'assets/musician.jpg'),
                           fit: BoxFit.cover,
                         ),
                       ),
