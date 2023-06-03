@@ -29,7 +29,7 @@ class Thumbnail extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: Image.asset(
-                    'card1.jpg',
+                    'assets/card1.jpg',
                     fit: BoxFit.cover,
                   ),
                 ),

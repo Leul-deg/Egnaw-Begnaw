@@ -5,10 +5,14 @@ import 'package:http/http.dart' as http;
 
 import 'package:frontend/domain/ticket/ticket.dart';
 
+import '../../../data/local/local_database/local_storage.dart';
+
 class TicketDataSource implements TicketRepository {
   final http.Client client = http.Client();
+  final LocalDatabase localStorage = LocalDatabase.instance;
 
-  final API_URL = "http://localhost:3000";
+  // final API_URL = "http://localhost:3000";
+  final API_URL = "http://192.168.56.1:3000";
 
   TicketDataSource();
 
@@ -72,6 +76,12 @@ class TicketDataSource implements TicketRepository {
 
   @override
   Future<Either<TicketFailure, List<Object>>> getAllTickets() async {
+    var ticks = await localStorage.getter('tickets');
+    if (ticks.isNotEmpty) {
+      var ans = await localStorage.getter('tickets');
+      return Right(ans);
+    }
+
     final response = await client.get(
       Uri.parse('$API_URL/ticket'),
       headers: <String, String>{
@@ -81,6 +91,7 @@ class TicketDataSource implements TicketRepository {
 
     if (response.statusCode == 200) {
       final tickets = json.decode(response.body);
+      await localStorage.addTickets(tickets);
 
       return Right(tickets);
     } else if (response.statusCode == 400) {
@@ -112,21 +123,43 @@ class TicketDataSource implements TicketRepository {
   @override
   Future<Either<TicketFailure, List<dynamic>>> getTicketsByUserId(
       String id) async {
-    print('in the ticket ds');
-    final response = await client.get(
-      Uri.parse('$API_URL/ticket/user/$id'),
-    );
+    try {
+      print(id);
+      var ticks = await localStorage.getter('tickets');
+      print("got here save");
+      if (ticks.isEmpty) {
+        await getAllTickets();
+      }
 
-    print(response.statusCode);
+      print("got here save");
 
-    if (response.statusCode == 200) {
-      final tickets = json.decode(response.body);
+      final response = await client.get(
+        Uri.parse('$API_URL/ticket/user/$id'),
+      );
 
-      return Right(tickets);
-    } else if (response.statusCode == 400) {
-      return Left(TicketFailure.invalidTicket());
-    } else {
-      return Left(TicketFailure.serverError());
+      print(response.statusCode);
+
+      if (response.statusCode == 200) {
+        final tickets = json.decode(response.body);
+
+        return Right(tickets);
+      } else {
+        var ts = await localStorage.getTicketsByUserId(id);
+        if (ts.isNotEmpty) {
+          return Right(ts);
+        }
+        return Left(TicketFailure.serverError());
+      }
+    } catch (e) {
+      var ts = await localStorage.getTicketsByUserId(id);
+      if (ts.isNotEmpty) {
+        return Right(ts);
+      }
+      
+              return Left(TicketFailure.serverError());
+
+
+      
     }
   }
 }

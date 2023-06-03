@@ -17,7 +17,7 @@ class EventCards extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0),
               image: DecorationImage(
-                image: AssetImage('card1.jpg'),
+                image: AssetImage('assets/card1.jpg'),
                 fit: BoxFit.cover,
               ),
             ),

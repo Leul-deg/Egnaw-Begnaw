@@ -13,7 +13,7 @@ class OrganizerBtn extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             CircleAvatar(
-              backgroundImage: AssetImage('google.jpg'),
+              backgroundImage: AssetImage('assets/google.jpg'),
             ),
             SizedBox(width: 14),
             Expanded(

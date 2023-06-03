@@ -16,33 +16,31 @@ class _UserProfileState extends State<UserProfile> {
   var userData;
   var profileImage;
   @override
-  void initState() {
+  void initState()  {
     super.initState();
-
-    getOrganizer();
+    print('before get organizer');
+     getOrganizer();
+    print("after get organizer");
   }
 
-  getOrganizer() async {
+  Future<void> getOrganizer() async {
+    print("get organizer() function");
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    print("after shared preference");
     setState(() {
+      print("up here");
+      print(prefs.getString('userData'));
       userData = json.decode(prefs.getString('userData')!);
-      
-      if(json.decode(userData)["profileImage"] != null)
-      {
-       Uint8List  bytes =  base64.decode(json.decode(userData)["profileImage"]);
-        profileImage = MemoryImage(bytes);
-      }
-      else
-      {
-        print("is it inside here?");
-        profileImage = AssetImage('assets/person.png');
-      }
     });
     
   }
 
   @override
   Widget build(BuildContext context) {
+    print("before organiez data");
+    print(userData);
+    print("after organiez data");
+
     return Scaffold(
       appBar: AppBar(
           leading: BackButton(
@@ -174,9 +172,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.02),
                     Text(
-                      json.decode(userData)['firstName'] +
-                          " " +
-                          json.decode(userData)['lastName'],
+                      json.decode(userData ?? '{}')['firstName'].toString() + " " + json.decode(userData ?? '{}')['lastName'].toString(),
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.035,
                         fontWeight: FontWeight.bold,
@@ -184,7 +180,7 @@ class _UserProfileState extends State<UserProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.01),
                     Text(
-                      json.decode(userData)['email'],
+                      json.decode(userData ?? '{}')['email'].toString(),
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.02,
                         color: Colors.grey[600],
@@ -213,14 +209,14 @@ class _UserProfileState extends State<UserProfile> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Name: ${json.decode(userData)['firstName'] + " " + json.decode(userData)['lastName']}',
+                          'Name: ${json.decode(userData ?? '{}')['firstName'].toString() + " " + json.decode(userData ?? '{}')['lastName'].toString()}',
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Email: ${json.decode(userData)['email']}',
+                          'Email: ${json.decode(userData ?? '{}')['email'].toString()}',
                           style: TextStyle(
                             fontSize: 16,
                           ),
