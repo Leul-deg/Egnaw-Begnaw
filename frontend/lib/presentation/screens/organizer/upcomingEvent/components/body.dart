@@ -61,10 +61,11 @@ class _BodyState extends State<Body> {
                   final eventCard = eventCards[index];
                   return GestureDetector(
                     onTap: () {
+                      print( eventCard.event['_id']);
                       context.pushNamed(
                           MyAppRouteConstants.eventDetailRouteName,
                           queryParameters: {
-                            'eventId': eventCard.event['_id'],
+                            'eventId': eventCard.event['_id'] ?? '',
                           });
                     },
                     child: eventCard,

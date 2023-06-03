@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Delete, Param, Body, Req, RawBodyRequest } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Param, Body, Req, RawBodyRequest, UseGuards } from '@nestjs/common';
+import { JwtGuard } from 'src/auth/guard';
 import { CreateOrganizerDTO } from 'src/organizer/dto/createOrganizer.dto';
 import { UpdateOrganizerDTO } from 'src/organizer/dto/updateOrganizer.dto'; 
 import { OrganizerI } from 'src/Organizer/interfaces/organizer.interface';
 import { OrganizerService } from 'src/organizer/services/organizer/organizer.service';
-
+@UseGuards(JwtGuard)
 @Controller()
 export class OrganizerController {
 

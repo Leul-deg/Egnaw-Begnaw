@@ -1,9 +1,10 @@
-import { Controller, Get, Post, Delete, Param, Body, Put } from '@nestjs/common';
+import { Controller, Get, Post, Delete, Param, Body, Put, UseGuards } from '@nestjs/common';
+import { JwtGuard } from 'src/auth/guard';
 import { CreateEventDTO } from 'src/event/dto/createEvent.interface';
 import { UpdateEventDTO } from 'src/event/dto/updateEvent.interface';
 import { EventI } from 'src/event/interfaces/event.interface';
 import { EventService } from 'src/event/services/event.service';
-
+@UseGuards(JwtGuard)
 @Controller()
 export class EventController {
 

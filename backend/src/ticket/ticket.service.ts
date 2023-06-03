@@ -21,9 +21,7 @@ export class TicketService {
 
   async getAllTickets(): Promise<TicketI[]> {
     try {
-      const newTicket = await this.ticketModel.find()
-        .sort({ updatedAt: -1 })
-        .exec();
+      const newTicket = await this.ticketModel.find().sort({ updatedAt: -1 }).populate('eventId');
 
       return newTicket;
     } catch (error) {
@@ -38,7 +36,7 @@ export class TicketService {
     } catch (error) {
       throw error;
     }
-    
+
   }
 
   // update(id: number, updateTicketDto: UpdateTicketDto) {
@@ -56,7 +54,7 @@ export class TicketService {
 
   async getTicketByUserId(id: string): Promise<TicketI[]> {
     try {
-      const newTicket = await this.ticketModel.find({ userId: id });
+      const newTicket = await this.ticketModel.find({ userId: id }).populate('eventId');
       return newTicket;
     } catch (error) {
       throw error;

@@ -12,7 +12,7 @@ import 'package:frontend/domain/auth/auth.dart';
 class AuthDataSource implements AuthRepository {
   AuthDataSource() {}
   // final API_URL = "http:// 192.168.195.119:3000";
-    final API_URL = "http://192.168.56.1:3000";
+    final API_URL = "http://10.0.2.2:3000";
 
   final Future<SharedPreferences> sharedPreferences =
       SharedPreferences.getInstance();
@@ -25,8 +25,6 @@ class AuthDataSource implements AuthRepository {
       Uri.parse('$API_URL/auth/user/signin'),
       body: userLoginModel.toJson(),
     );
-
-    print('waiting for loggiqng in...');
 
     print('got response');
     print(response.statusCode);
@@ -43,10 +41,8 @@ class AuthDataSource implements AuthRepository {
 
       return Right(json.decode(response.body));
     } else if (response.statusCode == 403) {
-      print('Invalid email or password, 6734');
       return Left(AuthFailure.invalidEmailAndPasswordCombination());
     } else {
-      print('jere=ahfkasdfue');
       return Left(AuthFailure.serverError());
     }
   }
@@ -95,10 +91,14 @@ class AuthDataSource implements AuthRepository {
   Future<Either<AuthFailure, Object>> loginOrganizer(
       OrganizerLoginModel organizerLoginModel) async {
     print('logging in...');
+    print(organizerLoginModel.toJson());
     final response = await client.post(
       Uri.parse('$API_URL/auth/organizer/signin'),
       body: organizerLoginModel.toJson(),
     );
+
+    print('after response');
+    
 
     // print the userdata from
 
@@ -109,10 +109,15 @@ class AuthDataSource implements AuthRepository {
 
     if (response.statusCode == 200) {
       // Save the JWT token to shared preferences
+      print("come here I am something else ordain paster");
       final SharedPreferences prefs = await sharedPreferences;
       await prefs.setString('userData', json.encode(response.body));
 
       prefs.setString('jwt_token', json.decode(response.body)['access_token']);
+
+      print(prefs.getString('jwt_token'));
+      print(json.decode(response.body)['access_token']);
+      print("I got the lajf;dlkjads;lkfj;aldksjf;askldjf;lkadsjf;lkads;flkajsd;fkjad;skjfa");
 
       print(response.statusCode);
 
@@ -170,9 +175,6 @@ class AuthDataSource implements AuthRepository {
 
     final response = await client.post(
       Uri.parse('$API_URL/auth/logout'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
     );
   }
 
@@ -186,9 +188,6 @@ class AuthDataSource implements AuthRepository {
 
     final response = await client.post(
       Uri.parse('$API_URL/auth/logout/organizer'),
-      headers: <String, String>{
-        'Content-Type': 'application/json; charset=UTF-8',
-      },
     );
   }
 

@@ -77,8 +77,7 @@ class _BuyTicketBtnState extends State<BuyTicketBtn> {
           );
         },
         builder: (context, state) {
-          return Scaffold(
-            body: Center(
+          return Center(
               child: Container(
                   padding: const EdgeInsets.symmetric(vertical: 25),
                   width: 300,
@@ -103,8 +102,8 @@ class _BuyTicketBtnState extends State<BuyTicketBtn> {
                       ),
                     ),
                   )),
-            ),
-          );
+            );
+       
         },
       ),
     );

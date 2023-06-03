@@ -17,8 +17,6 @@ class EditUserProfile extends StatefulWidget {
 
 class _EditUserProfileState extends State<EditUserProfile> {
   bool _passwordVisible = false;
-  final ImagePicker _picker = ImagePicker();
-  var _imageFile;
   var userData;
 
   @override
@@ -32,27 +30,15 @@ class _EditUserProfileState extends State<EditUserProfile> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       userData = json.decode(prefs.getString('userData')!);
+      print('here is userdata up there');
+      print(userData);
     });
   }
-     Future<String> _pickImageBase64() async {
-    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
-    if (pickedFile == null) return '';
-
-    Uint8List bytes = await pickedFile.readAsBytes();
-    String base64 = base64Encode(bytes);
-
-  
-
-    setState(() {
-      _imageFile = MemoryImage(bytes);
-    });
-
-    return base64;
-  }
 
   @override
   Widget build(BuildContext context) {
+    var userData = this.userData;
     return BlocProvider(
       create: (context) =>
           UserUpdateBloc(UserRepositoryImp(userDataSource: UserDataSource())),
@@ -91,6 +77,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
           );
         },
         builder: (context, state) {
+          print('here is the userdata to be edited');
+          print(userData);
           return Scaffold(
             appBar: AppBar(
               title: Text('Edit Profile'),
@@ -100,7 +88,7 @@ class _EditUserProfileState extends State<EditUserProfile> {
                     .pushNamed(MyAppRouteConstants.userProfilePageRouteName),
               ),
             ),
-             resizeToAvoidBottomInset: true,
+            resizeToAvoidBottomInset: true,
             body: SingleChildScrollView(
               child: Container(
                 padding: EdgeInsets.only(top: 15), // Add padding to the top
@@ -111,8 +99,6 @@ class _EditUserProfileState extends State<EditUserProfile> {
                       alignment: Alignment.bottomRight, // Align at bottom-right
                       children: [
                         CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              'https://media.istockphoto.com/id/1419539600/photo/business-presentation-and-man-on-a-laptop-in-a-corporate-conference-or-office-collaboration.jpg?s=1024x1024&w=is&k=20&c=j9UcrrobYnsnwhrP3jG8Bzr9q5lAYu9Cg28Ne74vJtk='),
                           radius: 70,
                         ),
                         Positioned(
@@ -143,7 +129,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextFormField(
-                            initialValue: json.decode(userData)['firstName'],
+                            initialValue:
+                                json.decode(userData ?? '{}')['firstName'],
                             onChanged: (value) {
                               context.read<UserUpdateBloc>().add(
                                     UserUpdateEvent.firstNameChanged(value),
@@ -165,7 +152,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
                           ),
                           SizedBox(height: 20),
                           TextFormField(
-                            initialValue: json.decode(userData)['lastName'],
+                            initialValue:
+                                json.decode(userData ?? '{}')['lastName'],
                             onChanged: (value) {
                               context.read<UserUpdateBloc>().add(
                                     UserUpdateEvent.lastNameChanged(value),
@@ -187,7 +175,8 @@ class _EditUserProfileState extends State<EditUserProfile> {
                           ),
                           SizedBox(height: 20),
                           TextFormField(
-                            initialValue: json.decode(userData)['email'],
+                            initialValue:
+                                json.decode(userData ?? '{}')['email'],
                             onChanged: (value) {
                               context.read<UserUpdateBloc>().add(
                                     UserUpdateEvent.emailChanged(value),

@@ -31,13 +31,11 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
       organizerData = json.decode(prefs.getString('userData')!);
       print(organizerData);
 
-      if(json.decode(organizerData)["profileImage"] != null)
-      {
-       Uint8List  bytes =  base64.decode(json.decode(organizerData)["profileImage"]);
+      if (json.decode(organizerData ?? '{}')["profileImage"] != null) {
+        Uint8List bytes =
+            base64.decode(json.decode(organizerData ?? '{}')["profileImage"]);
         profileImage = MemoryImage(bytes);
-      }
-      else
-      {
+      } else {
         print("is it inside here?");
         profileImage = AssetImage('assets/person.png');
       }
@@ -48,6 +46,8 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false, // Disable the back arrow
+
         actions: [
           PopupMenuButton(
             itemBuilder: (context) => [
@@ -79,10 +79,10 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                               style: TextStyle(color: Colors.red),
                             ),
                             onPressed: () async {
-
                               final authDs = AuthDataSource();
 
-                              await authDs.deleteOrganizerAccount(json.decode(organizerData)['_id']);
+                              await authDs.deleteOrganizerAccount(
+                                  json.decode(organizerData ?? '{}')['_id']);
 
                               GoRouter.of(context).pushNamed(
                                   MyAppRouteConstants.welcomeRouteName);
@@ -145,7 +145,7 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                         CircleAvatar(
                           radius: constraints.maxWidth * 0.14,
                           backgroundImage: profileImage,
-                          child: Container( 
+                          child: Container(
                             padding:
                                 EdgeInsets.all(constraints.maxWidth * 0.04),
                           ),
@@ -174,7 +174,7 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.02),
                     Text(
-                      json.decode(organizerData)['organizationName'] ??
+                      json.decode(organizerData ?? '{}')['organizationName'] ??
                           'Organizer Name',
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.035,
@@ -183,7 +183,7 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                     ),
                     SizedBox(height: constraints.maxHeight * 0.01),
                     Text(
-                      json.decode(organizerData)['email'] ?? 'Email',
+                      json.decode(organizerData ?? '{}')['email'] ?? 'Email',
                       style: TextStyle(
                         fontSize: constraints.maxHeight * 0.02,
                         color: Colors.grey[600],
@@ -211,14 +211,14 @@ class _OrganizerProfileState extends State<OrganizerProfile> {
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Name: ${json.decode(organizerData)['organizationName']}',
+                          'Name: ${json.decode(organizerData ?? '{}')['organizationName']}',
                           style: TextStyle(
                             fontSize: 16,
                           ),
                         ),
                         SizedBox(height: 8),
                         Text(
-                          'Email: ${json.decode(organizerData)['email']}',
+                          'Email: ${json.decode(organizerData ?? '{}')['email']}',
                           style: TextStyle(
                             fontSize: 16,
                           ),

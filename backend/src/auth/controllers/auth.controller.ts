@@ -20,7 +20,6 @@ export class AuthController {
   signup(@Body() dto: AuthDto) {
     return this.authService.signup(dto);
   }
-
   @HttpCode(HttpStatus.OK)
   @Post('user/signin')
   signin(@Body() dto: AuthDto) {
@@ -30,6 +29,7 @@ export class AuthController {
 
   @Post('organizer/signup')
   OrganizerSignup(@Body() dto: CreateOrganizerDTO) {
+    console.log(dto);
     return this.authService.organizerSignup(dto);
   }
 

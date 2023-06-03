@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/application/ticket/ticket_get/ticket_get_bloc.dart';
@@ -42,9 +44,11 @@ class _BodyState extends State<Body> {
 
         // populate eventCards from the state
         if (state.tickets.isNotEmpty) {
+          print('here is the ticket in the ui');
+          print(state.tickets);
           for (var ticket in state.tickets) {
             eventCards.add(EventCards(
-              title: ticket['eventId'],
+              title: json.decode(ticket['eventId'])['title'],
             ));
           }
         }

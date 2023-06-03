@@ -23,6 +23,7 @@ class _BodyState extends State<Body> {
 
   @override
   void initState() {
+    print('in the freaking padskfhkjakjsdf hjahdfkjaj sfkjsadfkjfh');
     super.initState();
     print('hererauidhflajkhdfuih');
     context.read<EventGetBloc>().add(EventGetEvent.getAllEvents());
